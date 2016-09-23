@@ -23,7 +23,7 @@ if(page_trail[0] == '') page_trail[0] = 'about_me';
 if(url_split[4] == 'aaron'){
 	if(url_split.length <= 6){url_level = 1}else{url_level = url_split.length - 9}
 }else{
-	if(url_split.length <= 5){url_level = 2}else{url_level = url_split.length - 4}
+	if(url_split.length <= 4){url_level = 2}else{url_level = url_split.length - 2}
 }
 alert(url_split + '; ' + url_split.length + '; ' + url_level)
 
