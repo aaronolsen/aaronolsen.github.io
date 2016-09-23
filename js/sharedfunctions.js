@@ -203,6 +203,7 @@ function fill_linksidebar(){
 			// CHECK LEVEL
 			pre_add = ''
 			if(url_level == 1) pre_add = links[i][1].substring(0, links[i][1].indexOf(".")) + '/';
+			if(url_level == 2) pre_add = '../' + links[i][1].substring(0, links[i][1].indexOf(".")) + '/';
 			if(url_level == 3) pre_add = '../../' + links[i][1].substring(0, links[i][1].indexOf(".")) + '/';
 			if(url_level == 4) pre_add = '../../../' + links[i][1].substring(0, links[i][1].indexOf(".")) + '/';
 
