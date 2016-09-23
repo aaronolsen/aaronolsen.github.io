@@ -13,7 +13,7 @@ url_split = document.URL.split("/");
 page_trail = new Array()
 for(i = 1; i <= 4; i++){
 	//if(url_split[url_split.length-i].toLowerCase() == "~aolsen" || url_split[url_split.length-i].toLowerCase() == "public_html") break
-	if(url_split[url_split.length-i].toLowerCase() == "aaronolsen.github.io" || url_split[url_split.length-i].toLowerCase() == "aaronolsen.github.io") break
+	if(url_split[url_split.length-i].toLowerCase() == "aaronolsen.github.io") break
 	page_trail[i-1] = url_split[url_split.length-i].toLowerCase()
 }
 
@@ -25,6 +25,7 @@ if(url_split[4] == 'aaron'){
 }else{
 	if(url_split.length <= 5){url_level = 1}else{url_level = url_split.length - 5}
 }
+alert(url_level)
 
 fill_header()
 fill_footer()
