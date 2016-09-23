@@ -25,7 +25,7 @@ if(url_split[4] == 'aaron'){
 }else{
 	if(url_split.length <= 5){url_level = 2}else{url_level = url_split.length - 4}
 }
-//alert(url_level)
+alert(url_level)
 
 fill_header()
 fill_footer()
