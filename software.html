@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+<link rel="shortcut icon" href="img/favicon.png"/>
+<link href="css/stylesheet.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+		<div id='header' class='header' ></div>
+		<div id='linksidebar' class='linksidebar' ></div>
+		<div id='maincontent' class='maincontent' >
+			<div id='pagetrail' class='pagetrail' ></div>
+			<h1>Software</h1>
+			<h2>Unlocking the potential of natural history collections</h2>
+			<p>
+				Natural history collections have incredible potential to inform current questions in science and
+				an important aspect of my research is developing methods to make these collections more accessible
+				to the scientific community and the public. Below are some of the new methods and models I'm currently
+				developing, with a particular focus on morphology, feeding ecology and biomechanics.
+			</p>
+			<h2><a href='software/stereomorph.html' >StereoMorph</a></h2>
+			<p>
+				<div class='p_image_right_div' style="width:250px;">
+					<div><img width='250px' src='img/StereoMorph 3D shape example.jpg' /></div>
+					<div class='p_image_caption' style='text-align:right;' >
+						3D landmarks and curves collected using the <strong>StereoMorph</strong> R package
+					</div>
+				</div>
+
+				Standard digital cameras are commonly used for 2D morphometrics to collect landmarks and curves
+				from relatively flat objects. But if the objects are more three-dimensional, users often
+				have to resort to methods such as microscribes or surface scanning.
+				The <strong>StereoMorph</strong> R package (Olsen & Westneat 2014) allows users to collect 
+				3D landmarks and curves from objects using two standard digital cameras.
+				<a href='software/stereomorph.html' >Read more...</a>
+			</p>
+
+			<br /><br />
+			<h2><a href='software/digitizing.html' >Digitizing App</a></h2>
+			<p>
+				<div class='p_image_right_div' style="width:250px;">
+					<div><img width='250px' src='img/stereomorph 2d digitizing screenshot.jpg' /></div>
+					<div class='p_image_caption' style='text-align:right;' >
+						A browser-based digitizing application included in the <strong>StereoMorph</strong> R package
+					</div>
+				</div>
+
+				The StereoMorph R package includes a digitizing application that can be used to collect landmarks and curves from photographs 
+				for 2D morphometrics.
+				The application runs in a web browser, providing an interactive and easy-to-use interface. 
+				Users can scale landmarks and curves using manually digitized ruler points or an automatically detected checkerboard pattern directly in the app interface.
+				Shape and scaling data are saved into a single file for easy referencing. 
+				The app is completely free and compatible across Linux, Mac and Windows.
+				<a href='software/digitizing.html' >Read more...</a>
+			</p>
+
+			<br /><br />
+			<h2>
+				<a href='software/linkr.html' >linkR</a>
+			</h2>
+			<p>
+				<div class='p_image_right_div' style="width:220px;">
+					<div>
+						<img width='220px' src='img/linkr/5-bar.jpg' />
+					</div>
+					<div class='p_image_caption' style='text-align:right;' >
+						A 3D 5-bar linkage created using <strong>linkR</strong>
+					</div>
+				</div>
+
+				Linkages, or closed loops of inter-jointed, rigid links, are commonly used 
+				in engineering to transform an input motion or force into an output motion or force
+				along a particular path.
+				Several groups of animals have evolved musculoskeletal systems for feeding, breathing and defense that employ 
+				structures analogous to human-made linkages in engineering.
+				However, while human-made linkages are usually confined to a single two-dimensional plane, 
+				biological linkages are often three-dimensional.
+				The <strong>linkR</strong> package for R provides a toolkit for predicting 
+				motion, force and torque outputs of 2D and 3D linkages
+				and calculating linkage mechanical properties such as motion, force 
+				and torque transmission ratios.
+				<a href='software/linkr.html' >Read more...</a>
+			</p>
+
+			<br /><br />
+			<h2>
+				<a href='software/svgviewr.html' >
+					svgViewR
+				</a>
+			</h2>
+			<p>
+				<div class='p_image_right_div' style="width:250px;">
+					<div>
+						<img width='250px' src='img/svgViewR triangles.jpg' />
+					</div>
+					<div class='p_image_caption' style='text-align:right;' >
+						<strong>svgViewR</strong> interactive 3D web viewer
+					</div>
+				</div>
+			<p>
+				Most standard visualization tools are intended for visualization of 2D, 
+				static data.
+				Yet the vast majority of biological phenomena are neither 2D nor static.
+				The <strong>svgViewR</strong> package for R 
+				allows users to easily create visualizations of 3D data or moving models 
+				with interactive zoom, 3D rotation and translation using mouse and keyboard shortcuts.
+				<a href='software/svgviewr.html' >Read more...</a>
+			</p>
+
+			<br />
+			<h2>
+				<a href='software/dietquery.html' >
+					dietQuery
+				</a>
+			</h2>
+			<p>
+				<div class='p_image_right_div' style="width:200px;">
+					<div>
+						<img width='200px' src='img/diet_characters_on_tree.jpg' />
+					</div>
+					<div class='p_image_caption' style='text-align:right;' >
+						Diet data from the literature used to study the evolution of herbivory in Anseriformes
+					</div>
+				</div>
+
+				For many species of birds there is an enormous wealth of published diet data in the literature. 
+				However, a researcher interested in using these data to address large-scale questions is 
+				confronted with several challenges.
+				Many data are published in journals not included in standard library subscription services
+				and these data do not exist in a standard format that allows a user to easily perform 
+				the same query across several datasets.
+				<strong>dietQuery</strong> is a R package in development for compiling diet data sets from the literature and searching 
+				these data sets using taxonomy-based queries.
+				<a href='software/dietquery.html' >Read more...</a>
+			</p>
+
+			<br /><br /><br /><br />
+
+		</div>
+		<div id='footer' class='footer' ></div>
+	</div>
+</body>
+
+<script src="js/sharedfunctions.js" type="text/javascript" ></script>

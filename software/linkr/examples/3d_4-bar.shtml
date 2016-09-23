@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+<link rel="shortcut icon" href="http://www.uchicago.edu/favicon.ico"/>
+<link href="../../../css/stylesheet.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+		<div id='header' class='header' ></div>
+		<div id='linksidebar' class='linksidebar' ></div>
+		<div id='maincontent' class='maincontent' >
+			<div id='pagetrail' class='pagetrail' ></div>
+			<h1>3D 4-bar Linkage</h1>
+			
+			<p>
+			To run the example below, ensure that you have 
+			<a href='http://rweb.quant.ku.edu/cran/' target='_blank' >R</a>
+			installed on your system as well as the R packages 
+			<a href='http://cran.r-project.org/web/packages/linkR/index.html' target='_blank' >linkR</a>
+			and 
+			<a href='http://cran.r-project.org/web/packages/svgViewR/index.html' target='_blank' >svgViewR</a>.
+			Then, copy and paste the following code into the R console.
+			</p>
+
+			<div class='code' >
+				<pre class='code'>
+# Load the linkR and svgViewR packages
+library(linkR)
+library(svgViewR)
+
+# Set the joint coordinates
+joints <- matrix(c(0,0,0, 0,2,0, 1,1,0, 1,0,0), nrow=4, ncol=3, byrow=TRUE)
+
+# Set the joint constraint vectors
+joints.cvec <- list(c(1,0,1), c(1,0,0), NA, c(0,0,1))
+
+# Define the linkage
+linkage <- defineLinkage(joints=joints, joints.cvec=joints.cvec, 
+	joints.type=c("R", "U", "U", "R"))
+
+# Animate the linkage
+link_anim <- animateLinkage(linkage, t=seq(0, 0.2, length=50))
+
+# Draw the linkage using svgViewR
+drawLinkage(link_anim, file="3d_4-bar.html", animate=TRUE, animate.reverse=TRUE)
+</pre>
+			</div>
+			<p>
+			This will create an 
+			<a href='3d_4-bar.html' >interactive visualization</a> as an '.html' file that can be opened in any 
+			compatible web browser. See
+			<a href='../../svgviewr/interactive.shtml' >
+			svgViewR Interactive Commands
+			</a>
+			for instructions on how to interact with svgViewR animations.
+			</p>
+			<br /><br />
+
+		</div>
+		<div id='footer' class='footer' ></div>
+	</div>
+</body>
+
+<script src="../../../js/sharedfunctions.js" type="text/javascript" ></script>

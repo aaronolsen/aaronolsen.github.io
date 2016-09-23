@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+<link rel="shortcut icon" href="http://www.uchicago.edu/favicon.ico"/>
+<link href="../../../css/stylesheet.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+		<div id='header' class='header' ></div>
+		<div id='linksidebar' class='linksidebar' ></div>
+		<div id='maincontent' class='maincontent' >
+			<div id='pagetrail' class='pagetrail' ></div>
+			<h1>Owl Cranial Linkages</h1>
+			
+			<p>
+			To run the example below, ensure that you have 
+			<a href='http://rweb.quant.ku.edu/cran/' target='_blank' >R</a>
+			installed on your system as well as the R packages 
+			<a href='http://cran.r-project.org/web/packages/linkR/index.html' target='_blank' >linkR</a>
+			and 
+			<a href='http://cran.r-project.org/web/packages/svgViewR/index.html' target='_blank' >svgViewR</a>.
+			Then, copy and paste the following code into the R console.
+			</p>
+
+			<div class='code' >
+				<pre class='code'>
+# Load the linkR library
+library(linkR)
+
+# Load example data for owl cranial linkages
+owl <- linkR_examples('owl')
+
+# Landmark data, joints used to construct the model and associated points for visualization
+lm <- owl$landmarks
+
+# Link name with which each landmark is associated
+lm.assoc <- owl$lm.assoc
+
+# Which points to connect with paths for easier visualization
+path.connect <- owl$path.connect
+
+# Set joint coordinates
+joint.coor <- lm[c('quadrate_cranium_lc_R', 'quadrate_jugal_R', 'jugal_upperbeak_R', 
+	'nasalfrontalhinge_cranium_R', 'quadrate_pterygoid_R', 'pslider_pterygoid_R', 
+	'pterygoid_palatine_R', 'pslider_palatine_R', 'upperbeak_palatine_R',
+	'quadrate_cranium_lc_L', 'quadrate_jugal_L', 'jugal_upperbeak_L',
+	'quadrate_pterygoid_L', 'pslider_pterygoid_L', 'pterygoid_palatine_L', 
+	'pslider_palatine_L', 'upperbeak_palatine_L'), ]
+
+# Joint types
+joint.types <- c("R", "S", "S", "R", "S", "S", "P", "S", "S",
+	"R", "S", "S", "S", "S", "P", "S", "S")
+
+# Joint constraint vectors
+joint.cons <- list(
+	lm['quadrate_cranium_lc_R', ] - lm['quadrate_cranium_mc_R', ], NA, NA, 
+	lm['nasalfrontalhinge_cranium_L', ] - lm['nasalfrontalhinge_cranium_R', ],
+	NA, NA, lm['nasalfrontalhinge_cranium_L', ] - lm['nasalfrontalhinge_cranium_R', ], NA, NA,
+	lm['quadrate_cranium_lc_L', ] - lm['quadrate_cranium_mc_L', ], NA, NA,
+	NA, NA, lm['nasalfrontalhinge_cranium_L', ] - lm['nasalfrontalhinge_cranium_R', ], NA, NA)
+
+# The links connected by each joint
+joint.conn <- rbind(
+	c('neurocranium', 'quadrate_R'), c('quadrate_R', 'jugal_R'), 
+	c('jugal_R', 'upperbeak'), c('upperbeak', 'neurocranium'), 
+	c('quadrate_R', 'pterygoid_R'), c('pterygoid_R', 'pp-slide_R'), 
+	c('pp-slide_R', 'neurocranium'), c('pp-slide_R', 'palatine_R'), 
+	c('palatine_R', 'upperbeak'), c('neurocranium', 'quadrate_L'), 
+	c('quadrate_L', 'jugal_L'), c('jugal_L', 'upperbeak'),
+	c('quadrate_L', 'pterygoid_L'), c('pterygoid_L', 'pp-slide_L'), 
+	c('pp-slide_L', 'neurocranium'), c('pp-slide_L', 'palatine_L'), 
+	c('palatine_L', 'upperbeak'))
+
+# Define the linkage
+linkage <- defineLinkage(joint.coor=joint.coor, joint.types=joint.types, 
+	joint.cons=joint.cons, joint.conn, points=lm, link.assoc=lm.assoc, 
+	ground.link='neurocranium')
+
+# Set the animation input parameters
+input.param <- seq(5*(pi/180), -10*(pi/180), length=100)
+
+# Animate the linkage
+animate <- animateLinkage(linkage, input.param=input.param, input.joint=1)
+
+# Create an interactive linkage visualization
+drawLinkage(animate, file="owl", animate=TRUE, window.title="Owl cranial linkages", 
+	animate.duration=3, animate.reverse=TRUE, connect.joints=FALSE, path.connect=path.connect, 
+	point.cex=0.3, joint.cex=1, path.lwd=1)
+</pre>
+			</div>
+			<p>
+			This will create an 
+			<a href='owl.html' >interactive visualization</a> as an '.html' file that can be opened in any 
+			compatible web browser. See
+			<a href='../../svgviewr/interactive.shtml' >
+			svgViewR Interactive Commands
+			</a>
+			for instructions on how to interact with svgViewR animations.
+			</p>
+			<br /><br />
+
+		</div>
+		<div id='footer' class='footer' ></div>
+	</div>
+</body>
+
+<script src="../../../js/sharedfunctions.js" type="text/javascript" ></script>

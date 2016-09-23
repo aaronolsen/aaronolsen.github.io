@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+<link rel="shortcut icon" href="http://www.uchicago.edu/favicon.ico"/>
+<link href="../../../css/stylesheet.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+		<div id='header' class='header' ></div>
+		<div id='linksidebar' class='linksidebar' ></div>
+		<div id='maincontent' class='maincontent' >
+			<div id='pagetrail' class='pagetrail' ></div>
+			<h1>Rotating links coupled by planar slider</h1>
+			
+			<p>
+			To run the example below, ensure that you have 
+			<a href='http://rweb.quant.ku.edu/cran/' target='_blank' >R</a>
+			installed on your system as well as the R packages 
+			<a href='http://cran.r-project.org/web/packages/linkR/index.html' target='_blank' >linkR</a>
+			and 
+			<a href='http://cran.r-project.org/web/packages/svgViewR/index.html' target='_blank' >svgViewR</a>.
+			Then, copy and paste the following code into the R console.
+			</p>
+
+			<div class='code' >
+				<pre class='code'>
+# Load the linkR library
+library(linkR)
+
+# Joint coordinates
+joint.coor <- rbind(c(-1,2,0), c(-1,1,0), c(2,1,0), c(2,0,0),
+	c(-1,1,0.5), c(1,0.5,0.5), c(1,0.5,0.5), c(1,0.5,0.5), c(2,1,0.5))
+
+# Joint types
+joint.types <- c("R", "S", "S", "R", "S", "S", "P", "S", "S")
+
+# Joint constraint vectors
+joint.cons <- list(c(-0.5,0,1), NA, NA, c(0,1,1), NA, NA, c(0,1,1), NA, NA)
+
+# The links connected by each joint
+joint.conn <- rbind(c(0,1), c(1,2), c(2,3), c(3,0), c(1,4), c(4,5), c(5,0), c(5,6), c(6,3))
+
+# Input parameters, with 100 iterations
+input.param <- seq(10*(pi/180), -50*(pi/180), length=100)
+
+# Joint at which to apply input parameters
+input.joint <- 1
+
+# Define the linkage
+linkage <- defineLinkage(joint.coor=joint.coor, joint.types=joint.types, joint.cons=joint.cons, 
+	joint.conn=joint.conn)
+
+# Animate the linkage
+animate <- animateLinkage(linkage, input.param=input.param, input.joint=input.joint)
+
+# Draw the linkage
+drawLinkage(animate, file='RSSRSSPSS', animate=TRUE, animate.duration=3, 
+	animate.reverse=TRUE, window.title='RSSRSSPSS')
+</pre>
+			</div>
+			<p>
+			This will create an 
+			<a href='RSSRSSPSS.html' >interactive visualization</a> as an '.html' file that can be opened in any 
+			compatible web browser. See
+			<a href='../../svgviewr/interactive.shtml' >
+			svgViewR Interactive Commands
+			</a>
+			for instructions on how to interact with svgViewR animations.
+			</p>
+			<br /><br />
+
+		</div>
+		<div id='footer' class='footer' ></div>
+	</div>
+</body>
+
+<script src="../../../js/sharedfunctions.js" type="text/javascript" ></script>
