@@ -12,7 +12,8 @@ url_split = document.URL.split("/");
 
 page_trail = new Array()
 for(i = 1; i <= 4; i++){
-	if(url_split[url_split.length-i].toLowerCase() == "~aolsen" || url_split[url_split.length-i].toLowerCase() == "public_html") break
+	//if(url_split[url_split.length-i].toLowerCase() == "~aolsen" || url_split[url_split.length-i].toLowerCase() == "public_html") break
+	if(url_split[url_split.length-i].toLowerCase() == "aaronolsen.github.io" || url_split[url_split.length-i].toLowerCase() == "aaronolsen.github.io") break
 	page_trail[i-1] = url_split[url_split.length-i].toLowerCase()
 }
 
@@ -40,7 +41,7 @@ function fill_pagetrail(){
 	pre_add = ''
 	for(k = 1;k < url_level; k++) pre_add += "../"
 	
-	pre_add += '../../'
+	//pre_add += '../../'
 
 	t = '<a href="' + pre_add + 'about_me.html">home</a>'
 
