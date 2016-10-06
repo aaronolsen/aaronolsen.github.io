@@ -130,19 +130,27 @@ function fill_header(){
 	img[img.length] = new Array('sspssl.html', 'Canada Goose', '../../../img/header_canada_goose.jpg', 'white')
 	
 	// GET IMAGE INDEX BASED ON CURRENT PAGE
-	img_idx = 0;
+	img_idx = -1;
 	for(i in img){
 		if(page_trail[0] == img[i][0]){img_idx = i;break;}
 	}
 	
+	if(img_idx == -1){
+		var up_str = '../'
+		var img_src = up_str.repeat(url_level-1) + 'img/headers/dusky_blue_grouse.jpg';
+		var caption_color = 'white';
+		var caption = 'Dusky Blue Grouse';
+	}else{
+		var img_src = img[img_idx][2];
+		var caption_color = img[img_idx][3];
+		var caption = img[img_idx][1];
+	}
+
 	t = ''
-	//t += '<div class=\'header_title\' >'
-	//t += 'Aaron Olsen'
-	//t += '</div>'
 	t += '<div style=\'position:relative;\' >'
-	t += '<img id=\'header_image\' style=\'float:right;\' src=\'' + img[img_idx][2] + '\' />'
-	t += '<div id=\'header_image_caption\' style=\'color:' + img[img_idx][3] + '\' class=\'header_image_caption\' >'
-	t += img[img_idx][1]
+	t += '<img id=\'header_image\' style=\'float:right;\' src=\'' + img_src + '\' />'
+	t += '<div id=\'header_image_caption\' style=\'color:' + caption_color + '\' class=\'header_image_caption\' >'
+	t += caption
 	t += '</div>'
 	t += '</div>'
 
@@ -245,6 +253,7 @@ function fill_title(){
 		if(page_trail[0] == 'contact.html') title += 'Contact'
 		if(page_trail[0] == 'cv.html') title += 'CV'
 	}else{
+		if(page_trail[1] == 'examples' && page_trail[2] == 'linkr') title += 'linkR Examples'
 		if(page_trail[0] == 'examples.html' && page_trail[1] == 'linkr') title += 'linkR Examples'
 		if(page_trail[0] == 'interactive.html') title += 'svgViewR Interactive'
 		if(page_trail[0] == '3d_4-bar.html') title += 'linkR 3D 4-bar'

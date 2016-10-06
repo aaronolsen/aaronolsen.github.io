@@ -1,0 +1,4011 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>Linkage Viewer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+<script type="text/javascript" >
+	// Parameters set by user
+	var animation_reverse = 1;
+	var animation_duration = 1;
+	var animation_repeat = -1;
+	var animation_count = 0;
+	var margin = 20;
+	var background_color = 'white';
+	var svgviewr_version = 'NA';
+	var start_rotate = 1;
+	var show_control_panel = 1;
+</script>
+
+<svg_doc xmlns="http://www.w3.org/2000/svg" version="1.1" style="visibility:hidden;" >
+	<path z-index="0" layer="Bounding panel fill" d="M-1.19 -0.29 -0.29 L 2.29 -0.29 -0.29 L 2.29 2.03 -0.29 L -1.19 2.03 -0.29 Z" label="" stroke="none" stroke-width="0" fill="black" stroke-opacity="1" fill-opacity="0" ></path>
+	<path z-index="0" layer="Bounding panel outline" d="M-1.19 -0.29 -0.29 L 2.29 -0.29 -0.29 L 2.29 2.03 -0.29 L -1.19 2.03 -0.29 Z" label="" stroke="black" stroke-width="1" fill="none" stroke-opacity="0.4" fill-opacity="1" ></path>
+	<path z-index="0" layer="Bounding panel fill" d="M-1.19 -0.29 -0.29 L -1.19 2.03 -0.29 L -1.19 2.03 0.29 L -1.19 -0.29 0.29 Z" label="" stroke="none" stroke-width="0" fill="black" stroke-opacity="1" fill-opacity="0" ></path>
+	<path z-index="0" layer="Bounding panel outline" d="M-1.19 -0.29 -0.29 L -1.19 2.03 -0.29 L -1.19 2.03 0.29 L -1.19 -0.29 0.29 Z" label="" stroke="black" stroke-width="1" fill="none" stroke-opacity="0.4" fill-opacity="1" ></path>
+	<path z-index="0" layer="Bounding panel fill" d="M-1.19 -0.29 -0.29 L 2.29 -0.29 -0.29 L 2.29 -0.29 0.29 L -1.19 -0.29 0.29 Z" label="" stroke="none" stroke-width="0" fill="black" stroke-opacity="1" fill-opacity="0" ></path>
+	<path z-index="0" layer="Bounding panel outline" d="M-1.19 -0.29 -0.29 L 2.29 -0.29 -0.29 L 2.29 -0.29 0.29 L -1.19 -0.29 0.29 Z" label="" stroke="black" stroke-width="1" fill="none" stroke-opacity="0.4" fill-opacity="1" ></path>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="-0.29" z1="-0.29" x2="-1.19" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.9" y1="-0.29" z1="-0.29" x2="-0.9" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.61" y1="-0.29" z1="-0.29" x2="-0.61" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.32" y1="-0.29" z1="-0.29" x2="-0.32" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.03" y1="-0.29" z1="-0.29" x2="-0.03" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.26" y1="-0.29" z1="-0.29" x2="0.26" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.55" y1="-0.29" z1="-0.29" x2="0.55" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.84" y1="-0.29" z1="-0.29" x2="0.84" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.13" y1="-0.29" z1="-0.29" x2="1.13" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.42" y1="-0.29" z1="-0.29" x2="1.42" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.71" y1="-0.29" z1="-0.29" x2="1.71" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2" y1="-0.29" z1="-0.29" x2="2" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="-0.29" z1="-0.29" x2="2.29" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="-0.29" z1="-0.29" x2="-1.19" y2="-0.29" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="0" z1="-0.29" x2="-1.19" y2="0" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="0.29" z1="-0.29" x2="-1.19" y2="0.29" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="0.58" z1="-0.29" x2="-1.19" y2="0.58" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="0.87" z1="-0.29" x2="-1.19" y2="0.87" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="1.16" z1="-0.29" x2="-1.19" y2="1.16" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="1.45" z1="-0.29" x2="-1.19" y2="1.45" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="1.74" z1="-0.29" x2="-1.19" y2="1.74" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="2.03" z1="-0.29" x2="-1.19" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="-0.29" z1="-0.29" x2="-1.19" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="0" z1="-0.29" x2="-1.19" y2="0" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="0.29" z1="-0.29" x2="-1.19" y2="0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="0.58" z1="-0.29" x2="-1.19" y2="0.58" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="0.87" z1="-0.29" x2="-1.19" y2="0.87" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="1.16" z1="-0.29" x2="-1.19" y2="1.16" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="1.45" z1="-0.29" x2="-1.19" y2="1.45" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="1.74" z1="-0.29" x2="-1.19" y2="1.74" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="2.03" z1="-0.29" x2="-1.19" y2="2.03" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="2.03" z1="-0.29" x2="-1.19" y2="-0.29" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="2.03" z1="0" x2="-1.19" y2="-0.29" z2="0" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="2.03" z1="0.29" x2="-1.19" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.19" y1="-0.29" z1="-0.29" x2="-1.19" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.9" y1="-0.29" z1="-0.29" x2="-0.9" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.61" y1="-0.29" z1="-0.29" x2="-0.61" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.32" y1="-0.29" z1="-0.29" x2="-0.32" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.03" y1="-0.29" z1="-0.29" x2="-0.03" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.26" y1="-0.29" z1="-0.29" x2="0.26" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.55" y1="-0.29" z1="-0.29" x2="0.55" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.84" y1="-0.29" z1="-0.29" x2="0.84" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.13" y1="-0.29" z1="-0.29" x2="1.13" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.42" y1="-0.29" z1="-0.29" x2="1.42" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.71" y1="-0.29" z1="-0.29" x2="1.71" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2" y1="-0.29" z1="-0.29" x2="2" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="-0.29" z1="-0.29" x2="2.29" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="-0.29" z1="-0.29" x2="-1.19" y2="-0.29" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="-0.29" z1="0" x2="-1.19" y2="-0.29" z2="0" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="2.29" y1="-0.29" z1="0.29" x2="-1.19" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Ticks" x1="-1.19" y1="-0.29" z1="0.29" x2="-1.19" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-0.9" y1="-0.29" z1="0.29" x2="-0.9" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-0.61" y1="-0.29" z1="0.29" x2="-0.61" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-0.32" y1="-0.29" z1="0.29" x2="-0.32" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-0.03" y1="-0.29" z1="0.29" x2="-0.03" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="0.26" y1="-0.29" z1="0.29" x2="0.26" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="0.55" y1="-0.29" z1="0.29" x2="0.55" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="0.84" y1="-0.29" z1="0.29" x2="0.84" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.13" y1="-0.29" z1="0.29" x2="1.13" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.42" y1="-0.29" z1="0.29" x2="1.42" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.71" y1="-0.29" z1="0.29" x2="1.71" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2" y1="-0.29" z1="0.29" x2="2" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="-0.29" z1="0.29" x2="2.29" y2="-0.29" z2="0.377" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="-0.29" z1="-0.29" x2="2.377" y2="-0.29" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="0" z1="-0.29" x2="2.377" y2="0" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="0.29" z1="-0.29" x2="2.377" y2="0.29" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="0.58" z1="-0.29" x2="2.377" y2="0.58" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="0.87" z1="-0.29" x2="2.377" y2="0.87" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="1.16" z1="-0.29" x2="2.377" y2="1.16" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="1.45" z1="-0.29" x2="2.377" y2="1.45" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="1.74" z1="-0.29" x2="2.377" y2="1.74" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="2.03" z1="-0.29" x2="2.377" y2="2.03" z2="-0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="-0.29" z1="0" x2="2.377" y2="-0.29" z2="0" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="2.29" y1="-0.29" z1="0.29" x2="2.377" y2="-0.29" z2="0.29" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<text z-index="0" layer="Tick labels" x="-1.19" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-1.19</text>
+	<text z-index="0" layer="Tick labels" x="-0.9" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.90</text>
+	<text z-index="0" layer="Tick labels" x="-0.61" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.61</text>
+	<text z-index="0" layer="Tick labels" x="-0.32" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.32</text>
+	<text z-index="0" layer="Tick labels" x="-0.03" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.03</text>
+	<text z-index="0" layer="Tick labels" x="0.26" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.26</text>
+	<text z-index="0" layer="Tick labels" x="0.55" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.55</text>
+	<text z-index="0" layer="Tick labels" x="0.84" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.84</text>
+	<text z-index="0" layer="Tick labels" x="1.13" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.13</text>
+	<text z-index="0" layer="Tick labels" x="1.42" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.42</text>
+	<text z-index="0" layer="Tick labels" x="1.71" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.71</text>
+	<text z-index="0" layer="Tick labels" x="2" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 2.00</text>
+	<text z-index="0" layer="Tick labels" x="2.29" y="-0.321668" z="0.464" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 2.29</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="-0.321668" z="-0.29" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.3</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="-0.031668" z="-0.29" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.0</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="0.258332" z="-0.29" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.3</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="0.548332" z="-0.29" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.6</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="0.838332" z="-0.29" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.9</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="1.128332" z="-0.29" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.2</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="1.418332" z="-0.29" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.4</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="1.708332" z="-0.29" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.7</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="1.998332" z="-0.29" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 2.0</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="-0.321668" z="0" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.0</text>
+	<text z-index="0" layer="Tick labels" x="2.464" y="-0.321668" z="0.29" font-size="0.377" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.3</text>
+	<text z-index="0" layer="Axis labels" x="0.55" y="-0.321668" z="0.725" font-size="0.406" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >x</text>
+	<text z-index="0" layer="Axis labels" x="2.725" y="0.838332" z="-0.29" font-size="0.406" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >y</text>
+	<text z-index="0" layer="Axis labels" x="2.725" y="-0.321668" z="0" font-size="0.406" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >z</text>
+	<point z-index="0" layer="Joints" x="0" y="0" z="0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Joints" x="0,-0.02136975,-0.04272974,-0.06407022,-0.08538143,-0.10665365,-0.12787716,-0.14904227,-0.1701393,-0.19115863,-0.21209065,-0.23292581,-0.25365458,-0.27426751,-0.29475517,-0.31510822,-0.33531735,-0.35537333,-0.375267,-0.39498929,-0.41453118,-0.43388374,-0.45303814,-0.47198563,-0.49071755,-0.50922536,-0.52750059,-0.5455349,-0.56332006,-0.58084794,-0.59811053,-0.61509996,-0.63180846,-0.6482284,-0.66435228,-0.68017274,-0.69568255,-0.71087463,-0.72574204,-0.740278,-0.75447585,-0.76832912,-0.78183148,-0.79497677,-0.80775897,-0.82017225,-0.83221095,-0.84386956,-0.85514276,-0.8660254" y="1,0.99977164,0.99908667,0.99794539,0.99634834,0.99429623,0.99179001,0.98883083,0.98542002,0.98155916,0.97725,0.97249451,0.96729486,0.96165344,0.95557281,0.94905575,0.94210524,0.93472445,0.92691676,0.91868572,0.91003511,0.90096887,0.89149114,0.88160624,0.8713187,0.86063322,0.84955467,0.8380881,0.82623877,0.81401209,0.80141362,0.78844914,0.77512456,0.76144596,0.7474196,0.73305187,0.71834935,0.70331874,0.68796692,0.67230089,0.65632781,0.64005497,0.6234898,0.60663988,0.58951289,0.57211666,0.55445913,0.53654838,0.51839257,0.5" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Joints" x="1,0.97863025,0.95727026,0.93592978,0.91461857,0.89334635,0.87212284,0.85095773,0.8298607,0.80884137,0.78790935,0.76707419,0.74634542,0.72573249,0.70524483,0.68489178,0.66468265,0.64462667,0.624733,0.60501071,0.58546882,0.56611626,0.54696186,0.52801437,0.50928245,0.49077464,0.47249941,0.4544651,0.43667994,0.41915206,0.40188947,0.38490004,0.36819154,0.3517716,0.33564772,0.31982726,0.30431745,0.28912537,0.27425796,0.259722,0.24552415,0.23167088,0.21816852,0.20502323,0.19224103,0.17982775,0.16778905,0.15613044,0.14485724,0.1339746" y="1,0.99977164,0.99908667,0.99794539,0.99634834,0.99429623,0.99179001,0.98883083,0.98542002,0.98155916,0.97725,0.97249451,0.96729486,0.96165344,0.95557281,0.94905575,0.94210524,0.93472445,0.92691676,0.91868572,0.91003511,0.90096887,0.89149114,0.88160624,0.8713187,0.86063322,0.84955467,0.8380881,0.82623877,0.81401209,0.80141362,0.78844914,0.77512456,0.76144596,0.7474196,0.73305187,0.71834935,0.70331874,0.68796692,0.67230089,0.65632781,0.64005497,0.6234898,0.60663988,0.58951289,0.57211666,0.55445913,0.53654838,0.51839257,0.5" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Joints" x="1" y="0" z="0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Joints" x="1,0.98397269,0.96795269,0.95194734,0.93596392,0.92000976,0.90409213,0.8882183,0.87239552,0.85663103,0.84093201,0.82530564,0.80975906,0.79429937,0.77893362,0.76366884,0.74851199,0.73347,0.71854975,0.70375803,0.68910162,0.6745872,0.6602214,0.64601078,0.63196184,0.61808098,0.60437456,0.59084882,0.57750996,0.56436405,0.5514171,0.53867503,0.52614366,0.5138287,0.50173579,0.48987045,0.47823809,0.46684403,0.45569347,0.4447915,0.43414311,0.42375316,0.41362639,0.40376743,0.39418077,0.38487081,0.37584179,0.36709783,0.35864293,0.35048095" y="0.75,0.74982873,0.749315,0.74845904,0.74726125,0.74572217,0.74384251,0.74162312,0.73906502,0.73616937,0.7329375,0.72937088,0.72547115,0.72124008,0.7166796,0.71179181,0.70657893,0.70104334,0.69518757,0.68901429,0.68252633,0.67572665,0.66861835,0.66120468,0.65348903,0.64547491,0.637166,0.62856608,0.61967908,0.61050906,0.60106022,0.59133685,0.58134342,0.57108447,0.5605647,0.5497889,0.53876201,0.52748906,0.51597519,0.50422567,0.49224586,0.48004123,0.46761735,0.45497991,0.44213467,0.4290875,0.41584435,0.40241128,0.38879443,0.375" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Joints" x="2,1.98386134,1.96750711,1.95094402,1.93417839,1.91721612,1.90006268,1.88272314,1.86520213,1.84750382,1.82963197,1.81158987,1.79338034,1.77500573,1.75646788,1.73776816,1.71890738,1.69988585,1.68070329,1.66135885,1.64185108,1.62217789,1.60233651,1.58232348,1.5621346,1.54176485,1.5212084,1.50045847,1.47950733,1.45834619,1.43696508,1.4153528,1.39349676,1.37138281,1.34899512,1.32631596,1.30332543,1.28000124,1.25631831,1.23224839,1.20775956,1.18281564,1.1573754,1.13139166,1.10481007,1.07756765,1.04959074,1.02079252,0.99106944,0.96029649" y="1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Joints" x="2,1.98386134,1.96750711,1.95094402,1.93417839,1.91721612,1.90006268,1.88272314,1.86520213,1.84750382,1.82963197,1.81158987,1.79338034,1.77500573,1.75646788,1.73776816,1.71890738,1.69988585,1.68070329,1.66135885,1.64185108,1.62217789,1.60233651,1.58232348,1.5621346,1.54176485,1.5212084,1.50045847,1.47950733,1.45834619,1.43696508,1.4153528,1.39349676,1.37138281,1.34899512,1.32631596,1.30332543,1.28000124,1.25631831,1.23224839,1.20775956,1.18281564,1.1573754,1.13139166,1.10481007,1.07756765,1.04959074,1.02079252,0.99106944,0.96029649" y="1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<arrow z-index="1" layer="Joint constraints" x1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z2="0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264" l="0.022514716709626"  a="0.4"  label="" stroke="purple" stroke-width="2" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Joint constraints" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z2="0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264,0.18762264" l="0.022514716709626"  a="0.4"  label="" stroke="purple" stroke-width="2" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Joint constraints" x1="2,1.98386134,1.96750711,1.95094402,1.93417839,1.91721612,1.90006268,1.88272314,1.86520213,1.84750382,1.82963197,1.81158987,1.79338034,1.77500573,1.75646788,1.73776816,1.71890738,1.69988585,1.68070329,1.66135885,1.64185108,1.62217789,1.60233651,1.58232348,1.5621346,1.54176485,1.5212084,1.50045847,1.47950733,1.45834619,1.43696508,1.4153528,1.39349676,1.37138281,1.34899512,1.32631596,1.30332543,1.28000124,1.25631831,1.23224839,1.20775956,1.18281564,1.1573754,1.13139166,1.10481007,1.07756765,1.04959074,1.02079252,0.99106944,0.96029649" y1="1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="2.18762264,2.17148398,2.15512975,2.13856666,2.12180103,2.10483876,2.08768532,2.07034578,2.05282476,2.03512646,2.01725461,1.99921251,1.98100298,1.96262837,1.94409052,1.9253908,1.90653002,1.88750849,1.86832593,1.84898149,1.82947372,1.80980052,1.78995915,1.76994612,1.74975724,1.72938749,1.70883104,1.68808111,1.66712997,1.64596882,1.62458772,1.60297544,1.5811194,1.55900545,1.53661776,1.5139386,1.49094807,1.46762388,1.44394095,1.41987103,1.3953822,1.37043828,1.34499804,1.3190143,1.29243271,1.26519029,1.23721338,1.20841516,1.17869207,1.14791913" y2="1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="purple" stroke-width="2" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132,1.09381132" y2="0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="red" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y2="0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132,0.59381132" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="green" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y2="0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5" z2="0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132" l="0.022514716709626"  a="0.4"  label="" stroke="blue" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.09381132,0.0937899,0.09372564,0.09361857,0.09346875,0.09327624,0.09304113,0.09276352,0.09244355,0.09208136,0.09167711,0.09123099,0.09074321,0.09021398,0.08964355,0.08903217,0.08838014,0.08768773,0.08695528,0.08618312,0.08537159,0.08452108,0.08363196,0.08270465,0.08173956,0.08073714,0.07969784,0.07862215,0.07751055,0.07636355,0.07518167,0.07396545,0.07271546,0.07143225,0.07011642,0.06876856,0.0673893,0.06597926,0.06453908,0.06306943,0.06157098,0.0600444,0.0584904,0.05690969,0.05530298,0.05367102,0.05201454,0.05033431,0.04863109,0.04690566" y2="0,0.00200472,0.00400853,0.00601051,0.00800975,0.01000532,0.01199633,0.01398185,0.01596099,0.01793284,0.0198965,0.02185108,0.02379567,0.0257294,0.02765137,0.02956072,0.03145656,0.03333804,0.03520429,0.03705447,0.03888772,0.04070321,0.04250011,0.04427759,0.04603486,0.0477711,0.04948553,0.05117735,0.0528458,0.05449011,0.05610954,0.05770334,0.05927078,0.06081116,0.06232376,0.0638079,0.0652629,0.06668809,0.06808282,0.06944646,0.07077838,0.07207797,0.07334464,0.07457782,0.07577693,0.07694144,0.07807081,0.07916452,0.08022207,0.08124299" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="red" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0,-0.00200472,-0.00400853,-0.00601051,-0.00800975,-0.01000532,-0.01199633,-0.01398185,-0.01596099,-0.01793284,-0.0198965,-0.02185108,-0.02379567,-0.0257294,-0.02765137,-0.02956072,-0.03145656,-0.03333804,-0.03520429,-0.03705447,-0.03888772,-0.04070321,-0.04250011,-0.04427759,-0.04603486,-0.0477711,-0.04948553,-0.05117735,-0.0528458,-0.05449011,-0.05610954,-0.05770334,-0.05927078,-0.06081116,-0.06232376,-0.0638079,-0.0652629,-0.06668809,-0.06808282,-0.06944646,-0.07077838,-0.07207797,-0.07334464,-0.07457782,-0.07577693,-0.07694144,-0.07807081,-0.07916452,-0.08022207,-0.08124299" y2="0.09381132,0.0937899,0.09372564,0.09361857,0.09346875,0.09327624,0.09304113,0.09276352,0.09244355,0.09208136,0.09167711,0.09123099,0.09074321,0.09021398,0.08964355,0.08903217,0.08838014,0.08768773,0.08695528,0.08618312,0.08537159,0.08452108,0.08363196,0.08270465,0.08173956,0.08073714,0.07969784,0.07862215,0.07751055,0.07636355,0.07518167,0.07396545,0.07271546,0.07143225,0.07011642,0.06876856,0.0673893,0.06597926,0.06453908,0.06306943,0.06157098,0.0600444,0.0584904,0.05690969,0.05530298,0.05367102,0.05201454,0.05033431,0.04863109,0.04690566" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="green" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z2="0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132" l="0.022514716709626"  a="0.4"  label="" stroke="blue" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0.5,0.47863025,0.45727026,0.43592978,0.41461857,0.39334635,0.37212284,0.35095773,0.3298607,0.30884137,0.28790935,0.26707419,0.24634542,0.22573249,0.20524483,0.18489178,0.16468265,0.14462667,0.124733,0.10501071,0.08546882,0.06611626,0.04696186,0.02801437,0.00928245,-0.00922536,-0.02750059,-0.0455349,-0.06332006,-0.08084794,-0.09811053,-0.11509996,-0.13180846,-0.1482284,-0.16435228,-0.18017274,-0.19568255,-0.21087463,-0.22574204,-0.240278,-0.25447585,-0.26832912,-0.28183148,-0.29497677,-0.30775897,-0.32017225,-0.33221095,-0.34386956,-0.35514276,-0.3660254" y1="1,0.99977164,0.99908667,0.99794539,0.99634834,0.99429623,0.99179001,0.98883083,0.98542002,0.98155916,0.97725,0.97249451,0.96729486,0.96165344,0.95557281,0.94905575,0.94210524,0.93472445,0.92691676,0.91868572,0.91003511,0.90096887,0.89149114,0.88160624,0.8713187,0.86063322,0.84955467,0.8380881,0.82623877,0.81401209,0.80141362,0.78844914,0.77512456,0.76144596,0.7474196,0.73305187,0.71834935,0.70331874,0.68796692,0.67230089,0.65632781,0.64005497,0.6234898,0.60663988,0.58951289,0.57211666,0.55445913,0.53654838,0.51839257,0.5" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.59381132,0.57244157,0.55108158,0.5297411,0.50842989,0.48715767,0.46593416,0.44476905,0.42367202,0.40265269,0.38172067,0.36088551,0.34015674,0.31954381,0.29905615,0.2787031,0.25849397,0.23843799,0.21854431,0.19882203,0.17928014,0.15992758,0.14077318,0.12182569,0.10309377,0.08458596,0.06631073,0.04827642,0.03049126,0.01296338,-0.00429921,-0.02128864,-0.03799714,-0.05441708,-0.07054096,-0.08636142,-0.10187123,-0.11706331,-0.13193072,-0.14646668,-0.16066453,-0.1745178,-0.18802016,-0.20116545,-0.21394765,-0.22636093,-0.23839963,-0.25005824,-0.26133144,-0.27221408" y2="1,0.99977164,0.99908667,0.99794539,0.99634834,0.99429623,0.99179001,0.98883083,0.98542002,0.98155916,0.97725,0.97249451,0.96729486,0.96165344,0.95557281,0.94905575,0.94210524,0.93472445,0.92691676,0.91868572,0.91003511,0.90096887,0.89149114,0.88160624,0.8713187,0.86063322,0.84955467,0.8380881,0.82623877,0.81401209,0.80141362,0.78844914,0.77512456,0.76144596,0.7474196,0.73305187,0.71834935,0.70331874,0.68796692,0.67230089,0.65632781,0.64005497,0.6234898,0.60663988,0.58951289,0.57211666,0.55445913,0.53654838,0.51839257,0.5" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="red" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0.5,0.47863025,0.45727026,0.43592978,0.41461857,0.39334635,0.37212284,0.35095773,0.3298607,0.30884137,0.28790935,0.26707419,0.24634542,0.22573249,0.20524483,0.18489178,0.16468265,0.14462667,0.124733,0.10501071,0.08546882,0.06611626,0.04696186,0.02801437,0.00928245,-0.00922536,-0.02750059,-0.0455349,-0.06332006,-0.08084794,-0.09811053,-0.11509996,-0.13180846,-0.1482284,-0.16435228,-0.18017274,-0.19568255,-0.21087463,-0.22574204,-0.240278,-0.25447585,-0.26832912,-0.28183148,-0.29497677,-0.30775897,-0.32017225,-0.33221095,-0.34386956,-0.35514276,-0.3660254" y1="1,0.99977164,0.99908667,0.99794539,0.99634834,0.99429623,0.99179001,0.98883083,0.98542002,0.98155916,0.97725,0.97249451,0.96729486,0.96165344,0.95557281,0.94905575,0.94210524,0.93472445,0.92691676,0.91868572,0.91003511,0.90096887,0.89149114,0.88160624,0.8713187,0.86063322,0.84955467,0.8380881,0.82623877,0.81401209,0.80141362,0.78844914,0.77512456,0.76144596,0.7474196,0.73305187,0.71834935,0.70331874,0.68796692,0.67230089,0.65632781,0.64005497,0.6234898,0.60663988,0.58951289,0.57211666,0.55445913,0.53654838,0.51839257,0.5" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.5,0.47863025,0.45727026,0.43592978,0.41461857,0.39334635,0.37212284,0.35095773,0.3298607,0.30884137,0.28790935,0.26707419,0.24634542,0.22573249,0.20524483,0.18489178,0.16468265,0.14462667,0.124733,0.10501071,0.08546882,0.06611626,0.04696186,0.02801437,0.00928245,-0.00922536,-0.02750059,-0.0455349,-0.06332006,-0.08084794,-0.09811053,-0.11509996,-0.13180846,-0.1482284,-0.16435228,-0.18017274,-0.19568255,-0.21087463,-0.22574204,-0.240278,-0.25447585,-0.26832912,-0.28183148,-0.29497677,-0.30775897,-0.32017225,-0.33221095,-0.34386956,-0.35514276,-0.3660254" y2="1.09381132,1.09358296,1.09289799,1.09175671,1.09015966,1.08810755,1.08560133,1.08264215,1.07923134,1.07537048,1.07106132,1.06630583,1.06110618,1.05546476,1.04938413,1.04286707,1.03591656,1.02853577,1.02072808,1.01249704,1.00384643,0.99478019,0.98530246,0.97541756,0.96513002,0.95444454,0.94336598,0.93189942,0.92005009,0.9078234,0.89522494,0.88226046,0.86893587,0.85525728,0.84123091,0.82686319,0.81216067,0.79713006,0.78177824,0.76611221,0.75013913,0.73386629,0.71730112,0.7004512,0.68332421,0.66592798,0.64827045,0.6303597,0.61220389,0.59381132" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="green" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0.5,0.47863025,0.45727026,0.43592978,0.41461857,0.39334635,0.37212284,0.35095773,0.3298607,0.30884137,0.28790935,0.26707419,0.24634542,0.22573249,0.20524483,0.18489178,0.16468265,0.14462667,0.124733,0.10501071,0.08546882,0.06611626,0.04696186,0.02801437,0.00928245,-0.00922536,-0.02750059,-0.0455349,-0.06332006,-0.08084794,-0.09811053,-0.11509996,-0.13180846,-0.1482284,-0.16435228,-0.18017274,-0.19568255,-0.21087463,-0.22574204,-0.240278,-0.25447585,-0.26832912,-0.28183148,-0.29497677,-0.30775897,-0.32017225,-0.33221095,-0.34386956,-0.35514276,-0.3660254" y1="1,0.99977164,0.99908667,0.99794539,0.99634834,0.99429623,0.99179001,0.98883083,0.98542002,0.98155916,0.97725,0.97249451,0.96729486,0.96165344,0.95557281,0.94905575,0.94210524,0.93472445,0.92691676,0.91868572,0.91003511,0.90096887,0.89149114,0.88160624,0.8713187,0.86063322,0.84955467,0.8380881,0.82623877,0.81401209,0.80141362,0.78844914,0.77512456,0.76144596,0.7474196,0.73305187,0.71834935,0.70331874,0.68796692,0.67230089,0.65632781,0.64005497,0.6234898,0.60663988,0.58951289,0.57211666,0.55445913,0.53654838,0.51839257,0.5" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.5,0.47863025,0.45727026,0.43592978,0.41461857,0.39334635,0.37212284,0.35095773,0.3298607,0.30884137,0.28790935,0.26707419,0.24634542,0.22573249,0.20524483,0.18489178,0.16468265,0.14462667,0.124733,0.10501071,0.08546882,0.06611626,0.04696186,0.02801437,0.00928245,-0.00922536,-0.02750059,-0.0455349,-0.06332006,-0.08084794,-0.09811053,-0.11509996,-0.13180846,-0.1482284,-0.16435228,-0.18017274,-0.19568255,-0.21087463,-0.22574204,-0.240278,-0.25447585,-0.26832912,-0.28183148,-0.29497677,-0.30775897,-0.32017225,-0.33221095,-0.34386956,-0.35514276,-0.3660254" y2="1,0.99977164,0.99908667,0.99794539,0.99634834,0.99429623,0.99179001,0.98883083,0.98542002,0.98155916,0.97725,0.97249451,0.96729486,0.96165344,0.95557281,0.94905575,0.94210524,0.93472445,0.92691676,0.91868572,0.91003511,0.90096887,0.89149114,0.88160624,0.8713187,0.86063322,0.84955467,0.8380881,0.82623877,0.81401209,0.80141362,0.78844914,0.77512456,0.76144596,0.7474196,0.73305187,0.71834935,0.70331874,0.68796692,0.67230089,0.65632781,0.64005497,0.6234898,0.60663988,0.58951289,0.57211666,0.55445913,0.53654838,0.51839257,0.5" z2="0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132" l="0.022514716709626"  a="0.4"  label="" stroke="blue" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1.09381132,1.0937899,1.09372564,1.09361857,1.09346875,1.09327624,1.09304113,1.09276352,1.09244355,1.09208136,1.09167711,1.09123099,1.09074321,1.09021398,1.08964355,1.08903217,1.08838014,1.08768773,1.08695528,1.08618312,1.08537159,1.08452108,1.08363196,1.08270465,1.08173956,1.08073714,1.07969784,1.07862215,1.07751055,1.07636355,1.07518167,1.07396545,1.07271546,1.07143225,1.07011642,1.06876856,1.0673893,1.06597926,1.06453908,1.06306943,1.06157098,1.0600444,1.0584904,1.05690969,1.05530298,1.05367102,1.05201454,1.05033431,1.04863109,1.04690566" y2="0,0.00200472,0.00400853,0.00601051,0.00800975,0.01000532,0.01199633,0.01398185,0.01596099,0.01793284,0.0198965,0.02185108,0.02379567,0.0257294,0.02765137,0.02956072,0.03145656,0.03333804,0.03520429,0.03705447,0.03888772,0.04070321,0.04250011,0.04427759,0.04603486,0.0477711,0.04948553,0.05117735,0.0528458,0.05449011,0.05610954,0.05770334,0.05927078,0.06081116,0.06232376,0.0638079,0.0652629,0.06668809,0.06808282,0.06944646,0.07077838,0.07207797,0.07334464,0.07457782,0.07577693,0.07694144,0.07807081,0.07916452,0.08022207,0.08124299" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="red" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1,0.99799528,0.99599147,0.99398949,0.99199025,0.98999468,0.98800367,0.98601815,0.98403901,0.98206716,0.9801035,0.97814892,0.97620433,0.9742706,0.97234863,0.97043928,0.96854344,0.96666196,0.96479571,0.96294553,0.96111228,0.95929679,0.95749989,0.95572241,0.95396514,0.9522289,0.95051447,0.94882265,0.9471542,0.94550989,0.94389046,0.94229666,0.94072922,0.93918884,0.93767624,0.9361921,0.9347371,0.93331191,0.93191718,0.93055354,0.92922162,0.92792203,0.92665536,0.92542218,0.92422307,0.92305856,0.92192919,0.92083548,0.91977793,0.91875701" y2="0.09381132,0.0937899,0.09372564,0.09361857,0.09346875,0.09327624,0.09304113,0.09276352,0.09244355,0.09208136,0.09167711,0.09123099,0.09074321,0.09021398,0.08964355,0.08903217,0.08838014,0.08768773,0.08695528,0.08618312,0.08537159,0.08452108,0.08363196,0.08270465,0.08173956,0.08073714,0.07969784,0.07862215,0.07751055,0.07636355,0.07518167,0.07396545,0.07271546,0.07143225,0.07011642,0.06876856,0.0673893,0.06597926,0.06453908,0.06306943,0.06157098,0.0600444,0.0584904,0.05690969,0.05530298,0.05367102,0.05201454,0.05033431,0.04863109,0.04690566" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="green" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z2="0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132" l="0.022514716709626"  a="0.4"  label="" stroke="blue" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1.5,1.48391701,1.4677299,1.45144568,1.43507116,1.41861294,1.40207741,1.38547072,1.36879883,1.35206742,1.33528199,1.31844776,1.3015697,1.28465255,1.26770075,1.2507185,1.23370969,1.21667793,1.19962652,1.18255844,1.16547635,1.14838254,1.13127895,1.11416713,1.09704822,1.07992292,1.06279148,1.04565365,1.02850864,1.01135512,0.99419109,0.97701392,0.95982021,0.94260576,0.92536546,0.9080932,0.89078176,0.87342263,0.85600589,0.83851994,0.82095134,0.8032844,0.7855009,0.76757954,0.74949542,0.73121923,0.71271627,0.69394517,0.67485618,0.65538872" y1="1.075,1.07491437,1.0746575,1.07422952,1.07363063,1.07286109,1.07192126,1.07081156,1.06953251,1.06808468,1.06646875,1.06468544,1.06273557,1.06062004,1.0583398,1.05589591,1.05328946,1.05052167,1.04759378,1.04450715,1.04126317,1.03786333,1.03430918,1.03060234,1.02674451,1.02273746,1.018583,1.01428304,1.00983954,1.00525453,1.00053011,0.99566843,0.99067171,0.98554223,0.98028235,0.97489445,0.96938101,0.96374453,0.9579876,0.95211283,0.94612293,0.94002061,0.93380868,0.92748995,0.92106733,0.91454375,0.90792218,0.90120564,0.89439721,0.8875" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1.59381132,1.57772833,1.56154119,1.54525685,1.52888202,1.51242314,1.49588641,1.47927774,1.46260279,1.44586694,1.42907529,1.41223264,1.3953435,1.37841205,1.36144219,1.34443746,1.32740108,1.3103359,1.29324442,1.27612874,1.25899058,1.24183121,1.22465149,1.2074518,1.19023202,1.17299151,1.15572909,1.13844294,1.12113064,1.10378905,1.08641429,1.06900163,1.05154549,1.03403926,1.01647524,0.99884454,0.98113686,0.9633404,0.94544159,0.92742488,0.9092724,0.89096363,0.87247492,0.85377893,0.8348439,0.81563274,0.79610185,0.77619951,0.75586385,0.7350199" y2="1.075,1.07493043,1.07472179,1.0743742,1.07388794,1.07326335,1.07250087,1.07160106,1.07056457,1.06939214,1.06808462,1.06664296,1.0650682,1.06336147,1.06152403,1.05955721,1.05746243,1.05524123,1.05289522,1.05042614,1.0478358,1.04512609,1.04229904,1.03935673,1.03630135,1.0331352,1.02986065,1.02648017,1.02299633,1.0194118,1.01572932,1.01195176,1.00808208,1.00412331,1.00007864,0.99595131,0.99174471,0.98746233,0.98310778,0.97868484,0.97419737,0.96964945,0.96504528,0.96038931,0.95568618,0.95094079,0.94615838,0.94134452,0.93650529,0.9316473" z2="0,0.00000876,0.00003503,0.00007882,0.00014015,0.00021901,0.00031544,0.00042945,0.00056106,0.00071031,0.00087723,0.00106185,0.00126423,0.00148439,0.00172241,0.00197832,0.00225221,0.00254413,0.00285417,0.0031824,0.00352892,0.00389383,0.00427722,0.00467923,0.00509998,0.00553961,0.00599827,0.00647612,0.00697337,0.0074902,0.00802683,0.00858352,0.00916054,0.00975817,0.01037677,0.01101669,0.01167835,0.01236222,0.01306882,0.01379873,0.01455264,0.01533129,0.01613556,0.01696647,0.01782517,0.01871303,0.01963165,0.02058295,0.02156921,0.02259323" l="0.022514716709626"  a="0.4"  label="" stroke="red" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1.5,1.48391701,1.4677299,1.45144568,1.43507116,1.41861294,1.40207741,1.38547072,1.36879883,1.35206742,1.33528199,1.31844776,1.3015697,1.28465255,1.26770075,1.2507185,1.23370969,1.21667793,1.19962652,1.18255844,1.16547635,1.14838254,1.13127895,1.11416713,1.09704822,1.07992292,1.06279148,1.04565365,1.02850864,1.01135512,0.99419109,0.97701392,0.95982021,0.94260576,0.92536546,0.9080932,0.89078176,0.87342263,0.85600589,0.83851994,0.82095134,0.8032844,0.7855009,0.76757954,0.74949542,0.73121923,0.71271627,0.69394517,0.67485618,0.65538872" y1="1.075,1.07491437,1.0746575,1.07422952,1.07363063,1.07286109,1.07192126,1.07081156,1.06953251,1.06808468,1.06646875,1.06468544,1.06273557,1.06062004,1.0583398,1.05589591,1.05328946,1.05052167,1.04759378,1.04450715,1.04126317,1.03786333,1.03430918,1.03060234,1.02674451,1.02273746,1.018583,1.01428304,1.00983954,1.00525453,1.00053011,0.99566843,0.99067171,0.98554223,0.98028235,0.97489445,0.96938101,0.96374453,0.9579876,0.95211283,0.94612293,0.94002061,0.93380868,0.92748995,0.92106733,0.91454375,0.90792218,0.90120564,0.89439721,0.8875" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1.5,1.48390095,1.46766564,1.4513011,1.43481417,1.41821147,1.40149943,1.38468426,1.36777195,1.3507683,1.33367884,1.3165089,1.29926358,1.28194771,1.26456589,1.24712246,1.2296215,1.2120668,1.19446188,1.17680997,1.15911397,1.14137648,1.12359976,1.10578569,1.08793581,1.07005124,1.05213268,1.03418039,1.01619413,0.99817313,0.98011606,0.96202097,0.94388522,0.92570542,0.90747735,0.88919585,0.87085473,0.85244661,0.83396276,0.81539292,0.79672506,0.77794505,0.75903635,0.73997954,0.72075172,0.70132583,0.68166965,0.6617446,0.64150402,0.6208909" y2="1.16881132,1.16872568,1.16846878,1.16804065,1.16744135,1.16667094,1.16572954,1.16461726,1.16333424,1.16188064,1.16025666,1.15846249,1.15649837,1.15436454,1.15206128,1.14958886,1.14694759,1.14413781,1.14115985,1.13801409,1.13470089,1.13122066,1.12757381,1.12376077,1.11978196,1.11563784,1.11132887,1.10685551,1.10221822,1.09741749,1.09245377,1.08732753,1.08203923,1.07658928,1.07097811,1.0652061,1.05927358,1.05318085,1.04692813,1.04051556,1.03394319,1.02721094,1.02031858,1.01326568,1.00605159,0.99867535,0.99113562,0.98343061,0.97555791,0.96751431" z2="0,-0.00001347,-0.00005389,-0.00012127,-0.00021561,-0.00033694,-0.00048529,-0.00066069,-0.00086318,-0.00109279,-0.00134959,-0.00163362,-0.00194496,-0.00228368,-0.00264985,-0.00304357,-0.00346494,-0.00391405,-0.00439103,-0.004896,-0.00542911,-0.0059905,-0.00658035,-0.00719882,-0.00784612,-0.00852247,-0.0092281,-0.00996327,-0.01072826,-0.01152338,-0.01234897,-0.01320542,-0.01409313,-0.01501258,-0.01596426,-0.01694875,-0.0179667,-0.0190188,-0.02010588,-0.02122882,-0.02238867,-0.0235866,-0.02482394,-0.02610225,-0.02742333,-0.02878927,-0.03020254,-0.03166608,-0.03318341,-0.03475881" l="0.022514716709626"  a="0.4"  label="" stroke="green" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1.5,1.48391701,1.4677299,1.45144568,1.43507116,1.41861294,1.40207741,1.38547072,1.36879883,1.35206742,1.33528199,1.31844776,1.3015697,1.28465255,1.26770075,1.2507185,1.23370969,1.21667793,1.19962652,1.18255844,1.16547635,1.14838254,1.13127895,1.11416713,1.09704822,1.07992292,1.06279148,1.04565365,1.02850864,1.01135512,0.99419109,0.97701392,0.95982021,0.94260576,0.92536546,0.9080932,0.89078176,0.87342263,0.85600589,0.83851994,0.82095134,0.8032844,0.7855009,0.76757954,0.74949542,0.73121923,0.71271627,0.69394517,0.67485618,0.65538872" y1="1.075,1.07491437,1.0746575,1.07422952,1.07363063,1.07286109,1.07192126,1.07081156,1.06953251,1.06808468,1.06646875,1.06468544,1.06273557,1.06062004,1.0583398,1.05589591,1.05328946,1.05052167,1.04759378,1.04450715,1.04126317,1.03786333,1.03430918,1.03060234,1.02674451,1.02273746,1.018583,1.01428304,1.00983954,1.00525453,1.00053011,0.99566843,0.99067171,0.98554223,0.98028235,0.97489445,0.96938101,0.96374453,0.9579876,0.95211283,0.94612293,0.94002061,0.93380868,0.92748995,0.92106733,0.91454375,0.90792218,0.90120564,0.89439721,0.8875" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1.5,1.48390825,1.46769483,1.45136667,1.43493042,1.41839249,1.40175898,1.38503574,1.36822832,1.351342,1.33438173,1.3173522,1.30025777,1.28310248,1.26589005,1.24862388,1.23130703,1.21394217,1.19653166,1.17907745,1.1615811,1.14404378,1.12646621,1.10884868,1.091191,1.0734925,1.05575197,1.03796764,1.02013716,1.00225751,0.984325,0.96633518,0.94828277,0.9301616,0.91196449,0.89368318,0.87530816,0.85682852,0.83823179,0.81950371,0.80062793,0.7815857,0.76235548,0.74291239,0.72322756,0.70326736,0.68299226,0.66235545,0.64130094,0.61976094" y2="1.075,1.07492784,1.07471137,1.07435067,1.07384585,1.07319709,1.07240459,1.07146862,1.07038947,1.0691675,1.06780308,1.06629666,1.06464868,1.06285966,1.06093013,1.05886065,1.05665182,1.05430427,1.05181863,1.04919556,1.04643575,1.04353987,1.04050862,1.03734269,1.03404277,1.03060953,1.02704364,1.02334572,1.0195164,1.01555623,1.01146572,1.00724533,1.00289543,0.99841633,0.99380822,0.98907116,0.9842051,0.97920981,0.97408486,0.96882962,0.96344317,0.95792431,0.95227146,0.94648259,0.94055516,0.93448599,0.92827111,0.92190559,0.91538328,0.90869647" z2="0.09381132,0.09381132,0.0938113,0.09381121,0.09381097,0.09381046,0.09380953,0.09380801,0.09380567,0.09380227,0.09379751,0.09379108,0.09378263,0.09377177,0.09375807,0.09374106,0.09372025,0.0936951,0.09366502,0.0936294,0.09358758,0.09353885,0.09348245,0.09341759,0.09334341,0.09325902,0.09316344,0.09305566,0.0929346,0.0927991,0.09264792,0.09247975,0.09229318,0.09208672,0.09185874,0.09160751,0.09133114,0.0910276,0.09069467,0.09032993,0.08993071,0.08949407,0.08901674,0.08849506,0.0879249,0.08730157,0.08661968,0.08587296,0.08505407,0.08415423" l="0.022514716709626"  a="0.4"  label="" stroke="blue" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="2,1.98386134,1.96750711,1.95094402,1.93417839,1.91721612,1.90006268,1.88272314,1.86520213,1.84750382,1.82963197,1.81158987,1.79338034,1.77500573,1.75646788,1.73776816,1.71890738,1.69988585,1.68070329,1.66135885,1.64185108,1.62217789,1.60233651,1.58232348,1.5621346,1.54176485,1.5212084,1.50045847,1.47950733,1.45834619,1.43696508,1.4153528,1.39349676,1.37138281,1.34899512,1.32631596,1.30332543,1.28000124,1.25631831,1.23224839,1.20775956,1.18281564,1.1573754,1.13139166,1.10481007,1.07756765,1.04959074,1.02079252,0.99106944,0.96029649" y1="1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="2.09381132,2.07767266,2.06131843,2.04475534,2.02798971,2.01102744,1.993874,1.97653446,1.95901345,1.94131514,1.92344329,1.90540119,1.88719166,1.86881705,1.8502792,1.83157948,1.8127187,1.79369717,1.77451461,1.75517017,1.7356624,1.71598921,1.69614783,1.6761348,1.65594592,1.63557617,1.61501972,1.59426979,1.57331865,1.5521575,1.5307764,1.50916412,1.48730808,1.46519413,1.44280644,1.42012728,1.39713675,1.37381256,1.35012963,1.32605971,1.30157088,1.27662696,1.25118672,1.22520298,1.19862139,1.17137897,1.14340206,1.11460384,1.08488076,1.05410781" y2="1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="red" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="2,1.98386134,1.96750711,1.95094402,1.93417839,1.91721612,1.90006268,1.88272314,1.86520213,1.84750382,1.82963197,1.81158987,1.79338034,1.77500573,1.75646788,1.73776816,1.71890738,1.69988585,1.68070329,1.66135885,1.64185108,1.62217789,1.60233651,1.58232348,1.5621346,1.54176485,1.5212084,1.50045847,1.47950733,1.45834619,1.43696508,1.4153528,1.39349676,1.37138281,1.34899512,1.32631596,1.30332543,1.28000124,1.25631831,1.23224839,1.20775956,1.18281564,1.1573754,1.13139166,1.10481007,1.07756765,1.04959074,1.02079252,0.99106944,0.96029649" y1="1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="2,1.98386134,1.96750711,1.95094402,1.93417839,1.91721612,1.90006268,1.88272314,1.86520213,1.84750382,1.82963197,1.81158987,1.79338034,1.77500573,1.75646788,1.73776816,1.71890738,1.69988585,1.68070329,1.66135885,1.64185108,1.62217789,1.60233651,1.58232348,1.5621346,1.54176485,1.5212084,1.50045847,1.47950733,1.45834619,1.43696508,1.4153528,1.39349676,1.37138281,1.34899512,1.32631596,1.30332543,1.28000124,1.25631831,1.23224839,1.20775956,1.18281564,1.1573754,1.13139166,1.10481007,1.07756765,1.04959074,1.02079252,0.99106944,0.96029649" y2="1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132,1.59381132" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.022514716709626"  a="0.4"  label="" stroke="green" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="2,1.98386134,1.96750711,1.95094402,1.93417839,1.91721612,1.90006268,1.88272314,1.86520213,1.84750382,1.82963197,1.81158987,1.79338034,1.77500573,1.75646788,1.73776816,1.71890738,1.69988585,1.68070329,1.66135885,1.64185108,1.62217789,1.60233651,1.58232348,1.5621346,1.54176485,1.5212084,1.50045847,1.47950733,1.45834619,1.43696508,1.4153528,1.39349676,1.37138281,1.34899512,1.32631596,1.30332543,1.28000124,1.25631831,1.23224839,1.20775956,1.18281564,1.1573754,1.13139166,1.10481007,1.07756765,1.04959074,1.02079252,0.99106944,0.96029649" y1="1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="2,1.98386134,1.96750711,1.95094402,1.93417839,1.91721612,1.90006268,1.88272314,1.86520213,1.84750382,1.82963197,1.81158987,1.79338034,1.77500573,1.75646788,1.73776816,1.71890738,1.69988585,1.68070329,1.66135885,1.64185108,1.62217789,1.60233651,1.58232348,1.5621346,1.54176485,1.5212084,1.50045847,1.47950733,1.45834619,1.43696508,1.4153528,1.39349676,1.37138281,1.34899512,1.32631596,1.30332543,1.28000124,1.25631831,1.23224839,1.20775956,1.18281564,1.1573754,1.13139166,1.10481007,1.07756765,1.04959074,1.02079252,0.99106944,0.96029649" y2="1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5" z2="0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132,0.09381132" l="0.022514716709626"  a="0.4"  label="" stroke="blue" stroke-width="1" stroke-opacity="1" ></arrow>
+	<pathC z-index="0" layer="Joint wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="1,2" ></pathC>
+	<pathC z-index="0" layer="Joint wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="2,3" ></pathC>
+	<pathC z-index="0" layer="Joint wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="3,4" ></pathC>
+	<pathC z-index="0" layer="Joint wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="3,5" ></pathC>
+	<pathC z-index="0" layer="Joint wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="4,5" ></pathC>
+	<pathC z-index="0" layer="Joint wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="5,6" ></pathC>
+	<pathC z-index="0" layer="Joint wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="6,7" ></pathC>
+	<point z-index="0" layer="Points" x="0,-0.01068488,-0.02136487,-0.03203511,-0.04269072,-0.05332683,-0.06393858,-0.07452113,-0.08506965,-0.09557931,-0.10604533,-0.1164629,-0.12682729,-0.13713376,-0.14737759,-0.15755411,-0.16765867,-0.17768666,-0.1876335,-0.19749465,-0.20726559,-0.21694187,-0.22651907,-0.23599281,-0.24535878,-0.25461268,-0.26375029,-0.27276745,-0.28166003,-0.29042397,-0.29905527,-0.30754998,-0.31590423,-0.3241142,-0.33217614,-0.34008637,-0.34784128,-0.35543732,-0.36287102,-0.370139,-0.37723793,-0.38416456,-0.39091574,-0.39748838,-0.40387948,-0.41008613,-0.41610548,-0.42193478,-0.42757138,-0.4330127" y="0.5,0.49988582,0.49954333,0.4989727,0.49817417,0.49714812,0.49589501,0.49441541,0.49271001,0.49077958,0.488625,0.48624725,0.48364743,0.48082672,0.4777864,0.47452787,0.47105262,0.46736223,0.46345838,0.45934286,0.45501756,0.45048443,0.44574557,0.44080312,0.43565935,0.43031661,0.42477733,0.41904405,0.41311939,0.40700604,0.40070681,0.39422457,0.38756228,0.38072298,0.3737098,0.36652594,0.35917468,0.35165937,0.34398346,0.33615045,0.3281639,0.32002748,0.3117449,0.30331994,0.29475644,0.28605833,0.27722957,0.26827419,0.25919628,0.25" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="0.5,0.47863025,0.45727026,0.43592978,0.41461857,0.39334635,0.37212284,0.35095773,0.3298607,0.30884137,0.28790935,0.26707419,0.24634542,0.22573249,0.20524483,0.18489178,0.16468265,0.14462667,0.124733,0.10501071,0.08546882,0.06611626,0.04696186,0.02801437,0.00928245,-0.00922536,-0.02750059,-0.0455349,-0.06332006,-0.08084794,-0.09811053,-0.11509996,-0.13180846,-0.1482284,-0.16435228,-0.18017274,-0.19568255,-0.21087463,-0.22574204,-0.240278,-0.25447585,-0.26832912,-0.28183148,-0.29497677,-0.30775897,-0.32017225,-0.33221095,-0.34386956,-0.35514276,-0.3660254" y="1,0.99977164,0.99908667,0.99794539,0.99634834,0.99429623,0.99179001,0.98883083,0.98542002,0.98155916,0.97725,0.97249451,0.96729486,0.96165344,0.95557281,0.94905575,0.94210524,0.93472445,0.92691676,0.91868572,0.91003511,0.90096887,0.89149114,0.88160624,0.8713187,0.86063322,0.84955467,0.8380881,0.82623877,0.81401209,0.80141362,0.78844914,0.77512456,0.76144596,0.7474196,0.73305187,0.71834935,0.70331874,0.68796692,0.67230089,0.65632781,0.64005497,0.6234898,0.60663988,0.58951289,0.57211666,0.55445913,0.53654838,0.51839257,0.5" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="1,0.98931512,0.97863513,0.96796489,0.95730928,0.94667317,0.93606142,0.92547887,0.91493035,0.90442069,0.89395467,0.8835371,0.87317271,0.86286624,0.85262241,0.84244589,0.83234133,0.82231334,0.8123665,0.80250535,0.79273441,0.78305813,0.77348093,0.76400719,0.75464122,0.74538732,0.73624971,0.72723255,0.71833997,0.70957603,0.70094473,0.69245002,0.68409577,0.6758858,0.66782386,0.65991363,0.65215872,0.64456268,0.63712898,0.629861,0.62276207,0.61583544,0.60908426,0.60251162,0.59612052,0.58991387,0.58389452,0.57806522,0.57242862,0.5669873" y="0.5,0.49988582,0.49954333,0.4989727,0.49817417,0.49714812,0.49589501,0.49441541,0.49271001,0.49077958,0.488625,0.48624725,0.48364743,0.48082672,0.4777864,0.47452787,0.47105262,0.46736223,0.46345838,0.45934286,0.45501756,0.45048443,0.44574557,0.44080312,0.43565935,0.43031661,0.42477733,0.41904405,0.41311939,0.40700604,0.40070681,0.39422457,0.38756228,0.38072298,0.3737098,0.36652594,0.35917468,0.35165937,0.34398346,0.33615045,0.3281639,0.32002748,0.3117449,0.30331994,0.29475644,0.28605833,0.27722957,0.26827419,0.25919628,0.25" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="1.5,1.48391701,1.4677299,1.45144568,1.43507116,1.41861294,1.40207741,1.38547072,1.36879883,1.35206742,1.33528199,1.31844776,1.3015697,1.28465255,1.26770075,1.2507185,1.23370969,1.21667793,1.19962652,1.18255844,1.16547635,1.14838254,1.13127895,1.11416713,1.09704822,1.07992292,1.06279148,1.04565365,1.02850864,1.01135512,0.99419109,0.97701392,0.95982021,0.94260576,0.92536546,0.9080932,0.89078176,0.87342263,0.85600589,0.83851994,0.82095134,0.8032844,0.7855009,0.76757954,0.74949542,0.73121923,0.71271627,0.69394517,0.67485618,0.65538872" y="1.075,1.07491437,1.0746575,1.07422952,1.07363063,1.07286109,1.07192126,1.07081156,1.06953251,1.06808468,1.06646875,1.06468544,1.06273557,1.06062004,1.0583398,1.05589591,1.05328946,1.05052167,1.04759378,1.04450715,1.04126317,1.03786333,1.03430918,1.03060234,1.02674451,1.02273746,1.018583,1.01428304,1.00983954,1.00525453,1.00053011,0.99566843,0.99067171,0.98554223,0.98028235,0.97489445,0.96938101,0.96374453,0.9579876,0.95211283,0.94612293,0.94002061,0.93380868,0.92748995,0.92106733,0.91454375,0.90792218,0.90120564,0.89439721,0.8875" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+</svg_doc>
+
+<body style="margin:0px;background-color:;overflow:hidden;" >
+	<a id='keydown' type='checkbox' onkeydown="javascript:;" ></a>
+	<div id="control_icons" class="control_icons" >
+		<div id="control_icon_control" class="control_icon" onClick="javascript:showHideControlPanel();" style="" title="No control panel contents to display" >
+			<a id="control_icon_control_vertical" class="control_icon" style="font-size:0.55em;line-height:18px;" >&#124;</a>
+			<a id="control_icon_control_horizontal" class="control_icon" style="position:relative;right:0px;top:-17px;font-size:0.55em;" >&#8213;</a>
+		</div>
+		<div id="control_icon_rotate" class="control_icon" style="border:1px solid #000000;" onClick="javascript:toggle_rotate_mode('rotate');" title="Turn on rotate mode or press and hold 'r'" >
+			<a id="control_icon_rotate_arrow" class="control_icon" style="line-height:22px;font-size:0.7em;color:black;" >&#8634;</a>
+		</div>
+		<div id="control_icon_translate" class="control_icon" style="border:1px solid #cccccc;color:#cccccc;" onClick="javascript:toggle_rotate_mode('translate');" title="Translate mode on, click and drag to move object"  >
+			<a class="control_icon" style="font-size:0.6em;line-height:18px;" >&#8597;</a>
+			<a class="control_icon" style="font-size:0.6em;position:relative;right:0px;top:-18px;" >&#8596;</a>
+		</div>
+		<div class="control_icon" onClick="javascript:about_alert();" title="About SVGViewR" >
+			<a class="control_icon" style="font-size:0.6em;font-family:Times;line-height:21px;" ><i>i</i></a>
+		</div>
+	</div>
+	
+	<div id="control_container" class="control_container" style="display:none;width: 85px;" >
+		<div id="control_main" class="control_main" >
+	
+			<div id="control_animation_container" class="control_animation_container" >
+				<div id="control_animation_header" class="control_animation_header" >
+					<a id="control_animation_click" class="control_animation_click" onClick="javascript:show_hide_control(this);" >&#9660;</a>
+					Animation
+				</div>
+				<div id="control_animation_main" class="control_animation_main" >
+	
+					<div class="control_animation_frame" >
+						<div id="control_play" class="control_icon_play" onClick="playPauseAnimation();" title="Pause animation or press the spacebar" >
+							<a id="control_icon_play" class="control_icon_play" >&#9612; &#9612;</a>
+						</div>
+						<div class="control_animation_frame_range" >
+							<input id="animation_frame_range_input" type="range" title="Click to skip to frame" class="control_animation_frame_range" oninput="inputAnimationState(this)" value=100 />
+						</div>
+						<div class="control_animation_frame_count" >
+							<input id="animation_frame_count_input" type="number" oninput="inputAnimationState(this)" title="Enter number to skip to frame" class="control_animation_frame_count" min="1" max="10" step="1" value="1" />
+						</div>
+					</div>
+					<div style="border-bottom:1px solid #aaaaaa;margin:0px 10px;" ></div>
+					<div class="control_animation_frame" >
+						<div class="control_animation_duration" >
+							<a title="Change the speed of the animation" >Animation duration: </a>
+							<input id="animation_duration_input" type="number" oninput="changeAnimationDuration(this);" title="Change the speed of the animation" class="control_animation_duration" min="0" max="60" step="1" value="1" />
+							sec
+						</div>
+						<div class="control_animation_reverse" >
+							<a title="Run the animation in reverse after the last frame" >Reverse</a>
+							<input id="animation_reverse_checkbox" type="checkbox" title="Run the animation in reverse after the last frame" name="animation_reverse_checkbox" onchange="toggleAnimationReverse();" value="1"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="control_layers_container" class="control_layers_container" >
+				<div id="control_layers_header" class="control_layers_header" >
+					<a id="control_layers_click" class="control_layers_click" onClick="javascript:show_hide_control(this);" >&#9660;</a>
+					<a class="control_layers_text">Layers</a>
+				</div>
+				<div class="control_layer_subheader" >
+					<div class="control_layer_subheader_label" >Opacity</div>
+					<div style="margin:0px 0px 0px 55px;" >Layer names</div>
+				</div>
+				<div id="control_layers_main" class="control_layers_main" >
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Joints</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Points</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Joint wire frame</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Point wire frame</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Joint constraints</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Link coordinate systems</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_layer_vis" onClick="javascript:show_hide_control(this);" >&#9658;</a>
+							<a class="control_layer_text">Coordinate box</a>
+						</div>
+						<div class="control_layer_main" style="display:none;" >
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=0 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Bounding panel fill</a>
+								</div>
+							</div>
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=40 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Bounding panel outline</a>
+								</div>
+							</div>
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=10 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Grid</a>
+								</div>
+							</div>
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=50 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Ticks</a>
+								</div>
+							</div>
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Tick labels</a>
+								</div>
+							</div>
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Axis labels</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<svg id="world" style="background-color:;width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1;" onload="Javascript:onLoadFunctions();" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
+</body>
+
+<style>
+	body{
+		font-family: Arial, Corbel, Myriad Pro, Cabin, League Gothic, 'sans serif';
+		font-size: 13px;
+	}
+	
+	a.control_layer_text_nochild{
+		padding-left:2px;
+	}
+	
+	a.control_layer_layer_vis{
+	}
+	
+	a.control_click{
+		font-size:2em;
+	}
+	
+	a.control_icon_play{
+		color:white;
+		font-size:0.8em;
+		letter-spacing:-1px;
+		line-height:19px;
+	}
+	
+	a.control_rotate{
+		font-weight:900;
+		font-size:1.7em;
+		color:#cccccc;
+	}
+	
+	a.control_translate{
+		font-weight:900;
+		font-size:1.45em;
+		vertical-align:31%;
+		color:black;
+	}
+	
+	span.control_layer_shape_vis{
+	/*	font-size:1.8em; */
+	/*	line-height:0.6; */
+	/*	vertical-align:-1%; */
+	}
+	
+	a.control_layer_level1{padding-left:0px;}
+	a.control_layer_level2{padding-left:15px;}
+	a.control_layer_level3{padding-left:30px;}
+	a.control_layer_level4{padding-left:45px;}
+	
+	div.control_animation_duration{
+		float:left;
+		padding:0px 0px 0px 5px;
+		color:white;
+		background-color:;
+	}
+	
+	div.control_animation_frame{
+		height:25px;
+		background-color:;
+		margin:5px 0px 0px 0px;
+		padding:0px 0px 0px 0px;
+	}
+	
+	div.control_animation_frame_range{
+		text-align:center;
+		float:left;
+		height:18px;
+		margin:0px 0px 0px 2px;
+		padding:2px 0px 0px 0px;
+		background-color:;
+	/*	background-color:green; */
+	/*	border-right:1px solid rgb(200,200,200); */
+	}
+	
+	div.control_animation_main{
+		background-color: rgba(0,0,0,0.5);
+		margin:0px 0px 9px 0px;
+		padding:3px 0px 10px 0px;
+		height:50px;
+	}
+	
+	div.control_animation_reverse{
+		float:left;
+		color:white;
+		margin:1px 0px 0px 40px;
+		background-color:;
+	}
+	
+	div.control_container{
+	    border-radius: 10px;
+		background-color: rgba(0,0,0,0.3);
+		cursor: default;
+		position: fixed;
+	/*	padding:5px 0px 10px 0px; */
+		top: 20px;
+		right: 60px;
+	}
+	
+	div.control_icons{
+		position: fixed;
+		width: 30px;
+		top: 20px;
+		right: 20px;
+	}
+	
+	div.control_icon{
+		cursor: default;
+	    border-radius: 50%;
+		width: 20px;
+		font-size:2em;
+		height: 20px;
+		font-weight:100;
+		text-align:center;
+		background-color:white;
+		border:1px solid black;
+		margin:0 0 5px 0;
+	}
+	
+	div.control_icon_play{
+		float:left;
+		cursor: default;
+		background-color:;
+		width: 18px;
+		height: 20px;
+		padding:0px 0px 0px 5px;
+		text-align:center;
+	}
+	
+	div.control_main{
+		margin:5px 0px 5px 0px;
+	}
+	
+	div.control_layers_container, div.control_animation_container{
+	/*	background-color: rgba(0,0,0,0.2); */
+		margin:0px 0px 5px 0px;
+	}
+	
+	div.control_layers_header, div.control_animation_header{
+		padding:0px 0px 1px 3px;
+		color:white;
+	}
+	
+	div.control_layers_main{
+		background-color: rgba(255,255,255,0.8);
+		margin:0px 0px 0px 0px;
+		padding:3px 0px 10px 2px;
+		height:150px;
+		overflow-y: scroll;
+	}
+	
+	div.control_layer_subheader_label{
+	/*	background-color:red; */
+		float:left;
+		width:50px;
+		text-align:center;
+	/*	border-right:1px solid rgb(225, 225, 225); */
+		border-right:1px solid white;
+	/*	font-size: 12px; */
+	/*	letter-spacing: 0.1px; */
+	}
+	
+	div.control_layer_subheader{
+		background-color: rgba(0,0,0,0.5);
+	/*	background-color: ; */
+		width:296px;
+		color:white;
+	/*	font-weight:bold; */
+		margin:0px;
+		padding:2px;
+	/*	border:1px solid black; */
+	/*	border-bottom:1px solid black; */
+	}
+	
+	div.control_layer_container{
+	/*	background-color: green; */
+	/*	margin:5px 0px 0px 15px; */
+	/*	margin:5px 0px 0px 0px; */
+	}
+	
+	div.control_layer_header{
+	/*	background-color: green; */
+		margin:3px 0px 0px 0px;
+	/*	padding:0px 0px 0px 0px; */
+	}
+	
+	div.control_layer_main{
+		width:400px;
+	}
+	
+	div.control_layer_shape_vis_range{
+		float:left;
+		width:53px;
+		height:18px;
+	/*	background-color:green; */
+	/*	border-right:1px solid rgb(200,200,200); */
+	}
+	
+	input.control_layer_shape_vis_range {
+		-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+		width: 46px;
+		cursor: default;
+		margin-top: 6px;
+	}
+	
+	input.control_animation_duration{
+		width:35px;
+		margin:0px 0px 0px 0px;
+	}
+	
+	input.control_animation_frame_range {
+		-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+		width: 214px;
+		cursor: default;
+		margin: 3px 8px 0px 0px;
+		float:left;
+		background-color:transparent;
+	}
+	
+	input.control_animation_frame_count{
+		width:40px;
+		margin:0px 0px 0px 0px;
+	}
+	
+	input.control_layer_shape_vis_range::-webkit-slider-thumb, input.control_animation_frame_range::-webkit-slider-thumb {
+		-webkit-appearance: none;
+	}
+	
+	input[type=range]:focus {
+	  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+	}
+	
+	input.control_animation_frame_range::-webkit-slider-thumb {
+		height: 10px;
+		width: 6px;
+		background: #ffffff;
+		border-radius: 3px;
+		margin-top: 0px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		border: 0px solid #000000;
+	}
+	
+	input.control_layer_shape_vis_range::-webkit-slider-thumb{
+		border: 1px solid #333333;
+		height: 12px;
+		width: 5px;
+		border-radius: 3px;
+		background: #ffffff;
+		margin-top: -4px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+	}
+	
+	input.control_animation_frame_range::-webkit-slider-runnable-track {
+		height: 10px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		background: rgb(200,200,200);
+		border-radius: 3px;
+	}
+	
+	input.control_layer_shape_vis_range::-webkit-slider-runnable-track {
+		height: 3px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		background: rgb(150,150,150);
+		border-radius: 1.3px;
+	}
+</style>
+
+
+<script type="text/javascript" >
+	var svgDocument = document.getElementById("world");
+</script>
+
+<script type="text/javascript" >
+	function add(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] + b[i];
+		return s;
+	}
+	
+	function avec(a, b){
+		s = 0;
+		var d = dot(a,a) * dot(b,b);
+		if(d < 0 || d > 0) s = Math.acos(dot(a,b)) / d;
+		return s;
+	}
+	
+	function cprod(u, v){
+		s = new Array(3);
+		s[0] = u[1]*v[2] - u[2]*v[1];
+		s[1] = u[2]*v[0] - u[0]*v[2];
+		s[2] = u[0]*v[1] - u[1]*v[0];
+		return s;	
+	}
+	
+	function dist(a, b){
+		var i;
+		var s = 0;
+		for(i = 0;i < a.length;i++) s += Math.pow(b[i] - a[i], 2)
+		return Math.sqrt(s);
+	}
+	
+	function dot(a, b){
+		var i;
+		var s = 0;
+		for(i = 0;i < a.length;i++) s += a[i]*b[i];
+		return s;
+	}
+	
+	function addC(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] + b;
+		return s;
+	}
+	
+	function inv(a){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = 1 / a[i];
+		return s;
+	}
+	
+	function max() {
+	    var args = Array.prototype.slice.call(arguments);
+	    return Math.max.apply(Math, args.filter(function(val) {
+	       return !isNaN(val);
+	    }));
+	}
+	
+	function min() {
+	    var args = Array.prototype.slice.call(arguments);
+	    return Math.min.apply(Math, args.filter(function(val) {
+	       return !isNaN(val);
+	    }));
+	}
+	
+	function multC(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] * b;
+		return s;
+	}
+	
+	function multM(a, b){
+		var i, j, k;
+		var s = new Array();
+		for (var i = 0, len = a.length; i < len; i++){
+			if(!a[0].length){
+				s[i] = 0;
+				for (var j = 0, len = a.length; j < len; j++){
+					s[i] += a[j]*b[j][i];
+				}
+			}else{
+				s[i] = new Array(a[i].length);
+				for (var k = 0, len = a[i].length; k < len; k++){
+					s[i][k] = 0;
+					for (var j = 0, len = a[i].length; j < len; j++){
+						s[i][k] += a[i][j]*b[j][k];
+					}
+				}
+			}
+		}
+		return s;
+	}
+	
+	function rotateTrig(r){return {sin : -Math.sin(r), cos : Math.cos(r)};}
+	
+	function rotateVector(v, deg){
+		var rad = degToRad(deg);
+		var vec = new Array(v[0]*Math.cos(rad) - v[1]*Math.sin(rad), v[0]*Math.sin(rad) + v[1]*Math.cos(rad));
+		return vec;
+	}
+	
+	function rotateX1(a, t) {
+		var tmp = a.y;
+		a.y = (t.cos * a.y) - (t.sin * a.z);
+		a.z = (t.sin * tmp) + (t.cos * a.z);
+		return a;
+	}
+	
+	function rotateY1(a, t) {
+		var tmp = a.x;
+		a.x = (t.cos * a.x) + (t.sin * a.z);
+		a.z = - (t.sin * tmp) + (t.cos * a.z);
+		return a;
+	}
+	
+	function rotateZ1(a, t) {
+		var tmp = a.x;
+		a.x = (t.cos * a.x) - (t.sin * a.y);
+		a.y = (t.sin * tmp) + (t.cos * a.y);
+		return a;
+	}
+	
+	function rotateX2(a, t) {
+		var tmp = a.y;
+		a.y = sub(multC(a.y, t.cos), multC(a.z, t.sin));
+		a.z = add(multC(tmp, t.sin), multC(a.z, t.cos));
+		return a;
+	}
+	
+	function rotateY2(a, t) {
+		var tmp = a.x;
+		a.x = add(multC(a.x, t.cos), multC(a.z, t.sin));
+		a.z = sub(multC(a.z, t.cos), multC(tmp, t.sin));
+		return a;
+	}
+	
+	function rotateZ2(a, t) {
+		var tmp = a.x;
+		a.x = sub(multC(a.x, t.cos), multC(a.y, t.sin));
+		a.y = add(multC(tmp, t.sin), multC(a.y, t.cos));
+		return a;
+	}
+	
+	function sub(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] - b[i];
+		return s;
+	}
+	
+	function tMatrixEP(v, a){
+		a = -a;
+		v = uvector(v);
+	
+		var t0 = Math.cos(a/2);
+		var t1 = v[0]*Math.sin(a/2)
+		var t2 = v[1]*Math.sin(a/2)
+		var t3 = v[2]*Math.sin(a/2)
+	
+		var r = new Array(3);
+		r[0] = new Array(2*(Math.pow(t0, 2) + Math.pow(t1, 2)) - 1, 2*(t1*t2 - t0*t3), 2*(t1*t3 + t0*t2));
+		r[1] = new Array(2*(t1*t2 + t0*t3), 2*(Math.pow(t0, 2) + Math.pow(t2, 2)) - 1, 2*(t2*t3 - t0*t1));
+		r[2] = new Array(2*(t1*t3 - t0*t2), 2*(t2*t3 + t0*t1), 2*(Math.pow(t0, 2) + Math.pow(t3, 2)) - 1);
+	
+		return r;
+	}
+	
+	function uvector(v){
+		var i, r;
+		var s = 0;
+		for(i = 0;i < v.length;i++) s += Math.pow(v[i], 2)
+		var d = Math.sqrt(s);
+		if(d == 0) return v;
+	
+		r = new Array();
+		for(i = 0;i < v.length;i++) r[i] = v[i]/d
+		return r;
+	}
+</script>
+<script type="text/javascript" >
+	var initialX;
+	var initialY;
+	function_name = new Array();
+	url_path = new Array();
+	innerHTML_id = new Array();
+	request_status = new Array();
+	xmlHttp = new Array();
+	time1 = new Array();
+	time2 = new Array();
+	var req_ct = 0;
+	var skip_buffer = 10;
+	var skip_to = 0;
+	var ajax_output;
+	var auto_view_r_result = 0;
+	
+	String.prototype.firstToUpperCase = function() {
+		return this.charAt(0).toUpperCase() + this.slice(1);
+	}
+	
+	Array.prototype.firstToUpperCase = function() {
+		for (var i = 0, len = this.length; i < len; i++) this[i] = this[i].firstToUpperCase();
+		return this;
+	}
+	
+	function about_alert(){
+		alert('svgViewR is a browser-based viewer that allows users to interactively visualize 3D vector graphics and animations. Visualizations can be made in R, using the package svgViewR, and easily distributed as a single HTML file with nearly universal compatibility across browsers and operating systems. This visualization was made using svgViewR version ' + svgviewr_version + '.\n\nsvgViewR was created by Aaron Olsen and is freely available under a GPL-3 license. For more information, please visit:\n\nhttp://cran.r-project.org/web/packages/svgViewR');
+	}
+	
+	function ajax_alert_return(j, xmlHttp_object){
+		alert(xmlHttp_object[j].responseText);
+	}
+	
+	function ajax_fill_element(j, xmlHttp_object){
+		document.getElementById(innerHTML_id[j]).innerHTML = xmlHttp_object[j].responseText;
+		window.status= '';
+	}
+	
+	function ajax_fill_element_return_call(j, xmlHttp_object){
+		document.getElementById(innerHTML_id[j]).innerHTML = xmlHttp_object[j].responseText;
+		on_ajax_request_return();
+	}
+	
+	function ajax_fill_element_return_call2(j, xmlHttp_object){
+		document.getElementById(innerHTML_id[j]).innerHTML = xmlHttp_object[j].responseText;
+		on_ajax_request_return2(url_path[j]);
+	}
+	
+	function ajax_get_xml_http_object(){
+		var xmlHttp=null;
+		try{ // Firefox, Opera 8.0+, Safari
+			xmlHttp = new XMLHttpRequest();}
+		catch(e){ // Internet Explorer		
+			try{
+				xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");}
+			catch(e){
+				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");}
+		}
+		return xmlHttp;
+	}
+	
+	function ajax_request(url, send_content, call_function, element_id){
+		url_path[req_ct] = url;
+		function_name[req_ct] = call_function;
+		innerHTML_id[req_ct] = element_id;
+		request_status[req_ct] = 0;
+	
+		xmlHttp[req_ct]=ajax_get_xml_http_object();
+		if(xmlHttp[req_ct]==null){
+			alert ("Browser does not support HTTP Request");
+			return;}
+		xmlHttp[req_ct].onreadystatechange=ajax_state_changed;
+		xmlHttp[req_ct].open("POST", url, true);
+		xmlHttp[req_ct].setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlHttp[req_ct].send(send_content);	
+		window.status= 'Command to ' + url + ' sent.';
+	
+		time1[req_ct] = new Date().getTime() / 1000;
+	
+		req_ct++;
+	}
+	
+	function ajax_state_changed(){
+		var j;
+		for(j = skip_to;j < xmlHttp.length; j++){
+			if(request_status[j] == 1){continue;}
+			if(xmlHttp[j].readyState==4 || xmlHttp[j].readyState=="complete"){
+				//alert(skip_to + ' -- ' + j);
+				eval(function_name[j] + '(j, xmlHttp)');
+	
+				time2[j] = new Date().getTime() / 1000;
+				if(document.getElementById("run_time")) document.getElementById("run_time").innerHTML = "Run-time: " + Math.round((time2[j] - time1[j])*100)/100 + " sec";
+				
+				request_status[j] = 1;
+				if(j - skip_buffer > 0){skip_to = j - skip_buffer;}
+			}	
+		}
+	}
+	
+	function array_unique(arr) {
+		var hash = {}, result = [];
+		for(var i = 0, l = arr.length;i < l;++i){
+	    	if(hash[ arr[i] ] === true) continue;
+			hash[ arr[i] ] = true;
+			result.push(arr[i]);    	
+	    }
+	    return result;
+	}
+	
+	function array_unique_properties(arr, property) {
+		var hash = {}, result = [];
+		for(var i = 0, l = arr.length;i < l;++i){
+	    	if(hash[ arr[i][property] ] === true) continue;
+			hash[ arr[i][property] ] = true;
+			result.push(arr[i][property]);    	
+	    }
+	    return result;
+	}
+	
+	function baseName(ev) {
+		var id = ev.target.getAttribute("id");
+		return id;
+	}
+	
+	var BrowserDetect = {
+		//Source: http://www.quirksmode.org/js/detect.html
+	
+		init: function () {
+			this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+			this.version = this.searchVersion(navigator.userAgent)
+				|| this.searchVersion(navigator.appVersion)
+				|| "an unknown version";
+			this.OS = this.searchString(this.dataOS) || "an unknown OS";
+		},
+		searchString: function (data) {
+			for (var i=0;i<data.length;i++)	{
+				var dataString = data[i].string;
+				var dataProp = data[i].prop;
+				this.versionSearchString = data[i].versionSearch || data[i].identity;
+				if (dataString) {
+					if (dataString.indexOf(data[i].subString) != -1)
+						return data[i].identity;
+				}
+				else if (dataProp)
+					return data[i].identity;
+			}
+		},
+		searchVersion: function (dataString) {
+			var index = dataString.indexOf(this.versionSearchString);
+			if (index == -1) return;
+			return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+		},
+		dataBrowser: [
+			{
+				string: navigator.userAgent,
+				subString: "Chrome",
+				identity: "Chrome"
+			},
+			{ 	string: navigator.userAgent,
+				subString: "OmniWeb",
+				versionSearch: "OmniWeb/",
+				identity: "OmniWeb"
+			},
+			{
+				string: navigator.vendor,
+				subString: "Apple",
+				identity: "Safari",
+				versionSearch: "Version"
+			},
+			{
+				prop: window.opera,
+				identity: "Opera",
+				versionSearch: "Version"
+			},
+			{
+				string: navigator.vendor,
+				subString: "iCab",
+				identity: "iCab"
+			},
+			{
+				string: navigator.vendor,
+				subString: "KDE",
+				identity: "Konqueror"
+			},
+			{
+				string: navigator.userAgent,
+				subString: "Firefox",
+				identity: "Firefox"
+			},
+			{
+				string: navigator.vendor,
+				subString: "Camino",
+				identity: "Camino"
+			},
+			{		// for newer Netscapes (6+)
+				string: navigator.userAgent,
+				subString: "Netscape",
+				identity: "Netscape"
+			},
+			{
+				string: navigator.userAgent,
+				subString: "MSIE",
+				identity: "Explorer",
+				versionSearch: "MSIE"
+			},
+			{
+				string: navigator.userAgent,
+				subString: "Gecko",
+				identity: "Mozilla",
+				versionSearch: "rv"
+			},
+			{ 		// for older Netscapes (4-)
+				string: navigator.userAgent,
+				subString: "Mozilla",
+				identity: "Netscape",
+				versionSearch: "Mozilla"
+			}
+		],
+		dataOS : [
+			{
+				string: navigator.platform,
+				subString: "Win",
+				identity: "Windows"
+			},
+			{
+				string: navigator.platform,
+				subString: "Mac",
+				identity: "Mac"
+			},
+			{
+				   string: navigator.userAgent,
+				   subString: "iPhone",
+				   identity: "iPhone/iPod"
+		    },
+			{
+				string: navigator.platform,
+				subString: "Linux",
+				identity: "Linux"
+			}
+		]
+	
+	};
+	
+	BrowserDetect.init();
+	
+	function clean(array, deleteValue){
+	
+		var array_clean = new Array();
+	
+		if(deleteValue == undefined) var deleteValue = '';
+	
+		var j = 0;
+		for(var i = 0; i < array.length; i++) {
+	
+			if(array[i] == deleteValue) continue;
+			if(isNaN(deleteValue) && isNaN(array[i])) continue;
+	
+			array_clean[j] = array[i];
+	
+			j++;
+		}
+	
+		return array_clean;
+	}
+	
+	function createCookie(name, value, sec){
+	
+		if (sec) {
+			var date = new Date();
+			date.setTime(date.getTime()+(sec*1000));
+			var expires = "; expires="+date.toGMTString();
+		}
+		else var expires = "";
+		document.cookie = name+"="+value+expires+"; path=/";
+	}
+	
+	function degToRad(d){
+		return d*(Math.PI/180);
+	}
+	
+	function detectKeyUp(e){
+		var evt = e || window.event;
+		if(evt.keyCode==82 && globalkeypress == "r"){globalkeypress = '';return;}
+	}
+	
+	function deleteCookie(name) {
+		createCookie(name,"",-1);
+	}
+	
+	function detectKeyDown(e){
+		var evt = e || window.event;
+		if(evt.keyCode==82){globalkeypress = 'r';} // r
+		if(evt.shiftKey === true){
+			if(globalkeypress == 'r'){
+				if(evt.keyCode==37){setKeyEvent("rotateYaxis", 45);} // left arrow
+				if(evt.keyCode==39){setKeyEvent("rotateYaxis", -45);} // right arrow
+				if(evt.keyCode==38){setKeyEvent("rotateXaxis", 45);} // up arrow
+				if(evt.keyCode==40){setKeyEvent("rotateXaxis", -45);} // down arrow
+				if(evt.keyCode==74){setKeyEvent("rotateZaxis", -45);} // j
+				if(evt.keyCode==75){setKeyEvent("rotateZaxis", 45);} // k
+			}else{
+				if(evt.keyCode==37){setKeyEvent("translateX", -10);} // left arrow
+				if(evt.keyCode==39){setKeyEvent("translateX", 10);} // right arrow
+				if(evt.keyCode==38){setKeyEvent("translateY", 10);} // up arrow
+				if(evt.keyCode==40){setKeyEvent("translateY", -10);} // down arrow
+				if(evt.keyCode==74){setKeyEvent("translateZ", 10);} // j
+				if(evt.keyCode==75){setKeyEvent("translateZ", -10);} // k
+			}
+		}else{
+			if(evt.metaKey === true){
+			}else{
+				if(globalkeypress == 'r'){
+					if(evt.keyCode==37){setKeyEvent("rotateYaxis", 10);} // left arrow
+					if(evt.keyCode==39){setKeyEvent("rotateYaxis", -10);} // right arrow
+					if(evt.keyCode==38){setKeyEvent("rotateXaxis", 10);} // up arrow
+					if(evt.keyCode==40){setKeyEvent("rotateXaxis", -10);} // down arrow
+					if(evt.keyCode==74){setKeyEvent("rotateZaxis", -10);} // j
+					if(evt.keyCode==75){setKeyEvent("rotateZaxis", 10);} // k
+				}else{
+					if(evt.keyCode==37){setKeyEvent("translateX", -1);} // left arrow
+					if(evt.keyCode==39){setKeyEvent("translateX", 1);} // right arrow
+					if(evt.keyCode==38){setKeyEvent("translateY", 1);} // up arrow
+					if(evt.keyCode==40){setKeyEvent("translateY", -1);} // down arrow
+					if(evt.keyCode==74){setKeyEvent("translateZ", 1);} // j
+					if(evt.keyCode==75){setKeyEvent("translateZ", -1);} // k
+					//if(evt.keyCode==80){} // p
+					if(evt.keyCode==32){setKeyEvent("playPauseAnimation");} // space-bar
+				}
+			}
+		}
+	}
+	
+	function doEvent(){
+	
+		var i, len;
+		var dx = 0;
+		var dy = 0;
+		var dz = 0;
+	
+		if (currentEvent == "callZoomIn"){
+			if(zoom <= 400){
+				zoom = zoom + 4;
+				depth = Math.floor(zoom * (eyez - maxzoom) / 100 + eyez);
+			}
+		}
+	
+		if (currentEvent == "callZoomOut"){
+			if(zoom >= 175){
+				zoom = zoom - 4;
+				depth = Math.floor(zoom * (eyez - maxzoom) / 100 + eyez);
+			}
+		}
+	
+		if(currentEvent == "translateZ") d = -d;
+	
+		// Apply translation
+		if (currentEvent == "translateX" || currentEvent == "translateY" || currentEvent == "translateZ")
+			for (i = 0, len = shape_transform.length; i < len; i++) eval(currentEvent + '(' + shape_transform[i] + ', d)');
+	
+		// Apply rotation
+	//	var t1 = new Date().getTime();
+		if (currentEvent == "rotateXaxis" || currentEvent == "rotateYaxis" || currentEvent == "rotateZaxis")
+			for (i = 0, len = shape_transform.length; i < len; i++) eval(currentEvent + '(' + shape_transform[i] + ', degToRad(d))');
+	//	var t2 = new Date().getTime();
+	//	alert(t2 - t1)
+	
+		if (currentEvent == "playPauseAnimation"){
+			playPauseAnimation();
+		}
+	}
+	
+	function extract_number(strString){
+		var strValidChars = "0123456789.-";
+		var strChar;
+		var returnString = "";
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		for (i = 0; i < strString.length; i++){
+			strChar = strString.charAt(i);
+			if(strValidChars.indexOf(strChar) > -1) returnString += strChar;
+		}
+		return parseFloat(returnString);
+	}
+	
+	function extract_alpha(strString){
+		var strNonAlphaChars = "0123456789.-";
+		var strChar;
+		var returnString = "";
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		for (i = 0; i < strString.length; i++){
+			strChar = strString.charAt(i);
+			if(strNonAlphaChars.indexOf(strChar) == -1) returnString += strChar;
+		}
+		return returnString;
+	}
+	
+	function firstToUpperCase(string){
+		if(typeof string === 'string'){
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		}else{
+			var string_array = new Array();
+			for (var i = 0, len = string.length; i < len; i++) string_array[i] = firstToUpperCase(string[i]);
+			return string_array;
+		}
+	}
+	
+	function getCookie(Name){ 
+		var re=new RegExp(Name+"=[^;]+", "i"); //construct RE to search for target name/value pair
+		if (document.cookie.match(re)) //if cookie found
+			return document.cookie.match(re)[0].split("=")[1] //return its value
+		return false;
+	}
+	
+	function getMouseXYLocal(e){
+		if(IE){return new Array(event.clientX,event.clientY);}else{return new Array(e.pageX,e.pageY);}
+	}
+	
+	function getStyle(el, styleProp) {
+	  var value, defaultView = (el.ownerDocument || document).defaultView;
+	  // W3C standard way:
+	  if (defaultView && defaultView.getComputedStyle) {
+	    // sanitize property name to css notation
+	    // (hypen separated words eg. font-Size)
+	    styleProp = styleProp.replace(/([A-Z])/g, "-$1").toLowerCase();
+	    return defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+	  } else if (el.currentStyle) { // IE
+	    // sanitize property name to camelCase
+	    styleProp = styleProp.replace(/\-(\w)/g, function(str, letter) {
+	      return letter.toUpperCase();
+	    });
+	    value = el.currentStyle[styleProp];
+	    // convert other units to pixels on IE
+	    if (/^\d+(em|pt|%|ex)?$/i.test(value)) { 
+	      return (function(value) {
+	        var oldLeft = el.style.left, oldRsLeft = el.runtimeStyle.left;
+	        el.runtimeStyle.left = el.currentStyle.left;
+	        el.style.left = value || 0;
+	        value = el.style.pixelLeft + "px";
+	        el.style.left = oldLeft;
+	        el.runtimeStyle.left = oldRsLeft;
+	        return value;
+	      })(value);
+	    }
+	    return value;
+	  }
+	}
+	
+	function getWindowHeight(){
+		var y = 0;
+		if (self.innerHeight) {
+			y = self.innerHeight;
+		} else if (document.documentElement && document.documentElement.clientHeight) {
+			y = document.documentElement.clientHeight;
+		} else if (document.body) {
+			y = document.body.clientHeight;
+		}
+	
+		return y;
+	}
+	
+	function getWindowWidth(){
+		var x = 0;
+		if (self.innerHeight) {
+			x = self.innerWidth;
+		} else if (document.documentElement && document.documentElement.clientHeight) {
+			x = document.documentElement.clientWidth;
+		} else if (document.body) {
+			x = document.body.clientWidth;
+		}
+		
+		return x;
+	}
+	
+	function has_numeric(strString){
+		var strValidChars = "0123456789.-";
+		var strChar;
+		var blnResult = false;
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		//  test strString consists of valid characters listed above
+		for (i = 0; i < strString.length && blnResult == false; i++){
+			strChar = strString.charAt(i);
+			if (strValidChars.indexOf(strChar) > -1){
+				blnResult = true;
+			}
+		}
+		return blnResult;
+	}
+	
+	function is_array(input){
+		return typeof(input)=='object'&&(input instanceof Array);
+	}
+	
+	function is_numeric(strString){
+		var strValidChars = "0123456789.-";
+		var strChar;
+		var blnResult = true;
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		//  test strString consists of valid characters listed above
+		for (i = 0; i < strString.length && blnResult == true; i++){
+			strChar = strString.charAt(i);
+			if (strValidChars.indexOf(strChar) == -1){
+				blnResult = false;
+			}
+		}
+		return blnResult;
+	}
+	
+	function listCookies(){
+	
+	    var all_cookies = document.cookie.split(';');
+	    var cookies = new Array();
+	
+	    for (var i = 0; i < all_cookies.length; i++) {
+			var cookie_split = all_cookies[i].split('=');
+			cookies[i] = {name : cookie_split[0], value : cookie_split[1]};
+	    }
+	
+	    return cookies;
+	}
+	
+	function mouseDownEvent(e){
+	
+		e.preventDefault();
+	
+		initialX = e.clientX;
+		initialY = e.clientY;
+		mousedown = 1;
+	}
+	
+	function mouseUpEvent(e){	
+	
+		e.preventDefault();
+	
+		mousedown = 0;
+	}
+	
+	function on_ajax_request_return2(url){
+		ajax_request(url, 'function=print_ui', 'ajax_fill_element', 'ui_div');
+		if(auto_view_r_result){
+			document.getElementById('r_call_view').submit();
+		}
+		window.status= '';
+	}
+	
+	function open_text_in_new_window(){
+		window.open('A.html','A','width=300, height=200');
+	}
+	
+	function parse_style_string(string){
+	
+		style_array = new Array();
+		string_split1 = string.split(";");
+	
+		for(i in string_split1){
+			if(string_split1[i] == "") continue;
+			string_split2 = string_split1[i].split(":");
+			style_array[string_split2[0]] = string_split2[1];
+		}
+	
+		return style_array; 
+	}
+	
+	function scrollEvent(e){
+		var id = baseName(e);
+		var delta = 0;
+	
+		//var start_a = new Date().getTime();
+	
+		if(IE){
+			s_initialX = event.clientX + document.body.scrollLeft;
+			s_initialY = event.clientY + document.body.scrollTop;
+			if(!event){event = window.event;}
+	    	var delta = event.wheelDelta / 40;
+		}else{
+			s_initialX = e.pageX;
+			s_initialY = e.pageY;
+		}
+	
+		if(e.detail){
+			var delta = -e.detail*5;
+			var max = 8;
+			if(delta > max){delta = max;}
+			if(delta < -max){delta = -max;}
+			zoom_shape(Math.round(delta*0.2)/20,s_initialX,s_initialY);
+		}
+	
+		if(e.wheelDelta){ // SAFARI
+			var delta = e.wheelDelta;
+			var max = 60;
+			if(delta > max){delta = max;}
+			if(delta < -max){delta = -max;}
+			zoom_shape(Math.round(delta*0.1)/20,s_initialX,s_initialY);
+		}
+	
+		//var end_a = new Date().getTime();
+		//document.getElementById("div_status").innerHTML += (end_a - start_a) + ' msec<br />';
+	
+	}
+	
+	function setKeyEvent(eventin,dist){
+		currentEvent = eventin;
+		d = dist;
+	
+		if (eventin !== "nothing" && eventin !== "refreshtozero"){
+	
+			doEvent();
+			updateShapes();
+	
+			set_key_event_calls += 1;
+	
+			//document.getElementById("div_status").innerHTML = set_key_event_calls;
+	
+	//	var start_b = new Date().getTime();
+	//	var end_b = new Date().getTime();
+	//	alert('A: ' + (end_a - start_a) + ' msec' + '\n' + 'B: ' + (end_b - start_b) + ' msec');
+		}
+	}
+	
+	function setEvents(e) {
+		var eventHandler = detectKeyDown;
+		document['on'+this.id] = eventHandler;
+	}
+	
+	function setViewboxProperties(){
+		window_properties.height = getWindowHeight();
+		window_properties.width = getWindowWidth();
+	
+		view_box.height = window_properties.height;
+		view_box.width = window_properties.width;
+	
+		x_window_shift = view_box.width/2;
+		y_window_shift = view_box.height/2;
+	}
+	
+	function sortasc(a,b){
+		return a - b;
+	}
+	
+	function string_to_array_cs(string){
+	
+		var i, j;
+		var t_arr = string.split(",");
+	
+		r_arr = new Array();
+		for(i = 0;i < t_arr.length;i++){
+			i_arr = trim(t_arr[i]).split(" ");
+			
+			r_arr[i] = new Array();
+			for(j = 0;j < i_arr.length;j++) r_arr[i][j] = parseFloat(i_arr[j])
+		}
+	
+		return r_arr;
+	}
+	
+	function updateVisibility(){
+	
+		var i,j;
+		var visibility;
+		var layers = new Array();
+	
+		// CYCLE THROUGH TABLE ELEMENTS
+		var div_control_panel_layers = document.getElementById("control_panel_layers");
+		var items = div_control_panel_layers.getElementsByTagName("*");
+		for (i = items.length; i--;) {
+	
+			if(items[i].tagName == 'TD' && items[i].name == 'label') layer = items[i].innerHTML;
+	
+			if(items[i].tagName == 'INPUT'){
+				layers[i] = new Array();
+				layers[i].name = layer;
+				if(items[i].checked){layers[i].visibility = '';}else{layers[i].visibility = 'hidden';}
+			}
+		}	
+	
+		var items = svgDocument.getElementsByTagName("*");
+		for (i = items.length; i--;) {
+	
+			visibility = '';
+			for(j in layers) if(items[i].getAttribute("layer") == layers[j].name) visibility = layers[j].visibility;
+			items[i].setAttribute("visibility", visibility);
+		}
+	}
+	
+	function toggle_div_visibility(id){
+		div = document.getElementById(id);
+		if(div.style.visibility == 'hidden'){
+			div.style.visibility = '';
+			div.style.height = '';
+			//div.style.width = new_width + 'px';
+		}else{
+			div.style.visibility = 'hidden';
+			div.style.height = '0px';
+			div.style.width = '0px';
+		}
+	}
+	
+	function trim(stringToTrim){
+		//http://www.somacon.com/p355.php
+		return stringToTrim.replace(/^\s+|\s+$/g,"");
+	}
+	
+	function ltrim(stringToTrim){
+		//http://www.somacon.com/p355.php
+		return stringToTrim.replace(/^\s+/,"");
+	}
+	
+	function rtrim(stringToTrim){
+		//http://www.somacon.com/p355.php
+		return stringToTrim.replace(/\s+$/,"");
+	}
+</script>
+<script type="text/javascript" >
+	//var shape_tags = ['arrow', 'circle', 'line', 'path', 'pathC', 'point', 'polygon', 'text'];
+	var shape_tags = ['circle', 'image', 'line', 'arrow', 'text', 'path', 'point'];
+	var shape_names = firstToUpperCase(shape_tags);
+	//var shape_transform = addC(shape_tags, 's').concat(['pointsAnimate']);
+	var shape_transform = addC(shape_tags, 's').concat(addC(shape_tags, 'sAnimate'));
+	
+	// Create global arrays for shapes
+	for (var i = 0, len = shape_tags.length; i < len; i++){
+		eval(shape_tags[i] + 's = new Array();');
+		eval(shape_tags[i] + 'sAttributes = new Array();');
+		eval(shape_tags[i] + 'sAnimate = new Array();');
+		eval(shape_tags[i] + 'sAnimateI = [];');
+		eval(shape_tags[i] + 'sAttributesAnimate = new Array();');
+		eval('var ' + shape_tags[i] + 's_animate;');
+	}
+	
+	pathCs = new Array();
+	pathCsAttributes = new Array();
+	pathCsAttributesAnimate = new Array();
+	
+	ZOrders = new Array();
+	Layers = new Array();
+	
+	var zoom = 280;
+	var maxzoom = -200;
+	var frame_adv = 1;
+	var eyez = 300;
+	var depth = Math.floor(zoom * (eyez - maxzoom) / 100 + eyez);
+	
+	var shape_properties = [
+		'x', 'y', 'z', 
+		'x1', 'y1', 'z1', 'x2', 'y2', 'z2', 
+		'cx', 'cy', 'cz',
+		'l', 'a', 'h', 'w'
+	];
+	
+	var attribute_properties = [
+		'r', 'fill', 'stroke', 'fill_opacity', 'stroke_opacity', 'opacity', 'stroke_width', 
+		'z_index', 'text_anchor', 'font_size', 'font_family', 'font_style', 
+		'font_weight', 'letter_spacing', 'writing_mode', 'glyph_orientation_vertical', 
+		'src', 'preserveAspectRatio'
+	];
+	
+	var properties = shape_properties.concat(attribute_properties);
+	var opacity_types = ['opacity', 'stroke_opacity', 'fill_opacity'];
+	var rotate_mode = true;
+	
+	var animation_length = 0;
+	var frame_width = 10;
+	var object_name = 'shape_viewer_3d';
+	var max_arrowhead_size = 15;
+	
+	view_box = new Array();
+	window_properties = new Array();
+	
+	var set_key_event_calls = 0;
+	
+	var anim_n = 0;
+	var arrow_angle = 25;
+	var currentEvent = "nothing";
+	var globalkeypress = '';
+	var IE = document.all ? true : false
+	var initiate = 0;
+	var zoom_speed = 5;
+	var sort_shapes = 0;
+	var stop_anim = 0;
+	var svgns = "http://www.w3.org/2000/svg";
+	var tempX = 0;
+	var tempY = 0;
+	var mousedown = 0;
+	var control_panel_visible = true;
+	
+	var point_color_r = 100;
+	var point_color_g = 0;
+	var point_color_b = 0;
+	var point_opacity = 0.5;
+	var point_radius = 4;
+	
+	var line_color_r = 0;
+	var line_color_g = 0;
+	var line_color_b = 0;
+	var line_width = 1;
+	var line_opacity = 1;
+	
+	var prevX, prevY;
+	var ajax_output;
+	
+	test_array = new Array();
+	
+	zindex = new Array();
+	points_i_to_k = new Array();
+	RefPoints = new Array();
+	Shapes = new Array();
+	Textlinks = new Array();
+	
+	AnimatePoints = new Array();
+	AnimateArrows = new Array();
+	AnimateLines = new Array();
+	
+	Translate = new Array();
+	Rotate = new Array();
+	
+	function animateShapes(anim_frame){
+	
+		var i, j, k, len, len_i, len_j;
+		var shape;
+		var anim_n_i = anim_n;
+	
+		// If animation frame is undefined
+		if(anim_frame == undefined){
+	
+			// If no animation reverse, reset frame number to zero at end
+			if(!animation_reverse){
+				if(anim_n >= animation_length || anim_n <= 0){
+					anim_n = 0;
+					frame_adv = 1;
+				}
+			}
+	
+			// If animation reverse is true reverse direction of frame count
+			if(animation_reverse){
+				if(anim_n <= 0) frame_adv = 1
+				if(anim_n >= animation_length){
+					anim_n = animation_length-1;
+					frame_adv = -1;
+				}
+			}
+		
+			// INCREASE ANIMATION REPEAT COUNT
+			if(anim_n < anim_n_i) animation_count++
+	
+		}else{
+	
+			// Check that frame number is greater than zero
+			if(anim_frame < 0) var anim_frame = 0;
+	
+			// Check that frame number does not exceed animation length
+			if(anim_frame >= animation_length) var anim_frame = animation_length-1;
+			
+			anim_n = anim_frame;
+		}
+	
+		// IF MAXIMUM NUMBER OF REPEATS IS REACHED, STOP ANIMATION
+		if(animation_repeat > -1 && animation_count > animation_repeat){
+			clearInterval(intervalID);
+			return;
+		}
+	
+		// alert('Frame number: ' + anim_n + '\n' + 'Number of repeats: ' + animation_count)
+	
+		// ANIMATE SHAPES
+		if(circles_animate){
+			for(i = 0, len = circlesAnimate.length;i < len; i++){
+				circles[circlesAnimateI[i]].x = circlesAnimate[i].x[anim_n];
+				circles[circlesAnimateI[i]].y = circlesAnimate[i].y[anim_n];
+				circles[circlesAnimateI[i]].z = circlesAnimate[i].z[anim_n];
+				circles[circlesAnimateI[i]].r = circlesAnimate[i].r[anim_n];
+			}
+		}
+	
+		if(images_animate){
+			for(i = 0, len = imagesAnimate.length;i < len; i++){
+				images[imagesAnimateI[i]].x1 = imagesAnimate[i].x1[anim_n];
+				images[imagesAnimateI[i]].y1 = imagesAnimate[i].y1[anim_n];
+				images[imagesAnimateI[i]].z1 = imagesAnimate[i].z1[anim_n];
+				images[imagesAnimateI[i]].x2 = imagesAnimate[i].x2[anim_n];
+				images[imagesAnimateI[i]].y2 = imagesAnimate[i].y2[anim_n];
+				images[imagesAnimateI[i]].z2 = imagesAnimate[i].z2[anim_n];
+			}
+		}
+	
+		if(lines_animate){
+			for(i = 0, len = linesAnimate.length;i < len; i++){
+				lines[linesAnimateI[i]].x1 = linesAnimate[i].x1[anim_n];
+				lines[linesAnimateI[i]].y1 = linesAnimate[i].y1[anim_n];
+				lines[linesAnimateI[i]].z1 = linesAnimate[i].z1[anim_n];
+				lines[linesAnimateI[i]].x2 = linesAnimate[i].x2[anim_n];
+				lines[linesAnimateI[i]].y2 = linesAnimate[i].y2[anim_n];
+				lines[linesAnimateI[i]].z2 = linesAnimate[i].z2[anim_n];
+			}
+		}
+	
+		if(arrows_animate){
+			for(i = 0, len = arrowsAnimate.length;i < len; i++){
+				arrows[arrowsAnimateI[i]].x1 = arrowsAnimate[i].x1[anim_n];
+				arrows[arrowsAnimateI[i]].y1 = arrowsAnimate[i].y1[anim_n];
+				arrows[arrowsAnimateI[i]].z1 = arrowsAnimate[i].z1[anim_n];
+				arrows[arrowsAnimateI[i]].x2 = arrowsAnimate[i].x2[anim_n];
+				arrows[arrowsAnimateI[i]].y2 = arrowsAnimate[i].y2[anim_n];
+				arrows[arrowsAnimateI[i]].z2 = arrowsAnimate[i].z2[anim_n];
+			}
+		}
+	
+		if(points_animate){
+			for(i = 0, len = pointsAnimate.length;i < len; i++){
+				points[pointsAnimateI[i]].x = pointsAnimate[i].x[anim_n];
+				points[pointsAnimateI[i]].y = pointsAnimate[i].y[anim_n];
+				points[pointsAnimateI[i]].z = pointsAnimate[i].z[anim_n];
+			}
+		}
+	
+		if(texts_animate){
+			for(i = 0, len = textsAnimate.length;i < len; i++){
+				texts[textsAnimateI[i]].x = textsAnimate[i].x[anim_n];
+				texts[textsAnimateI[i]].y = textsAnimate[i].y[anim_n];
+				texts[textsAnimateI[i]].z = textsAnimate[i].z[anim_n];
+				texts[textsAnimateI[i]].s = textsAnimate[i].s[anim_n];
+			}
+		}
+	
+		// ANIMATE ATTRIBUTES
+	
+		if(circles_attributes_animate){
+	
+			for(i = 0, len_i = circlesAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(circlesAttributesAnimate[i][attribute_properties[j]] == null) continue
+					if(attribute_properties[j] == 'r') continue // 'r' is saved in 'circles'
+	
+					circlesAttributes[circlesAttributesAnimate[i].i][attribute_properties[j]] = 
+						circlesAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('circle' + circlesAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(circlesAttributes[circlesAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(images_attributes_animate){
+	
+			for(i = 0, len_i = imagesAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(imagesAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					imagesAttributes[imagesAttributesAnimate[i].i][attribute_properties[j]] = 
+						imagesAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('image' + imagesAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(imagesAttributes[imagesAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(lines_attributes_animate){
+	
+			for(i = 0, len_i = linesAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(linesAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					linesAttributes[linesAttributesAnimate[i].i][attribute_properties[j]] = 
+						linesAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('line' + linesAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(linesAttributes[linesAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(arrows_attributes_animate){
+	
+			for(i = 0, len_i = arrowsAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(arrowsAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					arrowsAttributes[arrowsAttributesAnimate[i].i][attribute_properties[j]] = 
+						arrowsAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('arrow' + arrowsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(arrowsAttributes[arrowsAttributesAnimate[i].i]));
+				shape = svgDocument.getElementById('arrowha' + arrowsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(arrowsAttributes[arrowsAttributesAnimate[i].i]));
+				shape = svgDocument.getElementById('arrowhb' + arrowsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(arrowsAttributes[arrowsAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(points_attributes_animate){
+	
+			for(i = 0, len_i = pointsAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(pointsAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					pointsAttributes[pointsAttributesAnimate[i].i][attribute_properties[j]] = 
+						pointsAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('point' + pointsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(pointsAttributes[pointsAttributesAnimate[i].i]));
+				shape.setAttribute("r", pointsAttributesAnimate[i].r[anim_n]);
+			}
+		}
+	
+		if(texts_attributes_animate){
+	
+			for(i = 0, len_i = textsAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(textsAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					textsAttributes[textsAttributesAnimate[i].i][attribute_properties[j]] = 
+						textsAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('text' + textsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(textsAttributes[textsAttributesAnimate[i].i]));
+			}
+		}
+	
+		// Update animation controls
+		var frame_input =document.getElementById('animation_frame_count_input');
+	
+		// Check that frame controls are present
+		if(frame_input !== null){
+	
+			// Add frame count to animation frame input
+			document.getElementById('animation_frame_count_input').value = (anim_n+1);
+	
+			// Update slider position
+			document.getElementById('animation_frame_range_input').value = Math.round(((anim_n) / (animation_length-1))*100);
+		}
+	
+		anim_n = anim_n + frame_adv;
+		updateShapes();
+	
+		return;
+	}
+	
+	function applyCookies(){
+	
+		var cookies = listCookies();
+	
+		for (i = 0; i < cookies.length; i++) {
+	
+			if(cookies[i].value == undefined) continue;
+	
+			// Call function call cookies using eval
+			if(cookies[i].value == 'eval') eval(cookies[i].name);
+		}
+	}
+	
+	function changeLayerOpacity(layer, opacity){
+	
+		var i, j, len, len_j;
+		var match;
+		var shape;
+		var opacity_i, stroke_opacity_i, fill_opacity_i;
+		var animate_idx;
+	
+		for (i = 0, len = Layers.length; i < len; i++) {
+	
+			match = false;
+			
+			if(Layers[i].layer.length == 1){
+				
+				if(Layers[i].layer == layer) match = true;
+	
+			}else{
+				for (j = 0, len_j = Layers[i].layer.length; j < len_j; j++) if(Layers[i].layer[j] == layer) match = true;
+			}
+	
+			if(!match) continue;
+			
+			var opacity_i;
+			var stroke_opacity_i;
+			var fill_opacity_i;
+			var opacity_animate_i;
+			var stroke_opacity_animate_i;
+			var fill_opacity_animate_i;
+	
+			for (j = 0, len_j = opacity_types.length; j < len_j; j++){
+	
+				eval('var is_attribute = ' + Layers[i].type + 'sAttributes[' + Layers[i].i + '].' + opacity_types[j] + ';')
+					
+				if(is_attribute == undefined) continue;
+	
+				eval(Layers[i].type + 'sAttributes[' + Layers[i].i + '].' + opacity_types[j] + ' = ' + opacity + ';');
+				var shape = svgDocument.getElementById(Layers[i].type + Layers[i].i);
+				eval('shape.setAttribute("style", attributesToString(' + Layers[i].type + 'sAttributes[' + Layers[i].i + ']));');
+	
+				if(Layers[i].type == 'arrow'){
+					var shape = svgDocument.getElementById(Layers[i].type + 'ha' + Layers[i].i);
+					eval('shape.setAttribute("style", attributesToString(' + Layers[i].type + 'sAttributes[' + Layers[i].i + ']));');
+	
+					var shape = svgDocument.getElementById(Layers[i].type + 'hb' + Layers[i].i);
+					eval('shape.setAttribute("style", attributesToString(' + Layers[i].type + 'sAttributes[' + Layers[i].i + ']));');
+				}
+			}
+			
+			if(Layers[i].type !== 'path'){
+				
+				eval('animate_idx = ' + Layers[i].type + 'sAttributes[' + Layers[i].i + '].animate');
+	
+				if(animate_idx !== null){
+	
+					for (j = 0, len_j = opacity_types.length; j < len_j; j++){
+	
+						eval(opacity_types[j] + '_i = ' + Layers[i].type + 'sAttributesAnimate[' + animate_idx 
+							+ '].' + opacity_types[j] + ';')
+	
+						eval('if(' + opacity_types[j] + '_i !== undefined && ' + opacity_types[j] + 
+							'_i !== null){' + Layers[i].type + 'sAttributesAnimate[' + animate_idx 
+							+ '].' + opacity_types[j] + ' = null;}');
+					}
+				}
+			}
+		}
+	}
+	
+	function fitShapesToWindow(){
+	
+		var i;
+		var len;
+		var shape_limits;
+		var xmin = [], xmax = [], ymin = [], ymax = [], zmin = [], zmax = [];
+	
+		// Get coordinate limits in space
+		for (i = 0, len = shape_transform.length; i < len; i++){
+	
+			// Get limits for each shape
+			eval('shape_limits = limits(' + shape_transform[i] + ');');
+	
+			if(shape_limits.xmin == undefined) continue;
+			if(shape_limits.xmin == -Infinity) continue;
+			if(isNaN(shape_limits.xmin)) continue;
+	
+			// Add limits to array
+			xmin.push(shape_limits.xmin);
+			xmax.push(shape_limits.xmax);
+			ymin.push(shape_limits.ymin);
+			ymax.push(shape_limits.ymax);
+			zmin.push(shape_limits.zmin);
+			zmax.push(shape_limits.zmax);
+		}
+	
+		// Remove NaN and Infinity values
+		xmin = clean(xmin, NaN);
+		xmin = clean(xmin, Infinity);
+		xmax = clean(xmax, NaN);
+		xmax = clean(xmax, Infinity);
+		ymin = clean(ymin, NaN);
+		ymin = clean(ymin, Infinity);
+		ymax = clean(ymax, NaN);
+		ymax = clean(ymax, Infinity);
+		zmin = clean(zmin, NaN);
+		zmin = clean(zmin, Infinity);
+		zmax = clean(zmax, NaN);
+		zmax = clean(zmax, Infinity);
+	
+		// Find ranges for all shapes
+		xmin = min.apply(Math, xmin);
+		ymin = min.apply(Math, ymin);
+		zmin = min.apply(Math, zmin);
+	
+		// Find ranges for all shapes
+		xmax = max.apply(Math, xmax);
+		ymax = max.apply(Math, ymax);
+		zmax = max.apply(Math, zmax);
+	
+		// Find ranges
+		var x_range = xmax - xmin;
+		var y_range = ymax - ymin;
+		var z_range = zmax - zmin;
+	
+		// Replace any zero x,y ranges with maximum range
+		var max_range = max.apply(Math, [x_range, y_range, z_range]);
+		if(x_range == 0) x_range = max_range;
+		if(y_range == 0) y_range = max_range;
+	
+		// If all ranges are zero, make scaling 1
+		if(x_range == 0 && y_range == 0 && z_range == 0){
+	
+			scaling = 1;
+	
+		}else{
+	
+			// Get window dimensions
+			if(z_range == 0){
+				var view_width = getWindowWidth() - 5*margin;
+				var view_height = getWindowHeight() - 5*margin;
+			}else{
+				var view_width = getWindowWidth() - 2*margin;
+				var view_height = getWindowHeight() - 2*margin;
+			}
+	
+			// Find projection factor
+			var u = -(depth - eyez) / ((z_range / 2) - eyez);
+			var u2 = -(depth - eyez) / ((-z_range / 2) - eyez);
+	
+			// Solve for scaling from each dimension
+			var scaling_x = 1 / ((((x_range / 2) * (depth - eyez)) / (eyez * ((getWindowWidth() - margin) - x_window_shift))) + ((z_range / 2) / eyez));
+			var scaling_y = 1 / ((((y_range / 2) * (depth - eyez)) / (eyez * ((getWindowHeight() - margin) - y_window_shift))) + ((z_range / 2) / eyez));
+	
+			// Take minimum scaling
+			scaling = Math.min(scaling_x, scaling_y)
+		}
+		
+		//alert('Ranges:\nx:\t' + xmin + ', ' + xmax + ' (' + x_range + ')\ny:\t' + ymin + ', ' + ymax + ' (' + y_range + ')\nz:\t' + zmin + ', ' + zmax + ' (' + z_range + ')');
+		
+		// Find center
+		var center = [(xmin + x_range/2), (ymin + y_range/2), (zmin + z_range/2)];
+	
+		// Center all shapes
+		for (i = 0, len = shape_transform.length; i < len; i++) eval('translate(' + shape_transform[i] + ', ' + -center[0] + ', ' + -center[1] + ', ' + -center[2] + ')');
+	
+		// Scale all shapes
+		for (i = 0, len = shape_transform.length; i < len; i++) eval('scale(' + shape_transform[i] + ', ' + scaling + ')');
+	
+		return;
+	}
+	
+	function getMouseMoveXY(e){
+	
+		if(initiate == 0){
+			prevX = initialX;
+			prevY = initialY;
+		}
+		initiate = 1;
+	
+		if(IE){
+			tempX = e.clientX + document.body.scrollLeft;
+			tempY = e.clientY + document.body.scrollTop;
+		}else{
+			tempX = e.pageX;
+			tempY = e.pageY;
+		}  
+	
+		if (tempX < 0){tempX = 0;}
+		if (tempY < 0){tempY = 0;}  
+	
+		if(mousedown == 1 && globalkeypress == ''){
+	
+			distX = tempX - prevX;
+			distY = prevY - tempY;
+			
+			if(distX !== 0){setKeyEvent("translateX", distX/4.667);}  // manually calibrated
+			if(distY !== 0){setKeyEvent("translateY", distY/4.667);}
+		}
+		if(mousedown == 1 && (globalkeypress == 'r' || rotate_mode == true)){
+			distX = tempX - prevX;
+			distY = prevY - tempY;
+			
+			if(distX !== 0){setKeyEvent("rotateYaxis", -distX);}
+			if(distY !== 0){setKeyEvent("rotateXaxis", distY);}
+		}
+	
+		prevX = tempX
+		prevY = tempY
+	
+		return false;
+	}
+	
+	function get_transformations(){
+	
+		if(document.getElementsByTagName("transformation").length){
+			for(i = 0;i < document.getElementsByTagName("transformation").length;i++){
+	
+				var svg_elem = document.getElementsByTagName("transformation")[i];
+	
+				// SET TRANSLATE ARRAY
+				if(svg_elem.getAttribute("translate") !== null) Translate = Translate.concat(string_to_array_cs(svg_elem.getAttribute("translate")))
+	
+				// SET ROTATE ARRAY
+				if(svg_elem.getAttribute("rotate") !== null) Rotate = Rotate.concat(string_to_array_cs(svg_elem.getAttribute("rotate")))
+			}
+		}
+	}
+	
+	function getShapes(){
+	
+		var i, j, k;
+		var len_j, len_k;
+		var shape_tag;
+		var doc_shapes;
+		var doc_shapes_len;
+		var property_name;
+		var attributes_animate;
+	
+		// ADD LINESC TO SHAPES FOR LOCAL USE ONLY
+		var shape_tags_loc = shape_tags.slice();
+		shape_tags_loc.push('pathC');
+	
+		for(i = 0; i < shape_tags_loc.length; i++){
+		
+			shape_tag = shape_tags_loc[i];
+			if(shape_tag == 'image') shape_tag = 'img';
+			
+			doc_shapes = document.getElementsByTagName(shape_tag)
+	
+			if(!doc_shapes.length) continue;
+	
+			for(j = 0, len_j = doc_shapes.length;j < len_j; j++){
+	
+				// Clear property variables
+				for(k = 0, len_k = properties.length;k < len_k; k++)
+					eval("var " + properties[k] + " = null;var " + properties[k] + "_init = null;");
+	
+				// SET SHAPE PROPERTIES
+				for(k = 0, len_k = shape_properties.length;k < len_k; k++){
+	
+					property_name = shape_properties[k].replace(/_/g, '-')
+	
+					if(doc_shapes[j].getAttribute(property_name) == null) continue;
+					
+					if(doc_shapes[j].getAttribute(property_name).indexOf(',') > -1){
+						eval(shape_properties[k] + " = doc_shapes[j].getAttribute(\"" + property_name + "\").split(\",\");");
+						eval("animation_length = " + shape_properties[k] + ".length;");
+						eval(shape_properties[k] + "_init = " + shape_properties[k] + "[0]");
+					}else{
+						eval(shape_properties[k] + "_init = doc_shapes[j].getAttribute(\"" + property_name + "\");");
+						eval(shape_properties[k] + " = null");
+					}
+				}
+	
+				// Set attribute properties
+				attributes_animate = false;
+				for(k = 0, len_k = attribute_properties.length;k < len_k; k++){
+	
+					property_name = attribute_properties[k].replace(/_/g, '-')
+	
+					if(doc_shapes[j].getAttribute(property_name) == null) continue;
+	
+					if(doc_shapes[j].getAttribute(property_name).indexOf(',') > -1 && doc_shapes[j].getAttribute(property_name).indexOf('rgb') == -1 && property_name !== 'src'){
+						eval(attribute_properties[k] + " = doc_shapes[j].getAttribute(\"" + property_name + "\").split(\",\");");
+						eval("animation_length = " + attribute_properties[k] + ".length;");
+						eval(attribute_properties[k] + "_init = " + attribute_properties[k] + "[0]");
+						attributes_animate = true;
+					}else{
+						eval(attribute_properties[k] + "_init = doc_shapes[j].getAttribute(\"" + property_name + "\");");
+						eval(attribute_properties[k] + " = null");
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'circle'){
+	
+					circles[j] = new circle(parseFloat(cx_init), parseFloat(cy_init), parseFloat(cz_init), parseFloat(r_init));
+	
+					// Multiple center coordinates given but only single radius, replicate to same length
+					if(cx !== null && r == null){
+						r = Array.apply(null, new Array(cx.length)).map(String.prototype.valueOf, r_init);
+					}
+	
+					// Multiple radii given but only single center coordinate, replicate to same length
+					if(cx == null && r !== null){
+						cx = Array.apply(null, new Array(r.length)).map(String.prototype.valueOf, cx_init);
+						cy = Array.apply(null, new Array(r.length)).map(String.prototype.valueOf, cy_init);
+						cz = Array.apply(null, new Array(r.length)).map(String.prototype.valueOf, cz_init);
+					}
+	
+					if(cx !== null){
+						circlesAnimate[circlesAnimate.length] = new circleAnimate(
+							cx.map(parseFloat), cy.map(parseFloat), cz.map(parseFloat), r.map(parseFloat)
+						);
+						circlesAnimateI.push(j);
+					}
+	
+					circlesAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : circlesAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						circlesAttributesAnimate[circlesAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'image'){
+	
+					images[j] = new line(
+						parseFloat(x1_init), parseFloat(y1_init), parseFloat(z1_init), 
+						parseFloat(x2_init), parseFloat(y2_init), parseFloat(z2_init));
+	
+					if(x1 !== null){
+						imagesAnimate[imagesAnimate.length] = new lineAnimate(
+							x1.map(parseFloat), y1.map(parseFloat), z1.map(parseFloat), 
+							x2.map(parseFloat), y2.map(parseFloat), z2.map(parseFloat)
+						);
+						imagesAnimateI.push(j);
+					}
+	
+					imagesAttributes[j] = new imageAttributes(
+						(!src_init ? 0 : src_init),
+						(!preserveAspectRatio_init ? 'none' : preserveAspectRatio_init),
+						(!opacity_init ? 1 : opacity_init),
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : imagesAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						imagesAttributesAnimate[imagesAttributesAnimate.length] = 
+							new imageAttributesAnimate(j, src, preserveAspectRatio, opacity, z_index);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'arrow'){
+	
+					arrows[j] = new arrow(
+						parseFloat(x1_init), parseFloat(y1_init), parseFloat(z1_init), 
+						parseFloat(x2_init), parseFloat(y2_init), parseFloat(z2_init),
+						parseFloat(l_init), parseFloat(a_init));
+	
+					if(x1 !== null){
+						arrowsAnimate[arrowsAnimate.length] = new arrowAnimate(
+							x1.map(parseFloat), y1.map(parseFloat), z1.map(parseFloat), 
+							x2.map(parseFloat), y2.map(parseFloat), z2.map(parseFloat),
+							parseFloat(l_init), parseFloat(a_init)
+						);
+						arrowsAnimateI.push(j);
+					}
+	
+					arrowsAttributes[j] = new shapeAttributes(
+						"none",
+						"none",
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : arrowsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						arrowsAttributesAnimate[arrowsAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'line'){
+	
+					lines[j] = new line(
+						parseFloat(x1_init), parseFloat(y1_init), parseFloat(z1_init), 
+						parseFloat(x2_init), parseFloat(y2_init), parseFloat(z2_init));
+	
+					if(x1 !== null){
+						linesAnimate[linesAnimate.length] = new lineAnimate(
+							x1.map(parseFloat), y1.map(parseFloat), z1.map(parseFloat), 
+							x2.map(parseFloat), y2.map(parseFloat), z2.map(parseFloat)
+						);
+						linesAnimateI.push(j);
+					}
+	
+					linesAttributes[j] = new shapeAttributes(
+						"none",
+						"none",
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : linesAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						linesAttributesAnimate[linesAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'pathC'){
+					
+					pathCs[j] = doc_shapes[j].getAttribute("d").split(",");
+	
+					pathCsAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : pathCsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						pathCsAttributesAnimate[pathCsAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'path'){
+	
+					paths[j] = parseSVGPath(doc_shapes[j].getAttribute("d"))
+	
+					pathsAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						null
+					);
+				}
+	
+				if(shape_tags_loc[i] == 'point'){
+	
+					if(x !== null){
+						pointsAnimate[pointsAnimate.length] = new pointAnimate(x.map(parseFloat), y.map(parseFloat), z.map(parseFloat));
+						pointsAnimateI.push(j);
+					}
+	
+					points[j] = new point(parseFloat(x_init), parseFloat(y_init), parseFloat(z_init));
+	
+					pointsAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						(!r_init ? 1 : r_init),
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : pointsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						pointsAttributesAnimate[pointsAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'text'){
+	
+					// Multiple coordinates given but only single font size, replicate to same length
+					if(x !== null && font_size == null){
+						font_size = Array.apply(null, new Array(x.length)).map(String.prototype.valueOf, font_size_init);
+					}
+	
+					// Multiple font sizes given but only single coordinate, replicate to same length
+					if(x == null && font_size !== null){
+						x = Array.apply(null, new Array(font_size.length)).map(String.prototype.valueOf, x_init);
+						y = Array.apply(null, new Array(font_size.length)).map(String.prototype.valueOf, y_init);
+						z = Array.apply(null, new Array(font_size.length)).map(String.prototype.valueOf, z_init);
+					}
+	
+					if(x !== null){
+						textsAnimate[textsAnimate.length] = new textAnimate(x.map(parseFloat), y.map(parseFloat), z.map(parseFloat), font_size.map(parseFloat));
+						textsAnimateI.push(j);
+					}
+	
+					texts[j] = new text(parseFloat(x_init), parseFloat(y_init), parseFloat(z_init), (!font_size_init ? 12 : font_size_init));
+	
+					textsAttributes[j] = new textAttributes(
+						doc_shapes[j].childNodes[0].nodeValue,
+						(!text_anchor_init ? "middle" : text_anchor_init),
+						(!fill_init ? "black" : fill_init),
+						(!opacity_init ? 1 : opacity_init),
+						(!font_family_init ? "Arial" : font_family_init),
+						(!font_style_init ? "" : font_style_init),
+						(!font_weight_init ? "" : font_weight_init),
+						(!letter_spacing_init ? 0 : letter_spacing_init),
+						(!writing_mode_init ? "" : writing_mode_init),
+						(!glyph_orientation_vertical_init ? "" : glyph_orientation_vertical_init),
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : textsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						textsAttributesAnimate[textsAttributesAnimate.length] = 
+							new textAttributesAnimate(j, text_anchor, fill, 
+							opacity, font_family, font_style, font_weight, letter_spacing, 
+							writing_mode, glyph_orientation_vertical, z_index);
+					}
+				}
+	
+				ZOrders.push(new ZOrder( (!z_index_init ? 0 : z_index_init), j, shape_tags_loc[i] ));
+	
+				if(doc_shapes[j].getAttribute("layer") !== null)
+					Layers.push(new Layer(doc_shapes[j].getAttribute("layer").split(","), j, shape_tags_loc[i]));
+			}
+		}
+	
+		// SET REFERENCE POINTS
+		RefPoints = new Array(0,0,0)
+	}
+	
+	function onLoadFunctions(evt){
+	
+		svgns = "http://www.w3.org/2000/svg";
+		XLINK = "http://www.w3.org/1999/xlink";
+	
+		svgDocument = document.getElementById("world");
+	
+		window.onresize = function(event) {
+			onWindowResize();
+			updateShapes();
+		}
+	
+		if(BrowserDetect.browser == "Firefox"){
+			svgDocument.style.width = getWindowWidth() + "px";
+			svgDocument.style.height = getWindowHeight() + "px";
+		}
+	
+		document.getElementById('keydown').focus();
+		document.getElementById('keydown').onclick = setEvents;
+		document.getElementById('keydown').onclick();
+		document.onkeyup = detectKeyUp;
+	//	document.onmousemove = getMouseMoveXY;
+	//	document.onmousedown = mouseDownEvent;
+	//	document.onmouseup = mouseUpEvent;
+	
+		svgDocument.onmousemove = getMouseMoveXY;
+		svgDocument.onmousedown = mouseDownEvent;
+		svgDocument.onmouseup = mouseUpEvent;
+	
+		svgDocument.onkeyup = detectKeyUp;
+		svgDocument.onkeydown = detectKeyDown;
+		if(window.addEventListener){svgDocument.addEventListener('DOMMouseScroll', scrollEvent, false);}
+		svgDocument.onmousewheel = scrollEvent;
+	
+		setViewboxProperties();
+		getShapes();
+		get_transformations();
+		setAnimationParameters();
+	
+		// Apply default show/hide control panel
+		if(show_control_panel){showHideControlPanel("show", false);}else{showHideControlPanel("hide", false);}
+		if(start_rotate){toggle_rotate_mode("rotate", false);}else{toggle_rotate_mode("translate", false);}
+	
+		// Set background color
+		svgDocument.style.backgroundColor = background_color;
+	
+		renderShapes();
+		fitShapesToWindow();
+		updateShapes();
+		applyCookies();
+		writeControlIcon();
+	
+		if(animation_length > 1) startAnimation();
+		
+		//changeLayerOpacity('Joint constraints', 0.2);
+	
+		// Clear all cookies
+		//var cookies = listCookies();for (var i = 0; i < cookies.length; i++) deleteCookie(cookies[i].name);
+	}
+	
+	function onWindowResize(){
+	
+		if(BrowserDetect.browser == "Firefox"){
+			svgDocument.style.width = getWindowWidth() + "px";
+			svgDocument.style.height = getWindowHeight() + "px";
+		}
+	
+		setViewboxProperties();
+		fitShapesToWindow();
+	}
+	
+	function playPauseAnimation(state){
+	
+		// If state is undefined, reverse current state
+		if(state == undefined){
+			if(stop_anim == 1){stop_anim = 0;}else{stop_anim = 1;}
+		}else{
+			if(state == 'stop'){stop_anim = 1;}else{stop_anim = 0;}
+		}
+	
+		var control_play = document.getElementById('control_play');
+		var control_icon_play = document.getElementById('control_icon_play');
+	
+		if(stop_anim == 1){
+			// Pause animation
+			clearInterval(intervalID);
+			
+			if(control_play == null) return;
+	
+			// Set play/pause icon to play
+			control_play.title = 'Click to play animation or press the spacebar';
+			control_play.style.padding = '0px 2px 0px 3px';
+			control_icon_play.innerHTML = '&#9654;';
+			control_icon_play.style.fontSize = '1.2em';
+			control_icon_play.style.lineHeight = '23px';
+			control_icon_play.style.letterSpacing = '-1px';
+		}else{
+			// Play animation
+			startAnimation();
+	
+			if(control_play == null) return;
+	
+			// Set play/pause icon to pause
+			control_play.title = 'Click to pause animation or press the spacebar';
+			control_play.style.padding = '0px 0px 0px 5px';
+			control_icon_play.innerHTML = '&#9612; &#9612;';
+			control_icon_play.style.fontSize = '0.8em';
+			control_icon_play.style.lineHeight = '19px';
+			control_icon_play.style.letterSpacing = '-1px';
+		}
+	}
+	
+	function renderShapes(){ 	 	
+	
+		var i;
+		var idx;
+		var len;
+		var shape;
+		var svg_shape_type;
+	
+		// Sort by Z-Order
+		ZOrders.sort(function(a,b){return a.z - b.z})
+	
+		// Add shapes to SVG document
+		for (i = 0, len = ZOrders.length; i < len; i++) {
+	
+			idx = ZOrders[i].i;
+	
+			svg_shape_type = ZOrders[i].type;
+			if(svg_shape_type == 'point') svg_shape_type = 'circle';
+			if(svg_shape_type == 'pathC') svg_shape_type = 'path';
+			if(svg_shape_type == 'arrow') svg_shape_type = 'line';
+	
+			shape = document.createElementNS(svgns, svg_shape_type);
+			shape.setAttribute("id", ZOrders[i].type + idx);
+	
+			eval('shape.setAttribute("style", attributesToString(' + ZOrders[i].type + 'sAttributes[' + idx + ']))');
+	
+			if(ZOrders[i].type == 'image'){
+				shape.setAttributeNS('http://www.w3.org/1999/xlink', 'href', imagesAttributes[idx].src);
+				shape.setAttribute("preserveAspectRatio", imagesAttributes[idx].preserveAspectRatio);
+			}
+	
+			if(ZOrders[i].type == 'text'){
+				var textBlock = document.createTextNode(textsAttributes[idx].text);
+				shape.appendChild(textBlock);
+			}
+	
+			if(ZOrders[i].type == 'point') shape.setAttribute("r", pointsAttributes[idx].r);
+	
+			svgDocument.appendChild(shape);
+	
+			if(ZOrders[i].type == 'arrow'){
+				shape = document.createElementNS(svgns, svg_shape_type);
+				shape.setAttribute("id", ZOrders[i].type + 'ha' + idx);
+				eval('shape.setAttribute("style", attributesToString(' + ZOrders[i].type + 'sAttributes[' + idx + ']))');
+				svgDocument.appendChild(shape);
+				shape = document.createElementNS(svgns, svg_shape_type);
+				shape.setAttribute("id", ZOrders[i].type + 'hb' + idx);
+				eval('shape.setAttribute("style", attributesToString(' + ZOrders[i].type + 'sAttributes[' + idx + ']))');
+				svgDocument.appendChild(shape);
+			}
+		}
+	
+		return;
+	}
+	
+	function setAnimationParameters(){
+	
+		var i, len;
+		var property_length;
+	
+		for (i = 0, len = shape_tags.length; i < len; i++){
+	
+			property_length = 'x';
+	
+			if(shape_tags[i] == 'line' || shape_tags[i] == 'arrow') property_length = 'x1';
+	
+			eval('if(' + shape_tags[i] + 'sAnimate.length){' + shape_tags[i] + 's_animate = true;' + 
+				'}else{' + shape_tags[i] + 's_animate = false;}');
+		}
+	
+		// TEST WHETHER TO ANIMATE SHAPE ATTRIBUTES
+		for (i = 0, len = shape_tags.length; i < len; i++){
+	
+			eval('if(' + shape_tags[i] + 'sAttributesAnimate.length){' + shape_tags[i] + 's_attributes_animate = true;' + 
+				'}else{' + shape_tags[i] + 's_attributes_animate = false;}');
+		}
+	
+		if(document.getElementById('animation_frame_count_input') == null) return;
+	
+		// If there is no animation, hide animation controls
+		if(animation_length == 0){
+			document.getElementById('control_animation_container').style.display = 'none';
+			return;
+		}
+	
+		// Update animation control max
+		document.getElementById('animation_frame_count_input').max = animation_length;
+	
+		// Update animation duration
+		document.getElementById('animation_duration_input').value = animation_duration;
+		
+		// Set animation reverse setting
+		document.getElementById('animation_reverse_checkbox').checked = animation_reverse;
+	}
+	
+	function startAnimation(){
+		intervalID = setInterval(animateShapes, Math.round((animation_duration*1000) / animation_length));
+	}
+	
+	function svg_path_string_to_array(string){
+	
+		var i, j, a;
+		var s = "";
+		
+		// SPLIT PATH BY LETTERS, NUMBERS, SPACES OR COMMAS
+		// TO ADD!!: Z AT THE END OF THE PATH
+		m_arr = new Array();
+		for(i=0;i < string.length;i++){
+			a = string.substring(i, i+1);
+	
+			if(is_numeric(a) == is_numeric(s)) s += a
+			if(a == " " || a == ","){
+				m_arr[m_arr.length] = trim(s.toUpperCase());
+				s = "";
+			}
+			if(is_numeric(a) !== is_numeric(s)){
+				if(s.length) m_arr[m_arr.length] = trim(s.toUpperCase())
+				s = a;
+			}
+		}
+		m_arr[m_arr.length] = trim(s.toUpperCase());
+	
+		r_arr = new Array();
+		if(is_numeric(m_arr[3])){
+			for(j = 0, k = 0;j < m_arr.length;j = j + 4, k++){
+				r_arr[k] = new Array();
+				r_arr[k][0] = m_arr[j];
+				r_arr[k][1] = parseFloat(m_arr[j+1]);
+				r_arr[k][2] = parseFloat(m_arr[j+2]);
+				r_arr[k][3] = parseFloat(m_arr[j+3]);
+			}
+		}else{
+			if(m_arr[3] == "Q"){
+	
+				r_arr[0] = new Array();
+				r_arr[0][0] = m_arr[0];
+				r_arr[0][1] = parseFloat(m_arr[1]);
+				r_arr[0][2] = parseFloat(m_arr[2]);
+				for(j = 4, k = 1;j < m_arr.length;j = j + 2, k++){
+					r_arr[k] = new Array();
+					r_arr[k][0] = "";
+					r_arr[k][1] = parseFloat(m_arr[j]);
+					r_arr[k][2] = parseFloat(m_arr[j+1]);
+				}
+				r_arr[1][0] = "Q";
+				if(!is_numeric(m_arr[m_arr.length-1])) r_arr[r_arr.length-1][0] = m_arr[m_arr.length-1]			
+			}else{
+				for(j = 0, k = 0;j < m_arr.length;j = j + 3, k++){
+					r_arr[k] = new Array();
+					r_arr[k][0] = m_arr[j];
+					r_arr[k][1] = parseFloat(m_arr[j+1]);
+					r_arr[k][2] = parseFloat(m_arr[j+2]);
+				}
+			}
+		}
+	
+		return r_arr;
+	}
+	
+	function updateShapes(){
+	
+		var i;
+		var len;
+		var shape;
+	
+		var i, j, k, n_i0, n_i1, pathd, u, u1, u2, len;
+		var circle, n_i, type, visibility, vec;
+		var x, y, x1, x2, y1, y2;
+	
+		// Find perspective projections for shapes
+		for (i = 0, len = shape_tags.length; i < len; i++){
+			eval('var ' + shape_tags[i] + 's_proj = project(' + shape_tags[i] + 's, depth, eyez, x_window_shift, y_window_shift);');
+		}
+	
+		for (i = 0, len = circles_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('circle' + i);
+			shape.setAttribute("cx", circles_proj[i].x);
+			shape.setAttribute("cy", circles_proj[i].y);
+			shape.setAttribute("r", circles_proj[i].r);
+		}
+	
+		for (i = 0, len = images_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('image' + i);
+			shape.setAttribute("x", images_proj[i].x1);
+			shape.setAttribute("y", images_proj[i].y1);
+			shape.setAttribute("height", images_proj[i].y2-images_proj[i].y1);
+			shape.setAttribute("width", images_proj[i].x2-images_proj[i].x1);
+		}
+	
+		for (i = 0, len = lines_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('line' + i);
+			shape.setAttribute("x1", lines_proj[i].x1);
+			shape.setAttribute("y1", lines_proj[i].y1);
+			shape.setAttribute("x2", lines_proj[i].x2);
+			shape.setAttribute("y2", lines_proj[i].y2);
+		}
+	
+		for (i = 0, len = arrows_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('arrow' + i);
+			shape.setAttribute("x1", arrows_proj[i].x1);
+			shape.setAttribute("y1", arrows_proj[i].y1);
+			shape.setAttribute("x2", arrows_proj[i].x2);
+			shape.setAttribute("y2", arrows_proj[i].y2);
+	
+			// Arrow head (1st half)
+			var shape = svgDocument.getElementById('arrowha' + i);
+			shape.setAttribute("x1", arrows_proj[i].x2);
+			shape.setAttribute("y1", arrows_proj[i].y2);
+			shape.setAttribute("x2", arrows_proj[i].hax);
+			shape.setAttribute("y2", arrows_proj[i].hay);
+	
+			// Arrow head (2nd half)
+			var shape = svgDocument.getElementById('arrowhb' + i);
+			shape.setAttribute("x1", arrows_proj[i].x2);
+			shape.setAttribute("y1", arrows_proj[i].y2);
+			shape.setAttribute("x2", arrows_proj[i].hbx);
+			shape.setAttribute("y2", arrows_proj[i].hby);
+		}
+	
+		for (i = 0, len = texts_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('text' + i);
+			shape.setAttribute("x", texts_proj[i].x);
+			shape.setAttribute("y", texts_proj[i].y);
+			shape.setAttribute("font-size", 'font-size:' + texts_proj[i].s + 'px');
+			textsAttributes[i].font_size = texts_proj[i].s;
+			shape.setAttribute("style", attributesToString(textsAttributes[i]));
+		}
+	
+		for (i = 0, len = points_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('point' + i);
+			shape.setAttribute("cx", points_proj[i].x);
+			shape.setAttribute("cy", points_proj[i].y);
+			if(isNaN(points_proj[i].x)){shape.setAttribute("visibility", "hidden");}else{shape.setAttribute("visibility", "");}
+		}
+	
+		for (i = 0, len = paths_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('path' + i);
+			shape.setAttribute("d", pathToString(paths_proj[i]));
+		}
+	
+		for (i = 0, len = pathCs.length; i < len; i++) {
+			var shape = svgDocument.getElementById('pathC' + i);
+			shape.setAttribute("d", pointsToPath(points_proj, pathCs[i]));
+		}
+	
+		return;
+	}
+	
+	function zoom_shape(d, mouseX, mouseY){
+		if(d == 0){return;}
+	
+		var zoom_speed_n = zoom_speed;
+		if(BrowserDetect.browser == "Firefox") var zoom_speed_n = zoom_speed*0.5;
+	
+		var d = d/zoom_speed_n;
+	
+		// Scale all shapes
+		for (i = 0, len = shape_transform.length; i < len; i++) eval('scale(' + shape_transform[i] + ', ' + [1 + d] + ')');
+	
+		updateShapes();
+	}
+</script>
+<script type="text/javascript" >
+	//******************************** Shape constructors **********************************//
+	
+	function circle(x, y, z, r) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.r = r;
+	}
+	
+	function circleAnimate(x, y, z, r) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.r = r;
+	}
+	
+	function circleProject(x, y, r) {
+		this.x = x;
+		this.y = y;
+		this.r = r;
+	}
+	
+	function line(x1, y1, z1, x2, y2, z2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+	}
+	
+	function lineAnimate(x1, y1, z1, x2, y2, z2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+	}
+	
+	function lineProject(x1, y1, x2, y2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
+	}
+	
+	function arrow(x1, y1, z1, x2, y2, z2, l, a) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+		this.l = l;
+		this.a = a;
+	}
+	
+	function arrowAnimate(x1, y1, z1, x2, y2, z2, l, a) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+		this.l = l;
+		this.a = a;
+	}
+	
+	function arrowProject(x1, y1, x2, y2, hax, hay, hbx, hby) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.hax = hax;
+		this.hay = hay;
+		this.hbx = hbx;
+		this.hby = hby;
+	}
+	
+	function path(x, y, z, d, close) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.d = d;
+		this.close = close;
+	}
+	
+	function pathProject(x, y, d, close) {
+		this.x = x;
+		this.y = y;
+		this.d = d;
+		this.close = close;
+	}
+	
+	function point(x, y, z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+	
+	function pointAnimate(x, y, z, i) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.i = i;
+	}
+	
+	function pointProject(x, y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	function text(x, y, z, s) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.s = s;
+	}
+	
+	function textAnimate(x, y, z, s, i) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.s = s;
+		this.i = i;
+	}
+	
+	function textProject(x, y, s) {
+		this.x = x;
+		this.y = y;
+		this.s = s;
+	}
+	
+	function ZOrder(z, i, type){
+		this.z = z;
+		this.i = i;
+		this.type = type;
+	}
+	
+	function Layer(layer, i, type){
+		this.layer = layer;
+		this.i = i;
+		this.type = type;
+	}
+	
+	//*************************** Shape attribute constructors *****************************//
+	
+	function imageAttributes(src, preserveAspectRatio, opacity, z_index, animate) {
+		this.src = src;
+		this.preserveAspectRatio = preserveAspectRatio;
+		this.opacity = opacity;
+		this.z_index = z_index;
+		this.animate = animate;
+	}
+	
+	function imageAttributesAnimate(i, src, preserveAspectRatio, opacity, z_index) {
+		this.i = i;
+		this.src = src;
+		this.preserveAspectRatio = preserveAspectRatio;
+		this.opacity = opacity;
+		this.z_index = z_index;
+	}
+	
+	function shapeAttributes(fill, fill_opacity, stroke, stroke_opacity, stroke_width, r, z_index, animate) {
+		this.fill = fill;
+		this.fill_opacity = fill_opacity;
+		this.stroke = stroke;
+		this.stroke_opacity = stroke_opacity;
+		this.stroke_width = stroke_width;
+		this.z_index = z_index;
+		this.r = r;
+		this.animate = animate;
+	}
+	
+	function shapeAttributesAnimate(i, fill, fill_opacity, stroke, stroke_opacity, stroke_width, r, z_index) {
+		this.i = i;
+		this.fill = fill;
+		this.fill_opacity = fill_opacity;
+		this.stroke = stroke;
+		this.stroke_opacity = stroke_opacity;
+		this.stroke_width = stroke_width;
+		this.r = r;
+		this.z_index = z_index;
+	}
+	
+	function textAttributes(text, text_anchor, fill, opacity, font_family, font_style, font_weight, letter_spacing, writing_mode, glyph_orientation_vertical, z_index, animate) {
+		this.text = text;
+		this.text_anchor = text_anchor;
+		this.fill = fill;
+		this.opacity = opacity;
+		this.font_family = font_family;
+		this.font_style = font_style;
+		this.font_weight = font_weight;
+		this.letter_spacing = letter_spacing;
+		this.writing_mode = writing_mode;
+		this.glyph_orientation_vertical = glyph_orientation_vertical;
+		this.z_index = z_index;
+		this.animate = animate;
+	}
+	
+	function textAttributesAnimate(i, text_anchor, fill, opacity, font_family, font_style, font_weight, letter_spacing, writing_mode, glyph_orientation_vertical, z_index) {
+		this.i = i;
+		this.text_anchor = text_anchor;
+		this.fill = fill;
+		this.opacity = opacity;
+		this.font_family = font_family;
+		this.font_style = font_style;
+		this.font_weight = font_weight;
+		this.letter_spacing = letter_spacing;
+		this.writing_mode = writing_mode;
+		this.glyph_orientation_vertical = glyph_orientation_vertical;
+		this.z_index = z_index;
+	}
+	
+	//*********************************** Shape methods ************************************//
+	
+	circle.prototype = {
+	    scale: function (s) {
+			this.x *= s;
+			this.y *= s;
+			this.z *= s;
+			this.r *= s;
+	    },
+	
+	    rotateXaxis: function (t) {rotateX1(this, t);},
+	    rotateYaxis: function (t) {rotateY1(this, t);},
+	    rotateZaxis: function (t) {rotateZ1(this, t);},
+	
+		translateX: function (d) {this.x += d;},
+	    translateY: function (d) {this.y += d;},
+	    translateZ: function (d) {this.z += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x += dx;
+			this.y += dy;
+			this.z += dz;
+	    },
+	
+	    project: function (d, e, xs, ys) {
+			var u = -(d - e) / (this.z - e);
+			return new circleProject((u * this.x) + xs, -(u * this.y) + ys, this.r);
+	    },
+	
+	    limits: function () {return {x:[this.x + this.r, this.x - this.r], y:[this.y + this.r, this.y - this.r], z:[this.z]};}
+	}
+	
+	line.prototype = {
+	    scale: function (s) {
+			this.x1 *= s;
+			this.y1 *= s;
+			this.z1 *= s;
+			this.x2 *= s;
+			this.y2 *= s;
+			this.z2 *= s;
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = (t.cos * this.y1) - (t.sin * this.z1);
+			this.z1 = (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.y2;
+			this.y2 = (t.cos * this.y2) - (t.sin * this.z2);
+			this.z2 = (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) + (t.sin * this.z1);
+			this.z1 = - (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) + (t.sin * this.z2);
+			this.z2 = - (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) - (t.sin * this.y1);
+			this.y1 = (t.sin * tmp) + (t.cos * this.y1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) - (t.sin * this.y2);
+			this.y2 = (t.sin * tmp) + (t.cos * this.y2);
+	    },
+	
+	    translateX: function (d) {this.x1 += d;this.x2 += d;},
+	    translateY: function (d) {this.y1 += d;this.y2 += d;},
+	    translateZ: function (d) {this.z1 += d;this.z2 += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 += dx;
+			this.y1 += dy;
+			this.z1 += dz;
+			this.x2 += dx;
+			this.y2 += dy;
+			this.z2 += dz;
+	    },
+	
+	    project: function (d, e, xs, ys) {
+			var u1 = -(d - e) / (this.z1 - e);
+			var u2 = -(d - e) / (this.z2 - e);
+			return new lineProject((u1 * this.x1) + xs,-(u1 * this.y1) + ys, (u2 * this.x2) + xs, -(u2 * this.y2) + ys);
+	    },
+	
+	    limits: function () {return {x:[this.x1, this.x2], y:[this.y1, this.y2], z:[this.z1, this.z2]}}
+	}
+	
+	arrow.prototype = {
+	    scale: function (s) {
+			this.x1 *= s;
+			this.y1 *= s;
+			this.z1 *= s;
+			this.x2 *= s;
+			this.y2 *= s;
+			this.z2 *= s;
+			this.l *= s;
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = (t.cos * this.y1) - (t.sin * this.z1);
+			this.z1 = (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.y2;
+			this.y2 = (t.cos * this.y2) - (t.sin * this.z2);
+			this.z2 = (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) + (t.sin * this.z1);
+			this.z1 = - (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) + (t.sin * this.z2);
+			this.z2 = - (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) - (t.sin * this.y1);
+			this.y1 = (t.sin * tmp) + (t.cos * this.y1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) - (t.sin * this.y2);
+			this.y2 = (t.sin * tmp) + (t.cos * this.y2);
+	    },
+	
+	    translateX: function (d) {this.x1 += d;this.x2 += d;},
+	    translateY: function (d) {this.y1 += d;this.y2 += d;},
+	    translateZ: function (d) {this.z1 += d;this.z2 += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 += dx;
+			this.y1 += dy;
+			this.z1 += dz;
+			this.x2 += dx;
+			this.y2 += dy;
+			this.z2 += dz;
+	    },
+	
+	    project: function (d, e, xs, ys) {
+	
+			var u1 = -(d - e) / (this.z1 - e);
+			var u2 = -(d - e) / (this.z2 - e);
+			var v21 = [this.x2-this.x1,this.y2-this.y1,this.z2-this.z1];
+			var v12 = [this.x1-this.x2,this.y1-this.y2,this.z1-this.z2];
+			var v12u = uvector(v12);
+			var c_prod1 = uvector(cprod(v21, [0,0,1]));
+			var c_prod2 = uvector(cprod(v21, [c_prod1[0],c_prod1[1],c_prod1[2]]));
+			if(c_prod2[0] == 0 && c_prod2[1] == 0 && c_prod2[2] == 0) c_prod2 = [0,1,0];
+			if(Math.abs(c_prod2[0]) > 0.98) c_prod2 = [0,1,0];
+			var rm1 = tMatrixEP(c_prod2, this.a);
+			var rm2 = tMatrixEP(c_prod2, -this.a);
+	
+			// Adjust arrowhead length so that it is longer when z-component is higher (or else front on view hides most of arrowhead)
+			var ahl = this.l+(Math.pow(Math.abs(v12u[2]),10)/1)*0.6*this.l -(Math.abs(v12u[0]*v12u[1])/0.5)*0.2*this.l
+			
+			var ha = add(multM(multC(v12u, ahl), rm1), [this.x2, this.y2, this.z2]);
+			var hb = add(multM(multC(v12u, ahl), rm2), [this.x2, this.y2, this.z2]);
+			var hau = -(d - e) / (ha[2] - e);
+			var hbu = -(d - e) / (hb[2] - e);
+			
+			return new arrowProject((u1 * this.x1) + xs,-(u1 * this.y1) + ys, (u2 * this.x2) + xs, -(u2 * this.y2) + ys,
+				(hau * ha[0]) + xs, -(hau * ha[1]) + ys, (hbu * hb[0]) + xs, -(hbu * hb[1]) + ys);
+	    },
+	
+	    limits: function () {return {x:[this.x1, this.x2], y:[this.y1, this.y2], z:[this.z1, this.z2]}}
+	}
+	
+	path.prototype = {
+	 
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+		project: function(d, e, xs, ys){
+			var u;
+			var x = new Array(this.x.length);
+			var y = new Array(this.x.length);
+			for (var i = 0, len = this.x.length; i < len; i++){
+				u = -(d - e) / (this.z[i] - e);
+				x[i] = (u * this.x[i]) + xs;
+				y[i] = -(u * this.y[i]) + ys;
+			}
+			//var u = multC(inv(addC(this.z, -e)), -(d - e));
+			//return {x:addC(multC(this.x, u), xs), y:addC(multC(this.y, -u), ys), d:this.d, close:this.close};
+			return new pathProject(x, y, this.d, this.close);
+		},
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x), max.apply(Math, this.x)], 
+	    		y:[min.apply(Math, this.y), max.apply(Math, this.y)], 
+	    		z:[min.apply(Math, this.z), max.apply(Math, this.z)]
+			};
+	    }
+	}
+	
+	point.prototype = {
+	    scale: function (s) {
+			this.x *= s;
+			this.y *= s;
+			this.z *= s;
+	    },
+	
+	    rotateXaxis: function (t) {rotateX1(this, t);},
+	    rotateYaxis: function (t) {rotateY1(this, t);},
+	    rotateZaxis: function (t) {rotateZ1(this, t);},
+	
+	    translateX: function (d) {this.x += d;},
+	    translateY: function (d) {this.y += d;},
+	    translateZ: function (d) {this.z += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x += dx;
+			this.y += dy;
+			this.z += dz;
+	    },
+	
+		project: function (d, e, xs, ys) {
+			var u = -(d - e) / (this.z - e);
+			return new pointProject((u * this.x) + xs, -(u * this.y) + ys);
+		},
+	
+	    limits: function () {return {x:[this.x], y:[this.y], z:[this.z]};}
+	}
+	
+	text.prototype = {
+	    scale: function (s) {
+			this.x *= s;
+			this.y *= s;
+			this.z *= s;
+			this.s *= s;
+	    },
+	
+	    rotateXaxis: function (t) {rotateX1(this, t);},
+	    rotateYaxis: function (t) {rotateY1(this, t);},
+	    rotateZaxis: function (t) {rotateZ1(this, t);},
+	
+	    translateX: function (d) {this.x += d;},
+	    translateY: function (d) {this.y += d;},
+	    translateZ: function (d) {this.z += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x += dx;
+			this.y += dy;
+			this.z += dz;
+	    },
+	
+		project: function (d, e, xs, ys) {
+			var u = -(d - e) / (this.z - e);
+			return new textProject((u * this.x) + xs, -(u * this.y) + ys, this.s);
+		},
+	
+	    limits: function () {return {x:[this.x], y:[this.y], z:[this.z]};}
+	}
+	
+	circleAnimate.prototype = {
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+			this.r = multC(this.r, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, add(this.x, this.r)), min.apply(Math, sub(this.x, this.r)), max.apply(Math, add(this.x, this.r)), max.apply(Math, sub(this.x, this.r))], 
+	    		y:[min.apply(Math, add(this.y, this.r)), min.apply(Math, sub(this.y, this.r)), max.apply(Math, add(this.y, this.r)), max.apply(Math, sub(this.y, this.r))], 
+	    		z:[min.apply(Math, add(this.z, this.r)), min.apply(Math, sub(this.z, this.r)), max.apply(Math, add(this.z, this.r)), max.apply(Math, sub(this.z, this.r))], 
+			};
+	    }
+	}
+	
+	pointAnimate.prototype = {
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x), max.apply(Math, this.x)], 
+	    		y:[min.apply(Math, this.y), max.apply(Math, this.y)], 
+	    		z:[min.apply(Math, this.z), max.apply(Math, this.z)]
+			};
+	    }
+	}
+	
+	lineAnimate.prototype = {
+	    scale: function (s) {
+			this.x1 = multC(this.x1, s);
+			this.y1 = multC(this.y1, s);
+			this.z1 = multC(this.z1, s);
+			this.x2 = multC(this.x2, s);
+			this.y2 = multC(this.y2, s);
+			this.z2 = multC(this.z2, s);
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = sub(multC(this.y1, t.cos), multC(this.z1, t.sin));
+			this.z1 = add(multC(tmp, t.sin), multC(this.z1, t.cos));
+			var tmp = this.y2;
+			this.y2 = sub(multC(this.y2, t.cos), multC(this.z2, t.sin));
+			this.z2 = add(multC(tmp, t.sin), multC(this.z2, t.cos));
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = add(multC(this.x1, t.cos), multC(this.z1, t.sin));
+			this.z1 = sub(multC(this.z1, t.cos), multC(tmp, t.sin));
+			var tmp = this.x2;
+			this.x2 = add(multC(this.x2, t.cos), multC(this.z2, t.sin));
+			this.z2 = sub(multC(this.z2, t.cos), multC(tmp, t.sin));
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = sub(multC(this.x1, t.cos), multC(this.y1, t.sin));
+			this.y1 = add(multC(tmp, t.sin), multC(this.y1, t.cos));
+			var tmp = this.x2;
+			this.x2 = sub(multC(this.x2, t.cos), multC(this.y2, t.sin));
+			this.y2 = add(multC(tmp, t.sin), multC(this.y2, t.cos));
+	    },
+	
+	    translateX: function (d) {
+	    	this.x1 = addC(this.x1, d);
+	    	this.x2 = addC(this.x2, d);
+	    },
+	    translateY: function (d) {
+	    	this.y1 = addC(this.y1, d);
+	    	this.y2 = addC(this.y2, d);
+	    },
+	    translateZ: function (d) {
+	    	this.z1 = addC(this.z1, d);
+	    	this.z2 = addC(this.z2, d);
+	    },
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 = addC(this.x1, dx);
+			this.y1 = addC(this.y1, dy);
+			this.z1 = addC(this.z1, dz);
+			this.x2 = addC(this.x2, dx);
+			this.y2 = addC(this.y2, dy);
+			this.z2 = addC(this.z2, dz);
+	    },
+	
+	   limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x1), min.apply(Math, this.x2), max.apply(Math, this.x1), max.apply(Math, this.x2)], 
+	    		y:[min.apply(Math, this.y1), min.apply(Math, this.y2), max.apply(Math, this.y1), max.apply(Math, this.y2)], 
+	    		z:[min.apply(Math, this.z1), min.apply(Math, this.z2), max.apply(Math, this.z1), max.apply(Math, this.z2)]
+			};
+	    }
+	}
+	
+	arrowAnimate.prototype = {
+	    scale: function (s) {
+			this.x1 = multC(this.x1, s);
+			this.y1 = multC(this.y1, s);
+			this.z1 = multC(this.z1, s);
+			this.x2 = multC(this.x2, s);
+			this.y2 = multC(this.y2, s);
+			this.z2 = multC(this.z2, s);
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = sub(multC(this.y1, t.cos), multC(this.z1, t.sin));
+			this.z1 = add(multC(tmp, t.sin), multC(this.z1, t.cos));
+			var tmp = this.y2;
+			this.y2 = sub(multC(this.y2, t.cos), multC(this.z2, t.sin));
+			this.z2 = add(multC(tmp, t.sin), multC(this.z2, t.cos));
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = add(multC(this.x1, t.cos), multC(this.z1, t.sin));
+			this.z1 = sub(multC(this.z1, t.cos), multC(tmp, t.sin));
+			var tmp = this.x2;
+			this.x2 = add(multC(this.x2, t.cos), multC(this.z2, t.sin));
+			this.z2 = sub(multC(this.z2, t.cos), multC(tmp, t.sin));
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = sub(multC(this.x1, t.cos), multC(this.y1, t.sin));
+			this.y1 = add(multC(tmp, t.sin), multC(this.y1, t.cos));
+			var tmp = this.x2;
+			this.x2 = sub(multC(this.x2, t.cos), multC(this.y2, t.sin));
+			this.y2 = add(multC(tmp, t.sin), multC(this.y2, t.cos));
+	    },
+	
+	    translateX: function (d) {
+	    	this.x1 = addC(this.x1, d);
+	    	this.x2 = addC(this.x2, d);
+	    },
+	    translateY: function (d) {
+	    	this.y1 = addC(this.y1, d);
+	    	this.y2 = addC(this.y2, d);
+	    },
+	    translateZ: function (d) {
+	    	this.z1 = addC(this.z1, d);
+	    	this.z2 = addC(this.z2, d);
+	    },
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 = addC(this.x1, dx);
+			this.y1 = addC(this.y1, dy);
+			this.z1 = addC(this.z1, dz);
+			this.x2 = addC(this.x2, dx);
+			this.y2 = addC(this.y2, dy);
+			this.z2 = addC(this.z2, dz);
+	    },
+	
+	   limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x1), min.apply(Math, this.x2), max.apply(Math, this.x1), max.apply(Math, this.x2)], 
+	    		y:[min.apply(Math, this.y1), min.apply(Math, this.y2), max.apply(Math, this.y1), max.apply(Math, this.y2)], 
+	    		z:[min.apply(Math, this.z1), min.apply(Math, this.z2), max.apply(Math, this.z1), max.apply(Math, this.z2)]
+			};
+	    }
+	}
+	
+	textAnimate.prototype = {
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+			this.s = multC(this.s, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x), max.apply(Math, this.x)], 
+	    		y:[min.apply(Math, this.y), max.apply(Math, this.y)], 
+	    		z:[min.apply(Math, this.z), max.apply(Math, this.z)]
+			};
+	    }
+	}
+	
+	//********************************** Shape functions ***********************************//
+	
+	function attributesToString(attributes){
+	
+		s = "";
+	
+		if(attributes.stroke !== undefined) s += "stroke:" + attributes.stroke + ";";
+		if(attributes.stroke_width !== undefined) s += "stroke-width:" + attributes.stroke_width + ";";
+		if(attributes.stroke_opacity !== undefined) s += "stroke-opacity:" + attributes.stroke_opacity + ";";
+		if(attributes.fill !== undefined) s += "fill:" + attributes.fill + ";";
+		if(attributes.fill_opacity !== undefined) s += "fill-opacity:" + attributes.fill_opacity + ";";
+		if(attributes.r !== undefined) s += "r:" + attributes.r + ";";
+	
+		if(attributes.opacity !== undefined) s += "opacity:" + attributes.opacity + ";";
+		if(attributes.font_family !== undefined) s += "font-family:" + attributes.font_family + ";";
+		if(attributes.font_size !== undefined) s += "font-size:" + attributes.font_size + ";";
+		if(attributes.font_weight !== undefined) s += "font-weight:" + attributes.font_weight + ";";
+		if(attributes.font_style !== undefined) s += "font-style:" + attributes.font_style + ";";
+		if(attributes.letter_spacing !== undefined) s += "letter-spacing:" + attributes.letter_spacing + ";";
+		if(attributes.text_anchor !== undefined) s += "text-anchor:" + attributes.text_anchor + ";";
+		if(attributes.writing_mode !== undefined) s += "writing-mode:" + attributes.writing_mode + ";";
+		if(attributes.glyph_orientation_vertical !== undefined) s += "glyph-orientation-vertical:" + attributes.glyph_orientation_vertical + ";";
+	
+		return s;
+	}
+	
+	function parseSVGPath(path_in){
+	
+		// Add spaces between numbers and letters
+		var str = path_in.replace(/((\.|-|\d)+)/g, function (_, num){return ' ' + num + ' ';}).trim();
+	
+		// Split path
+		str_split = str.split(/[\s|,]/);
+	
+		// Remove empty values
+		str_split = clean(str_split);
+	
+		// Check for z at the end (closed path), and if found remove from end
+		var close = false;
+		if(str_split[str_split.length-1] == 'Z' || str_split[str_split.length-1] == 'z'){
+			close = true;
+			str_split.pop();
+		}
+	
+		var x = new Array();
+		var y = new Array();
+		var z = new Array();
+		var d = new Array();
+	
+		// Sort into x,y,z coordinates and path type characters
+		var num_ct = 0;
+		for (var i = 0, len = str_split.length; i < len; i++){
+	
+			if(is_numeric(str_split[i])){
+				if(num_ct == 0) x.push(parseFloat(str_split[i]));
+				if(num_ct == 1) y.push(parseFloat(str_split[i]));
+				if(num_ct == 2) z.push(parseFloat(str_split[i]));
+				if(num_ct == 3){
+					d.push(',');
+					x.push(parseFloat(str_split[i]));
+					num_ct = 1;
+					continue;
+				}
+				num_ct++;
+			}else{
+				d.push(str_split[i]);
+				num_ct = 0;
+			}
+		}
+		
+		//alert(str_split)
+		//alert(x + '\n' + y + '\n' + z + '\n' + d + '\n' + close)
+	
+		return new path(x, y, z, d, close);
+	}
+	
+	function pathToString(path){
+	
+		var str = "";
+		for (var i = 0, len = path.x.length; i < len; i++){
+			str += path.d[i] + ' ' + path.x[i] + ' ' + path.y[i] + ' ';
+		}
+		str = str.trim();
+		if(path.close) str += ' Z';
+	
+		return str;
+	}
+	
+	function pointsToPath(points, d){
+	
+		var i;
+		var str = "", letter = "";
+	
+		for (i = 0, len = d.length; i < len; i++){
+			if(i == 0) letter = "M";
+			if(i > 0) letter = "L";
+			str += letter + " " + points[d[i]-1].x + " " + points[d[i]-1].y + " ";
+		}
+	
+		str = str.trim();
+	
+		return str;
+	}
+	
+	function project(object, d, e, xs, ys){
+		var projection = new Array();
+		for (var i = 0, len = object.length; i < len; i++) projection[i] = object[i].project(d, e, xs, ys);
+		return projection;
+	}
+	
+	function scale(object, s){
+		for (var i = 0, len = object.length; i < len; i++) object[i].scale(s);
+	}
+	
+	function translate(object, dx, dy, dz){
+		for (var i = 0, len = object.length; i < len; i++) object[i].translate(dx, dy, dz);
+	}
+	
+	function rotateXaxis(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].rotateXaxis(rotateTrig(d));}
+	function rotateYaxis(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].rotateYaxis(rotateTrig(d));}
+	function rotateZaxis(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].rotateZaxis(rotateTrig(d));}
+	
+	function translateX(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].translateX(d);}
+	function translateY(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].translateY(d);}
+	function translateZ(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].translateZ(d);}
+	
+	function limits(object){
+	
+		if(object.length == 0) return {NaN,NaN, NaN,NaN, NaN,NaN}
+	
+		var shape_limits;
+		var x = [], y = [], z = [];
+	
+		for (var i = 0, len = object.length; i < len; i++){
+	
+			shape_limits = object[i].limits();
+	
+			x.push.apply(x, shape_limits.x);
+			y.push.apply(y, shape_limits.y);
+			z.push.apply(z, shape_limits.z);
+		}
+	
+		// Remove NaN values
+		x = clean(x, NaN);
+		y = clean(y, NaN);
+		z = clean(z, NaN);
+		
+		if(x.length == 0) return {NaN,NaN, NaN,NaN, NaN,NaN}
+		
+		return {
+			xmin:min.apply(Math, x), xmax:max.apply(Math, x),
+			ymin:min.apply(Math, y), ymax:max.apply(Math, y),
+			zmin:min.apply(Math, z), zmax:max.apply(Math, z)
+		}
+	}
+</script>
+<script type="text/javascript" >
+	function changeAnimationDuration(element){
+		
+		if(!is_numeric(element.value)) return;
+	
+		// Set new animation duration
+		animation_duration = parseFloat(element.value);
+	
+		// If animation is already stopped, return
+		if(stop_anim == 1) return;
+	
+		// If animation is running, stop and re-start
+		clearInterval(intervalID);
+		startAnimation();
+	}
+	
+	function find_layer_children(container, layers){
+	
+		var container_class;
+		var header;
+		var header_class;
+		var main_class;
+		var i, j;
+		var main;
+	
+		if(layers == undefined) layers = [];
+	
+		for(i = 0; i < container.childNodes.length; i++){
+	
+			container_class = container.childNodes[i].className;
+	
+			if(container_class == undefined) continue
+	
+			if(container_class == 'control_layer_header'){
+			
+				header = container.childNodes[i];
+	
+				for(j = 0; j < header.childNodes.length; j++){
+				
+					header_class = header.childNodes[j].className;
+	
+					if(header_class != 'control_layer_text' && header_class != 'control_layer_text_nochild') continue
+	
+					layers.push(header.childNodes[j].innerHTML)
+				}
+			}
+	
+			if(container_class == 'control_layer_main') main = container.childNodes[i];
+		}
+	
+		if(main == undefined) return layers;
+	
+		for(i = 0; i < main.childNodes.length; i++){
+	
+			main_class = main.childNodes[i].className;
+	
+			if(main_class == undefined || main_class != 'control_layer_container') continue
+	
+			layers.concat(find_layer_children(main.childNodes[i], layers))
+		}
+	
+		return layers;
+	}
+	
+	function inputAnimationState(element){
+		
+		// Pause animation
+		playPauseAnimation('stop');
+		
+		if(element.id == 'animation_frame_range_input'){
+			
+			anim_n = Math.round(((element.value) / 100)*animation_length);
+	
+			animateShapes();
+		}
+	
+		if(element.id == 'animation_frame_count_input'){
+		
+			if(!is_numeric(element.value)) return;
+	
+			anim_n = parseFloat(element.value) - 1;
+			
+			animateShapes();
+		}
+	}
+	
+	function layer_visibility(element){
+	
+		var class_name;
+		var div_header = element.parentNode.parentNode;
+		var div_container = element.parentNode.parentNode.parentNode;
+		var i;
+		
+		// Get parent layer
+		for(i = 0; i < div_header.childNodes.length; i++){
+	
+			class_name = div_header.childNodes[i].className;
+			if(class_name == undefined) continue
+			if(class_name != 'control_layer_text' && class_name != 'control_layer_text_nochild') continue
+	
+			var parent_layer = div_header.childNodes[i].innerHTML;
+		}
+	
+		// Find all child layers
+		layers = find_layer_children(div_container)
+	
+		// Remove duplicate layer names
+		layers = array_unique(layers)
+	
+		// Get opacity to apply to layers
+		var opacity = element.value
+	
+		// Show hide all child layers and layers of the same name
+		layer_visibility_children(document.getElementById("control_layers_container"), layers, opacity)
+	}
+	
+	function layer_visibility_children(container, layers, opacity){
+	
+		var container_class;
+		var header;
+		var header_class;
+		var layer_text;
+		var main_class;
+		var i, j, k;
+		var idx_input;
+		var idx_vis;
+		var main;
+	
+		for(i = 0; i < container.childNodes.length; i++){
+	
+			container_class = container.childNodes[i].className;
+	
+			if(container_class == undefined) continue
+	
+			if(container_class == 'control_layer_header'){
+	
+				// Clear layer text
+				layer_text;
+	
+				header = container.childNodes[i];
+	
+				for(j = 0; j < header.childNodes.length; j++){
+					header_class = header.childNodes[j].className;
+					if(header_class == 'control_layer_shape_vis_range') idx_vis = j;
+					if(header_class == 'control_layer_text' || header_class == 'control_layer_text_nochild') layer_text = header.childNodes[j].innerHTML;
+				}
+				
+				if(layer_text == undefined) continue
+				
+				if(layers.indexOf(layer_text) > -1){
+	
+					// Change opacity for any shapes that list layer
+					changeLayerOpacity(layer_text, (opacity/100));
+	
+					// Find slider element
+					for(k = 0; k < header.childNodes[idx_vis].childNodes.length; k++){
+						if(header.childNodes[idx_vis].childNodes[k].tagName == 'INPUT') idx_input = k;
+					}
+					
+					// Change opacity slider in control panel
+					header.childNodes[idx_vis].childNodes[idx_input].value = opacity;
+				}
+			}
+	
+			if(container_class == 'control_layer_main' || container_class == 'control_layers_main' || container_class == 'control_animation_main') main = container.childNodes[i];
+		}
+	
+		if(main == undefined) return;
+	
+		for(i = 0; i < main.childNodes.length; i++){
+	
+			main_class = main.childNodes[i].className;
+	
+			if(main_class == undefined || main_class != 'control_layer_container') continue
+	
+			layer_visibility_children(main.childNodes[i], layers, opacity)
+		}
+	}
+	
+	function show_hide_control(element, action){
+	
+		if(element == null) return;
+	
+		var class_action;
+		var class_name;
+		var div_container = element.parentNode.parentNode;
+		var i;
+		
+		var win_show_sym = '&#8853;';
+		var win_hide_sym = '&#8854;';
+	
+		for(i = 0; i < div_container.childNodes.length; i++){
+	
+			class_name = div_container.childNodes[i].className;
+			
+			if(class_name == undefined) continue
+	
+			if(class_name == 'control_layers_main' || class_name == 'control_layer_main' || class_name == 'control_animation_main'){
+	
+				if(action == undefined) if(element.innerHTML.charCodeAt(0) == 9660){action = 'hide';}else{action = 'show';}
+	
+				if(action == 'hide'){
+					// Hide
+					element.innerHTML = '&#9658;';
+					div_container.childNodes[i].style.display = 'none';
+				}else{
+					// Show
+					element.innerHTML = '&#9660;';
+					div_container.childNodes[i].style.display = '';
+				}
+				
+				if(element.id !== ''){
+					if(action == 'hide'){
+						deleteCookie('show_hide_control(document.getElementById("' + element.id + '"),"show")');
+						createCookie('show_hide_control(document.getElementById("' + element.id + '"),"hide")', 'eval', 3600);
+					}else{
+						deleteCookie('show_hide_control(document.getElementById("' + element.id + '"),"hide")');
+						createCookie('show_hide_control(document.getElementById("' + element.id + '"),"show")', 'eval', 3600);
+					}
+				}
+			}
+	
+			if(class_name == 'control_layer_subheader'){
+	
+				if(action == undefined) if(element.innerHTML.charCodeAt(0) == 9660){action = 'hide';}else{action = 'show';}
+	
+				if(action == 'hide'){
+					div_container.childNodes[i].style.display = 'none';
+				}else{
+					div_container.childNodes[i].style.display = '';
+				}
+			}
+		}
+	}
+	
+	function showHideControlPanel(action, write_cookie){
+	
+		if(write_cookie == undefined) var write_cookie = true;
+	
+		// Check whether any containers within control panel are visible
+		var none_visible = true;
+		if(document.getElementById('control_layers_container') !== null && document.getElementById('control_layers_container').style.display == '') none_visible = false;
+		if(document.getElementById('control_animation_container') !== null && document.getElementById('control_animation_container').style.display == '') none_visible = false;
+	
+		if(none_visible){
+			document.getElementById('control_container').style.display = 'none';
+			writeControlIcon('control', 'disable');
+			return;
+		}
+	
+		if(action == undefined){
+			if(control_panel_visible){control_panel_visible = false;}else{control_panel_visible = true;}
+		}else{
+			if(action == 'show'){
+				control_panel_visible = true;
+			}else{
+				control_panel_visible = false;
+			}
+		}
+	
+		var control_container = document.getElementById('control_container');
+	
+		if(control_container == null) return;
+	
+		if(control_panel_visible){
+			// Show
+			control_container.style.width = '300px';
+			control_container.style.display = '';
+			writeControlIcon('control', 'show');
+			
+			if(write_cookie){
+				deleteCookie('showHideControlPanel("hide")');
+				createCookie('showHideControlPanel("show")', 'eval', 3600);
+			}
+		}else{
+			// Hide
+			control_container.style.width = '85px';
+			control_container.style.display = 'none';
+			writeControlIcon('control', 'hide');
+	
+			if(write_cookie){
+				deleteCookie('showHideControlPanel("show")');
+				createCookie('showHideControlPanel("hide")', 'eval', 3600);
+			}
+		}
+	}
+	
+	function toggleAnimationReverse(){
+		if(animation_reverse){animation_reverse = 0;}else{animation_reverse = 1;}
+	}
+	
+	function toggle_rotate_mode(element, write_cookie){
+	
+		if(write_cookie == undefined) var write_cookie = true;
+	
+		if(element == 'translate' && rotate_mode == false) return;
+		if(element == 'rotate' && rotate_mode == true) return;
+	
+		if(rotate_mode){
+			rotate_mode = false;
+			document.getElementById("control_icon_rotate").title = "Turn on rotate mode or press and hold 'r'";
+			document.getElementById("control_icon_translate").title = 'Translate mode on, click and drag to move object';
+			document.getElementById("control_icon_rotate").style.border = '1px solid #cccccc';
+			document.getElementById("control_icon_rotate_arrow").style.color = '#cccccc';
+			document.getElementById("control_icon_translate").style.border = '1px solid black';
+			document.getElementById("control_icon_translate").style.color = 'black';
+	
+			if(write_cookie){
+				deleteCookie('toggle_rotate_mode("rotate")');
+				createCookie('toggle_rotate_mode("translate")', 'eval', 3600);
+			}
+		}else{
+			rotate_mode = true;
+			document.getElementById("control_icon_rotate").title = 'Rotate mode on, click and drag to rotate object';
+			document.getElementById("control_icon_translate").title = 'Turn on translate mode';
+			document.getElementById("control_icon_rotate").style.border = '1px solid #000000';
+			document.getElementById("control_icon_rotate_arrow").style.color = 'black';
+			document.getElementById("control_icon_translate").style.border = '1px solid #cccccc';
+			document.getElementById("control_icon_translate").style.color = '#cccccc';
+	
+			if(write_cookie){
+				deleteCookie('toggle_rotate_mode("translate")');
+				createCookie('toggle_rotate_mode("rotate")', 'eval', 3600);
+			}
+		}
+	}
+	
+	function writeControlIcon(name, state){
+	
+		if(name == undefined) name = new Array('control', 'rotate', 'translate');
+		if(Array.isArray(name) == false) name = new Array(name);
+	
+		var i;
+	
+		for(i = 0; i < name.length; i++){
+			if(name[i] == 'control'){
+				if(state == undefined) continue;
+				
+				if(state == 'show'){
+					document.getElementById("control_icon_control").title = 'Hide control panel';
+					document.getElementById("control_icon_control_vertical").innerHTML = '&#8213;';
+					document.getElementById("control_icon_control_horizontal").innerHTML = '';
+				}
+				if(state == 'hide'){
+					document.getElementById("control_icon_control").title = 'Show control panel';
+					document.getElementById("control_icon_control_vertical").innerHTML = '&#124;';
+					document.getElementById("control_icon_control_horizontal").innerHTML = '&#8213;';
+				}
+				if(state == 'disable'){
+					document.getElementById("control_icon_control").title = 'No control panel contents to display';
+					document.getElementById("control_icon_control").style.color = '#cccccc';
+					document.getElementById("control_icon_control").style.border = '1px solid #cccccc';
+					document.getElementById("control_icon_control_vertical").innerHTML = '&#124;';
+					document.getElementById("control_icon_control_horizontal").innerHTML = '&#8213;';
+				}
+			}
+	
+			if(name[i] == 'rotate'){
+	
+				if(state == undefined){
+					if(BrowserDetect.browser == "Firefox"){
+						document.getElementById("control_icon_rotate_arrow").style.fontSize = '0.9em';
+						document.getElementById("control_icon_rotate_arrow").style.lineHeight = '16px';
+						document.getElementById("control_icon_rotate_arrow").style.fontWeight = '100';
+					}
+				}
+			}
+		}
+	
+	}
+</script>

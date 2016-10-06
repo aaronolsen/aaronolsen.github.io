@@ -1,0 +1,4016 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>Linkage Viewer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+<script type="text/javascript" >
+	// Parameters set by user
+	var animation_reverse = 0;
+	var animation_duration = 1;
+	var animation_repeat = -1;
+	var animation_count = 0;
+	var margin = 20;
+	var background_color = 'white';
+	var svgviewr_version = 'NA';
+	var start_rotate = 1;
+	var show_control_panel = 1;
+</script>
+
+<svg_doc xmlns="http://www.w3.org/2000/svg" version="1.1" style="visibility:hidden;" >
+	<path z-index="0" layer="Bounding panel fill" d="M-0.8 -0.8 -0.2 L 1.6 -0.8 -0.2 L 1.6 1.4 -0.2 L -0.8 1.4 -0.2 Z" label="" stroke="none" stroke-width="0" fill="black" stroke-opacity="1" fill-opacity="0" ></path>
+	<path z-index="0" layer="Bounding panel outline" d="M-0.8 -0.8 -0.2 L 1.6 -0.8 -0.2 L 1.6 1.4 -0.2 L -0.8 1.4 -0.2 Z" label="" stroke="black" stroke-width="1" fill="none" stroke-opacity="0.4" fill-opacity="1" ></path>
+	<path z-index="0" layer="Bounding panel fill" d="M-0.8 -0.8 -0.2 L -0.8 1.4 -0.2 L -0.8 1.4 0.2 L -0.8 -0.8 0.2 Z" label="" stroke="none" stroke-width="0" fill="black" stroke-opacity="1" fill-opacity="0" ></path>
+	<path z-index="0" layer="Bounding panel outline" d="M-0.8 -0.8 -0.2 L -0.8 1.4 -0.2 L -0.8 1.4 0.2 L -0.8 -0.8 0.2 Z" label="" stroke="black" stroke-width="1" fill="none" stroke-opacity="0.4" fill-opacity="1" ></path>
+	<path z-index="0" layer="Bounding panel fill" d="M-0.8 -0.8 -0.2 L 1.6 -0.8 -0.2 L 1.6 -0.8 0.2 L -0.8 -0.8 0.2 Z" label="" stroke="none" stroke-width="0" fill="black" stroke-opacity="1" fill-opacity="0" ></path>
+	<path z-index="0" layer="Bounding panel outline" d="M-0.8 -0.8 -0.2 L 1.6 -0.8 -0.2 L 1.6 -0.8 0.2 L -0.8 -0.8 0.2 Z" label="" stroke="black" stroke-width="1" fill="none" stroke-opacity="0.4" fill-opacity="1" ></path>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="-0.8" z1="-0.2" x2="-0.8" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.6" y1="-0.8" z1="-0.2" x2="-0.6" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.4" y1="-0.8" z1="-0.2" x2="-0.4" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.2" y1="-0.8" z1="-0.2" x2="-0.2" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0" y1="-0.8" z1="-0.2" x2="0" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.2" y1="-0.8" z1="-0.2" x2="0.2" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.4" y1="-0.8" z1="-0.2" x2="0.4" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.6" y1="-0.8" z1="-0.2" x2="0.6" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.8" y1="-0.8" z1="-0.2" x2="0.8" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1" y1="-0.8" z1="-0.2" x2="1" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.2" y1="-0.8" z1="-0.2" x2="1.2" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.4" y1="-0.8" z1="-0.2" x2="1.4" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="-0.8" z1="-0.2" x2="1.6" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="-0.8" z1="-0.2" x2="-0.8" y2="-0.8" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="-0.6" z1="-0.2" x2="-0.8" y2="-0.6" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="-0.4" z1="-0.2" x2="-0.8" y2="-0.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="-0.2" z1="-0.2" x2="-0.8" y2="-0.2" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="0" z1="-0.2" x2="-0.8" y2="0" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="0.2" z1="-0.2" x2="-0.8" y2="0.2" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="0.4" z1="-0.2" x2="-0.8" y2="0.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="0.6" z1="-0.2" x2="-0.8" y2="0.6" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="0.8" z1="-0.2" x2="-0.8" y2="0.8" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="1" z1="-0.2" x2="-0.8" y2="1" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="1.2" z1="-0.2" x2="-0.8" y2="1.2" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="1.4" z1="-0.2" x2="-0.8" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="-0.8" z1="-0.2" x2="-0.8" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="-0.6" z1="-0.2" x2="-0.8" y2="-0.6" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="-0.4" z1="-0.2" x2="-0.8" y2="-0.4" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="-0.2" z1="-0.2" x2="-0.8" y2="-0.2" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="0" z1="-0.2" x2="-0.8" y2="0" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="0.2" z1="-0.2" x2="-0.8" y2="0.2" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="0.4" z1="-0.2" x2="-0.8" y2="0.4" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="0.6" z1="-0.2" x2="-0.8" y2="0.6" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="0.8" z1="-0.2" x2="-0.8" y2="0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="1" z1="-0.2" x2="-0.8" y2="1" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="1.2" z1="-0.2" x2="-0.8" y2="1.2" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="1.4" z1="-0.2" x2="-0.8" y2="1.4" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="1.4" z1="-0.2" x2="-0.8" y2="-0.8" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="1.4" z1="0" x2="-0.8" y2="-0.8" z2="0" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="1.4" z1="0.2" x2="-0.8" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.8" y1="-0.8" z1="-0.2" x2="-0.8" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.6" y1="-0.8" z1="-0.2" x2="-0.6" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.4" y1="-0.8" z1="-0.2" x2="-0.4" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-0.2" y1="-0.8" z1="-0.2" x2="-0.2" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0" y1="-0.8" z1="-0.2" x2="0" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.2" y1="-0.8" z1="-0.2" x2="0.2" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.4" y1="-0.8" z1="-0.2" x2="0.4" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.6" y1="-0.8" z1="-0.2" x2="0.6" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0.8" y1="-0.8" z1="-0.2" x2="0.8" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1" y1="-0.8" z1="-0.2" x2="1" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.2" y1="-0.8" z1="-0.2" x2="1.2" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.4" y1="-0.8" z1="-0.2" x2="1.4" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="-0.8" z1="-0.2" x2="1.6" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="-0.8" z1="-0.2" x2="-0.8" y2="-0.8" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="-0.8" z1="0" x2="-0.8" y2="-0.8" z2="0" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.6" y1="-0.8" z1="0.2" x2="-0.8" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Ticks" x1="-0.8" y1="-0.8" z1="0.2" x2="-0.8" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-0.6" y1="-0.8" z1="0.2" x2="-0.6" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-0.4" y1="-0.8" z1="0.2" x2="-0.4" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-0.2" y1="-0.8" z1="0.2" x2="-0.2" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="0" y1="-0.8" z1="0.2" x2="0" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="0.2" y1="-0.8" z1="0.2" x2="0.2" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="0.4" y1="-0.8" z1="0.2" x2="0.4" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="0.6" y1="-0.8" z1="0.2" x2="0.6" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="0.8" y1="-0.8" z1="0.2" x2="0.8" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1" y1="-0.8" z1="0.2" x2="1" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.2" y1="-0.8" z1="0.2" x2="1.2" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.4" y1="-0.8" z1="0.2" x2="1.4" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="-0.8" z1="0.2" x2="1.6" y2="-0.8" z2="0.26" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="-0.8" z1="-0.2" x2="1.66" y2="-0.8" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="-0.6" z1="-0.2" x2="1.66" y2="-0.6" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="-0.4" z1="-0.2" x2="1.66" y2="-0.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="-0.2" z1="-0.2" x2="1.66" y2="-0.2" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="0" z1="-0.2" x2="1.66" y2="0" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="0.2" z1="-0.2" x2="1.66" y2="0.2" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="0.4" z1="-0.2" x2="1.66" y2="0.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="0.6" z1="-0.2" x2="1.66" y2="0.6" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="0.8" z1="-0.2" x2="1.66" y2="0.8" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="1" z1="-0.2" x2="1.66" y2="1" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="1.2" z1="-0.2" x2="1.66" y2="1.2" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="1.4" z1="-0.2" x2="1.66" y2="1.4" z2="-0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="-0.8" z1="0" x2="1.66" y2="-0.8" z2="0" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.6" y1="-0.8" z1="0.2" x2="1.66" y2="-0.8" z2="0.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<text z-index="0" layer="Tick labels" x="-0.8" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.8</text>
+	<text z-index="0" layer="Tick labels" x="-0.6" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.6</text>
+	<text z-index="0" layer="Tick labels" x="-0.4" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.4</text>
+	<text z-index="0" layer="Tick labels" x="-0.2" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.2</text>
+	<text z-index="0" layer="Tick labels" x="0" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.0</text>
+	<text z-index="0" layer="Tick labels" x="0.2" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.2</text>
+	<text z-index="0" layer="Tick labels" x="0.4" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.4</text>
+	<text z-index="0" layer="Tick labels" x="0.6" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.6</text>
+	<text z-index="0" layer="Tick labels" x="0.8" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.8</text>
+	<text z-index="0" layer="Tick labels" x="1" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.0</text>
+	<text z-index="0" layer="Tick labels" x="1.2" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.2</text>
+	<text z-index="0" layer="Tick labels" x="1.4" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.4</text>
+	<text z-index="0" layer="Tick labels" x="1.6" y="-0.82184" z="0.32" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.6</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="-0.82184" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.8</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="-0.62184" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.6</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="-0.42184" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.4</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="-0.22184" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.2</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="-0.02184" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.0</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="0.17816" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.2</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="0.37816" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.4</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="0.57816" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.6</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="0.77816" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.8</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="0.97816" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.0</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="1.17816" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.2</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="1.37816" z="-0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.4</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="-0.82184" z="0" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.0</text>
+	<text z-index="0" layer="Tick labels" x="1.72" y="-0.82184" z="0.2" font-size="0.26" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 0.2</text>
+	<text z-index="0" layer="Axis labels" x="0.4" y="-0.82184" z="0.5" font-size="0.28" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >x</text>
+	<text z-index="0" layer="Axis labels" x="1.9" y="0.27816" z="-0.2" font-size="0.28" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >y</text>
+	<text z-index="0" layer="Axis labels" x="1.9" y="-0.82184" z="0" font-size="0.28" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >z</text>
+	<point z-index="0" layer="Joints" x="0" y="0" z="0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Joints" x="0,-0.05314674,-0.10569131,-0.15703836,-0.20660609,-0.2538329,-0.29818368,-0.33915592,-0.37628538,-0.40915139,-0.43738154,-0.46065599,-0.47871102,-0.49134206,-0.498406,-0.49982281,-0.49557642,-0.48571495,-0.47035013,-0.44965607,-0.42386721,-0.39327578,-0.35822837,-0.31912209,-0.27640003,-0.23054625,-0.18208029,-0.13155128,-0.07953175,-0.02661109,0.02661109,0.07953175,0.13155128,0.18208029,0.23054625,0.27640003,0.31912209,0.35822837,0.39327578,0.42386721,0.44965607,0.47035013,0.48571495,0.49557642,0.49982281,0.498406,0.49134206,0.47871102,0.46065599,0.43738154,0.40915139,0.37628538,0.33915592,0.29818368,0.2538329,0.20660609,0.15703836,0.10569131,0.05314674,0" y="0.5,0.4971674,0.48870169,0.4746988,0.45531739,0.43077704,0.40135582,0.36738708,0.32925569,0.28739371,0.24227544,0.19441209,0.14434597,0.09264436,0.03989305,-0.01331026,-0.06636276,-0.11866335,-0.16961943,-0.21865366,-0.26521045,-0.30876231,-0.34881576,-0.38491699,-0.41665696,-0.44367604,-0.46566809,-0.48238393,-0.49363418,-0.49929135,-0.49929135,-0.49363418,-0.48238393,-0.46566809,-0.44367604,-0.41665696,-0.38491699,-0.34881576,-0.30876231,-0.26521045,-0.21865366,-0.16961943,-0.11866335,-0.06636276,-0.01331026,0.03989305,0.09264436,0.14434597,0.19441209,0.24227544,0.28739371,0.32925569,0.36738708,0.40135582,0.43077704,0.45531739,0.4746988,0.48870169,0.4971674,0.5" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Joints" x="1,0.94616095,0.8915882,0.83691573,0.78272436,0.7295411,0.67783725,0.62802583,0.58045911,0.53542655,0.49315388,0.4538034,0.417476,0.38421487,0.35401102,0.32681025,0.30252153,0.28102604,0.26218659,0.24585689,0.23189025,0.22014747,0.21050391,0.20285569,0.19712537,0.19326738,0.19127374,0.19118062,0.1930764,0.19711208,0.20351506,0.21260736,0.22482954,0.24077165,0.26121148,0.28715859,0.31989717,0.36100967,0.41234155,0.47583256,0.55310109,0.64467067,0.74888241,0.86094697,0.97304432,1.07612392,1.1626873,1.22872268,1.27374375,1.29954918,1.30886614,1.30447859,1.2888475,1.26402582,1.23170049,1.19326944,1.14991494,1.1026613,1.05241646,1" y="1,0.99854963,0.99410607,0.98661214,0.97611029,0.96273152,0.9466843,0.92824308,0.90773644,0.88553459,0.86203655,0.83765701,0.8128135,0.78791413,0.76334673,0.73946978,0.71660574,0.695037,0.67500472,0.65671011,0.64031821,0.62596328,0.61375559,0.60378883,0.59614791,0.59091664,0.58818521,0.58805715,0.59065582,0.59613001,0.60465837,0.6164518,0.63175213,0.65082433,0.67393733,0.70132526,0.73311673,0.76921477,0.80910911,0.85161523,0.89458447,0.93474117,0.96795659,0.99028494,0.99963663,0.99709836,0.98667768,0.97349162,0.96180266,0.95408086,0.95110552,0.95251918,0.95737512,0.96451561,0.97278717,0.98114572,0.9886989,0.99471637,0.99862531,1" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Joints" x="1" y="0" z="0" label="" r="1.5" stroke="black" stroke-width="2" fill="white" fill-opacity="1" stroke-opacity="1" ></point>
+	<arrow z-index="1" layer="Joint constraints" x1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z2="0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522" l="0.0190614261640511"  a="0.4"  label="" stroke="purple" stroke-width="2" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Joint constraints" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z2="0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522,0.15884522" l="0.0190614261640511"  a="0.4"  label="" stroke="purple" stroke-width="2" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261,0.57942261" y2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.0190614261640511"  a="0.4"  label="" stroke="red" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5" y2="0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.0190614261640511"  a="0.4"  label="" stroke="green" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5" y2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z2="0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261" l="0.0190614261640511"  a="0.4"  label="" stroke="blue" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.07942261,0.07897266,0.07762793,0.07540364,0.07232499,0.06842687,0.06375345,0.05835768,0.05230069,0.04565112,0.03848429,0.03088143,0.02292867,0.01471611,0.00633682,-0.00211427,-0.01054141,-0.01884911,-0.02694324,-0.03473209,-0.04212741,-0.04904542,-0.05540772,-0.06114222,-0.06618397,-0.07047582,-0.07396915,-0.07662438,-0.07841143,-0.07931004,-0.07931004,-0.07841143,-0.07662438,-0.07396915,-0.07047582,-0.06618397,-0.06114222,-0.05540772,-0.04904542,-0.04212741,-0.03473209,-0.02694324,-0.01884911,-0.01054141,-0.00211427,0.00633682,0.01471611,0.02292867,0.03088143,0.03848429,0.04565112,0.05230069,0.05835768,0.06375345,0.06842687,0.07232499,0.07540364,0.07762793,0.07897266,0.07942261" y2="0,0.00844211,0.01678856,0.02494479,0.03281839,0.04032014,0.04736505,0.0538733,0.05977113,0.06499174,0.06947597,0.073173,0.07604096,0.07804734,0.07916941,0.07939446,0.07871994,0.0771535,0.07471287,0.07142572,0.06732928,0.06246998,0.05690286,0.05069102,0.04390482,0.03662117,0.02892258,0.02089629,0.01263324,0.00422704,-0.00422704,-0.01263324,-0.02089629,-0.02892258,-0.03662117,-0.04390482,-0.05069102,-0.05690286,-0.06246998,-0.06732928,-0.07142572,-0.07471287,-0.0771535,-0.07871994,-0.07939446,-0.07916941,-0.07804734,-0.07604096,-0.073173,-0.06947597,-0.06499174,-0.05977113,-0.0538733,-0.04736505,-0.04032014,-0.03281839,-0.02494479,-0.01678856,-0.00844211,0" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.0190614261640511"  a="0.4"  label="" stroke="red" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0,-0.00844211,-0.01678856,-0.02494479,-0.03281839,-0.04032014,-0.04736505,-0.0538733,-0.05977113,-0.06499174,-0.06947597,-0.073173,-0.07604096,-0.07804734,-0.07916941,-0.07939446,-0.07871994,-0.0771535,-0.07471287,-0.07142572,-0.06732928,-0.06246998,-0.05690286,-0.05069102,-0.04390482,-0.03662117,-0.02892258,-0.02089629,-0.01263324,-0.00422704,0.00422704,0.01263324,0.02089629,0.02892258,0.03662117,0.04390482,0.05069102,0.05690286,0.06246998,0.06732928,0.07142572,0.07471287,0.0771535,0.07871994,0.07939446,0.07916941,0.07804734,0.07604096,0.073173,0.06947597,0.06499174,0.05977113,0.0538733,0.04736505,0.04032014,0.03281839,0.02494479,0.01678856,0.00844211,0" y2="0.07942261,0.07897266,0.07762793,0.07540364,0.07232499,0.06842687,0.06375345,0.05835768,0.05230069,0.04565112,0.03848429,0.03088143,0.02292867,0.01471611,0.00633682,-0.00211427,-0.01054141,-0.01884911,-0.02694324,-0.03473209,-0.04212741,-0.04904542,-0.05540772,-0.06114222,-0.06618397,-0.07047582,-0.07396915,-0.07662438,-0.07841143,-0.07931004,-0.07931004,-0.07841143,-0.07662438,-0.07396915,-0.07047582,-0.06618397,-0.06114222,-0.05540772,-0.04904542,-0.04212741,-0.03473209,-0.02694324,-0.01884911,-0.01054141,-0.00211427,0.00633682,0.01471611,0.02292867,0.03088143,0.03848429,0.04565112,0.05230069,0.05835768,0.06375345,0.06842687,0.07232499,0.07540364,0.07762793,0.07897266,0.07942261" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.0190614261640511"  a="0.4"  label="" stroke="green" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" y2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z2="0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261" l="0.0190614261640511"  a="0.4"  label="" stroke="blue" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0.5,0.4465071,0.39294844,0.33993869,0.28805914,0.2378541,0.18982678,0.14443496,0.10208686,0.06313758,0.02788617,-0.0034263,-0.03061751,-0.05356359,-0.07219749,-0.08650628,-0.09652744,-0.10234446,-0.10408177,-0.10189959,-0.09598848,-0.08656416,-0.07386223,-0.0581332,-0.03963733,-0.01863944,0.00459673,0.02981467,0.05677232,0.0852505,0.11506308,0.14606955,0.17819041,0.21142597,0.24587887,0.28177931,0.31950963,0.35961902,0.40280866,0.44984989,0.50137858,0.5575104,0.61729868,0.67826169,0.73643356,0.78726496,0.82701468,0.85371685,0.86719987,0.86846536,0.85900876,0.84038199,0.81400171,0.78110475,0.74276669,0.69993777,0.65347665,0.6041763,0.5527816,0.5" y1="0.75,0.74785851,0.74140388,0.73065547,0.71571384,0.69675428,0.67402006,0.64781508,0.61849606,0.58646415,0.55215599,0.51603455,0.47857974,0.44027925,0.40161989,0.36307976,0.32512149,0.28818683,0.25269264,0.21902822,0.18755388,0.15860049,0.13246991,0.10943592,0.08974547,0.0736203,0.06125856,0.05283661,0.04851082,0.04841933,0.05268351,0.06140881,0.0746841,0.09257812,0.11513065,0.14233415,0.17409987,0.2101995,0.2501734,0.29320239,0.3379654,0.38256087,0.42464662,0.46196109,0.49316318,0.51849571,0.53966102,0.5589188,0.57810737,0.59817815,0.61924961,0.64088744,0.6623811,0.68293572,0.70178211,0.71823155,0.73169885,0.74170903,0.74789636,0.75" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.57942261,0.52592962,0.47236965,0.41935447,0.36746078,0.31722672,0.26914763,0.22367162,0.18119533,0.14206006,0.10654886,0.07488444,0.04722843,0.02368196,0.00428761,-0.01096726,-0.02214594,-0.02935688,-0.03274744,-0.03249719,-0.02881114,-0.02191297,-0.01203846,0.00057082,0.01567357,0.03303481,0.05243198,0.07366147,0.09654587,0.12094246,0.14675347,0.17393888,0.20253236,0.23266127,0.26457088,0.29865163,0.33546541,0.37575919,0.42044165,0.47047688,0.52662661,0.58897752,0.65629208,0.72547675,0.79172269,0.8496698,0.89508217,0.92591237,0.94220326,0.94528159,0.93694953,0.91899691,0.89300697,0.86032666,0.82210214,0.77932789,0.7328898,0.68359718,0.63220411,0.57942261" y2="0.75,0.74796836,0.74183416,0.73160675,0.71738081,0.69932901,0.67769455,0.65278311,0.6249544,0.59461302,0.56219887,0.52817708,0.49302783,0.4572363,0.42128308,0.38563556,0.3507405,0.31701814,0.28485794,0.2546161,0.22661456,0.20114139,0.17845241,0.15877356,0.14230396,0.12921934,0.11967573,0.1138132,0.1117596,0.11363395,0.11954929,0.12961423,0.1439324,0.16259766,0.18568225,0.21321282,0.24512657,0.28119731,0.32092073,0.36335722,0.40696306,0.44951114,0.48829428,0.52079963,0.54574107,0.56380492,0.57738425,0.58940214,0.6021346,0.61671431,0.63325893,0.65124063,0.66982529,0.68809721,0.70518249,0.72030692,0.73281781,0.74218803,0.74801222,0.75" z2="0,0.00004911,0.00019222,0.00042442,0.00074242,0.0011442,0.0016287,0.0021955,0.00284459,0.00357609,0.00438994,0.00528564,0.00626195,0.00731664,0.00844625,0.00964589,0.01090911,0.01222786,0.01359253,0.01499201,0.01641398,0.01784508,0.01927127,0.02067815,0.02205131,0.0233767,0.0246409,0.02583146,0.02693711,0.02794795,0.02885547,0.02965252,0.03033303,0.03089138,0.03132141,0.03161472,0.03175802,0.03172943,0.03149355,0.03099641,0.03016307,0.02890385,0.02713745,0.02483373,0.02205967,0.01899113,0.01586587,0.01290443,0.01025349,0.00797673,0.00607669,0.00452274,0.00327178,0.00227999,0.00150817,0.0009234,0.00049902,0.00021396,0.0000518,0" l="0.0190614261640511"  a="0.4"  label="" stroke="red" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0.5,0.4465071,0.39294844,0.33993869,0.28805914,0.2378541,0.18982678,0.14443496,0.10208686,0.06313758,0.02788617,-0.0034263,-0.03061751,-0.05356359,-0.07219749,-0.08650628,-0.09652744,-0.10234446,-0.10408177,-0.10189959,-0.09598848,-0.08656416,-0.07386223,-0.0581332,-0.03963733,-0.01863944,0.00459673,0.02981467,0.05677232,0.0852505,0.11506308,0.14606955,0.17819041,0.21142597,0.24587887,0.28177931,0.31950963,0.35961902,0.40280866,0.44984989,0.50137858,0.5575104,0.61729868,0.67826169,0.73643356,0.78726496,0.82701468,0.85371685,0.86719987,0.86846536,0.85900876,0.84038199,0.81400171,0.78110475,0.74276669,0.69993777,0.65347665,0.6041763,0.5527816,0.5" y1="0.75,0.74785851,0.74140388,0.73065547,0.71571384,0.69675428,0.67402006,0.64781508,0.61849606,0.58646415,0.55215599,0.51603455,0.47857974,0.44027925,0.40161989,0.36307976,0.32512149,0.28818683,0.25269264,0.21902822,0.18755388,0.15860049,0.13246991,0.10943592,0.08974547,0.0736203,0.06125856,0.05283661,0.04851082,0.04841933,0.05268351,0.06140881,0.0746841,0.09257812,0.11513065,0.14233415,0.17409987,0.2101995,0.2501734,0.29320239,0.3379654,0.38256087,0.42464662,0.46196109,0.49316318,0.51849571,0.53966102,0.5589188,0.57810737,0.59817815,0.61924961,0.64088744,0.6623811,0.68293572,0.70178211,0.71823155,0.73169885,0.74170903,0.74789636,0.75" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.5,0.44639732,0.3925191,0.33899199,0.28640626,0.23531312,0.18622135,0.13959382,0.09584422,0.0553343,0.01837187,-0.01479027,-0.04395438,-0.06897667,-0.08976533,-0.10627761,-0.11851641,-0.12652646,-0.13039049,-0.13022548,-0.12617923,-0.11842718,-0.10716938,-0.09262757,-0.07504189,-0.05466716,-0.03176828,-0.00661452,0.02052773,0.04940393,0.07978263,0.11146932,0.14432332,0.1782782,0.21336587,0.24974362,0.28772118,0.32778047,0.37057121,0.41685036,0.46731427,0.52226615,0.58111476,0.64186893,0.70102427,0.75422302,0.79751969,0.82846159,0.84634819,0.85178411,0.84604261,0.83059118,0.80684517,0.77608033,0.73942538,0.69788428,0.65236403,0.60369847,0.5526658,0.5" y2="0.82942261,0.82728099,0.8208244,0.8100679,0.79510536,0.77610324,0.75329389,0.72696831,0.6974683,0.66517822,0.63051633,0.59392588,0.55586642,0.51680542,0.47721067,0.43754366,0.39825425,0.35977662,0.32252655,0.28689982,0.25327141,0.22199537,0.19340478,0.16781182,0.14550771,0.12676232,0.11182378,0.10091788,0.09424755,0.09199253,0.0943091,0.10132982,0.11316267,0.12988853,0.15155498,0.17816295,0.20964078,0.24579769,0.28624726,0.33029514,0.37680264,0.42408273,0.46995568,0.51212743,0.54890919,0.57992477,0.60622747,0.62965793,0.65194924,0.67417271,0.69665843,0.71918348,0.7412095,0.76206796,0.78107705,0.79760613,0.8111074,0.82112905,0.82731881,0.82942261" z2="0,-0.00009822,-0.00038443,-0.00084883,-0.00148484,-0.00228841,-0.00325739,-0.00439099,-0.00568919,-0.00715219,-0.00877989,-0.01057128,-0.0125239,-0.01463328,-0.0168925,-0.01929178,-0.02181822,-0.02445573,-0.02718505,-0.02998402,-0.03282796,-0.03569015,-0.03854253,-0.04135629,-0.04410263,-0.0467534,-0.0492818,-0.05166292,-0.05387422,-0.05589589,-0.05771093,-0.05930504,-0.06066606,-0.06178276,-0.06264283,-0.06322944,-0.06351605,-0.06345886,-0.06298709,-0.06199282,-0.06032614,-0.05780769,-0.05427489,-0.04966745,-0.04411933,-0.03798225,-0.03173175,-0.02580885,-0.02050699,-0.01595346,-0.01215339,-0.00904549,-0.00654356,-0.00455998,-0.00301634,-0.00184679,-0.00099804,-0.00042791,-0.0001036,0" l="0.0190614261640511"  a="0.4"  label="" stroke="green" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="0.5,0.4465071,0.39294844,0.33993869,0.28805914,0.2378541,0.18982678,0.14443496,0.10208686,0.06313758,0.02788617,-0.0034263,-0.03061751,-0.05356359,-0.07219749,-0.08650628,-0.09652744,-0.10234446,-0.10408177,-0.10189959,-0.09598848,-0.08656416,-0.07386223,-0.0581332,-0.03963733,-0.01863944,0.00459673,0.02981467,0.05677232,0.0852505,0.11506308,0.14606955,0.17819041,0.21142597,0.24587887,0.28177931,0.31950963,0.35961902,0.40280866,0.44984989,0.50137858,0.5575104,0.61729868,0.67826169,0.73643356,0.78726496,0.82701468,0.85371685,0.86719987,0.86846536,0.85900876,0.84038199,0.81400171,0.78110475,0.74276669,0.69993777,0.65347665,0.6041763,0.5527816,0.5" y1="0.75,0.74785851,0.74140388,0.73065547,0.71571384,0.69675428,0.67402006,0.64781508,0.61849606,0.58646415,0.55215599,0.51603455,0.47857974,0.44027925,0.40161989,0.36307976,0.32512149,0.28818683,0.25269264,0.21902822,0.18755388,0.15860049,0.13246991,0.10943592,0.08974547,0.0736203,0.06125856,0.05283661,0.04851082,0.04841933,0.05268351,0.06140881,0.0746841,0.09257812,0.11513065,0.14233415,0.17409987,0.2101995,0.2501734,0.29320239,0.3379654,0.38256087,0.42464662,0.46196109,0.49316318,0.51849571,0.53966102,0.5589188,0.57810737,0.59817815,0.61924961,0.64088744,0.6623811,0.68293572,0.70178211,0.71823155,0.73169885,0.74170903,0.74789636,0.75" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="0.5,0.44645786,0.39275415,0.33950416,0.28728584,0.23663677,0.18805043,0.14197224,0.09879578,0.05885956,0.02244473,-0.01022622,-0.03898933,-0.06373767,-0.08441844,-0.10102874,-0.11361042,-0.12224409,-0.12704292,-0.12814652,-0.12571514,-0.11992466,-0.11096217,-0.09902241,-0.08430469,-0.06701016,-0.04733906,-0.02548744,-0.00164296,0.02402094,0.05135311,0.08023585,0.11060017,0.14244599,0.17586841,0.21108992,0.24849655,0.28867008,0.33239719,0.38061472,0.43422122,0.49366986,0.5583225,0.62578069,0.69174302,0.75090815,0.79864544,0.83231755,0.851463,0.8571096,0.85094241,0.83474427,0.81014109,0.77853675,0.74113181,0.69896667,0.65296365,0.60395977,0.55272965,0.5" y2="0.75,0.74795667,0.74178727,0.73149917,0.71718284,0.69900464,0.67719934,0.65206197,0.62393916,0.59321995,0.56032599,0.52570156,0.48980349,0.45309152,0.41601935,0.37902698,0.34253456,0.30693804,0.27260669,0.2398825,0.20908105,0.18049366,0.1543903,0.13102298,0.11062919,0.09343503,0.07965812,0.06950988,0.06319737,0.06092454,0.06289281,0.06930087,0.08034292,0.09620424,0.1170516,0.14301441,0.1741491,0.210376,0.2513743,0.29642386,0.34420584,0.39263794,0.43893,0.48010811,0.5140414,0.54043874,0.56096398,0.57827574,0.59478135,0.61193271,0.6301842,0.64928339,0.66859546,0.68733994,0.70473169,0.72005371,0.73268978,0.74213565,0.74799989,0.75" z2="0.07942261,0.07942253,0.07942145,0.07941694,0.07940526,0.07938139,0.07933907,0.07927074,0.0791675,0.07901904,0.07881366,0.07853828,0.07817858,0.07771927,0.07714438,0.07643779,0.07558378,0.07456774,0.07337688,0.07200103,0.07043335,0.06867108,0.06671613,0.06457571,0.06226274,0.05979633,0.05720211,0.05451266,0.05176786,0.04901543,0.04631157,0.04372174,0.04132176,0.03919903,0.03745392,0.0362008,0.03556811,0.03569548,0.03672511,0.03878226,0.04193921,0.04616047,0.05124203,0.05678363,0.06224794,0.06711659,0.07105858,0.07399547,0.07604131,0.07739386,0.07825164,0.07877611,0.07908494,0.07925881,0.07935098,0.07939577,0.07941477,0.07942117,0.07942252,0.07942261" l="0.0190614261640511"  a="0.4"  label="" stroke="blue" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1.07942261,1.07930742,1.0789545,1.07835931,1.07752523,1.07646265,1.07518814,1.07372349,1.0720948,1.07033147,1.06846519,1.06652891,1.06455577,1.0625782,1.06062699,1.05873062,1.0569147,1.05520165,1.05361064,1.05215763,1.05085574,1.04971564,1.04874607,1.04795448,1.04734762,1.04693214,1.0467152,1.04670503,1.04691143,1.0473462,1.04802355,1.04896021,1.0501754,1.05169017,1.05352586,1.05570108,1.05822604,1.06109304,1.06426156,1.0676375,1.07105023,1.07423958,1.07687764,1.07865101,1.07939375,1.07919215,1.07836452,1.07731724,1.07638888,1.07577559,1.07553928,1.07565156,1.07603723,1.07660435,1.0772613,1.07792515,1.07852505,1.07900297,1.07931343,1.07942261" y2="0,0.00427604,0.00861035,0.01295258,0.0172566,0.02148055,0.02558701,0.02954316,0.03332103,0.03689764,0.04025504,0.04338036,0.04626558,0.04890726,0.05130613,0.05346649,0.05539556,0.05710279,0.05859907,0.05989601,0.06100528,0.06193792,0.06270384,0.06331128,0.0637664,0.06407281,0.06423115,0.06423855,0.06408798,0.06376745,0.06325891,0.06253678,0.06156606,0.0602999,0.05867651,0.05661572,0.05401554,0.05075028,0.04667337,0.04163075,0.03549388,0.02822118,0.01994441,0.01104395,0.00214089,-0.00604596,-0.01292105,-0.01816575,-0.02174144,-0.02379098,-0.02453095,-0.02418248,-0.02294102,-0.02096962,-0.01840226,-0.01534996,-0.01190664,-0.00815363,-0.00416305,0" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.0190614261640511"  a="0.4"  label="" stroke="red" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1,0.99572396,0.99138965,0.98704742,0.9827434,0.97851945,0.97441299,0.97045684,0.96667897,0.96310236,0.95974496,0.95661964,0.95373442,0.95109274,0.94869387,0.94653351,0.94460444,0.94289721,0.94140093,0.94010399,0.93899472,0.93806208,0.93729616,0.93668872,0.9362336,0.93592719,0.93576885,0.93576145,0.93591202,0.93623255,0.93674109,0.93746322,0.93843394,0.9397001,0.94132349,0.94338428,0.94598446,0.94924972,0.95332663,0.95836925,0.96450612,0.97177882,0.98005559,0.98895605,0.99785911,1.00604596,1.01292105,1.01816575,1.02174144,1.02379098,1.02453095,1.02418248,1.02294102,1.02096962,1.01840226,1.01534996,1.01190664,1.00815363,1.00416305,1" y2="0.07942261,0.07930742,0.0789545,0.07835931,0.07752523,0.07646265,0.07518814,0.07372349,0.0720948,0.07033147,0.06846519,0.06652891,0.06455577,0.0625782,0.06062699,0.05873062,0.0569147,0.05520165,0.05361064,0.05215763,0.05085574,0.04971564,0.04874607,0.04795448,0.04734762,0.04693214,0.0467152,0.04670503,0.04691143,0.0473462,0.04802355,0.04896021,0.0501754,0.05169017,0.05352586,0.05570108,0.05822604,0.06109304,0.06426156,0.0676375,0.07105023,0.07423958,0.07687764,0.07865101,0.07939375,0.07919215,0.07836452,0.07731724,0.07638888,0.07577559,0.07553928,0.07565156,0.07603723,0.07660435,0.0772613,0.07792515,0.07852505,0.07900297,0.07931343,0.07942261" z2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" l="0.0190614261640511"  a="0.4"  label="" stroke="green" stroke-width="1" stroke-opacity="1" ></arrow>
+	<arrow z-index="1" layer="Link coordinate systems" x1="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z1="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" x2="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" y2="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" z2="0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261,0.07942261" l="0.0190614261640511"  a="0.4"  label="" stroke="blue" stroke-width="1" stroke-opacity="1" ></arrow>
+	<pathC z-index="0" layer="Joint wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="1,2" ></pathC>
+	<pathC z-index="0" layer="Joint wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="2,3" ></pathC>
+	<pathC z-index="0" layer="Joint wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="3,4" ></pathC>
+	<point z-index="0" layer="Points" x="-0.1,-0.08880413,-0.07660208,-0.06353209,-0.04974226,-0.03538883,-0.02063443,-0.00564623,0.00940594,0.02435154,0.03902122,0.05324878,0.06687301,0.07973954,0.09170259,0.10262661,0.11238784,0.12087566,0.12799391,0.13366195,0.13781553,0.14040762,0.14140883,0.14080782,0.1386114,0.13484446,0.12954968,0.12278704,0.11463319,0.10518049,0.09453605,0.08282049,0.07016653,0.05671756,0.04262596,0.02805139,0.01315898,-0.00188252,-0.01690269,-0.03173135,-0.04620048,-0.06014614,-0.07341032,-0.08584273,-0.09730251,-0.10765981,-0.11679728,-0.1246114,-0.13101362,-0.1359314,-0.13930902,-0.14110821,-0.1413086,-0.1399079,-0.13692199,-0.1323847,-0.12634743,-0.1188786,-0.11006283,-0.1" y="-0.1,-0.11006283,-0.1188786,-0.12634743,-0.1323847,-0.13692199,-0.1399079,-0.1413086,-0.14110821,-0.13930902,-0.1359314,-0.13101362,-0.1246114,-0.11679728,-0.10765981,-0.09730251,-0.08584273,-0.07341032,-0.06014614,-0.04620048,-0.03173135,-0.01690269,-0.00188252,0.01315898,0.02805139,0.04262596,0.05671756,0.07016653,0.08282049,0.09453605,0.10518049,0.11463319,0.12278704,0.12954968,0.13484446,0.1386114,0.14080782,0.14140883,0.14040762,0.13781553,0.13366195,0.12799391,0.12087566,0.11238784,0.10262661,0.09170259,0.07973954,0.06687301,0.05324878,0.03902122,0.02435154,0.00940594,-0.00564623,-0.02063443,-0.03538883,-0.04974226,-0.06353209,-0.07660208,-0.08880413,-0.1" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="-0.1,-0.16320957,-0.22456991,-0.28338579,-0.33899079,-0.39075489,-0.43809158,-0.48046452,-0.5173936,-0.54846041,-0.57331294,-0.5916696,-0.60332242,-0.60813935,-0.60606581,-0.59712531,-0.58141915,-0.55912527,-0.53049627,-0.49585655,-0.45559857,-0.41017847,-0.36011089,-0.30596311,-0.24834865,-0.18792029,-0.12536273,-0.06138475,0.00328874,0.06792496,0.13179157,0.19416493,0.25433833,0.31162996,0.36539071,0.41501143,0.45992991,0.4996372,0.53368339,0.56168275,0.58331801,0.59834405,0.60659061,0.60796425,0.60244942,0.59010859,0.5710816,0.54558403,0.51390477,0.47640276,0.43350292,0.38569132,0.33350969,0.27754925,0.21844407,0.15686383,0.09350627,0.02908924,-0.03565739,-0.1" y="0.6,0.58597153,0.56530377,0.53823089,0.50505965,0.46616587,0.42199025,0.37303331,0.31984975,0.26304217,0.20325421,0.14116331,0.07747296,0.01290482,-0.05180954,-0.11593687,-0.1787506,-0.23953901,-0.29761335,-0.35231561,-0.40302599,-0.44916992,-0.49022459,-0.52572481,-0.55526836,-0.5785205,-0.59521776,-0.60517098,-0.60826736,-0.60447183,-0.5938274,-0.57645466,-0.55255046,-0.52238565,-0.48630199,-0.44470834,-0.39807597,-0.34693324,-0.29185961,-0.2334791,-0.17245318,-0.10947329,-0.04525303,0.01947997,0.08399225,0.14755286,0.20944165,0.26895737,0.3254257,0.37820683,0.42670272,0.4703639,0.50869567,0.54126372,0.56769903,0.58770208,0.60104624,0.6075803,0.60723023,0.6" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="0.1,0.03565739,-0.02908924,-0.09350627,-0.15686383,-0.21844407,-0.27754925,-0.33350969,-0.38569132,-0.43350292,-0.47640276,-0.51390477,-0.54558403,-0.5710816,-0.59010859,-0.60244942,-0.60796425,-0.60659061,-0.59834405,-0.58331801,-0.56168275,-0.53368339,-0.4996372,-0.45992991,-0.41501143,-0.36539071,-0.31162996,-0.25433833,-0.19416493,-0.13179157,-0.06792496,-0.00328874,0.06138475,0.12536273,0.18792029,0.24834865,0.30596311,0.36011089,0.41017847,0.45559857,0.49585655,0.53049627,0.55912527,0.58141915,0.59712531,0.60606581,0.60813935,0.60332242,0.5916696,0.57331294,0.54846041,0.5173936,0.48046452,0.43809158,0.39075489,0.33899079,0.28338579,0.22456991,0.16320957,0.1" y="0.6,0.60723023,0.6075803,0.60104624,0.58770208,0.56769903,0.54126372,0.50869567,0.4703639,0.42670272,0.37820683,0.3254257,0.26895737,0.20944165,0.14755286,0.08399225,0.01947997,-0.04525303,-0.10947329,-0.17245318,-0.2334791,-0.29185961,-0.34693324,-0.39807597,-0.44470834,-0.48630199,-0.52238565,-0.55255046,-0.57645466,-0.5938274,-0.60447183,-0.60826736,-0.60517098,-0.59521776,-0.5785205,-0.55526836,-0.52572481,-0.49022459,-0.44916992,-0.40302599,-0.35231561,-0.29761335,-0.23953901,-0.1787506,-0.11593687,-0.05180954,0.01290482,0.07747296,0.14116331,0.20325421,0.26304217,0.31984975,0.37303331,0.42199025,0.46616587,0.50505965,0.53823089,0.56530377,0.58597153,0.6" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="0.1,0.11006283,0.1188786,0.12634743,0.1323847,0.13692199,0.1399079,0.1413086,0.14110821,0.13930902,0.1359314,0.13101362,0.1246114,0.11679728,0.10765981,0.09730251,0.08584273,0.07341032,0.06014614,0.04620048,0.03173135,0.01690269,0.00188252,-0.01315898,-0.02805139,-0.04262596,-0.05671756,-0.07016653,-0.08282049,-0.09453605,-0.10518049,-0.11463319,-0.12278704,-0.12954968,-0.13484446,-0.1386114,-0.14080782,-0.14140883,-0.14040762,-0.13781553,-0.13366195,-0.12799391,-0.12087566,-0.11238784,-0.10262661,-0.09170259,-0.07973954,-0.06687301,-0.05324878,-0.03902122,-0.02435154,-0.00940594,0.00564623,0.02063443,0.03538883,0.04974226,0.06353209,0.07660208,0.08880413,0.1" y="-0.1,-0.08880413,-0.07660208,-0.06353209,-0.04974226,-0.03538883,-0.02063443,-0.00564623,0.00940594,0.02435154,0.03902122,0.05324878,0.06687301,0.07973954,0.09170259,0.10262661,0.11238784,0.12087566,0.12799391,0.13366195,0.13781553,0.14040762,0.14140883,0.14080782,0.1386114,0.13484446,0.12954968,0.12278704,0.11463319,0.10518049,0.09453605,0.08282049,0.07016653,0.05671756,0.04262596,0.02805139,0.01315898,-0.00188252,-0.01690269,-0.03173135,-0.04620048,-0.06014614,-0.07341032,-0.08584273,-0.09730251,-0.10765981,-0.11679728,-0.1246114,-0.13101362,-0.1359314,-0.13930902,-0.14110821,-0.1413086,-0.1399079,-0.13692199,-0.1323847,-0.12634743,-0.1188786,-0.11006283,-0.1" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="0.5,0.4465071,0.39294844,0.33993869,0.28805914,0.2378541,0.18982678,0.14443496,0.10208686,0.06313758,0.02788617,-0.0034263,-0.03061751,-0.05356359,-0.07219749,-0.08650628,-0.09652744,-0.10234446,-0.10408177,-0.10189959,-0.09598848,-0.08656416,-0.07386223,-0.0581332,-0.03963733,-0.01863944,0.00459673,0.02981467,0.05677232,0.0852505,0.11506308,0.14606955,0.17819041,0.21142597,0.24587887,0.28177931,0.31950963,0.35961902,0.40280866,0.44984989,0.50137858,0.5575104,0.61729868,0.67826169,0.73643356,0.78726496,0.82701468,0.85371685,0.86719987,0.86846536,0.85900876,0.84038199,0.81400171,0.78110475,0.74276669,0.69993777,0.65347665,0.6041763,0.5527816,0.5" y="0.75,0.74785851,0.74140388,0.73065547,0.71571384,0.69675428,0.67402006,0.64781508,0.61849606,0.58646415,0.55215599,0.51603455,0.47857974,0.44027925,0.40161989,0.36307976,0.32512149,0.28818683,0.25269264,0.21902822,0.18755388,0.15860049,0.13246991,0.10943592,0.08974547,0.0736203,0.06125856,0.05283661,0.04851082,0.04841933,0.05268351,0.06140881,0.0746841,0.09257812,0.11513065,0.14233415,0.17409987,0.2101995,0.2501734,0.29320239,0.3379654,0.38256087,0.42464662,0.46196109,0.49316318,0.51849571,0.53966102,0.5589188,0.57810737,0.59817815,0.61924961,0.64088744,0.6623811,0.68293572,0.70178211,0.71823155,0.73169885,0.74170903,0.74789636,0.75" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="0.9,0.90552894,0.91143057,0.91764721,0.92411653,0.93077274,0.93754785,0.94437311,0.95118045,0.95790389,0.96448096,0.97085396,0.97697105,0.9827871,0.98826423,0.993372,0.99808727,1.0023937,1.00628087,1.0097433,1.01277915,1.01538893,1.01757405,1.01933555,1.02067267,1.0215816,1.02205411,1.02207622,1.02162678,1.02067579,1.01918266,1.01709408,1.01434183,1.0108404,1.00648512,1.00115161,0.99469861,0.98697756,0.97785493,0.96725522,0.95523144,0.94205882,0.9283161,0.91487681,0.90273191,0.89267777,0.8850635,0.87977857,0.87644536,0.874637,0.87400283,0.87430022,0.87537774,0.87714586,0.87955123,0.88255848,0.88613862,0.89026223,0.89489582,0.9" y="-0.1,-0.10523887,-0.11025179,-0.11496964,-0.11933859,-0.12331904,-0.12688471,-0.13002172,-0.13272773,-0.1350108,-0.13688827,-0.13838536,-0.13953375,-0.14036993,-0.14093357,-0.14126595,-0.14140842,-0.1414011,-0.14128181,-0.14108532,-0.1408428,-0.14058158,-0.14032517,-0.14009331,-0.13990225,-0.13976493,-0.13969115,-0.13968765,-0.13975794,-0.13990179,-0.14011433,-0.14038444,-0.14069226,-0.14100527,-0.14127258,-0.14141667,-0.14132196,-0.14082051,-0.13967676,-0.13757827,-0.13414834,-0.12900705,-0.12190742,-0.1129338,-0.10265923,-0.09209744,-0.08239904,-0.07447689,-0.06880589,-0.06545317,-0.06422394,-0.06480406,-0.06685276,-0.07004898,-0.07410867,-0.07878763,-0.0838784,-0.08920551,-0.09462089,-0.1" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="0.9,0.84092208,0.78133641,0.72194609,0.66338577,0.60622206,0.55095254,0.49800411,0.44773137,0.40041575,0.35626561,0.31541803,0.27794225,0.24384495,0.21307744,0.1855443,0.16111311,0.13962494,0.12090477,0.10477157,0.09104745,0.07956589,0.07017874,0.06276238,0.05722311,0.05350245,0.05158259,0.05149297,0.05331845,0.05721029,0.06340073,0.07222291,0.08413728,0.09976638,0.1199389,0.14574192,0.17857521,0.22018916,0.27266479,0.33825429,0.41895276,0.51566361,0.62697499,0.74801317,0.87038508,0.98402648,1.08028826,1.15424579,1.20493786,1.23409601,1.2446422,1.23967453,1.22199474,1.19397685,1.15759182,1.11448181,1.06603654,1.01345579,0.95779557,0.9" y="1.1,1.09302068,1.0826755,1.06896493,1.05199376,1.03195879,1.00913645,0.98386997,0.95655599,0.9276307,0.89755559,0.86680305,0.83584245,0.80512703,0.77508251,0.74609779,0.71851846,0.69264331,0.66872385,0.64696681,0.62753905,0.61057435,0.59618154,0.58445328,0.57547523,0.56933504,0.5661311,0.56598093,0.56902904,0.57545422,0.58547572,0.59935772,0.6174103,0.63998393,0.66745221,0.70017365,0.73841812,0.78223721,0.83125417,0.88436001,0.93935302,0.99268236,1.03964049,1.07540813,1.09690472,1.10442059,1.10161418,1.09371305,1.0853573,1.07944386,1.07710269,1.07821896,1.08199738,1.08736975,1.09323594,1.09858724,1.10256028,1.10445414,1.10372949,1.1" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="1.1,1.04063201,0.98015762,0.91926852,0.85860783,0.79876837,0.7402894,0.68365272,0.62927866,0.57752266,0.52867292,0.48294944,0.44050495,0.40142777,0.36574679,0.33343825,0.30443425,0.27863234,0.25590572,0.23611359,0.21911109,0.20475854,0.19292986,0.18352014,0.1764527,0.17168578,0.16921964,0.1691044,0.17144962,0.17643629,0.18433241,0.19551327,0.2104877,0.22993125,0.25472636,0.28600698,0.32519856,0.37403212,0.43448661,0.50857734,0.59786965,0.70261185,0.82056631,0.94607016,1.07031241,1.18344615,1.2776238,1.34894411,1.39729839,1.42491218,1.4348633,1.43017836,1.41346977,1.38687997,1.35214925,1.31071096,1.26377632,1.21239906,1.15752063,1.1" y="1.1,1.10378849,1.10435786,1.10158178,1.09544888,1.08605056,1.073569,1.05826481,1.04046417,1.02054539,0.99892481,0.97604237,0.95234725,0.92828406,0.9042803,0.88073574,0.85801416,0.8364381,0.81628653,0.79779543,0.781161,0.76654486,0.75408075,0.74388214,0.73605016,0.73068157,0.72787635,0.7277448,0.73041376,0.7360318,0.7447727,0.75683625,0.77244439,0.7918296,0.81520992,0.84274193,0.87443868,0.91003528,0.94878586,0.98919349,1.0287328,1.06374823,1.08986401,1.10321873,1.10229586,1.08919581,1.06907672,1.04796851,1.03060855,1.01953403,1.01532946,1.01732324,1.02422788,1.03456459,1.04689584,1.05993335,1.07257729,1.08392188,1.0932462,1.1" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="Points" x="1.1,1.10523887,1.11025179,1.11496964,1.11933859,1.12331904,1.12688471,1.13002172,1.13272773,1.1350108,1.13688827,1.13838536,1.13953375,1.14036993,1.14093357,1.14126595,1.14140842,1.1414011,1.14128181,1.14108532,1.1408428,1.14058158,1.14032517,1.14009331,1.13990225,1.13976493,1.13969115,1.13968765,1.13975794,1.13990179,1.14011433,1.14038444,1.14069226,1.14100527,1.14127258,1.14141667,1.14132196,1.14082051,1.13967676,1.13757827,1.13414834,1.12900705,1.12190742,1.1129338,1.10265923,1.09209744,1.08239904,1.07447689,1.06880589,1.06545317,1.06422394,1.06480406,1.06685276,1.07004898,1.07410867,1.07878763,1.0838784,1.08920551,1.09462089,1.1" y="-0.1,-0.09447106,-0.08856943,-0.08235279,-0.07588347,-0.06922726,-0.06245215,-0.05562689,-0.04881955,-0.04209611,-0.03551904,-0.02914604,-0.02302895,-0.0172129,-0.01173577,-0.006628,-0.00191273,0.0023937,0.00628087,0.0097433,0.01277915,0.01538893,0.01757405,0.01933555,0.02067267,0.0215816,0.02205411,0.02207622,0.02162678,0.02067579,0.01918266,0.01709408,0.01434183,0.0108404,0.00648512,0.00115161,-0.00530139,-0.01302244,-0.02214507,-0.03274478,-0.04476856,-0.05794118,-0.0716839,-0.08512319,-0.09726809,-0.10732223,-0.1149365,-0.12022143,-0.12355464,-0.125363,-0.12599717,-0.12569978,-0.12462226,-0.12285414,-0.12044877,-0.11744152,-0.11386138,-0.10973777,-0.10510418,-0.1" z="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" label="" r="1" stroke="black" stroke-width="2" fill="black" fill-opacity="1" stroke-opacity="1" ></point>
+	<pathC z-index="0" layer="Point wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="5,6,7,8,5" ></pathC>
+	<pathC z-index="0" layer="Point wire frame" label="" stroke="black" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" d="10,11,12,13,10" ></pathC>
+</svg_doc>
+
+<body style="margin:0px;background-color:;overflow:hidden;" >
+	<a id='keydown' type='checkbox' onkeydown="javascript:;" ></a>
+	<div id="control_icons" class="control_icons" >
+		<div id="control_icon_control" class="control_icon" onClick="javascript:showHideControlPanel();" style="" title="No control panel contents to display" >
+			<a id="control_icon_control_vertical" class="control_icon" style="font-size:0.55em;line-height:18px;" >&#124;</a>
+			<a id="control_icon_control_horizontal" class="control_icon" style="position:relative;right:0px;top:-17px;font-size:0.55em;" >&#8213;</a>
+		</div>
+		<div id="control_icon_rotate" class="control_icon" style="border:1px solid #000000;" onClick="javascript:toggle_rotate_mode('rotate');" title="Turn on rotate mode or press and hold 'r'" >
+			<a id="control_icon_rotate_arrow" class="control_icon" style="line-height:22px;font-size:0.7em;color:black;" >&#8634;</a>
+		</div>
+		<div id="control_icon_translate" class="control_icon" style="border:1px solid #cccccc;color:#cccccc;" onClick="javascript:toggle_rotate_mode('translate');" title="Translate mode on, click and drag to move object"  >
+			<a class="control_icon" style="font-size:0.6em;line-height:18px;" >&#8597;</a>
+			<a class="control_icon" style="font-size:0.6em;position:relative;right:0px;top:-18px;" >&#8596;</a>
+		</div>
+		<div class="control_icon" onClick="javascript:about_alert();" title="About SVGViewR" >
+			<a class="control_icon" style="font-size:0.6em;font-family:Times;line-height:21px;" ><i>i</i></a>
+		</div>
+	</div>
+	
+	<div id="control_container" class="control_container" style="display:none;width: 85px;" >
+		<div id="control_main" class="control_main" >
+	
+			<div id="control_animation_container" class="control_animation_container" >
+				<div id="control_animation_header" class="control_animation_header" >
+					<a id="control_animation_click" class="control_animation_click" onClick="javascript:show_hide_control(this);" >&#9660;</a>
+					Animation
+				</div>
+				<div id="control_animation_main" class="control_animation_main" >
+	
+					<div class="control_animation_frame" >
+						<div id="control_play" class="control_icon_play" onClick="playPauseAnimation();" title="Pause animation or press the spacebar" >
+							<a id="control_icon_play" class="control_icon_play" >&#9612; &#9612;</a>
+						</div>
+						<div class="control_animation_frame_range" >
+							<input id="animation_frame_range_input" type="range" title="Click to skip to frame" class="control_animation_frame_range" oninput="inputAnimationState(this)" value=100 />
+						</div>
+						<div class="control_animation_frame_count" >
+							<input id="animation_frame_count_input" type="number" oninput="inputAnimationState(this)" title="Enter number to skip to frame" class="control_animation_frame_count" min="1" max="10" step="1" value="1" />
+						</div>
+					</div>
+					<div style="border-bottom:1px solid #aaaaaa;margin:0px 10px;" ></div>
+					<div class="control_animation_frame" >
+						<div class="control_animation_duration" >
+							<a title="Change the speed of the animation" >Animation duration: </a>
+							<input id="animation_duration_input" type="number" oninput="changeAnimationDuration(this);" title="Change the speed of the animation" class="control_animation_duration" min="0" max="60" step="1" value="1" />
+							sec
+						</div>
+						<div class="control_animation_reverse" >
+							<a title="Run the animation in reverse after the last frame" >Reverse</a>
+							<input id="animation_reverse_checkbox" type="checkbox" title="Run the animation in reverse after the last frame" name="animation_reverse_checkbox" onchange="toggleAnimationReverse();" value="1"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="control_layers_container" class="control_layers_container" >
+				<div id="control_layers_header" class="control_layers_header" >
+					<a id="control_layers_click" class="control_layers_click" onClick="javascript:show_hide_control(this);" >&#9660;</a>
+					<a class="control_layers_text">Layers</a>
+				</div>
+				<div class="control_layer_subheader" >
+					<div class="control_layer_subheader_label" >Opacity</div>
+					<div style="margin:0px 0px 0px 55px;" >Layer names</div>
+				</div>
+				<div id="control_layers_main" class="control_layers_main" >
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Joints</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Points</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Joint wire frame</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Point wire frame</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Joint constraints</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_text_nochild">Link coordinate systems</a>
+						</div>
+					</div>
+					<div class="control_layer_container" >
+						<div class="control_layer_header" >
+							<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+							<a class="control_layer_level1"></a>
+							<a class="control_layer_layer_vis" onClick="javascript:show_hide_control(this);" >&#9658;</a>
+							<a class="control_layer_text">Coordinate box</a>
+						</div>
+						<div class="control_layer_main" style="display:none;" >
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=0 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Bounding panel fill</a>
+								</div>
+							</div>
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=40 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Bounding panel outline</a>
+								</div>
+							</div>
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=10 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Grid</a>
+								</div>
+							</div>
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=50 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Ticks</a>
+								</div>
+							</div>
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Tick labels</a>
+								</div>
+							</div>
+							<div class="control_layer_container" >
+								<div class="control_layer_header" >
+									<div class="control_layer_shape_vis_range" ><input type="range" class="control_layer_shape_vis_range" oninput="layer_visibility(this);" value=100 /></div>
+									<a class="control_layer_level2"></a>
+									<a class="control_layer_text_nochild">Axis labels</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<svg id="world" style="background-color:;width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1;" onload="Javascript:onLoadFunctions();" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
+</body>
+
+<style>
+	body{
+		font-family: Arial, Corbel, Myriad Pro, Cabin, League Gothic, 'sans serif';
+		font-size: 13px;
+	}
+	
+	a.control_layer_text_nochild{
+		padding-left:2px;
+	}
+	
+	a.control_layer_layer_vis{
+	}
+	
+	a.control_click{
+		font-size:2em;
+	}
+	
+	a.control_icon_play{
+		color:white;
+		font-size:0.8em;
+		letter-spacing:-1px;
+		line-height:19px;
+	}
+	
+	a.control_rotate{
+		font-weight:900;
+		font-size:1.7em;
+		color:#cccccc;
+	}
+	
+	a.control_translate{
+		font-weight:900;
+		font-size:1.45em;
+		vertical-align:31%;
+		color:black;
+	}
+	
+	span.control_layer_shape_vis{
+	/*	font-size:1.8em; */
+	/*	line-height:0.6; */
+	/*	vertical-align:-1%; */
+	}
+	
+	a.control_layer_level1{padding-left:0px;}
+	a.control_layer_level2{padding-left:15px;}
+	a.control_layer_level3{padding-left:30px;}
+	a.control_layer_level4{padding-left:45px;}
+	
+	div.control_animation_duration{
+		float:left;
+		padding:0px 0px 0px 5px;
+		color:white;
+		background-color:;
+	}
+	
+	div.control_animation_frame{
+		height:25px;
+		background-color:;
+		margin:5px 0px 0px 0px;
+		padding:0px 0px 0px 0px;
+	}
+	
+	div.control_animation_frame_range{
+		text-align:center;
+		float:left;
+		height:18px;
+		margin:0px 0px 0px 2px;
+		padding:2px 0px 0px 0px;
+		background-color:;
+	/*	background-color:green; */
+	/*	border-right:1px solid rgb(200,200,200); */
+	}
+	
+	div.control_animation_main{
+		background-color: rgba(0,0,0,0.5);
+		margin:0px 0px 9px 0px;
+		padding:3px 0px 10px 0px;
+		height:50px;
+	}
+	
+	div.control_animation_reverse{
+		float:left;
+		color:white;
+		margin:1px 0px 0px 40px;
+		background-color:;
+	}
+	
+	div.control_container{
+	    border-radius: 10px;
+		background-color: rgba(0,0,0,0.3);
+		cursor: default;
+		position: fixed;
+	/*	padding:5px 0px 10px 0px; */
+		top: 20px;
+		right: 60px;
+	}
+	
+	div.control_icons{
+		position: fixed;
+		width: 30px;
+		top: 20px;
+		right: 20px;
+	}
+	
+	div.control_icon{
+		cursor: default;
+	    border-radius: 50%;
+		width: 20px;
+		font-size:2em;
+		height: 20px;
+		font-weight:100;
+		text-align:center;
+		background-color:white;
+		border:1px solid black;
+		margin:0 0 5px 0;
+	}
+	
+	div.control_icon_play{
+		float:left;
+		cursor: default;
+		background-color:;
+		width: 18px;
+		height: 20px;
+		padding:0px 0px 0px 5px;
+		text-align:center;
+	}
+	
+	div.control_main{
+		margin:5px 0px 5px 0px;
+	}
+	
+	div.control_layers_container, div.control_animation_container{
+	/*	background-color: rgba(0,0,0,0.2); */
+		margin:0px 0px 5px 0px;
+	}
+	
+	div.control_layers_header, div.control_animation_header{
+		padding:0px 0px 1px 3px;
+		color:white;
+	}
+	
+	div.control_layers_main{
+		background-color: rgba(255,255,255,0.8);
+		margin:0px 0px 0px 0px;
+		padding:3px 0px 10px 2px;
+		height:150px;
+		overflow-y: scroll;
+	}
+	
+	div.control_layer_subheader_label{
+	/*	background-color:red; */
+		float:left;
+		width:50px;
+		text-align:center;
+	/*	border-right:1px solid rgb(225, 225, 225); */
+		border-right:1px solid white;
+	/*	font-size: 12px; */
+	/*	letter-spacing: 0.1px; */
+	}
+	
+	div.control_layer_subheader{
+		background-color: rgba(0,0,0,0.5);
+	/*	background-color: ; */
+		width:296px;
+		color:white;
+	/*	font-weight:bold; */
+		margin:0px;
+		padding:2px;
+	/*	border:1px solid black; */
+	/*	border-bottom:1px solid black; */
+	}
+	
+	div.control_layer_container{
+	/*	background-color: green; */
+	/*	margin:5px 0px 0px 15px; */
+	/*	margin:5px 0px 0px 0px; */
+	}
+	
+	div.control_layer_header{
+	/*	background-color: green; */
+		margin:3px 0px 0px 0px;
+	/*	padding:0px 0px 0px 0px; */
+	}
+	
+	div.control_layer_main{
+		width:400px;
+	}
+	
+	div.control_layer_shape_vis_range{
+		float:left;
+		width:53px;
+		height:18px;
+	/*	background-color:green; */
+	/*	border-right:1px solid rgb(200,200,200); */
+	}
+	
+	input.control_layer_shape_vis_range {
+		-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+		width: 46px;
+		cursor: default;
+		margin-top: 6px;
+	}
+	
+	input.control_animation_duration{
+		width:35px;
+		margin:0px 0px 0px 0px;
+	}
+	
+	input.control_animation_frame_range {
+		-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+		width: 214px;
+		cursor: default;
+		margin: 3px 8px 0px 0px;
+		float:left;
+		background-color:transparent;
+	}
+	
+	input.control_animation_frame_count{
+		width:40px;
+		margin:0px 0px 0px 0px;
+	}
+	
+	input.control_layer_shape_vis_range::-webkit-slider-thumb, input.control_animation_frame_range::-webkit-slider-thumb {
+		-webkit-appearance: none;
+	}
+	
+	input[type=range]:focus {
+	  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+	}
+	
+	input.control_animation_frame_range::-webkit-slider-thumb {
+		height: 10px;
+		width: 6px;
+		background: #ffffff;
+		border-radius: 3px;
+		margin-top: 0px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		border: 0px solid #000000;
+	}
+	
+	input.control_layer_shape_vis_range::-webkit-slider-thumb{
+		border: 1px solid #333333;
+		height: 12px;
+		width: 5px;
+		border-radius: 3px;
+		background: #ffffff;
+		margin-top: -4px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+	}
+	
+	input.control_animation_frame_range::-webkit-slider-runnable-track {
+		height: 10px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		background: rgb(200,200,200);
+		border-radius: 3px;
+	}
+	
+	input.control_layer_shape_vis_range::-webkit-slider-runnable-track {
+		height: 3px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		background: rgb(150,150,150);
+		border-radius: 1.3px;
+	}
+</style>
+
+
+<script type="text/javascript" >
+	var svgDocument = document.getElementById("world");
+</script>
+
+<script type="text/javascript" >
+	function add(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] + b[i];
+		return s;
+	}
+	
+	function avec(a, b){
+		s = 0;
+		var d = dot(a,a) * dot(b,b);
+		if(d < 0 || d > 0) s = Math.acos(dot(a,b)) / d;
+		return s;
+	}
+	
+	function cprod(u, v){
+		s = new Array(3);
+		s[0] = u[1]*v[2] - u[2]*v[1];
+		s[1] = u[2]*v[0] - u[0]*v[2];
+		s[2] = u[0]*v[1] - u[1]*v[0];
+		return s;	
+	}
+	
+	function dist(a, b){
+		var i;
+		var s = 0;
+		for(i = 0;i < a.length;i++) s += Math.pow(b[i] - a[i], 2)
+		return Math.sqrt(s);
+	}
+	
+	function dot(a, b){
+		var i;
+		var s = 0;
+		for(i = 0;i < a.length;i++) s += a[i]*b[i];
+		return s;
+	}
+	
+	function addC(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] + b;
+		return s;
+	}
+	
+	function inv(a){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = 1 / a[i];
+		return s;
+	}
+	
+	function max() {
+	    var args = Array.prototype.slice.call(arguments);
+	    return Math.max.apply(Math, args.filter(function(val) {
+	       return !isNaN(val);
+	    }));
+	}
+	
+	function min() {
+	    var args = Array.prototype.slice.call(arguments);
+	    return Math.min.apply(Math, args.filter(function(val) {
+	       return !isNaN(val);
+	    }));
+	}
+	
+	function multC(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] * b;
+		return s;
+	}
+	
+	function multM(a, b){
+		var i, j, k;
+		var s = new Array();
+		for (var i = 0, len = a.length; i < len; i++){
+			if(!a[0].length){
+				s[i] = 0;
+				for (var j = 0, len = a.length; j < len; j++){
+					s[i] += a[j]*b[j][i];
+				}
+			}else{
+				s[i] = new Array(a[i].length);
+				for (var k = 0, len = a[i].length; k < len; k++){
+					s[i][k] = 0;
+					for (var j = 0, len = a[i].length; j < len; j++){
+						s[i][k] += a[i][j]*b[j][k];
+					}
+				}
+			}
+		}
+		return s;
+	}
+	
+	function rotateTrig(r){return {sin : -Math.sin(r), cos : Math.cos(r)};}
+	
+	function rotateVector(v, deg){
+		var rad = degToRad(deg);
+		var vec = new Array(v[0]*Math.cos(rad) - v[1]*Math.sin(rad), v[0]*Math.sin(rad) + v[1]*Math.cos(rad));
+		return vec;
+	}
+	
+	function rotateX1(a, t) {
+		var tmp = a.y;
+		a.y = (t.cos * a.y) - (t.sin * a.z);
+		a.z = (t.sin * tmp) + (t.cos * a.z);
+		return a;
+	}
+	
+	function rotateY1(a, t) {
+		var tmp = a.x;
+		a.x = (t.cos * a.x) + (t.sin * a.z);
+		a.z = - (t.sin * tmp) + (t.cos * a.z);
+		return a;
+	}
+	
+	function rotateZ1(a, t) {
+		var tmp = a.x;
+		a.x = (t.cos * a.x) - (t.sin * a.y);
+		a.y = (t.sin * tmp) + (t.cos * a.y);
+		return a;
+	}
+	
+	function rotateX2(a, t) {
+		var tmp = a.y;
+		a.y = sub(multC(a.y, t.cos), multC(a.z, t.sin));
+		a.z = add(multC(tmp, t.sin), multC(a.z, t.cos));
+		return a;
+	}
+	
+	function rotateY2(a, t) {
+		var tmp = a.x;
+		a.x = add(multC(a.x, t.cos), multC(a.z, t.sin));
+		a.z = sub(multC(a.z, t.cos), multC(tmp, t.sin));
+		return a;
+	}
+	
+	function rotateZ2(a, t) {
+		var tmp = a.x;
+		a.x = sub(multC(a.x, t.cos), multC(a.y, t.sin));
+		a.y = add(multC(tmp, t.sin), multC(a.y, t.cos));
+		return a;
+	}
+	
+	function sub(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] - b[i];
+		return s;
+	}
+	
+	function tMatrixEP(v, a){
+		a = -a;
+		v = uvector(v);
+	
+		var t0 = Math.cos(a/2);
+		var t1 = v[0]*Math.sin(a/2)
+		var t2 = v[1]*Math.sin(a/2)
+		var t3 = v[2]*Math.sin(a/2)
+	
+		var r = new Array(3);
+		r[0] = new Array(2*(Math.pow(t0, 2) + Math.pow(t1, 2)) - 1, 2*(t1*t2 - t0*t3), 2*(t1*t3 + t0*t2));
+		r[1] = new Array(2*(t1*t2 + t0*t3), 2*(Math.pow(t0, 2) + Math.pow(t2, 2)) - 1, 2*(t2*t3 - t0*t1));
+		r[2] = new Array(2*(t1*t3 - t0*t2), 2*(t2*t3 + t0*t1), 2*(Math.pow(t0, 2) + Math.pow(t3, 2)) - 1);
+	
+		return r;
+	}
+	
+	function uvector(v){
+		var i, r;
+		var s = 0;
+		for(i = 0;i < v.length;i++) s += Math.pow(v[i], 2)
+		var d = Math.sqrt(s);
+		if(d == 0) return v;
+	
+		r = new Array();
+		for(i = 0;i < v.length;i++) r[i] = v[i]/d
+		return r;
+	}
+</script>
+<script type="text/javascript" >
+	var initialX;
+	var initialY;
+	function_name = new Array();
+	url_path = new Array();
+	innerHTML_id = new Array();
+	request_status = new Array();
+	xmlHttp = new Array();
+	time1 = new Array();
+	time2 = new Array();
+	var req_ct = 0;
+	var skip_buffer = 10;
+	var skip_to = 0;
+	var ajax_output;
+	var auto_view_r_result = 0;
+	
+	String.prototype.firstToUpperCase = function() {
+		return this.charAt(0).toUpperCase() + this.slice(1);
+	}
+	
+	Array.prototype.firstToUpperCase = function() {
+		for (var i = 0, len = this.length; i < len; i++) this[i] = this[i].firstToUpperCase();
+		return this;
+	}
+	
+	function about_alert(){
+		alert('svgViewR is a browser-based viewer that allows users to interactively visualize 3D vector graphics and animations. Visualizations can be made in R, using the package svgViewR, and easily distributed as a single HTML file with nearly universal compatibility across browsers and operating systems. This visualization was made using svgViewR version ' + svgviewr_version + '.\n\nsvgViewR was created by Aaron Olsen and is freely available under a GPL-3 license. For more information, please visit:\n\nhttp://cran.r-project.org/web/packages/svgViewR');
+	}
+	
+	function ajax_alert_return(j, xmlHttp_object){
+		alert(xmlHttp_object[j].responseText);
+	}
+	
+	function ajax_fill_element(j, xmlHttp_object){
+		document.getElementById(innerHTML_id[j]).innerHTML = xmlHttp_object[j].responseText;
+		window.status= '';
+	}
+	
+	function ajax_fill_element_return_call(j, xmlHttp_object){
+		document.getElementById(innerHTML_id[j]).innerHTML = xmlHttp_object[j].responseText;
+		on_ajax_request_return();
+	}
+	
+	function ajax_fill_element_return_call2(j, xmlHttp_object){
+		document.getElementById(innerHTML_id[j]).innerHTML = xmlHttp_object[j].responseText;
+		on_ajax_request_return2(url_path[j]);
+	}
+	
+	function ajax_get_xml_http_object(){
+		var xmlHttp=null;
+		try{ // Firefox, Opera 8.0+, Safari
+			xmlHttp = new XMLHttpRequest();}
+		catch(e){ // Internet Explorer		
+			try{
+				xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");}
+			catch(e){
+				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");}
+		}
+		return xmlHttp;
+	}
+	
+	function ajax_request(url, send_content, call_function, element_id){
+		url_path[req_ct] = url;
+		function_name[req_ct] = call_function;
+		innerHTML_id[req_ct] = element_id;
+		request_status[req_ct] = 0;
+	
+		xmlHttp[req_ct]=ajax_get_xml_http_object();
+		if(xmlHttp[req_ct]==null){
+			alert ("Browser does not support HTTP Request");
+			return;}
+		xmlHttp[req_ct].onreadystatechange=ajax_state_changed;
+		xmlHttp[req_ct].open("POST", url, true);
+		xmlHttp[req_ct].setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlHttp[req_ct].send(send_content);	
+		window.status= 'Command to ' + url + ' sent.';
+	
+		time1[req_ct] = new Date().getTime() / 1000;
+	
+		req_ct++;
+	}
+	
+	function ajax_state_changed(){
+		var j;
+		for(j = skip_to;j < xmlHttp.length; j++){
+			if(request_status[j] == 1){continue;}
+			if(xmlHttp[j].readyState==4 || xmlHttp[j].readyState=="complete"){
+				//alert(skip_to + ' -- ' + j);
+				eval(function_name[j] + '(j, xmlHttp)');
+	
+				time2[j] = new Date().getTime() / 1000;
+				if(document.getElementById("run_time")) document.getElementById("run_time").innerHTML = "Run-time: " + Math.round((time2[j] - time1[j])*100)/100 + " sec";
+				
+				request_status[j] = 1;
+				if(j - skip_buffer > 0){skip_to = j - skip_buffer;}
+			}	
+		}
+	}
+	
+	function array_unique(arr) {
+		var hash = {}, result = [];
+		for(var i = 0, l = arr.length;i < l;++i){
+	    	if(hash[ arr[i] ] === true) continue;
+			hash[ arr[i] ] = true;
+			result.push(arr[i]);    	
+	    }
+	    return result;
+	}
+	
+	function array_unique_properties(arr, property) {
+		var hash = {}, result = [];
+		for(var i = 0, l = arr.length;i < l;++i){
+	    	if(hash[ arr[i][property] ] === true) continue;
+			hash[ arr[i][property] ] = true;
+			result.push(arr[i][property]);    	
+	    }
+	    return result;
+	}
+	
+	function baseName(ev) {
+		var id = ev.target.getAttribute("id");
+		return id;
+	}
+	
+	var BrowserDetect = {
+		//Source: http://www.quirksmode.org/js/detect.html
+	
+		init: function () {
+			this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+			this.version = this.searchVersion(navigator.userAgent)
+				|| this.searchVersion(navigator.appVersion)
+				|| "an unknown version";
+			this.OS = this.searchString(this.dataOS) || "an unknown OS";
+		},
+		searchString: function (data) {
+			for (var i=0;i<data.length;i++)	{
+				var dataString = data[i].string;
+				var dataProp = data[i].prop;
+				this.versionSearchString = data[i].versionSearch || data[i].identity;
+				if (dataString) {
+					if (dataString.indexOf(data[i].subString) != -1)
+						return data[i].identity;
+				}
+				else if (dataProp)
+					return data[i].identity;
+			}
+		},
+		searchVersion: function (dataString) {
+			var index = dataString.indexOf(this.versionSearchString);
+			if (index == -1) return;
+			return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+		},
+		dataBrowser: [
+			{
+				string: navigator.userAgent,
+				subString: "Chrome",
+				identity: "Chrome"
+			},
+			{ 	string: navigator.userAgent,
+				subString: "OmniWeb",
+				versionSearch: "OmniWeb/",
+				identity: "OmniWeb"
+			},
+			{
+				string: navigator.vendor,
+				subString: "Apple",
+				identity: "Safari",
+				versionSearch: "Version"
+			},
+			{
+				prop: window.opera,
+				identity: "Opera",
+				versionSearch: "Version"
+			},
+			{
+				string: navigator.vendor,
+				subString: "iCab",
+				identity: "iCab"
+			},
+			{
+				string: navigator.vendor,
+				subString: "KDE",
+				identity: "Konqueror"
+			},
+			{
+				string: navigator.userAgent,
+				subString: "Firefox",
+				identity: "Firefox"
+			},
+			{
+				string: navigator.vendor,
+				subString: "Camino",
+				identity: "Camino"
+			},
+			{		// for newer Netscapes (6+)
+				string: navigator.userAgent,
+				subString: "Netscape",
+				identity: "Netscape"
+			},
+			{
+				string: navigator.userAgent,
+				subString: "MSIE",
+				identity: "Explorer",
+				versionSearch: "MSIE"
+			},
+			{
+				string: navigator.userAgent,
+				subString: "Gecko",
+				identity: "Mozilla",
+				versionSearch: "rv"
+			},
+			{ 		// for older Netscapes (4-)
+				string: navigator.userAgent,
+				subString: "Mozilla",
+				identity: "Netscape",
+				versionSearch: "Mozilla"
+			}
+		],
+		dataOS : [
+			{
+				string: navigator.platform,
+				subString: "Win",
+				identity: "Windows"
+			},
+			{
+				string: navigator.platform,
+				subString: "Mac",
+				identity: "Mac"
+			},
+			{
+				   string: navigator.userAgent,
+				   subString: "iPhone",
+				   identity: "iPhone/iPod"
+		    },
+			{
+				string: navigator.platform,
+				subString: "Linux",
+				identity: "Linux"
+			}
+		]
+	
+	};
+	
+	BrowserDetect.init();
+	
+	function clean(array, deleteValue){
+	
+		var array_clean = new Array();
+	
+		if(deleteValue == undefined) var deleteValue = '';
+	
+		var j = 0;
+		for(var i = 0; i < array.length; i++) {
+	
+			if(array[i] == deleteValue) continue;
+			if(isNaN(deleteValue) && isNaN(array[i])) continue;
+	
+			array_clean[j] = array[i];
+	
+			j++;
+		}
+	
+		return array_clean;
+	}
+	
+	function createCookie(name, value, sec){
+	
+		if (sec) {
+			var date = new Date();
+			date.setTime(date.getTime()+(sec*1000));
+			var expires = "; expires="+date.toGMTString();
+		}
+		else var expires = "";
+		document.cookie = name+"="+value+expires+"; path=/";
+	}
+	
+	function degToRad(d){
+		return d*(Math.PI/180);
+	}
+	
+	function detectKeyUp(e){
+		var evt = e || window.event;
+		if(evt.keyCode==82 && globalkeypress == "r"){globalkeypress = '';return;}
+	}
+	
+	function deleteCookie(name) {
+		createCookie(name,"",-1);
+	}
+	
+	function detectKeyDown(e){
+		var evt = e || window.event;
+		if(evt.keyCode==82){globalkeypress = 'r';} // r
+		if(evt.shiftKey === true){
+			if(globalkeypress == 'r'){
+				if(evt.keyCode==37){setKeyEvent("rotateYaxis", 45);} // left arrow
+				if(evt.keyCode==39){setKeyEvent("rotateYaxis", -45);} // right arrow
+				if(evt.keyCode==38){setKeyEvent("rotateXaxis", 45);} // up arrow
+				if(evt.keyCode==40){setKeyEvent("rotateXaxis", -45);} // down arrow
+				if(evt.keyCode==74){setKeyEvent("rotateZaxis", -45);} // j
+				if(evt.keyCode==75){setKeyEvent("rotateZaxis", 45);} // k
+			}else{
+				if(evt.keyCode==37){setKeyEvent("translateX", -10);} // left arrow
+				if(evt.keyCode==39){setKeyEvent("translateX", 10);} // right arrow
+				if(evt.keyCode==38){setKeyEvent("translateY", 10);} // up arrow
+				if(evt.keyCode==40){setKeyEvent("translateY", -10);} // down arrow
+				if(evt.keyCode==74){setKeyEvent("translateZ", 10);} // j
+				if(evt.keyCode==75){setKeyEvent("translateZ", -10);} // k
+			}
+		}else{
+			if(evt.metaKey === true){
+			}else{
+				if(globalkeypress == 'r'){
+					if(evt.keyCode==37){setKeyEvent("rotateYaxis", 10);} // left arrow
+					if(evt.keyCode==39){setKeyEvent("rotateYaxis", -10);} // right arrow
+					if(evt.keyCode==38){setKeyEvent("rotateXaxis", 10);} // up arrow
+					if(evt.keyCode==40){setKeyEvent("rotateXaxis", -10);} // down arrow
+					if(evt.keyCode==74){setKeyEvent("rotateZaxis", -10);} // j
+					if(evt.keyCode==75){setKeyEvent("rotateZaxis", 10);} // k
+				}else{
+					if(evt.keyCode==37){setKeyEvent("translateX", -1);} // left arrow
+					if(evt.keyCode==39){setKeyEvent("translateX", 1);} // right arrow
+					if(evt.keyCode==38){setKeyEvent("translateY", 1);} // up arrow
+					if(evt.keyCode==40){setKeyEvent("translateY", -1);} // down arrow
+					if(evt.keyCode==74){setKeyEvent("translateZ", 1);} // j
+					if(evt.keyCode==75){setKeyEvent("translateZ", -1);} // k
+					//if(evt.keyCode==80){} // p
+					if(evt.keyCode==32){setKeyEvent("playPauseAnimation");} // space-bar
+				}
+			}
+		}
+	}
+	
+	function doEvent(){
+	
+		var i, len;
+		var dx = 0;
+		var dy = 0;
+		var dz = 0;
+	
+		if (currentEvent == "callZoomIn"){
+			if(zoom <= 400){
+				zoom = zoom + 4;
+				depth = Math.floor(zoom * (eyez - maxzoom) / 100 + eyez);
+			}
+		}
+	
+		if (currentEvent == "callZoomOut"){
+			if(zoom >= 175){
+				zoom = zoom - 4;
+				depth = Math.floor(zoom * (eyez - maxzoom) / 100 + eyez);
+			}
+		}
+	
+		if(currentEvent == "translateZ") d = -d;
+	
+		// Apply translation
+		if (currentEvent == "translateX" || currentEvent == "translateY" || currentEvent == "translateZ")
+			for (i = 0, len = shape_transform.length; i < len; i++) eval(currentEvent + '(' + shape_transform[i] + ', d)');
+	
+		// Apply rotation
+	//	var t1 = new Date().getTime();
+		if (currentEvent == "rotateXaxis" || currentEvent == "rotateYaxis" || currentEvent == "rotateZaxis")
+			for (i = 0, len = shape_transform.length; i < len; i++) eval(currentEvent + '(' + shape_transform[i] + ', degToRad(d))');
+	//	var t2 = new Date().getTime();
+	//	alert(t2 - t1)
+	
+		if (currentEvent == "playPauseAnimation"){
+			playPauseAnimation();
+		}
+	}
+	
+	function extract_number(strString){
+		var strValidChars = "0123456789.-";
+		var strChar;
+		var returnString = "";
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		for (i = 0; i < strString.length; i++){
+			strChar = strString.charAt(i);
+			if(strValidChars.indexOf(strChar) > -1) returnString += strChar;
+		}
+		return parseFloat(returnString);
+	}
+	
+	function extract_alpha(strString){
+		var strNonAlphaChars = "0123456789.-";
+		var strChar;
+		var returnString = "";
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		for (i = 0; i < strString.length; i++){
+			strChar = strString.charAt(i);
+			if(strNonAlphaChars.indexOf(strChar) == -1) returnString += strChar;
+		}
+		return returnString;
+	}
+	
+	function firstToUpperCase(string){
+		if(typeof string === 'string'){
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		}else{
+			var string_array = new Array();
+			for (var i = 0, len = string.length; i < len; i++) string_array[i] = firstToUpperCase(string[i]);
+			return string_array;
+		}
+	}
+	
+	function getCookie(Name){ 
+		var re=new RegExp(Name+"=[^;]+", "i"); //construct RE to search for target name/value pair
+		if (document.cookie.match(re)) //if cookie found
+			return document.cookie.match(re)[0].split("=")[1] //return its value
+		return false;
+	}
+	
+	function getMouseXYLocal(e){
+		if(IE){return new Array(event.clientX,event.clientY);}else{return new Array(e.pageX,e.pageY);}
+	}
+	
+	function getStyle(el, styleProp) {
+	  var value, defaultView = (el.ownerDocument || document).defaultView;
+	  // W3C standard way:
+	  if (defaultView && defaultView.getComputedStyle) {
+	    // sanitize property name to css notation
+	    // (hypen separated words eg. font-Size)
+	    styleProp = styleProp.replace(/([A-Z])/g, "-$1").toLowerCase();
+	    return defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+	  } else if (el.currentStyle) { // IE
+	    // sanitize property name to camelCase
+	    styleProp = styleProp.replace(/\-(\w)/g, function(str, letter) {
+	      return letter.toUpperCase();
+	    });
+	    value = el.currentStyle[styleProp];
+	    // convert other units to pixels on IE
+	    if (/^\d+(em|pt|%|ex)?$/i.test(value)) { 
+	      return (function(value) {
+	        var oldLeft = el.style.left, oldRsLeft = el.runtimeStyle.left;
+	        el.runtimeStyle.left = el.currentStyle.left;
+	        el.style.left = value || 0;
+	        value = el.style.pixelLeft + "px";
+	        el.style.left = oldLeft;
+	        el.runtimeStyle.left = oldRsLeft;
+	        return value;
+	      })(value);
+	    }
+	    return value;
+	  }
+	}
+	
+	function getWindowHeight(){
+		var y = 0;
+		if (self.innerHeight) {
+			y = self.innerHeight;
+		} else if (document.documentElement && document.documentElement.clientHeight) {
+			y = document.documentElement.clientHeight;
+		} else if (document.body) {
+			y = document.body.clientHeight;
+		}
+	
+		return y;
+	}
+	
+	function getWindowWidth(){
+		var x = 0;
+		if (self.innerHeight) {
+			x = self.innerWidth;
+		} else if (document.documentElement && document.documentElement.clientHeight) {
+			x = document.documentElement.clientWidth;
+		} else if (document.body) {
+			x = document.body.clientWidth;
+		}
+		
+		return x;
+	}
+	
+	function has_numeric(strString){
+		var strValidChars = "0123456789.-";
+		var strChar;
+		var blnResult = false;
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		//  test strString consists of valid characters listed above
+		for (i = 0; i < strString.length && blnResult == false; i++){
+			strChar = strString.charAt(i);
+			if (strValidChars.indexOf(strChar) > -1){
+				blnResult = true;
+			}
+		}
+		return blnResult;
+	}
+	
+	function is_array(input){
+		return typeof(input)=='object'&&(input instanceof Array);
+	}
+	
+	function is_numeric(strString){
+		var strValidChars = "0123456789.-";
+		var strChar;
+		var blnResult = true;
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		//  test strString consists of valid characters listed above
+		for (i = 0; i < strString.length && blnResult == true; i++){
+			strChar = strString.charAt(i);
+			if (strValidChars.indexOf(strChar) == -1){
+				blnResult = false;
+			}
+		}
+		return blnResult;
+	}
+	
+	function listCookies(){
+	
+	    var all_cookies = document.cookie.split(';');
+	    var cookies = new Array();
+	
+	    for (var i = 0; i < all_cookies.length; i++) {
+			var cookie_split = all_cookies[i].split('=');
+			cookies[i] = {name : cookie_split[0], value : cookie_split[1]};
+	    }
+	
+	    return cookies;
+	}
+	
+	function mouseDownEvent(e){
+	
+		e.preventDefault();
+	
+		initialX = e.clientX;
+		initialY = e.clientY;
+		mousedown = 1;
+	}
+	
+	function mouseUpEvent(e){	
+	
+		e.preventDefault();
+	
+		mousedown = 0;
+	}
+	
+	function on_ajax_request_return2(url){
+		ajax_request(url, 'function=print_ui', 'ajax_fill_element', 'ui_div');
+		if(auto_view_r_result){
+			document.getElementById('r_call_view').submit();
+		}
+		window.status= '';
+	}
+	
+	function open_text_in_new_window(){
+		window.open('A.html','A','width=300, height=200');
+	}
+	
+	function parse_style_string(string){
+	
+		style_array = new Array();
+		string_split1 = string.split(";");
+	
+		for(i in string_split1){
+			if(string_split1[i] == "") continue;
+			string_split2 = string_split1[i].split(":");
+			style_array[string_split2[0]] = string_split2[1];
+		}
+	
+		return style_array; 
+	}
+	
+	function scrollEvent(e){
+		var id = baseName(e);
+		var delta = 0;
+	
+		//var start_a = new Date().getTime();
+	
+		if(IE){
+			s_initialX = event.clientX + document.body.scrollLeft;
+			s_initialY = event.clientY + document.body.scrollTop;
+			if(!event){event = window.event;}
+	    	var delta = event.wheelDelta / 40;
+		}else{
+			s_initialX = e.pageX;
+			s_initialY = e.pageY;
+		}
+	
+		if(e.detail){
+			var delta = -e.detail*5;
+			var max = 8;
+			if(delta > max){delta = max;}
+			if(delta < -max){delta = -max;}
+			zoom_shape(Math.round(delta*0.2)/20,s_initialX,s_initialY);
+		}
+	
+		if(e.wheelDelta){ // SAFARI
+			var delta = e.wheelDelta;
+			var max = 60;
+			if(delta > max){delta = max;}
+			if(delta < -max){delta = -max;}
+			zoom_shape(Math.round(delta*0.1)/20,s_initialX,s_initialY);
+		}
+	
+		//var end_a = new Date().getTime();
+		//document.getElementById("div_status").innerHTML += (end_a - start_a) + ' msec<br />';
+	
+	}
+	
+	function setKeyEvent(eventin,dist){
+		currentEvent = eventin;
+		d = dist;
+	
+		if (eventin !== "nothing" && eventin !== "refreshtozero"){
+	
+			doEvent();
+			updateShapes();
+	
+			set_key_event_calls += 1;
+	
+			//document.getElementById("div_status").innerHTML = set_key_event_calls;
+	
+	//	var start_b = new Date().getTime();
+	//	var end_b = new Date().getTime();
+	//	alert('A: ' + (end_a - start_a) + ' msec' + '\n' + 'B: ' + (end_b - start_b) + ' msec');
+		}
+	}
+	
+	function setEvents(e) {
+		var eventHandler = detectKeyDown;
+		document['on'+this.id] = eventHandler;
+	}
+	
+	function setViewboxProperties(){
+		window_properties.height = getWindowHeight();
+		window_properties.width = getWindowWidth();
+	
+		view_box.height = window_properties.height;
+		view_box.width = window_properties.width;
+	
+		x_window_shift = view_box.width/2;
+		y_window_shift = view_box.height/2;
+	}
+	
+	function sortasc(a,b){
+		return a - b;
+	}
+	
+	function string_to_array_cs(string){
+	
+		var i, j;
+		var t_arr = string.split(",");
+	
+		r_arr = new Array();
+		for(i = 0;i < t_arr.length;i++){
+			i_arr = trim(t_arr[i]).split(" ");
+			
+			r_arr[i] = new Array();
+			for(j = 0;j < i_arr.length;j++) r_arr[i][j] = parseFloat(i_arr[j])
+		}
+	
+		return r_arr;
+	}
+	
+	function updateVisibility(){
+	
+		var i,j;
+		var visibility;
+		var layers = new Array();
+	
+		// CYCLE THROUGH TABLE ELEMENTS
+		var div_control_panel_layers = document.getElementById("control_panel_layers");
+		var items = div_control_panel_layers.getElementsByTagName("*");
+		for (i = items.length; i--;) {
+	
+			if(items[i].tagName == 'TD' && items[i].name == 'label') layer = items[i].innerHTML;
+	
+			if(items[i].tagName == 'INPUT'){
+				layers[i] = new Array();
+				layers[i].name = layer;
+				if(items[i].checked){layers[i].visibility = '';}else{layers[i].visibility = 'hidden';}
+			}
+		}	
+	
+		var items = svgDocument.getElementsByTagName("*");
+		for (i = items.length; i--;) {
+	
+			visibility = '';
+			for(j in layers) if(items[i].getAttribute("layer") == layers[j].name) visibility = layers[j].visibility;
+			items[i].setAttribute("visibility", visibility);
+		}
+	}
+	
+	function toggle_div_visibility(id){
+		div = document.getElementById(id);
+		if(div.style.visibility == 'hidden'){
+			div.style.visibility = '';
+			div.style.height = '';
+			//div.style.width = new_width + 'px';
+		}else{
+			div.style.visibility = 'hidden';
+			div.style.height = '0px';
+			div.style.width = '0px';
+		}
+	}
+	
+	function trim(stringToTrim){
+		//http://www.somacon.com/p355.php
+		return stringToTrim.replace(/^\s+|\s+$/g,"");
+	}
+	
+	function ltrim(stringToTrim){
+		//http://www.somacon.com/p355.php
+		return stringToTrim.replace(/^\s+/,"");
+	}
+	
+	function rtrim(stringToTrim){
+		//http://www.somacon.com/p355.php
+		return stringToTrim.replace(/\s+$/,"");
+	}
+</script>
+<script type="text/javascript" >
+	//var shape_tags = ['arrow', 'circle', 'line', 'path', 'pathC', 'point', 'polygon', 'text'];
+	var shape_tags = ['circle', 'image', 'line', 'arrow', 'text', 'path', 'point'];
+	var shape_names = firstToUpperCase(shape_tags);
+	//var shape_transform = addC(shape_tags, 's').concat(['pointsAnimate']);
+	var shape_transform = addC(shape_tags, 's').concat(addC(shape_tags, 'sAnimate'));
+	
+	// Create global arrays for shapes
+	for (var i = 0, len = shape_tags.length; i < len; i++){
+		eval(shape_tags[i] + 's = new Array();');
+		eval(shape_tags[i] + 'sAttributes = new Array();');
+		eval(shape_tags[i] + 'sAnimate = new Array();');
+		eval(shape_tags[i] + 'sAnimateI = [];');
+		eval(shape_tags[i] + 'sAttributesAnimate = new Array();');
+		eval('var ' + shape_tags[i] + 's_animate;');
+	}
+	
+	pathCs = new Array();
+	pathCsAttributes = new Array();
+	pathCsAttributesAnimate = new Array();
+	
+	ZOrders = new Array();
+	Layers = new Array();
+	
+	var zoom = 280;
+	var maxzoom = -200;
+	var frame_adv = 1;
+	var eyez = 300;
+	var depth = Math.floor(zoom * (eyez - maxzoom) / 100 + eyez);
+	
+	var shape_properties = [
+		'x', 'y', 'z', 
+		'x1', 'y1', 'z1', 'x2', 'y2', 'z2', 
+		'cx', 'cy', 'cz',
+		'l', 'a', 'h', 'w'
+	];
+	
+	var attribute_properties = [
+		'r', 'fill', 'stroke', 'fill_opacity', 'stroke_opacity', 'opacity', 'stroke_width', 
+		'z_index', 'text_anchor', 'font_size', 'font_family', 'font_style', 
+		'font_weight', 'letter_spacing', 'writing_mode', 'glyph_orientation_vertical', 
+		'src', 'preserveAspectRatio'
+	];
+	
+	var properties = shape_properties.concat(attribute_properties);
+	var opacity_types = ['opacity', 'stroke_opacity', 'fill_opacity'];
+	var rotate_mode = true;
+	
+	var animation_length = 0;
+	var frame_width = 10;
+	var object_name = 'shape_viewer_3d';
+	var max_arrowhead_size = 15;
+	
+	view_box = new Array();
+	window_properties = new Array();
+	
+	var set_key_event_calls = 0;
+	
+	var anim_n = 0;
+	var arrow_angle = 25;
+	var currentEvent = "nothing";
+	var globalkeypress = '';
+	var IE = document.all ? true : false
+	var initiate = 0;
+	var zoom_speed = 5;
+	var sort_shapes = 0;
+	var stop_anim = 0;
+	var svgns = "http://www.w3.org/2000/svg";
+	var tempX = 0;
+	var tempY = 0;
+	var mousedown = 0;
+	var control_panel_visible = true;
+	
+	var point_color_r = 100;
+	var point_color_g = 0;
+	var point_color_b = 0;
+	var point_opacity = 0.5;
+	var point_radius = 4;
+	
+	var line_color_r = 0;
+	var line_color_g = 0;
+	var line_color_b = 0;
+	var line_width = 1;
+	var line_opacity = 1;
+	
+	var prevX, prevY;
+	var ajax_output;
+	
+	test_array = new Array();
+	
+	zindex = new Array();
+	points_i_to_k = new Array();
+	RefPoints = new Array();
+	Shapes = new Array();
+	Textlinks = new Array();
+	
+	AnimatePoints = new Array();
+	AnimateArrows = new Array();
+	AnimateLines = new Array();
+	
+	Translate = new Array();
+	Rotate = new Array();
+	
+	function animateShapes(anim_frame){
+	
+		var i, j, k, len, len_i, len_j;
+		var shape;
+		var anim_n_i = anim_n;
+	
+		// If animation frame is undefined
+		if(anim_frame == undefined){
+	
+			// If no animation reverse, reset frame number to zero at end
+			if(!animation_reverse){
+				if(anim_n >= animation_length || anim_n <= 0){
+					anim_n = 0;
+					frame_adv = 1;
+				}
+			}
+	
+			// If animation reverse is true reverse direction of frame count
+			if(animation_reverse){
+				if(anim_n <= 0) frame_adv = 1
+				if(anim_n >= animation_length){
+					anim_n = animation_length-1;
+					frame_adv = -1;
+				}
+			}
+		
+			// INCREASE ANIMATION REPEAT COUNT
+			if(anim_n < anim_n_i) animation_count++
+	
+		}else{
+	
+			// Check that frame number is greater than zero
+			if(anim_frame < 0) var anim_frame = 0;
+	
+			// Check that frame number does not exceed animation length
+			if(anim_frame >= animation_length) var anim_frame = animation_length-1;
+			
+			anim_n = anim_frame;
+		}
+	
+		// IF MAXIMUM NUMBER OF REPEATS IS REACHED, STOP ANIMATION
+		if(animation_repeat > -1 && animation_count > animation_repeat){
+			clearInterval(intervalID);
+			return;
+		}
+	
+		// alert('Frame number: ' + anim_n + '\n' + 'Number of repeats: ' + animation_count)
+	
+		// ANIMATE SHAPES
+		if(circles_animate){
+			for(i = 0, len = circlesAnimate.length;i < len; i++){
+				circles[circlesAnimateI[i]].x = circlesAnimate[i].x[anim_n];
+				circles[circlesAnimateI[i]].y = circlesAnimate[i].y[anim_n];
+				circles[circlesAnimateI[i]].z = circlesAnimate[i].z[anim_n];
+				circles[circlesAnimateI[i]].r = circlesAnimate[i].r[anim_n];
+			}
+		}
+	
+		if(images_animate){
+			for(i = 0, len = imagesAnimate.length;i < len; i++){
+				images[imagesAnimateI[i]].x1 = imagesAnimate[i].x1[anim_n];
+				images[imagesAnimateI[i]].y1 = imagesAnimate[i].y1[anim_n];
+				images[imagesAnimateI[i]].z1 = imagesAnimate[i].z1[anim_n];
+				images[imagesAnimateI[i]].x2 = imagesAnimate[i].x2[anim_n];
+				images[imagesAnimateI[i]].y2 = imagesAnimate[i].y2[anim_n];
+				images[imagesAnimateI[i]].z2 = imagesAnimate[i].z2[anim_n];
+			}
+		}
+	
+		if(lines_animate){
+			for(i = 0, len = linesAnimate.length;i < len; i++){
+				lines[linesAnimateI[i]].x1 = linesAnimate[i].x1[anim_n];
+				lines[linesAnimateI[i]].y1 = linesAnimate[i].y1[anim_n];
+				lines[linesAnimateI[i]].z1 = linesAnimate[i].z1[anim_n];
+				lines[linesAnimateI[i]].x2 = linesAnimate[i].x2[anim_n];
+				lines[linesAnimateI[i]].y2 = linesAnimate[i].y2[anim_n];
+				lines[linesAnimateI[i]].z2 = linesAnimate[i].z2[anim_n];
+			}
+		}
+	
+		if(arrows_animate){
+			for(i = 0, len = arrowsAnimate.length;i < len; i++){
+				arrows[arrowsAnimateI[i]].x1 = arrowsAnimate[i].x1[anim_n];
+				arrows[arrowsAnimateI[i]].y1 = arrowsAnimate[i].y1[anim_n];
+				arrows[arrowsAnimateI[i]].z1 = arrowsAnimate[i].z1[anim_n];
+				arrows[arrowsAnimateI[i]].x2 = arrowsAnimate[i].x2[anim_n];
+				arrows[arrowsAnimateI[i]].y2 = arrowsAnimate[i].y2[anim_n];
+				arrows[arrowsAnimateI[i]].z2 = arrowsAnimate[i].z2[anim_n];
+			}
+		}
+	
+		if(points_animate){
+			for(i = 0, len = pointsAnimate.length;i < len; i++){
+				points[pointsAnimateI[i]].x = pointsAnimate[i].x[anim_n];
+				points[pointsAnimateI[i]].y = pointsAnimate[i].y[anim_n];
+				points[pointsAnimateI[i]].z = pointsAnimate[i].z[anim_n];
+			}
+		}
+	
+		if(texts_animate){
+			for(i = 0, len = textsAnimate.length;i < len; i++){
+				texts[textsAnimateI[i]].x = textsAnimate[i].x[anim_n];
+				texts[textsAnimateI[i]].y = textsAnimate[i].y[anim_n];
+				texts[textsAnimateI[i]].z = textsAnimate[i].z[anim_n];
+				texts[textsAnimateI[i]].s = textsAnimate[i].s[anim_n];
+			}
+		}
+	
+		// ANIMATE ATTRIBUTES
+	
+		if(circles_attributes_animate){
+	
+			for(i = 0, len_i = circlesAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(circlesAttributesAnimate[i][attribute_properties[j]] == null) continue
+					if(attribute_properties[j] == 'r') continue // 'r' is saved in 'circles'
+	
+					circlesAttributes[circlesAttributesAnimate[i].i][attribute_properties[j]] = 
+						circlesAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('circle' + circlesAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(circlesAttributes[circlesAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(images_attributes_animate){
+	
+			for(i = 0, len_i = imagesAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(imagesAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					imagesAttributes[imagesAttributesAnimate[i].i][attribute_properties[j]] = 
+						imagesAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('image' + imagesAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(imagesAttributes[imagesAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(lines_attributes_animate){
+	
+			for(i = 0, len_i = linesAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(linesAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					linesAttributes[linesAttributesAnimate[i].i][attribute_properties[j]] = 
+						linesAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('line' + linesAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(linesAttributes[linesAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(arrows_attributes_animate){
+	
+			for(i = 0, len_i = arrowsAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(arrowsAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					arrowsAttributes[arrowsAttributesAnimate[i].i][attribute_properties[j]] = 
+						arrowsAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('arrow' + arrowsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(arrowsAttributes[arrowsAttributesAnimate[i].i]));
+				shape = svgDocument.getElementById('arrowha' + arrowsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(arrowsAttributes[arrowsAttributesAnimate[i].i]));
+				shape = svgDocument.getElementById('arrowhb' + arrowsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(arrowsAttributes[arrowsAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(points_attributes_animate){
+	
+			for(i = 0, len_i = pointsAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(pointsAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					pointsAttributes[pointsAttributesAnimate[i].i][attribute_properties[j]] = 
+						pointsAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('point' + pointsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(pointsAttributes[pointsAttributesAnimate[i].i]));
+				shape.setAttribute("r", pointsAttributesAnimate[i].r[anim_n]);
+			}
+		}
+	
+		if(texts_attributes_animate){
+	
+			for(i = 0, len_i = textsAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(textsAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					textsAttributes[textsAttributesAnimate[i].i][attribute_properties[j]] = 
+						textsAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('text' + textsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(textsAttributes[textsAttributesAnimate[i].i]));
+			}
+		}
+	
+		// Update animation controls
+		var frame_input =document.getElementById('animation_frame_count_input');
+	
+		// Check that frame controls are present
+		if(frame_input !== null){
+	
+			// Add frame count to animation frame input
+			document.getElementById('animation_frame_count_input').value = (anim_n+1);
+	
+			// Update slider position
+			document.getElementById('animation_frame_range_input').value = Math.round(((anim_n) / (animation_length-1))*100);
+		}
+	
+		anim_n = anim_n + frame_adv;
+		updateShapes();
+	
+		return;
+	}
+	
+	function applyCookies(){
+	
+		var cookies = listCookies();
+	
+		for (i = 0; i < cookies.length; i++) {
+	
+			if(cookies[i].value == undefined) continue;
+	
+			// Call function call cookies using eval
+			if(cookies[i].value == 'eval') eval(cookies[i].name);
+		}
+	}
+	
+	function changeLayerOpacity(layer, opacity){
+	
+		var i, j, len, len_j;
+		var match;
+		var shape;
+		var opacity_i, stroke_opacity_i, fill_opacity_i;
+		var animate_idx;
+	
+		for (i = 0, len = Layers.length; i < len; i++) {
+	
+			match = false;
+			
+			if(Layers[i].layer.length == 1){
+				
+				if(Layers[i].layer == layer) match = true;
+	
+			}else{
+				for (j = 0, len_j = Layers[i].layer.length; j < len_j; j++) if(Layers[i].layer[j] == layer) match = true;
+			}
+	
+			if(!match) continue;
+			
+			var opacity_i;
+			var stroke_opacity_i;
+			var fill_opacity_i;
+			var opacity_animate_i;
+			var stroke_opacity_animate_i;
+			var fill_opacity_animate_i;
+	
+			for (j = 0, len_j = opacity_types.length; j < len_j; j++){
+	
+				eval('var is_attribute = ' + Layers[i].type + 'sAttributes[' + Layers[i].i + '].' + opacity_types[j] + ';')
+					
+				if(is_attribute == undefined) continue;
+	
+				eval(Layers[i].type + 'sAttributes[' + Layers[i].i + '].' + opacity_types[j] + ' = ' + opacity + ';');
+				var shape = svgDocument.getElementById(Layers[i].type + Layers[i].i);
+				eval('shape.setAttribute("style", attributesToString(' + Layers[i].type + 'sAttributes[' + Layers[i].i + ']));');
+	
+				if(Layers[i].type == 'arrow'){
+					var shape = svgDocument.getElementById(Layers[i].type + 'ha' + Layers[i].i);
+					eval('shape.setAttribute("style", attributesToString(' + Layers[i].type + 'sAttributes[' + Layers[i].i + ']));');
+	
+					var shape = svgDocument.getElementById(Layers[i].type + 'hb' + Layers[i].i);
+					eval('shape.setAttribute("style", attributesToString(' + Layers[i].type + 'sAttributes[' + Layers[i].i + ']));');
+				}
+			}
+			
+			if(Layers[i].type !== 'path'){
+				
+				eval('animate_idx = ' + Layers[i].type + 'sAttributes[' + Layers[i].i + '].animate');
+	
+				if(animate_idx !== null){
+	
+					for (j = 0, len_j = opacity_types.length; j < len_j; j++){
+	
+						eval(opacity_types[j] + '_i = ' + Layers[i].type + 'sAttributesAnimate[' + animate_idx 
+							+ '].' + opacity_types[j] + ';')
+	
+						eval('if(' + opacity_types[j] + '_i !== undefined && ' + opacity_types[j] + 
+							'_i !== null){' + Layers[i].type + 'sAttributesAnimate[' + animate_idx 
+							+ '].' + opacity_types[j] + ' = null;}');
+					}
+				}
+			}
+		}
+	}
+	
+	function fitShapesToWindow(){
+	
+		var i;
+		var len;
+		var shape_limits;
+		var xmin = [], xmax = [], ymin = [], ymax = [], zmin = [], zmax = [];
+	
+		// Get coordinate limits in space
+		for (i = 0, len = shape_transform.length; i < len; i++){
+	
+			// Get limits for each shape
+			eval('shape_limits = limits(' + shape_transform[i] + ');');
+	
+			if(shape_limits.xmin == undefined) continue;
+			if(shape_limits.xmin == -Infinity) continue;
+			if(isNaN(shape_limits.xmin)) continue;
+	
+			// Add limits to array
+			xmin.push(shape_limits.xmin);
+			xmax.push(shape_limits.xmax);
+			ymin.push(shape_limits.ymin);
+			ymax.push(shape_limits.ymax);
+			zmin.push(shape_limits.zmin);
+			zmax.push(shape_limits.zmax);
+		}
+	
+		// Remove NaN and Infinity values
+		xmin = clean(xmin, NaN);
+		xmin = clean(xmin, Infinity);
+		xmax = clean(xmax, NaN);
+		xmax = clean(xmax, Infinity);
+		ymin = clean(ymin, NaN);
+		ymin = clean(ymin, Infinity);
+		ymax = clean(ymax, NaN);
+		ymax = clean(ymax, Infinity);
+		zmin = clean(zmin, NaN);
+		zmin = clean(zmin, Infinity);
+		zmax = clean(zmax, NaN);
+		zmax = clean(zmax, Infinity);
+	
+		// Find ranges for all shapes
+		xmin = min.apply(Math, xmin);
+		ymin = min.apply(Math, ymin);
+		zmin = min.apply(Math, zmin);
+	
+		// Find ranges for all shapes
+		xmax = max.apply(Math, xmax);
+		ymax = max.apply(Math, ymax);
+		zmax = max.apply(Math, zmax);
+	
+		// Find ranges
+		var x_range = xmax - xmin;
+		var y_range = ymax - ymin;
+		var z_range = zmax - zmin;
+	
+		// Replace any zero x,y ranges with maximum range
+		var max_range = max.apply(Math, [x_range, y_range, z_range]);
+		if(x_range == 0) x_range = max_range;
+		if(y_range == 0) y_range = max_range;
+	
+		// If all ranges are zero, make scaling 1
+		if(x_range == 0 && y_range == 0 && z_range == 0){
+	
+			scaling = 1;
+	
+		}else{
+	
+			// Get window dimensions
+			if(z_range == 0){
+				var view_width = getWindowWidth() - 5*margin;
+				var view_height = getWindowHeight() - 5*margin;
+			}else{
+				var view_width = getWindowWidth() - 2*margin;
+				var view_height = getWindowHeight() - 2*margin;
+			}
+	
+			// Find projection factor
+			var u = -(depth - eyez) / ((z_range / 2) - eyez);
+			var u2 = -(depth - eyez) / ((-z_range / 2) - eyez);
+	
+			// Solve for scaling from each dimension
+			var scaling_x = 1 / ((((x_range / 2) * (depth - eyez)) / (eyez * ((getWindowWidth() - margin) - x_window_shift))) + ((z_range / 2) / eyez));
+			var scaling_y = 1 / ((((y_range / 2) * (depth - eyez)) / (eyez * ((getWindowHeight() - margin) - y_window_shift))) + ((z_range / 2) / eyez));
+	
+			// Take minimum scaling
+			scaling = Math.min(scaling_x, scaling_y)
+		}
+		
+		//alert('Ranges:\nx:\t' + xmin + ', ' + xmax + ' (' + x_range + ')\ny:\t' + ymin + ', ' + ymax + ' (' + y_range + ')\nz:\t' + zmin + ', ' + zmax + ' (' + z_range + ')');
+		
+		// Find center
+		var center = [(xmin + x_range/2), (ymin + y_range/2), (zmin + z_range/2)];
+	
+		// Center all shapes
+		for (i = 0, len = shape_transform.length; i < len; i++) eval('translate(' + shape_transform[i] + ', ' + -center[0] + ', ' + -center[1] + ', ' + -center[2] + ')');
+	
+		// Scale all shapes
+		for (i = 0, len = shape_transform.length; i < len; i++) eval('scale(' + shape_transform[i] + ', ' + scaling + ')');
+	
+		return;
+	}
+	
+	function getMouseMoveXY(e){
+	
+		if(initiate == 0){
+			prevX = initialX;
+			prevY = initialY;
+		}
+		initiate = 1;
+	
+		if(IE){
+			tempX = e.clientX + document.body.scrollLeft;
+			tempY = e.clientY + document.body.scrollTop;
+		}else{
+			tempX = e.pageX;
+			tempY = e.pageY;
+		}  
+	
+		if (tempX < 0){tempX = 0;}
+		if (tempY < 0){tempY = 0;}  
+	
+		if(mousedown == 1 && globalkeypress == ''){
+	
+			distX = tempX - prevX;
+			distY = prevY - tempY;
+			
+			if(distX !== 0){setKeyEvent("translateX", distX/4.667);}  // manually calibrated
+			if(distY !== 0){setKeyEvent("translateY", distY/4.667);}
+		}
+		if(mousedown == 1 && (globalkeypress == 'r' || rotate_mode == true)){
+			distX = tempX - prevX;
+			distY = prevY - tempY;
+			
+			if(distX !== 0){setKeyEvent("rotateYaxis", -distX);}
+			if(distY !== 0){setKeyEvent("rotateXaxis", distY);}
+		}
+	
+		prevX = tempX
+		prevY = tempY
+	
+		return false;
+	}
+	
+	function get_transformations(){
+	
+		if(document.getElementsByTagName("transformation").length){
+			for(i = 0;i < document.getElementsByTagName("transformation").length;i++){
+	
+				var svg_elem = document.getElementsByTagName("transformation")[i];
+	
+				// SET TRANSLATE ARRAY
+				if(svg_elem.getAttribute("translate") !== null) Translate = Translate.concat(string_to_array_cs(svg_elem.getAttribute("translate")))
+	
+				// SET ROTATE ARRAY
+				if(svg_elem.getAttribute("rotate") !== null) Rotate = Rotate.concat(string_to_array_cs(svg_elem.getAttribute("rotate")))
+			}
+		}
+	}
+	
+	function getShapes(){
+	
+		var i, j, k;
+		var len_j, len_k;
+		var shape_tag;
+		var doc_shapes;
+		var doc_shapes_len;
+		var property_name;
+		var attributes_animate;
+	
+		// ADD LINESC TO SHAPES FOR LOCAL USE ONLY
+		var shape_tags_loc = shape_tags.slice();
+		shape_tags_loc.push('pathC');
+	
+		for(i = 0; i < shape_tags_loc.length; i++){
+		
+			shape_tag = shape_tags_loc[i];
+			if(shape_tag == 'image') shape_tag = 'img';
+			
+			doc_shapes = document.getElementsByTagName(shape_tag)
+	
+			if(!doc_shapes.length) continue;
+	
+			for(j = 0, len_j = doc_shapes.length;j < len_j; j++){
+	
+				// Clear property variables
+				for(k = 0, len_k = properties.length;k < len_k; k++)
+					eval("var " + properties[k] + " = null;var " + properties[k] + "_init = null;");
+	
+				// SET SHAPE PROPERTIES
+				for(k = 0, len_k = shape_properties.length;k < len_k; k++){
+	
+					property_name = shape_properties[k].replace(/_/g, '-')
+	
+					if(doc_shapes[j].getAttribute(property_name) == null) continue;
+					
+					if(doc_shapes[j].getAttribute(property_name).indexOf(',') > -1){
+						eval(shape_properties[k] + " = doc_shapes[j].getAttribute(\"" + property_name + "\").split(\",\");");
+						eval("animation_length = " + shape_properties[k] + ".length;");
+						eval(shape_properties[k] + "_init = " + shape_properties[k] + "[0]");
+					}else{
+						eval(shape_properties[k] + "_init = doc_shapes[j].getAttribute(\"" + property_name + "\");");
+						eval(shape_properties[k] + " = null");
+					}
+				}
+	
+				// Set attribute properties
+				attributes_animate = false;
+				for(k = 0, len_k = attribute_properties.length;k < len_k; k++){
+	
+					property_name = attribute_properties[k].replace(/_/g, '-')
+	
+					if(doc_shapes[j].getAttribute(property_name) == null) continue;
+	
+					if(doc_shapes[j].getAttribute(property_name).indexOf(',') > -1 && doc_shapes[j].getAttribute(property_name).indexOf('rgb') == -1 && property_name !== 'src'){
+						eval(attribute_properties[k] + " = doc_shapes[j].getAttribute(\"" + property_name + "\").split(\",\");");
+						eval("animation_length = " + attribute_properties[k] + ".length;");
+						eval(attribute_properties[k] + "_init = " + attribute_properties[k] + "[0]");
+						attributes_animate = true;
+					}else{
+						eval(attribute_properties[k] + "_init = doc_shapes[j].getAttribute(\"" + property_name + "\");");
+						eval(attribute_properties[k] + " = null");
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'circle'){
+	
+					circles[j] = new circle(parseFloat(cx_init), parseFloat(cy_init), parseFloat(cz_init), parseFloat(r_init));
+	
+					// Multiple center coordinates given but only single radius, replicate to same length
+					if(cx !== null && r == null){
+						r = Array.apply(null, new Array(cx.length)).map(String.prototype.valueOf, r_init);
+					}
+	
+					// Multiple radii given but only single center coordinate, replicate to same length
+					if(cx == null && r !== null){
+						cx = Array.apply(null, new Array(r.length)).map(String.prototype.valueOf, cx_init);
+						cy = Array.apply(null, new Array(r.length)).map(String.prototype.valueOf, cy_init);
+						cz = Array.apply(null, new Array(r.length)).map(String.prototype.valueOf, cz_init);
+					}
+	
+					if(cx !== null){
+						circlesAnimate[circlesAnimate.length] = new circleAnimate(
+							cx.map(parseFloat), cy.map(parseFloat), cz.map(parseFloat), r.map(parseFloat)
+						);
+						circlesAnimateI.push(j);
+					}
+	
+					circlesAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : circlesAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						circlesAttributesAnimate[circlesAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'image'){
+	
+					images[j] = new line(
+						parseFloat(x1_init), parseFloat(y1_init), parseFloat(z1_init), 
+						parseFloat(x2_init), parseFloat(y2_init), parseFloat(z2_init));
+	
+					if(x1 !== null){
+						imagesAnimate[imagesAnimate.length] = new lineAnimate(
+							x1.map(parseFloat), y1.map(parseFloat), z1.map(parseFloat), 
+							x2.map(parseFloat), y2.map(parseFloat), z2.map(parseFloat)
+						);
+						imagesAnimateI.push(j);
+					}
+	
+					imagesAttributes[j] = new imageAttributes(
+						(!src_init ? 0 : src_init),
+						(!preserveAspectRatio_init ? 'none' : preserveAspectRatio_init),
+						(!opacity_init ? 1 : opacity_init),
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : imagesAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						imagesAttributesAnimate[imagesAttributesAnimate.length] = 
+							new imageAttributesAnimate(j, src, preserveAspectRatio, opacity, z_index);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'arrow'){
+	
+					arrows[j] = new arrow(
+						parseFloat(x1_init), parseFloat(y1_init), parseFloat(z1_init), 
+						parseFloat(x2_init), parseFloat(y2_init), parseFloat(z2_init),
+						parseFloat(l_init), parseFloat(a_init));
+	
+					if(x1 !== null){
+						arrowsAnimate[arrowsAnimate.length] = new arrowAnimate(
+							x1.map(parseFloat), y1.map(parseFloat), z1.map(parseFloat), 
+							x2.map(parseFloat), y2.map(parseFloat), z2.map(parseFloat),
+							parseFloat(l_init), parseFloat(a_init)
+						);
+						arrowsAnimateI.push(j);
+					}
+	
+					arrowsAttributes[j] = new shapeAttributes(
+						"none",
+						"none",
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : arrowsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						arrowsAttributesAnimate[arrowsAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'line'){
+	
+					lines[j] = new line(
+						parseFloat(x1_init), parseFloat(y1_init), parseFloat(z1_init), 
+						parseFloat(x2_init), parseFloat(y2_init), parseFloat(z2_init));
+	
+					if(x1 !== null){
+						linesAnimate[linesAnimate.length] = new lineAnimate(
+							x1.map(parseFloat), y1.map(parseFloat), z1.map(parseFloat), 
+							x2.map(parseFloat), y2.map(parseFloat), z2.map(parseFloat)
+						);
+						linesAnimateI.push(j);
+					}
+	
+					linesAttributes[j] = new shapeAttributes(
+						"none",
+						"none",
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : linesAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						linesAttributesAnimate[linesAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'pathC'){
+					
+					pathCs[j] = doc_shapes[j].getAttribute("d").split(",");
+	
+					pathCsAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : pathCsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						pathCsAttributesAnimate[pathCsAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'path'){
+	
+					paths[j] = parseSVGPath(doc_shapes[j].getAttribute("d"))
+	
+					pathsAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						null
+					);
+				}
+	
+				if(shape_tags_loc[i] == 'point'){
+	
+					if(x !== null){
+						pointsAnimate[pointsAnimate.length] = new pointAnimate(x.map(parseFloat), y.map(parseFloat), z.map(parseFloat));
+						pointsAnimateI.push(j);
+					}
+	
+					points[j] = new point(parseFloat(x_init), parseFloat(y_init), parseFloat(z_init));
+	
+					pointsAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						(!r_init ? 1 : r_init),
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : pointsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						pointsAttributesAnimate[pointsAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'text'){
+	
+					// Multiple coordinates given but only single font size, replicate to same length
+					if(x !== null && font_size == null){
+						font_size = Array.apply(null, new Array(x.length)).map(String.prototype.valueOf, font_size_init);
+					}
+	
+					// Multiple font sizes given but only single coordinate, replicate to same length
+					if(x == null && font_size !== null){
+						x = Array.apply(null, new Array(font_size.length)).map(String.prototype.valueOf, x_init);
+						y = Array.apply(null, new Array(font_size.length)).map(String.prototype.valueOf, y_init);
+						z = Array.apply(null, new Array(font_size.length)).map(String.prototype.valueOf, z_init);
+					}
+	
+					if(x !== null){
+						textsAnimate[textsAnimate.length] = new textAnimate(x.map(parseFloat), y.map(parseFloat), z.map(parseFloat), font_size.map(parseFloat));
+						textsAnimateI.push(j);
+					}
+	
+					texts[j] = new text(parseFloat(x_init), parseFloat(y_init), parseFloat(z_init), (!font_size_init ? 12 : font_size_init));
+	
+					textsAttributes[j] = new textAttributes(
+						doc_shapes[j].childNodes[0].nodeValue,
+						(!text_anchor_init ? "middle" : text_anchor_init),
+						(!fill_init ? "black" : fill_init),
+						(!opacity_init ? 1 : opacity_init),
+						(!font_family_init ? "Arial" : font_family_init),
+						(!font_style_init ? "" : font_style_init),
+						(!font_weight_init ? "" : font_weight_init),
+						(!letter_spacing_init ? 0 : letter_spacing_init),
+						(!writing_mode_init ? "" : writing_mode_init),
+						(!glyph_orientation_vertical_init ? "" : glyph_orientation_vertical_init),
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : textsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						textsAttributesAnimate[textsAttributesAnimate.length] = 
+							new textAttributesAnimate(j, text_anchor, fill, 
+							opacity, font_family, font_style, font_weight, letter_spacing, 
+							writing_mode, glyph_orientation_vertical, z_index);
+					}
+				}
+	
+				ZOrders.push(new ZOrder( (!z_index_init ? 0 : z_index_init), j, shape_tags_loc[i] ));
+	
+				if(doc_shapes[j].getAttribute("layer") !== null)
+					Layers.push(new Layer(doc_shapes[j].getAttribute("layer").split(","), j, shape_tags_loc[i]));
+			}
+		}
+	
+		// SET REFERENCE POINTS
+		RefPoints = new Array(0,0,0)
+	}
+	
+	function onLoadFunctions(evt){
+	
+		svgns = "http://www.w3.org/2000/svg";
+		XLINK = "http://www.w3.org/1999/xlink";
+	
+		svgDocument = document.getElementById("world");
+	
+		window.onresize = function(event) {
+			onWindowResize();
+			updateShapes();
+		}
+	
+		if(BrowserDetect.browser == "Firefox"){
+			svgDocument.style.width = getWindowWidth() + "px";
+			svgDocument.style.height = getWindowHeight() + "px";
+		}
+	
+		document.getElementById('keydown').focus();
+		document.getElementById('keydown').onclick = setEvents;
+		document.getElementById('keydown').onclick();
+		document.onkeyup = detectKeyUp;
+	//	document.onmousemove = getMouseMoveXY;
+	//	document.onmousedown = mouseDownEvent;
+	//	document.onmouseup = mouseUpEvent;
+	
+		svgDocument.onmousemove = getMouseMoveXY;
+		svgDocument.onmousedown = mouseDownEvent;
+		svgDocument.onmouseup = mouseUpEvent;
+	
+		svgDocument.onkeyup = detectKeyUp;
+		svgDocument.onkeydown = detectKeyDown;
+		if(window.addEventListener){svgDocument.addEventListener('DOMMouseScroll', scrollEvent, false);}
+		svgDocument.onmousewheel = scrollEvent;
+	
+		setViewboxProperties();
+		getShapes();
+		get_transformations();
+		setAnimationParameters();
+	
+		// Apply default show/hide control panel
+		if(show_control_panel){showHideControlPanel("show", false);}else{showHideControlPanel("hide", false);}
+		if(start_rotate){toggle_rotate_mode("rotate", false);}else{toggle_rotate_mode("translate", false);}
+	
+		// Set background color
+		svgDocument.style.backgroundColor = background_color;
+	
+		renderShapes();
+		fitShapesToWindow();
+		updateShapes();
+		applyCookies();
+		writeControlIcon();
+	
+		if(animation_length > 1) startAnimation();
+		
+		//changeLayerOpacity('Joint constraints', 0.2);
+	
+		// Clear all cookies
+		//var cookies = listCookies();for (var i = 0; i < cookies.length; i++) deleteCookie(cookies[i].name);
+	}
+	
+	function onWindowResize(){
+	
+		if(BrowserDetect.browser == "Firefox"){
+			svgDocument.style.width = getWindowWidth() + "px";
+			svgDocument.style.height = getWindowHeight() + "px";
+		}
+	
+		setViewboxProperties();
+		fitShapesToWindow();
+	}
+	
+	function playPauseAnimation(state){
+	
+		// If state is undefined, reverse current state
+		if(state == undefined){
+			if(stop_anim == 1){stop_anim = 0;}else{stop_anim = 1;}
+		}else{
+			if(state == 'stop'){stop_anim = 1;}else{stop_anim = 0;}
+		}
+	
+		var control_play = document.getElementById('control_play');
+		var control_icon_play = document.getElementById('control_icon_play');
+	
+		if(stop_anim == 1){
+			// Pause animation
+			clearInterval(intervalID);
+			
+			if(control_play == null) return;
+	
+			// Set play/pause icon to play
+			control_play.title = 'Click to play animation or press the spacebar';
+			control_play.style.padding = '0px 2px 0px 3px';
+			control_icon_play.innerHTML = '&#9654;';
+			control_icon_play.style.fontSize = '1.2em';
+			control_icon_play.style.lineHeight = '23px';
+			control_icon_play.style.letterSpacing = '-1px';
+		}else{
+			// Play animation
+			startAnimation();
+	
+			if(control_play == null) return;
+	
+			// Set play/pause icon to pause
+			control_play.title = 'Click to pause animation or press the spacebar';
+			control_play.style.padding = '0px 0px 0px 5px';
+			control_icon_play.innerHTML = '&#9612; &#9612;';
+			control_icon_play.style.fontSize = '0.8em';
+			control_icon_play.style.lineHeight = '19px';
+			control_icon_play.style.letterSpacing = '-1px';
+		}
+	}
+	
+	function renderShapes(){ 	 	
+	
+		var i;
+		var idx;
+		var len;
+		var shape;
+		var svg_shape_type;
+	
+		// Sort by Z-Order
+		ZOrders.sort(function(a,b){return a.z - b.z})
+	
+		// Add shapes to SVG document
+		for (i = 0, len = ZOrders.length; i < len; i++) {
+	
+			idx = ZOrders[i].i;
+	
+			svg_shape_type = ZOrders[i].type;
+			if(svg_shape_type == 'point') svg_shape_type = 'circle';
+			if(svg_shape_type == 'pathC') svg_shape_type = 'path';
+			if(svg_shape_type == 'arrow') svg_shape_type = 'line';
+	
+			shape = document.createElementNS(svgns, svg_shape_type);
+			shape.setAttribute("id", ZOrders[i].type + idx);
+	
+			eval('shape.setAttribute("style", attributesToString(' + ZOrders[i].type + 'sAttributes[' + idx + ']))');
+	
+			if(ZOrders[i].type == 'image'){
+				shape.setAttributeNS('http://www.w3.org/1999/xlink', 'href', imagesAttributes[idx].src);
+				shape.setAttribute("preserveAspectRatio", imagesAttributes[idx].preserveAspectRatio);
+			}
+	
+			if(ZOrders[i].type == 'text'){
+				var textBlock = document.createTextNode(textsAttributes[idx].text);
+				shape.appendChild(textBlock);
+			}
+	
+			if(ZOrders[i].type == 'point') shape.setAttribute("r", pointsAttributes[idx].r);
+	
+			svgDocument.appendChild(shape);
+	
+			if(ZOrders[i].type == 'arrow'){
+				shape = document.createElementNS(svgns, svg_shape_type);
+				shape.setAttribute("id", ZOrders[i].type + 'ha' + idx);
+				eval('shape.setAttribute("style", attributesToString(' + ZOrders[i].type + 'sAttributes[' + idx + ']))');
+				svgDocument.appendChild(shape);
+				shape = document.createElementNS(svgns, svg_shape_type);
+				shape.setAttribute("id", ZOrders[i].type + 'hb' + idx);
+				eval('shape.setAttribute("style", attributesToString(' + ZOrders[i].type + 'sAttributes[' + idx + ']))');
+				svgDocument.appendChild(shape);
+			}
+		}
+	
+		return;
+	}
+	
+	function setAnimationParameters(){
+	
+		var i, len;
+		var property_length;
+	
+		for (i = 0, len = shape_tags.length; i < len; i++){
+	
+			property_length = 'x';
+	
+			if(shape_tags[i] == 'line' || shape_tags[i] == 'arrow') property_length = 'x1';
+	
+			eval('if(' + shape_tags[i] + 'sAnimate.length){' + shape_tags[i] + 's_animate = true;' + 
+				'}else{' + shape_tags[i] + 's_animate = false;}');
+		}
+	
+		// TEST WHETHER TO ANIMATE SHAPE ATTRIBUTES
+		for (i = 0, len = shape_tags.length; i < len; i++){
+	
+			eval('if(' + shape_tags[i] + 'sAttributesAnimate.length){' + shape_tags[i] + 's_attributes_animate = true;' + 
+				'}else{' + shape_tags[i] + 's_attributes_animate = false;}');
+		}
+	
+		if(document.getElementById('animation_frame_count_input') == null) return;
+	
+		// If there is no animation, hide animation controls
+		if(animation_length == 0){
+			document.getElementById('control_animation_container').style.display = 'none';
+			return;
+		}
+	
+		// Update animation control max
+		document.getElementById('animation_frame_count_input').max = animation_length;
+	
+		// Update animation duration
+		document.getElementById('animation_duration_input').value = animation_duration;
+		
+		// Set animation reverse setting
+		document.getElementById('animation_reverse_checkbox').checked = animation_reverse;
+	}
+	
+	function startAnimation(){
+		intervalID = setInterval(animateShapes, Math.round((animation_duration*1000) / animation_length));
+	}
+	
+	function svg_path_string_to_array(string){
+	
+		var i, j, a;
+		var s = "";
+		
+		// SPLIT PATH BY LETTERS, NUMBERS, SPACES OR COMMAS
+		// TO ADD!!: Z AT THE END OF THE PATH
+		m_arr = new Array();
+		for(i=0;i < string.length;i++){
+			a = string.substring(i, i+1);
+	
+			if(is_numeric(a) == is_numeric(s)) s += a
+			if(a == " " || a == ","){
+				m_arr[m_arr.length] = trim(s.toUpperCase());
+				s = "";
+			}
+			if(is_numeric(a) !== is_numeric(s)){
+				if(s.length) m_arr[m_arr.length] = trim(s.toUpperCase())
+				s = a;
+			}
+		}
+		m_arr[m_arr.length] = trim(s.toUpperCase());
+	
+		r_arr = new Array();
+		if(is_numeric(m_arr[3])){
+			for(j = 0, k = 0;j < m_arr.length;j = j + 4, k++){
+				r_arr[k] = new Array();
+				r_arr[k][0] = m_arr[j];
+				r_arr[k][1] = parseFloat(m_arr[j+1]);
+				r_arr[k][2] = parseFloat(m_arr[j+2]);
+				r_arr[k][3] = parseFloat(m_arr[j+3]);
+			}
+		}else{
+			if(m_arr[3] == "Q"){
+	
+				r_arr[0] = new Array();
+				r_arr[0][0] = m_arr[0];
+				r_arr[0][1] = parseFloat(m_arr[1]);
+				r_arr[0][2] = parseFloat(m_arr[2]);
+				for(j = 4, k = 1;j < m_arr.length;j = j + 2, k++){
+					r_arr[k] = new Array();
+					r_arr[k][0] = "";
+					r_arr[k][1] = parseFloat(m_arr[j]);
+					r_arr[k][2] = parseFloat(m_arr[j+1]);
+				}
+				r_arr[1][0] = "Q";
+				if(!is_numeric(m_arr[m_arr.length-1])) r_arr[r_arr.length-1][0] = m_arr[m_arr.length-1]			
+			}else{
+				for(j = 0, k = 0;j < m_arr.length;j = j + 3, k++){
+					r_arr[k] = new Array();
+					r_arr[k][0] = m_arr[j];
+					r_arr[k][1] = parseFloat(m_arr[j+1]);
+					r_arr[k][2] = parseFloat(m_arr[j+2]);
+				}
+			}
+		}
+	
+		return r_arr;
+	}
+	
+	function updateShapes(){
+	
+		var i;
+		var len;
+		var shape;
+	
+		var i, j, k, n_i0, n_i1, pathd, u, u1, u2, len;
+		var circle, n_i, type, visibility, vec;
+		var x, y, x1, x2, y1, y2;
+	
+		// Find perspective projections for shapes
+		for (i = 0, len = shape_tags.length; i < len; i++){
+			eval('var ' + shape_tags[i] + 's_proj = project(' + shape_tags[i] + 's, depth, eyez, x_window_shift, y_window_shift);');
+		}
+	
+		for (i = 0, len = circles_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('circle' + i);
+			shape.setAttribute("cx", circles_proj[i].x);
+			shape.setAttribute("cy", circles_proj[i].y);
+			shape.setAttribute("r", circles_proj[i].r);
+		}
+	
+		for (i = 0, len = images_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('image' + i);
+			shape.setAttribute("x", images_proj[i].x1);
+			shape.setAttribute("y", images_proj[i].y1);
+			shape.setAttribute("height", images_proj[i].y2-images_proj[i].y1);
+			shape.setAttribute("width", images_proj[i].x2-images_proj[i].x1);
+		}
+	
+		for (i = 0, len = lines_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('line' + i);
+			shape.setAttribute("x1", lines_proj[i].x1);
+			shape.setAttribute("y1", lines_proj[i].y1);
+			shape.setAttribute("x2", lines_proj[i].x2);
+			shape.setAttribute("y2", lines_proj[i].y2);
+		}
+	
+		for (i = 0, len = arrows_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('arrow' + i);
+			shape.setAttribute("x1", arrows_proj[i].x1);
+			shape.setAttribute("y1", arrows_proj[i].y1);
+			shape.setAttribute("x2", arrows_proj[i].x2);
+			shape.setAttribute("y2", arrows_proj[i].y2);
+	
+			// Arrow head (1st half)
+			var shape = svgDocument.getElementById('arrowha' + i);
+			shape.setAttribute("x1", arrows_proj[i].x2);
+			shape.setAttribute("y1", arrows_proj[i].y2);
+			shape.setAttribute("x2", arrows_proj[i].hax);
+			shape.setAttribute("y2", arrows_proj[i].hay);
+	
+			// Arrow head (2nd half)
+			var shape = svgDocument.getElementById('arrowhb' + i);
+			shape.setAttribute("x1", arrows_proj[i].x2);
+			shape.setAttribute("y1", arrows_proj[i].y2);
+			shape.setAttribute("x2", arrows_proj[i].hbx);
+			shape.setAttribute("y2", arrows_proj[i].hby);
+		}
+	
+		for (i = 0, len = texts_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('text' + i);
+			shape.setAttribute("x", texts_proj[i].x);
+			shape.setAttribute("y", texts_proj[i].y);
+			shape.setAttribute("font-size", 'font-size:' + texts_proj[i].s + 'px');
+			textsAttributes[i].font_size = texts_proj[i].s;
+			shape.setAttribute("style", attributesToString(textsAttributes[i]));
+		}
+	
+		for (i = 0, len = points_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('point' + i);
+			shape.setAttribute("cx", points_proj[i].x);
+			shape.setAttribute("cy", points_proj[i].y);
+			if(isNaN(points_proj[i].x)){shape.setAttribute("visibility", "hidden");}else{shape.setAttribute("visibility", "");}
+		}
+	
+		for (i = 0, len = paths_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('path' + i);
+			shape.setAttribute("d", pathToString(paths_proj[i]));
+		}
+	
+		for (i = 0, len = pathCs.length; i < len; i++) {
+			var shape = svgDocument.getElementById('pathC' + i);
+			shape.setAttribute("d", pointsToPath(points_proj, pathCs[i]));
+		}
+	
+		return;
+	}
+	
+	function zoom_shape(d, mouseX, mouseY){
+		if(d == 0){return;}
+	
+		var zoom_speed_n = zoom_speed;
+		if(BrowserDetect.browser == "Firefox") var zoom_speed_n = zoom_speed*0.5;
+	
+		var d = d/zoom_speed_n;
+	
+		// Scale all shapes
+		for (i = 0, len = shape_transform.length; i < len; i++) eval('scale(' + shape_transform[i] + ', ' + [1 + d] + ')');
+	
+		updateShapes();
+	}
+</script>
+<script type="text/javascript" >
+	//******************************** Shape constructors **********************************//
+	
+	function circle(x, y, z, r) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.r = r;
+	}
+	
+	function circleAnimate(x, y, z, r) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.r = r;
+	}
+	
+	function circleProject(x, y, r) {
+		this.x = x;
+		this.y = y;
+		this.r = r;
+	}
+	
+	function line(x1, y1, z1, x2, y2, z2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+	}
+	
+	function lineAnimate(x1, y1, z1, x2, y2, z2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+	}
+	
+	function lineProject(x1, y1, x2, y2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
+	}
+	
+	function arrow(x1, y1, z1, x2, y2, z2, l, a) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+		this.l = l;
+		this.a = a;
+	}
+	
+	function arrowAnimate(x1, y1, z1, x2, y2, z2, l, a) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+		this.l = l;
+		this.a = a;
+	}
+	
+	function arrowProject(x1, y1, x2, y2, hax, hay, hbx, hby) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.hax = hax;
+		this.hay = hay;
+		this.hbx = hbx;
+		this.hby = hby;
+	}
+	
+	function path(x, y, z, d, close) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.d = d;
+		this.close = close;
+	}
+	
+	function pathProject(x, y, d, close) {
+		this.x = x;
+		this.y = y;
+		this.d = d;
+		this.close = close;
+	}
+	
+	function point(x, y, z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+	
+	function pointAnimate(x, y, z, i) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.i = i;
+	}
+	
+	function pointProject(x, y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	function text(x, y, z, s) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.s = s;
+	}
+	
+	function textAnimate(x, y, z, s, i) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.s = s;
+		this.i = i;
+	}
+	
+	function textProject(x, y, s) {
+		this.x = x;
+		this.y = y;
+		this.s = s;
+	}
+	
+	function ZOrder(z, i, type){
+		this.z = z;
+		this.i = i;
+		this.type = type;
+	}
+	
+	function Layer(layer, i, type){
+		this.layer = layer;
+		this.i = i;
+		this.type = type;
+	}
+	
+	//*************************** Shape attribute constructors *****************************//
+	
+	function imageAttributes(src, preserveAspectRatio, opacity, z_index, animate) {
+		this.src = src;
+		this.preserveAspectRatio = preserveAspectRatio;
+		this.opacity = opacity;
+		this.z_index = z_index;
+		this.animate = animate;
+	}
+	
+	function imageAttributesAnimate(i, src, preserveAspectRatio, opacity, z_index) {
+		this.i = i;
+		this.src = src;
+		this.preserveAspectRatio = preserveAspectRatio;
+		this.opacity = opacity;
+		this.z_index = z_index;
+	}
+	
+	function shapeAttributes(fill, fill_opacity, stroke, stroke_opacity, stroke_width, r, z_index, animate) {
+		this.fill = fill;
+		this.fill_opacity = fill_opacity;
+		this.stroke = stroke;
+		this.stroke_opacity = stroke_opacity;
+		this.stroke_width = stroke_width;
+		this.z_index = z_index;
+		this.r = r;
+		this.animate = animate;
+	}
+	
+	function shapeAttributesAnimate(i, fill, fill_opacity, stroke, stroke_opacity, stroke_width, r, z_index) {
+		this.i = i;
+		this.fill = fill;
+		this.fill_opacity = fill_opacity;
+		this.stroke = stroke;
+		this.stroke_opacity = stroke_opacity;
+		this.stroke_width = stroke_width;
+		this.r = r;
+		this.z_index = z_index;
+	}
+	
+	function textAttributes(text, text_anchor, fill, opacity, font_family, font_style, font_weight, letter_spacing, writing_mode, glyph_orientation_vertical, z_index, animate) {
+		this.text = text;
+		this.text_anchor = text_anchor;
+		this.fill = fill;
+		this.opacity = opacity;
+		this.font_family = font_family;
+		this.font_style = font_style;
+		this.font_weight = font_weight;
+		this.letter_spacing = letter_spacing;
+		this.writing_mode = writing_mode;
+		this.glyph_orientation_vertical = glyph_orientation_vertical;
+		this.z_index = z_index;
+		this.animate = animate;
+	}
+	
+	function textAttributesAnimate(i, text_anchor, fill, opacity, font_family, font_style, font_weight, letter_spacing, writing_mode, glyph_orientation_vertical, z_index) {
+		this.i = i;
+		this.text_anchor = text_anchor;
+		this.fill = fill;
+		this.opacity = opacity;
+		this.font_family = font_family;
+		this.font_style = font_style;
+		this.font_weight = font_weight;
+		this.letter_spacing = letter_spacing;
+		this.writing_mode = writing_mode;
+		this.glyph_orientation_vertical = glyph_orientation_vertical;
+		this.z_index = z_index;
+	}
+	
+	//*********************************** Shape methods ************************************//
+	
+	circle.prototype = {
+	    scale: function (s) {
+			this.x *= s;
+			this.y *= s;
+			this.z *= s;
+			this.r *= s;
+	    },
+	
+	    rotateXaxis: function (t) {rotateX1(this, t);},
+	    rotateYaxis: function (t) {rotateY1(this, t);},
+	    rotateZaxis: function (t) {rotateZ1(this, t);},
+	
+		translateX: function (d) {this.x += d;},
+	    translateY: function (d) {this.y += d;},
+	    translateZ: function (d) {this.z += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x += dx;
+			this.y += dy;
+			this.z += dz;
+	    },
+	
+	    project: function (d, e, xs, ys) {
+			var u = -(d - e) / (this.z - e);
+			return new circleProject((u * this.x) + xs, -(u * this.y) + ys, this.r);
+	    },
+	
+	    limits: function () {return {x:[this.x + this.r, this.x - this.r], y:[this.y + this.r, this.y - this.r], z:[this.z]};}
+	}
+	
+	line.prototype = {
+	    scale: function (s) {
+			this.x1 *= s;
+			this.y1 *= s;
+			this.z1 *= s;
+			this.x2 *= s;
+			this.y2 *= s;
+			this.z2 *= s;
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = (t.cos * this.y1) - (t.sin * this.z1);
+			this.z1 = (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.y2;
+			this.y2 = (t.cos * this.y2) - (t.sin * this.z2);
+			this.z2 = (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) + (t.sin * this.z1);
+			this.z1 = - (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) + (t.sin * this.z2);
+			this.z2 = - (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) - (t.sin * this.y1);
+			this.y1 = (t.sin * tmp) + (t.cos * this.y1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) - (t.sin * this.y2);
+			this.y2 = (t.sin * tmp) + (t.cos * this.y2);
+	    },
+	
+	    translateX: function (d) {this.x1 += d;this.x2 += d;},
+	    translateY: function (d) {this.y1 += d;this.y2 += d;},
+	    translateZ: function (d) {this.z1 += d;this.z2 += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 += dx;
+			this.y1 += dy;
+			this.z1 += dz;
+			this.x2 += dx;
+			this.y2 += dy;
+			this.z2 += dz;
+	    },
+	
+	    project: function (d, e, xs, ys) {
+			var u1 = -(d - e) / (this.z1 - e);
+			var u2 = -(d - e) / (this.z2 - e);
+			return new lineProject((u1 * this.x1) + xs,-(u1 * this.y1) + ys, (u2 * this.x2) + xs, -(u2 * this.y2) + ys);
+	    },
+	
+	    limits: function () {return {x:[this.x1, this.x2], y:[this.y1, this.y2], z:[this.z1, this.z2]}}
+	}
+	
+	arrow.prototype = {
+	    scale: function (s) {
+			this.x1 *= s;
+			this.y1 *= s;
+			this.z1 *= s;
+			this.x2 *= s;
+			this.y2 *= s;
+			this.z2 *= s;
+			this.l *= s;
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = (t.cos * this.y1) - (t.sin * this.z1);
+			this.z1 = (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.y2;
+			this.y2 = (t.cos * this.y2) - (t.sin * this.z2);
+			this.z2 = (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) + (t.sin * this.z1);
+			this.z1 = - (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) + (t.sin * this.z2);
+			this.z2 = - (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) - (t.sin * this.y1);
+			this.y1 = (t.sin * tmp) + (t.cos * this.y1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) - (t.sin * this.y2);
+			this.y2 = (t.sin * tmp) + (t.cos * this.y2);
+	    },
+	
+	    translateX: function (d) {this.x1 += d;this.x2 += d;},
+	    translateY: function (d) {this.y1 += d;this.y2 += d;},
+	    translateZ: function (d) {this.z1 += d;this.z2 += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 += dx;
+			this.y1 += dy;
+			this.z1 += dz;
+			this.x2 += dx;
+			this.y2 += dy;
+			this.z2 += dz;
+	    },
+	
+	    project: function (d, e, xs, ys) {
+	
+			var u1 = -(d - e) / (this.z1 - e);
+			var u2 = -(d - e) / (this.z2 - e);
+			var v21 = [this.x2-this.x1,this.y2-this.y1,this.z2-this.z1];
+			var v12 = [this.x1-this.x2,this.y1-this.y2,this.z1-this.z2];
+			var v12u = uvector(v12);
+			var c_prod1 = uvector(cprod(v21, [0,0,1]));
+			var c_prod2 = uvector(cprod(v21, [c_prod1[0],c_prod1[1],c_prod1[2]]));
+			if(c_prod2[0] == 0 && c_prod2[1] == 0 && c_prod2[2] == 0) c_prod2 = [0,1,0];
+			if(Math.abs(c_prod2[0]) > 0.98) c_prod2 = [0,1,0];
+			var rm1 = tMatrixEP(c_prod2, this.a);
+			var rm2 = tMatrixEP(c_prod2, -this.a);
+	
+			// Adjust arrowhead length so that it is longer when z-component is higher (or else front on view hides most of arrowhead)
+			var ahl = this.l+(Math.pow(Math.abs(v12u[2]),10)/1)*0.6*this.l -(Math.abs(v12u[0]*v12u[1])/0.5)*0.2*this.l
+			
+			var ha = add(multM(multC(v12u, ahl), rm1), [this.x2, this.y2, this.z2]);
+			var hb = add(multM(multC(v12u, ahl), rm2), [this.x2, this.y2, this.z2]);
+			var hau = -(d - e) / (ha[2] - e);
+			var hbu = -(d - e) / (hb[2] - e);
+			
+			return new arrowProject((u1 * this.x1) + xs,-(u1 * this.y1) + ys, (u2 * this.x2) + xs, -(u2 * this.y2) + ys,
+				(hau * ha[0]) + xs, -(hau * ha[1]) + ys, (hbu * hb[0]) + xs, -(hbu * hb[1]) + ys);
+	    },
+	
+	    limits: function () {return {x:[this.x1, this.x2], y:[this.y1, this.y2], z:[this.z1, this.z2]}}
+	}
+	
+	path.prototype = {
+	 
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+		project: function(d, e, xs, ys){
+			var u;
+			var x = new Array(this.x.length);
+			var y = new Array(this.x.length);
+			for (var i = 0, len = this.x.length; i < len; i++){
+				u = -(d - e) / (this.z[i] - e);
+				x[i] = (u * this.x[i]) + xs;
+				y[i] = -(u * this.y[i]) + ys;
+			}
+			//var u = multC(inv(addC(this.z, -e)), -(d - e));
+			//return {x:addC(multC(this.x, u), xs), y:addC(multC(this.y, -u), ys), d:this.d, close:this.close};
+			return new pathProject(x, y, this.d, this.close);
+		},
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x), max.apply(Math, this.x)], 
+	    		y:[min.apply(Math, this.y), max.apply(Math, this.y)], 
+	    		z:[min.apply(Math, this.z), max.apply(Math, this.z)]
+			};
+	    }
+	}
+	
+	point.prototype = {
+	    scale: function (s) {
+			this.x *= s;
+			this.y *= s;
+			this.z *= s;
+	    },
+	
+	    rotateXaxis: function (t) {rotateX1(this, t);},
+	    rotateYaxis: function (t) {rotateY1(this, t);},
+	    rotateZaxis: function (t) {rotateZ1(this, t);},
+	
+	    translateX: function (d) {this.x += d;},
+	    translateY: function (d) {this.y += d;},
+	    translateZ: function (d) {this.z += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x += dx;
+			this.y += dy;
+			this.z += dz;
+	    },
+	
+		project: function (d, e, xs, ys) {
+			var u = -(d - e) / (this.z - e);
+			return new pointProject((u * this.x) + xs, -(u * this.y) + ys);
+		},
+	
+	    limits: function () {return {x:[this.x], y:[this.y], z:[this.z]};}
+	}
+	
+	text.prototype = {
+	    scale: function (s) {
+			this.x *= s;
+			this.y *= s;
+			this.z *= s;
+			this.s *= s;
+	    },
+	
+	    rotateXaxis: function (t) {rotateX1(this, t);},
+	    rotateYaxis: function (t) {rotateY1(this, t);},
+	    rotateZaxis: function (t) {rotateZ1(this, t);},
+	
+	    translateX: function (d) {this.x += d;},
+	    translateY: function (d) {this.y += d;},
+	    translateZ: function (d) {this.z += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x += dx;
+			this.y += dy;
+			this.z += dz;
+	    },
+	
+		project: function (d, e, xs, ys) {
+			var u = -(d - e) / (this.z - e);
+			return new textProject((u * this.x) + xs, -(u * this.y) + ys, this.s);
+		},
+	
+	    limits: function () {return {x:[this.x], y:[this.y], z:[this.z]};}
+	}
+	
+	circleAnimate.prototype = {
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+			this.r = multC(this.r, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, add(this.x, this.r)), min.apply(Math, sub(this.x, this.r)), max.apply(Math, add(this.x, this.r)), max.apply(Math, sub(this.x, this.r))], 
+	    		y:[min.apply(Math, add(this.y, this.r)), min.apply(Math, sub(this.y, this.r)), max.apply(Math, add(this.y, this.r)), max.apply(Math, sub(this.y, this.r))], 
+	    		z:[min.apply(Math, add(this.z, this.r)), min.apply(Math, sub(this.z, this.r)), max.apply(Math, add(this.z, this.r)), max.apply(Math, sub(this.z, this.r))], 
+			};
+	    }
+	}
+	
+	pointAnimate.prototype = {
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x), max.apply(Math, this.x)], 
+	    		y:[min.apply(Math, this.y), max.apply(Math, this.y)], 
+	    		z:[min.apply(Math, this.z), max.apply(Math, this.z)]
+			};
+	    }
+	}
+	
+	lineAnimate.prototype = {
+	    scale: function (s) {
+			this.x1 = multC(this.x1, s);
+			this.y1 = multC(this.y1, s);
+			this.z1 = multC(this.z1, s);
+			this.x2 = multC(this.x2, s);
+			this.y2 = multC(this.y2, s);
+			this.z2 = multC(this.z2, s);
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = sub(multC(this.y1, t.cos), multC(this.z1, t.sin));
+			this.z1 = add(multC(tmp, t.sin), multC(this.z1, t.cos));
+			var tmp = this.y2;
+			this.y2 = sub(multC(this.y2, t.cos), multC(this.z2, t.sin));
+			this.z2 = add(multC(tmp, t.sin), multC(this.z2, t.cos));
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = add(multC(this.x1, t.cos), multC(this.z1, t.sin));
+			this.z1 = sub(multC(this.z1, t.cos), multC(tmp, t.sin));
+			var tmp = this.x2;
+			this.x2 = add(multC(this.x2, t.cos), multC(this.z2, t.sin));
+			this.z2 = sub(multC(this.z2, t.cos), multC(tmp, t.sin));
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = sub(multC(this.x1, t.cos), multC(this.y1, t.sin));
+			this.y1 = add(multC(tmp, t.sin), multC(this.y1, t.cos));
+			var tmp = this.x2;
+			this.x2 = sub(multC(this.x2, t.cos), multC(this.y2, t.sin));
+			this.y2 = add(multC(tmp, t.sin), multC(this.y2, t.cos));
+	    },
+	
+	    translateX: function (d) {
+	    	this.x1 = addC(this.x1, d);
+	    	this.x2 = addC(this.x2, d);
+	    },
+	    translateY: function (d) {
+	    	this.y1 = addC(this.y1, d);
+	    	this.y2 = addC(this.y2, d);
+	    },
+	    translateZ: function (d) {
+	    	this.z1 = addC(this.z1, d);
+	    	this.z2 = addC(this.z2, d);
+	    },
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 = addC(this.x1, dx);
+			this.y1 = addC(this.y1, dy);
+			this.z1 = addC(this.z1, dz);
+			this.x2 = addC(this.x2, dx);
+			this.y2 = addC(this.y2, dy);
+			this.z2 = addC(this.z2, dz);
+	    },
+	
+	   limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x1), min.apply(Math, this.x2), max.apply(Math, this.x1), max.apply(Math, this.x2)], 
+	    		y:[min.apply(Math, this.y1), min.apply(Math, this.y2), max.apply(Math, this.y1), max.apply(Math, this.y2)], 
+	    		z:[min.apply(Math, this.z1), min.apply(Math, this.z2), max.apply(Math, this.z1), max.apply(Math, this.z2)]
+			};
+	    }
+	}
+	
+	arrowAnimate.prototype = {
+	    scale: function (s) {
+			this.x1 = multC(this.x1, s);
+			this.y1 = multC(this.y1, s);
+			this.z1 = multC(this.z1, s);
+			this.x2 = multC(this.x2, s);
+			this.y2 = multC(this.y2, s);
+			this.z2 = multC(this.z2, s);
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = sub(multC(this.y1, t.cos), multC(this.z1, t.sin));
+			this.z1 = add(multC(tmp, t.sin), multC(this.z1, t.cos));
+			var tmp = this.y2;
+			this.y2 = sub(multC(this.y2, t.cos), multC(this.z2, t.sin));
+			this.z2 = add(multC(tmp, t.sin), multC(this.z2, t.cos));
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = add(multC(this.x1, t.cos), multC(this.z1, t.sin));
+			this.z1 = sub(multC(this.z1, t.cos), multC(tmp, t.sin));
+			var tmp = this.x2;
+			this.x2 = add(multC(this.x2, t.cos), multC(this.z2, t.sin));
+			this.z2 = sub(multC(this.z2, t.cos), multC(tmp, t.sin));
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = sub(multC(this.x1, t.cos), multC(this.y1, t.sin));
+			this.y1 = add(multC(tmp, t.sin), multC(this.y1, t.cos));
+			var tmp = this.x2;
+			this.x2 = sub(multC(this.x2, t.cos), multC(this.y2, t.sin));
+			this.y2 = add(multC(tmp, t.sin), multC(this.y2, t.cos));
+	    },
+	
+	    translateX: function (d) {
+	    	this.x1 = addC(this.x1, d);
+	    	this.x2 = addC(this.x2, d);
+	    },
+	    translateY: function (d) {
+	    	this.y1 = addC(this.y1, d);
+	    	this.y2 = addC(this.y2, d);
+	    },
+	    translateZ: function (d) {
+	    	this.z1 = addC(this.z1, d);
+	    	this.z2 = addC(this.z2, d);
+	    },
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 = addC(this.x1, dx);
+			this.y1 = addC(this.y1, dy);
+			this.z1 = addC(this.z1, dz);
+			this.x2 = addC(this.x2, dx);
+			this.y2 = addC(this.y2, dy);
+			this.z2 = addC(this.z2, dz);
+	    },
+	
+	   limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x1), min.apply(Math, this.x2), max.apply(Math, this.x1), max.apply(Math, this.x2)], 
+	    		y:[min.apply(Math, this.y1), min.apply(Math, this.y2), max.apply(Math, this.y1), max.apply(Math, this.y2)], 
+	    		z:[min.apply(Math, this.z1), min.apply(Math, this.z2), max.apply(Math, this.z1), max.apply(Math, this.z2)]
+			};
+	    }
+	}
+	
+	textAnimate.prototype = {
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+			this.s = multC(this.s, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x), max.apply(Math, this.x)], 
+	    		y:[min.apply(Math, this.y), max.apply(Math, this.y)], 
+	    		z:[min.apply(Math, this.z), max.apply(Math, this.z)]
+			};
+	    }
+	}
+	
+	//********************************** Shape functions ***********************************//
+	
+	function attributesToString(attributes){
+	
+		s = "";
+	
+		if(attributes.stroke !== undefined) s += "stroke:" + attributes.stroke + ";";
+		if(attributes.stroke_width !== undefined) s += "stroke-width:" + attributes.stroke_width + ";";
+		if(attributes.stroke_opacity !== undefined) s += "stroke-opacity:" + attributes.stroke_opacity + ";";
+		if(attributes.fill !== undefined) s += "fill:" + attributes.fill + ";";
+		if(attributes.fill_opacity !== undefined) s += "fill-opacity:" + attributes.fill_opacity + ";";
+		if(attributes.r !== undefined) s += "r:" + attributes.r + ";";
+	
+		if(attributes.opacity !== undefined) s += "opacity:" + attributes.opacity + ";";
+		if(attributes.font_family !== undefined) s += "font-family:" + attributes.font_family + ";";
+		if(attributes.font_size !== undefined) s += "font-size:" + attributes.font_size + ";";
+		if(attributes.font_weight !== undefined) s += "font-weight:" + attributes.font_weight + ";";
+		if(attributes.font_style !== undefined) s += "font-style:" + attributes.font_style + ";";
+		if(attributes.letter_spacing !== undefined) s += "letter-spacing:" + attributes.letter_spacing + ";";
+		if(attributes.text_anchor !== undefined) s += "text-anchor:" + attributes.text_anchor + ";";
+		if(attributes.writing_mode !== undefined) s += "writing-mode:" + attributes.writing_mode + ";";
+		if(attributes.glyph_orientation_vertical !== undefined) s += "glyph-orientation-vertical:" + attributes.glyph_orientation_vertical + ";";
+	
+		return s;
+	}
+	
+	function parseSVGPath(path_in){
+	
+		// Add spaces between numbers and letters
+		var str = path_in.replace(/((\.|-|\d)+)/g, function (_, num){return ' ' + num + ' ';}).trim();
+	
+		// Split path
+		str_split = str.split(/[\s|,]/);
+	
+		// Remove empty values
+		str_split = clean(str_split);
+	
+		// Check for z at the end (closed path), and if found remove from end
+		var close = false;
+		if(str_split[str_split.length-1] == 'Z' || str_split[str_split.length-1] == 'z'){
+			close = true;
+			str_split.pop();
+		}
+	
+		var x = new Array();
+		var y = new Array();
+		var z = new Array();
+		var d = new Array();
+	
+		// Sort into x,y,z coordinates and path type characters
+		var num_ct = 0;
+		for (var i = 0, len = str_split.length; i < len; i++){
+	
+			if(is_numeric(str_split[i])){
+				if(num_ct == 0) x.push(parseFloat(str_split[i]));
+				if(num_ct == 1) y.push(parseFloat(str_split[i]));
+				if(num_ct == 2) z.push(parseFloat(str_split[i]));
+				if(num_ct == 3){
+					d.push(',');
+					x.push(parseFloat(str_split[i]));
+					num_ct = 1;
+					continue;
+				}
+				num_ct++;
+			}else{
+				d.push(str_split[i]);
+				num_ct = 0;
+			}
+		}
+		
+		//alert(str_split)
+		//alert(x + '\n' + y + '\n' + z + '\n' + d + '\n' + close)
+	
+		return new path(x, y, z, d, close);
+	}
+	
+	function pathToString(path){
+	
+		var str = "";
+		for (var i = 0, len = path.x.length; i < len; i++){
+			str += path.d[i] + ' ' + path.x[i] + ' ' + path.y[i] + ' ';
+		}
+		str = str.trim();
+		if(path.close) str += ' Z';
+	
+		return str;
+	}
+	
+	function pointsToPath(points, d){
+	
+		var i;
+		var str = "", letter = "";
+	
+		for (i = 0, len = d.length; i < len; i++){
+			if(i == 0) letter = "M";
+			if(i > 0) letter = "L";
+			str += letter + " " + points[d[i]-1].x + " " + points[d[i]-1].y + " ";
+		}
+	
+		str = str.trim();
+	
+		return str;
+	}
+	
+	function project(object, d, e, xs, ys){
+		var projection = new Array();
+		for (var i = 0, len = object.length; i < len; i++) projection[i] = object[i].project(d, e, xs, ys);
+		return projection;
+	}
+	
+	function scale(object, s){
+		for (var i = 0, len = object.length; i < len; i++) object[i].scale(s);
+	}
+	
+	function translate(object, dx, dy, dz){
+		for (var i = 0, len = object.length; i < len; i++) object[i].translate(dx, dy, dz);
+	}
+	
+	function rotateXaxis(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].rotateXaxis(rotateTrig(d));}
+	function rotateYaxis(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].rotateYaxis(rotateTrig(d));}
+	function rotateZaxis(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].rotateZaxis(rotateTrig(d));}
+	
+	function translateX(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].translateX(d);}
+	function translateY(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].translateY(d);}
+	function translateZ(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].translateZ(d);}
+	
+	function limits(object){
+	
+		if(object.length == 0) return {NaN,NaN, NaN,NaN, NaN,NaN}
+	
+		var shape_limits;
+		var x = [], y = [], z = [];
+	
+		for (var i = 0, len = object.length; i < len; i++){
+	
+			shape_limits = object[i].limits();
+	
+			x.push.apply(x, shape_limits.x);
+			y.push.apply(y, shape_limits.y);
+			z.push.apply(z, shape_limits.z);
+		}
+	
+		// Remove NaN values
+		x = clean(x, NaN);
+		y = clean(y, NaN);
+		z = clean(z, NaN);
+		
+		if(x.length == 0) return {NaN,NaN, NaN,NaN, NaN,NaN}
+		
+		return {
+			xmin:min.apply(Math, x), xmax:max.apply(Math, x),
+			ymin:min.apply(Math, y), ymax:max.apply(Math, y),
+			zmin:min.apply(Math, z), zmax:max.apply(Math, z)
+		}
+	}
+</script>
+<script type="text/javascript" >
+	function changeAnimationDuration(element){
+		
+		if(!is_numeric(element.value)) return;
+	
+		// Set new animation duration
+		animation_duration = parseFloat(element.value);
+	
+		// If animation is already stopped, return
+		if(stop_anim == 1) return;
+	
+		// If animation is running, stop and re-start
+		clearInterval(intervalID);
+		startAnimation();
+	}
+	
+	function find_layer_children(container, layers){
+	
+		var container_class;
+		var header;
+		var header_class;
+		var main_class;
+		var i, j;
+		var main;
+	
+		if(layers == undefined) layers = [];
+	
+		for(i = 0; i < container.childNodes.length; i++){
+	
+			container_class = container.childNodes[i].className;
+	
+			if(container_class == undefined) continue
+	
+			if(container_class == 'control_layer_header'){
+			
+				header = container.childNodes[i];
+	
+				for(j = 0; j < header.childNodes.length; j++){
+				
+					header_class = header.childNodes[j].className;
+	
+					if(header_class != 'control_layer_text' && header_class != 'control_layer_text_nochild') continue
+	
+					layers.push(header.childNodes[j].innerHTML)
+				}
+			}
+	
+			if(container_class == 'control_layer_main') main = container.childNodes[i];
+		}
+	
+		if(main == undefined) return layers;
+	
+		for(i = 0; i < main.childNodes.length; i++){
+	
+			main_class = main.childNodes[i].className;
+	
+			if(main_class == undefined || main_class != 'control_layer_container') continue
+	
+			layers.concat(find_layer_children(main.childNodes[i], layers))
+		}
+	
+		return layers;
+	}
+	
+	function inputAnimationState(element){
+		
+		// Pause animation
+		playPauseAnimation('stop');
+		
+		if(element.id == 'animation_frame_range_input'){
+			
+			anim_n = Math.round(((element.value) / 100)*animation_length);
+	
+			animateShapes();
+		}
+	
+		if(element.id == 'animation_frame_count_input'){
+		
+			if(!is_numeric(element.value)) return;
+	
+			anim_n = parseFloat(element.value) - 1;
+			
+			animateShapes();
+		}
+	}
+	
+	function layer_visibility(element){
+	
+		var class_name;
+		var div_header = element.parentNode.parentNode;
+		var div_container = element.parentNode.parentNode.parentNode;
+		var i;
+		
+		// Get parent layer
+		for(i = 0; i < div_header.childNodes.length; i++){
+	
+			class_name = div_header.childNodes[i].className;
+			if(class_name == undefined) continue
+			if(class_name != 'control_layer_text' && class_name != 'control_layer_text_nochild') continue
+	
+			var parent_layer = div_header.childNodes[i].innerHTML;
+		}
+	
+		// Find all child layers
+		layers = find_layer_children(div_container)
+	
+		// Remove duplicate layer names
+		layers = array_unique(layers)
+	
+		// Get opacity to apply to layers
+		var opacity = element.value
+	
+		// Show hide all child layers and layers of the same name
+		layer_visibility_children(document.getElementById("control_layers_container"), layers, opacity)
+	}
+	
+	function layer_visibility_children(container, layers, opacity){
+	
+		var container_class;
+		var header;
+		var header_class;
+		var layer_text;
+		var main_class;
+		var i, j, k;
+		var idx_input;
+		var idx_vis;
+		var main;
+	
+		for(i = 0; i < container.childNodes.length; i++){
+	
+			container_class = container.childNodes[i].className;
+	
+			if(container_class == undefined) continue
+	
+			if(container_class == 'control_layer_header'){
+	
+				// Clear layer text
+				layer_text;
+	
+				header = container.childNodes[i];
+	
+				for(j = 0; j < header.childNodes.length; j++){
+					header_class = header.childNodes[j].className;
+					if(header_class == 'control_layer_shape_vis_range') idx_vis = j;
+					if(header_class == 'control_layer_text' || header_class == 'control_layer_text_nochild') layer_text = header.childNodes[j].innerHTML;
+				}
+				
+				if(layer_text == undefined) continue
+				
+				if(layers.indexOf(layer_text) > -1){
+	
+					// Change opacity for any shapes that list layer
+					changeLayerOpacity(layer_text, (opacity/100));
+	
+					// Find slider element
+					for(k = 0; k < header.childNodes[idx_vis].childNodes.length; k++){
+						if(header.childNodes[idx_vis].childNodes[k].tagName == 'INPUT') idx_input = k;
+					}
+					
+					// Change opacity slider in control panel
+					header.childNodes[idx_vis].childNodes[idx_input].value = opacity;
+				}
+			}
+	
+			if(container_class == 'control_layer_main' || container_class == 'control_layers_main' || container_class == 'control_animation_main') main = container.childNodes[i];
+		}
+	
+		if(main == undefined) return;
+	
+		for(i = 0; i < main.childNodes.length; i++){
+	
+			main_class = main.childNodes[i].className;
+	
+			if(main_class == undefined || main_class != 'control_layer_container') continue
+	
+			layer_visibility_children(main.childNodes[i], layers, opacity)
+		}
+	}
+	
+	function show_hide_control(element, action){
+	
+		if(element == null) return;
+	
+		var class_action;
+		var class_name;
+		var div_container = element.parentNode.parentNode;
+		var i;
+		
+		var win_show_sym = '&#8853;';
+		var win_hide_sym = '&#8854;';
+	
+		for(i = 0; i < div_container.childNodes.length; i++){
+	
+			class_name = div_container.childNodes[i].className;
+			
+			if(class_name == undefined) continue
+	
+			if(class_name == 'control_layers_main' || class_name == 'control_layer_main' || class_name == 'control_animation_main'){
+	
+				if(action == undefined) if(element.innerHTML.charCodeAt(0) == 9660){action = 'hide';}else{action = 'show';}
+	
+				if(action == 'hide'){
+					// Hide
+					element.innerHTML = '&#9658;';
+					div_container.childNodes[i].style.display = 'none';
+				}else{
+					// Show
+					element.innerHTML = '&#9660;';
+					div_container.childNodes[i].style.display = '';
+				}
+				
+				if(element.id !== ''){
+					if(action == 'hide'){
+						deleteCookie('show_hide_control(document.getElementById("' + element.id + '"),"show")');
+						createCookie('show_hide_control(document.getElementById("' + element.id + '"),"hide")', 'eval', 3600);
+					}else{
+						deleteCookie('show_hide_control(document.getElementById("' + element.id + '"),"hide")');
+						createCookie('show_hide_control(document.getElementById("' + element.id + '"),"show")', 'eval', 3600);
+					}
+				}
+			}
+	
+			if(class_name == 'control_layer_subheader'){
+	
+				if(action == undefined) if(element.innerHTML.charCodeAt(0) == 9660){action = 'hide';}else{action = 'show';}
+	
+				if(action == 'hide'){
+					div_container.childNodes[i].style.display = 'none';
+				}else{
+					div_container.childNodes[i].style.display = '';
+				}
+			}
+		}
+	}
+	
+	function showHideControlPanel(action, write_cookie){
+	
+		if(write_cookie == undefined) var write_cookie = true;
+	
+		// Check whether any containers within control panel are visible
+		var none_visible = true;
+		if(document.getElementById('control_layers_container') !== null && document.getElementById('control_layers_container').style.display == '') none_visible = false;
+		if(document.getElementById('control_animation_container') !== null && document.getElementById('control_animation_container').style.display == '') none_visible = false;
+	
+		if(none_visible){
+			document.getElementById('control_container').style.display = 'none';
+			writeControlIcon('control', 'disable');
+			return;
+		}
+	
+		if(action == undefined){
+			if(control_panel_visible){control_panel_visible = false;}else{control_panel_visible = true;}
+		}else{
+			if(action == 'show'){
+				control_panel_visible = true;
+			}else{
+				control_panel_visible = false;
+			}
+		}
+	
+		var control_container = document.getElementById('control_container');
+	
+		if(control_container == null) return;
+	
+		if(control_panel_visible){
+			// Show
+			control_container.style.width = '300px';
+			control_container.style.display = '';
+			writeControlIcon('control', 'show');
+			
+			if(write_cookie){
+				deleteCookie('showHideControlPanel("hide")');
+				createCookie('showHideControlPanel("show")', 'eval', 3600);
+			}
+		}else{
+			// Hide
+			control_container.style.width = '85px';
+			control_container.style.display = 'none';
+			writeControlIcon('control', 'hide');
+	
+			if(write_cookie){
+				deleteCookie('showHideControlPanel("show")');
+				createCookie('showHideControlPanel("hide")', 'eval', 3600);
+			}
+		}
+	}
+	
+	function toggleAnimationReverse(){
+		if(animation_reverse){animation_reverse = 0;}else{animation_reverse = 1;}
+	}
+	
+	function toggle_rotate_mode(element, write_cookie){
+	
+		if(write_cookie == undefined) var write_cookie = true;
+	
+		if(element == 'translate' && rotate_mode == false) return;
+		if(element == 'rotate' && rotate_mode == true) return;
+	
+		if(rotate_mode){
+			rotate_mode = false;
+			document.getElementById("control_icon_rotate").title = "Turn on rotate mode or press and hold 'r'";
+			document.getElementById("control_icon_translate").title = 'Translate mode on, click and drag to move object';
+			document.getElementById("control_icon_rotate").style.border = '1px solid #cccccc';
+			document.getElementById("control_icon_rotate_arrow").style.color = '#cccccc';
+			document.getElementById("control_icon_translate").style.border = '1px solid black';
+			document.getElementById("control_icon_translate").style.color = 'black';
+	
+			if(write_cookie){
+				deleteCookie('toggle_rotate_mode("rotate")');
+				createCookie('toggle_rotate_mode("translate")', 'eval', 3600);
+			}
+		}else{
+			rotate_mode = true;
+			document.getElementById("control_icon_rotate").title = 'Rotate mode on, click and drag to rotate object';
+			document.getElementById("control_icon_translate").title = 'Turn on translate mode';
+			document.getElementById("control_icon_rotate").style.border = '1px solid #000000';
+			document.getElementById("control_icon_rotate_arrow").style.color = 'black';
+			document.getElementById("control_icon_translate").style.border = '1px solid #cccccc';
+			document.getElementById("control_icon_translate").style.color = '#cccccc';
+	
+			if(write_cookie){
+				deleteCookie('toggle_rotate_mode("translate")');
+				createCookie('toggle_rotate_mode("rotate")', 'eval', 3600);
+			}
+		}
+	}
+	
+	function writeControlIcon(name, state){
+	
+		if(name == undefined) name = new Array('control', 'rotate', 'translate');
+		if(Array.isArray(name) == false) name = new Array(name);
+	
+		var i;
+	
+		for(i = 0; i < name.length; i++){
+			if(name[i] == 'control'){
+				if(state == undefined) continue;
+				
+				if(state == 'show'){
+					document.getElementById("control_icon_control").title = 'Hide control panel';
+					document.getElementById("control_icon_control_vertical").innerHTML = '&#8213;';
+					document.getElementById("control_icon_control_horizontal").innerHTML = '';
+				}
+				if(state == 'hide'){
+					document.getElementById("control_icon_control").title = 'Show control panel';
+					document.getElementById("control_icon_control_vertical").innerHTML = '&#124;';
+					document.getElementById("control_icon_control_horizontal").innerHTML = '&#8213;';
+				}
+				if(state == 'disable'){
+					document.getElementById("control_icon_control").title = 'No control panel contents to display';
+					document.getElementById("control_icon_control").style.color = '#cccccc';
+					document.getElementById("control_icon_control").style.border = '1px solid #cccccc';
+					document.getElementById("control_icon_control_vertical").innerHTML = '&#124;';
+					document.getElementById("control_icon_control_horizontal").innerHTML = '&#8213;';
+				}
+			}
+	
+			if(name[i] == 'rotate'){
+	
+				if(state == undefined){
+					if(BrowserDetect.browser == "Firefox"){
+						document.getElementById("control_icon_rotate_arrow").style.fontSize = '0.9em';
+						document.getElementById("control_icon_rotate_arrow").style.lineHeight = '16px';
+						document.getElementById("control_icon_rotate_arrow").style.fontWeight = '100';
+					}
+				}
+			}
+		}
+	
+	}
+</script>

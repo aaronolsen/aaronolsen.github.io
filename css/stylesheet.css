@@ -41,10 +41,6 @@ h2{
 	font-size:0.9em;
 }
 
-.examplegalleryimg{
-	height:130px;
-}
-
 .examplegallerytext{
 	# background-color:red;
 	margin:20px 0px 0px 0px;
@@ -82,7 +78,7 @@ h2{
 }
 
 .header_image_caption{
-	font-family:Verdana, Myriad Pro, Arial, 'sans serif';
+	font-family:Corbel, Verdana, Myriad Pro, Arial, 'sans serif';
 	position:absolute;
 	left:10px;
 	color:white;
