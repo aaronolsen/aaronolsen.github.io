@@ -1,0 +1,10 @@
+upper_bill_tomium_L	50
+upper_bill_tomium_R	50
+palatine_edge_lat_L	50
+palatine_edge_lat_R	50
+palatine_edge_med_L	50
+palatine_edge_med_R	50
+pterygoid_outline_ant_L	25
+pterygoid_outline_ant_R	25
+pterygoid_outline_pos_L	25
+pterygoid_outline_pos_R	25

@@ -1,0 +1,8 @@
+caudal_fin_fork
+caudal_fin_superior_tip
+caudal_fin_posterior_tip
+dorsal_fin_anterior_base
+dorsal_fin_posterior_base
+eye
+pre_caudal_peduncle
+rostrum_anterior_tip
