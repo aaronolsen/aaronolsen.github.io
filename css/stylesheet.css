@@ -157,7 +157,11 @@ div.code{
 pre.code{
 	font-family:Monaco, courier;
 	font-size:0.7em;
-	color:#339900;
+	color:black;
+}
+
+span.code_comment{
+	color:orange;
 }
 
 span.comment{
