@@ -98,9 +98,10 @@ function fill_header(){
 	img[img.length] = new Array('about_me.html', 'American Tree Sparrow', 'img/header_american_tree_sparrow.jpg', 'white')
 	img[img.length] = new Array('cv.html', 'Northern Shoveler, female', 'img/header_northern_shoveler_f.jpg', 'white')
 	img[img.length] = new Array('software.html', 'Canada Goose', 'img/header_canada_goose.jpg', 'white')
+	img[img.length] = new Array('tutorials.html', 'Canada Goose', 'img/header_canada_goose.jpg', 'white')
 	img[img.length] = new Array('current_projects.html', 'Great Horned Owl', 'img/header_great_horned_owl.jpg', 'white')
-	//img[5] = new Array('cpp_code', 'Bald Eagle', 'img/header_bald_eagle.jpg', 'white')
-	//img[5] = new Array('cpp_code', 'American Wigeon, male', 'img/header_american_wigeon_m.jpg', 'white')
+	//img[img.length] = new Array('cpp_code', 'Bald Eagle', 'img/header_bald_eagle.jpg', 'white')
+	//img[img.length] = new Array('cpp_code', 'American Wigeon, male', 'img/header_american_wigeon_m.jpg', 'white')
 	img[img.length] = new Array('about_me.html', 'Great Horned Owl', 'img/header_great_horned_owl.jpg', 'white')
 	img[img.length] = new Array('contact.html', 'Red-tailed Hawk', 'img/header_redtailed_hawk.jpg', 'white')
 
@@ -174,8 +175,10 @@ function fill_linksidebar(){
 	links[2][6] = new Array('dietQuery', 'dietquery.html')
 	//links[3] = new Array('C++ code', 'cpp_code.html')
 	//links[3][2] = new Array('findCheckerboardCorners', 'find_checkerboard_corners.html')
-	links[3] = new Array('Contact', 'contact.html')
-	links[4] = new Array('CV', 'cv.html')
+	links[3] = new Array('Tutorials', 'tutorials/morphometrics.html')
+	links[3][2] = new Array('Shape analysis', '')
+	links[4] = new Array('Contact', 'contact.html')
+	links[5] = new Array('CV', 'cv.html')
 
 	t = ''
 	for(i in links){
@@ -242,6 +245,7 @@ function fill_title(){
 		if(page_trail[0] == 'about_me.html') title += 'About me'
 		if(page_trail[0] == 'current_projects.html') title += 'Current projects'
 		if(page_trail[0] == 'software.html') title += 'Software'
+		if(page_trail[0] == 'tutorials.html') title += 'Tutorials'
 		if(page_trail[0] == 'stereomorph.html') title += 'StereoMorph'
 		if(page_trail[0] == 'digitizing.html') title += 'Digitizing App'
 		if(page_trail[0] == 'linkages.html') title += 'Linkages'

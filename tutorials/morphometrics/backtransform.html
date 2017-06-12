@@ -1,0 +1,585 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+<link rel="shortcut icon" href="http://www.uchicago.edu/favicon.ico"/>
+<link href="../../css/stylesheet.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id="container" class="container">
+		<div id="header" class="header" ></div>
+		<div id="linksidebar" class="linksidebar" ></div>
+		<div id="maincontent" class="maincontent" >
+			<div id="pagetrail" class="pagetrail" ></div>
+			<h1>Create a backtransform morphospace</h1>
+
+			<p>
+			This tutorial will show you how to create a "backtransform morphospace" in <a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a> 
+			(below). A backtransform morphospace takes a standard morphospace plot, which 
+			groups objects or biological specimens according to how similar they are in shape, 
+			and adds representative shapes in a grid pattern across the plot to show intuitively 
+			how shape varies across morphospace (<a href='http://onlinelibrary.wiley.com/doi/10.1111/1365-2435.12890/full' target='_blank' >Olsen 2017</a>).
+			</p>
+
+			<div class='p_image_middle_div' style="width:550px;">
+				<div><a href='../../img/tutorials/morphometrics/backtransform_morphospace.jpg' target='_blank'>
+					<img width='550px' src='../../img/tutorials/morphometrics/backtransform_morphospace.jpg' /></a></div>
+				<div class='p_image_caption' style='text-align:center;' >
+					Backtransform morphospace of waterfowl beak shapes
+				</div>
+			</div>
+
+			<p>
+			These shapes placed into the background of the plot are "backtransformations" from a principal 
+			coordinates analysis, which identifies the major axes of variation with a shape dataset. 
+			Importantly, these backtranform shapes are not actual shapes within the input dataset. 
+			Rather they are theoretical shapes that represent a combination of two particular PC (principal component) scores 
+			and the mean of all the other PC scores. An alternative way to think of these 
+			backtransform shapes is that they are the shape an object or specimen would have 
+			if it were at a particular point in a 2D morphospace (e.g. at a particular 
+			value of PC1 and PC2) and at the average position along all other PC axes.
+			</p>
+
+			<p>
+			If most of your shape variation can be condensed 
+			into a few PC scores then these theoretical shapes will correspond well to the 
+			shapes in the input dataset. A useful feature of a backtransform morphospace is 
+			that it shows what shapes look like throughout the entire morphospace, rather 
+			than just where you have samples, to create an even distribution for visualization.
+			</p>
+
+			<p>
+			If you are using this code for a publication please cite the following paper:
+			</p>
+
+			<div style='margin:0 0 20px 20px;padding-left:10px;'>
+			Olsen AM (2017). Feeding ecology is the primary driver of beak shape diversification in waterfowl.  
+			<i>Functional Ecology</i>. Early View. DOI: <a href='http://onlinelibrary.wiley.com/doi/10.1111/1365-2435.12890/full' target='_blank' >10.1111/1365-2435.12890</a> 
+			(<a href='https://www.researchgate.net/publication/317316889_Feeding_ecology_is_the_primary_driver_of_beak_shape_diversification_in_waterfowl' target='_blank' >Access via ResearchGate</a>).
+			</div>
+
+			<h2>Preliminary steps</h2>
+
+			<p>
+			All of the code in this tutorial are R commands. 
+			So be sure you have <a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a>
+			installed on your system. If you do not have R installed you can find installation 
+			instructions <a href="https://cran.r-project.org" target="_blank" >here</a>. The uninterrupted block of code 
+			can be found at the <a href="#uninterrupted_code">end of this tutorial</a>.
+			</p>
+
+			<p>
+			You will also need to have the R package <span style="color:red;"><a href="https://CRAN.R-project.org/package=geomorph" target="_blank" >geomorph</a></span> 
+			installed to perform the Generalized Procrustes Analysis. If you have not installed 
+			this package you can install it using the 'install.packages' function.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Install R packages (if not installed already)</span>
+install.packages(geomorph)</pre>
+			</div>
+			
+			<p>
+			Once the package is installed load it into the current R environment using the 
+			'library' function.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Load the geomorph function</span>
+library(geomorph)</pre>
+			</div>
+
+			<h2>Creating a backtransform morphospace using 3D shape data</h2>
+
+			<p>
+			The main part of this tutorial will first demonstrate making a backtransform morphospace 
+			using 3D shape data and a non-phylogenetic principal components analysis (PCA). 
+			Using 2D shape data requires only a few modifications 
+			to this code which are detailed at the <a href="#background_morphospace_2d">end of this tutorial</a>.
+			</p>
+
+			<p>
+			Load the function <a href='https://raw.githubusercontent.com/aaronolsen/StereoMorph/master/R/btShapes.R' target='_blank' >btShapes()</a> 
+			into your R workspace. To download this function file click 
+			<a href='https://raw.githubusercontent.com/aaronolsen/StereoMorph/master/R/btShapes.R' target='_blank' >here</a> 
+			and then 'File > Save' in the web browser (be sure the file saves with an '.R' extension and not '.txt').
+			You can put the 'btShapes.R' file anywhere on your system but it's easiest to put it in the current working directory so that 
+			you only have to include the filename in the 'source' function (as below).
+			The 'btShapes' function will be included 
+			within the <span style='color:red;'><a href="http://cran.r-project.org/web/packages/StereoMorph/index.html" target="_blank" >StereoMorph R package</a></span> 
+			after the next <span style='color:red;'><a href="http://cran.r-project.org" target="_blank" >CRAN</a></span> 
+			update, but until then it needs to be loaded separately.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Load the btShapes() function</span>
+source('btShapes.R')</pre>
+			</div>
+
+			<p>
+			Now we need shape data to plot. These should be landmarks or curve points 
+			(either two- or three-dimensional) saved in a three-dimensional array in which 
+			the first array dimension is the point names, the second dimension is the xy-coordinates 
+			(or xyz-coordinates for 3D data), and the third dimension is each individual/species/etc.
+			</p>
+
+			<p>
+			For this tutorial we'll use 3D landmark and curve points collected 
+			from waterfowl bird beaks, originally published in  <a href='http://onlinelibrary.wiley.com/doi/10.1111/1365-2435.12890/full' target='_blank' >this paper</a> 
+			looking at the correlation between beak shape and diet in waterfowl. You can 
+			download these data from <a href='http://datadryad.org/' target='_blank' >datadryad</a> by clicking <a href='http://datadryad.org/bitstream/handle/10255/dryad.143404/Beak%20shape%20by%20species.zip?sequence=1' target='_blank'>here</a>. 
+			Unzip this folder and move it to your current working directory.
+			</p>
+
+			<p>
+			Read the example shape data from the 'Beak shape by species' folder.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Read all files in 'Beak shape by species' folder into list</span>
+read_files <- lapply(paste0('Beak shape by species/', 
+	list.files('Beak shape by species')), 'read.table')</pre>
+			</div>
+
+			<p>
+			Convert the shape data from list of matrices into a three-dimensional array, 
+			specifying names along the first and third dimension of the array. This should 
+			create a 150 x 3 x 51 dimension array.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Convert list of shape data into array</span>
+lm_array <- array(unlist(read_files), dim=c(dim(read_files[[1]]), 
+	length(read_files)), dimnames=list(rownames(read_files[[1]]), 
+	NULL, gsub('[.]txt$', '', list.files('Beak shape by species'))))</pre>
+			</div>
+
+			<p>
+			Perform <a href="https://en.wikipedia.org/wiki/Procrustes_analysis" target="_blank" >Generalized Procrustes Analysis</a> 
+			(GPA) using the <a href="https://CRAN.R-project.org/package=geomorph" target="_blank" >geomorph</a> function 
+			<a href="https://www.rdocumentation.org/packages/geomorph/versions/3.0.3/topics/gpagen" target="_blank" >gpagen</a> 
+			to obtain Procrustes coordinates.
+			GPA scales each shape to the same centroid size and 
+			optimally aligns the shapes (using translation and rotation) based on homologous 
+			points to remove differences due simply to differences in position and orientation.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Get generalized Procrustes coordinates</span>
+gpa_array <- gpagen(lm_array)$coords</pre>
+			</div>
+
+			<p>
+			Perform a (non-phylogenetic) principal components analysis (PCA) to identify the 
+			major axes of shape variation.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Convert array to matrix for PCA</span>
+gpa_mat <- t(apply(gpa_array, 3, function(y) matrix(t(y), 1)))
+
+<span class='code_comment'># Perform non-phylogenetic PCA</span>
+resEig <- eigen(cov(gpa_mat))
+
+<span class='code_comment'># Get PC scores</span>
+scores <- gpa_mat %*% resEig$vectors
+
+<span class='code_comment'># Get percent variance explained along each axis</span>
+percent.var <- (resEig$values / sum(resEig$values))*100</pre>
+			</div>
+
+			<p>
+			In order to plot each backtransform shape we need to create a function that 
+			will take our shape coordinates and produce a graphic of 
+			the specimen or object. For example, the function could connect a series of neighboring landmarks 
+			to create an outline. How you draw the shape data depends on what kind of shape data you have 
+			and how you want the graphic to look, so you will have to create this function 
+			yourself. But the function included in this example should serve as a useful template.
+			</p>
+
+			<p>
+			You can name the function whatever you'd like. The example below is named 'plot_beak_lateral'.
+			This function takes curve points along the bottom and top margin of the beak and 
+			creates a silhouette of the beak from a lateral view. The shape data that are input to this function are  
+			3D so this function just takes a simple projection of the 3D shape onto the midline body plane. 
+			You could rotate the entire shape before taking the projection to get a 
+			top-down view instead of a lateral view.
+			</p>
+
+			<p>
+			The first two parameters to this function have to be the following:
+			</p>
+
+			<ul>
+				<li>xy: a 2-column matrix of the PC scores where each backtransform shape will be drawn</li>
+				<li>coor: a matrix of the shape coordinates for each backtransform shape (2-column for 2D and 3-column for 3D)</li>
+			</ul>
+
+			<p>
+			You can include any number of extra parameters that you would like to 
+			customize the shape drawing. In the example below there is a size parameter to 
+			adjust the overall size of each backtransform shape and a color parameter to specify the 
+			fill color of the beaks. The extra parameters that you specify will be passed 
+			along through the 'btShapes' function (the function you create will be called 
+			by 'btShapes') so they should differ from the input parameters to 'btShapes'.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Define function to draw shape</span>
+plot_beak_lateral <- function(xy, coor, size=1, col='black'){
+
+	<span class='code_comment'># If 3D, rotate points about x-axis using 3D rotation matrix</span>
+	if(ncol(coor) == 3){
+		coor <- coor %*% matrix(c(1,0,0, 0,cos(-pi/2),sin(-pi/2), 
+			0,-sin(-pi/2),cos(-pi/2)), nrow=3, ncol=3)
+	}
+
+	<span class='code_comment'># Get just x,y coordinates (orthographic projection into xy-plane)</span>
+	coor <- coor[, 1:2]
+
+	<span class='code_comment'># Get plot aspect ratio</span>
+	w <- par('pin')[1]/diff(par('usr')[1:2])
+	h <- par('pin')[2]/diff(par('usr')[3:4])
+	asp <- w/h
+	
+	<span class='code_comment'># Correct for plot aspect ratio not necessarily being 1:1</span>
+	coor[, 1] <- coor[, 1] * (1/asp)
+
+	<span class='code_comment'># Scale points and place back in position</span>
+	coor <- coor*size
+
+	<span class='code_comment'># Center about zero based on range of coordinates</span>
+	coor <- coor - matrix(colMeans(apply(coor, 2, range)), 
+		nrow=nrow(coor), ncol=ncol(coor), byrow=TRUE)
+
+	<span class='code_comment'># Move shape to PC score</span>
+	coor <- coor + matrix(xy, nrow(coor), ncol(coor), byrow=TRUE)
+
+	<span class='code_comment'># Set order in which to draw points to create polygon</span>
+	polygon_order <- c(
+		which(grepl('upper_bill_culmen', rownames(coor))),
+		rev(which(grepl('upper_bill_tomium_L', rownames(coor)))))
+
+	<span class='code_comment'># Create filled polygon</span>
+	polygon(coor[polygon_order, ], col=col, border=col)
+}</pre>
+			</div>
+
+			<p>
+			To use this function in other projects you might want to save this function to its own file,
+			for example 'plot_beak_lateral.R' and then load the function at the start of your 
+			code using the 'source' function.
+			</p>
+
+			<p>
+			Set the two PC axes that you want to plot. For this example we'll plot the 
+			first and second PC axes. These are the two PC axes that form the basis of the grid onto 
+			which the backtransform shapes are drawn (the shapes will use the average PC scores along all 
+			the remaining axes).
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Set PCs to plot</span>
+pcs <- 1:2</pre>
+			</div>
+
+			<p>
+			For this tutorial we'll create a plot as a PDF file. Open a PDF graphics device 
+			where the plot will be produced.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Open PDF graphics device</span>
+pdf('Plot.pdf', width=9, height=6.5)</pre>
+			</div>
+
+			<p>
+			Create a plot box with axes and axis labels. Use the 'n' value for the 
+			'type' parameter to draw the plot without plotting the scores. That way we can 
+			add the scores later on top of the backtransform shapes.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Create plot box with axes and axis labels</span>
+plot(scores[, pcs], type='n', main='Backtransform morphospace',
+	xlab=paste0('PC', pcs[1], ' (', round(percent.var[pcs[1]]), '%)'),
+	ylab=paste0('PC', pcs[2], ' (', round(percent.var[pcs[2]]), '%)'))</pre>
+			</div>
+
+			<p>
+			Plot the backtransform shapes in the plot box using the 'btShapes' function.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Plot backtransform shapes</span>
+btShapes(scores=scores, vectors=resEig$vectors, fcn=plot_beak_lateral, 
+	pcs=pcs, n=c(5,7), m=dim(lm_array)[2], row.names=dimnames(lm_array)[[1]], 
+	pc.margin=c(0.06,0.05), size=0.5, col=gray(0.7))</pre>
+			</div>
+			
+			<p>
+			Here are the input parameters to 'btShapes':
+			</p>
+
+			<ul>
+				<li>scores: a matrix of the PCA scores</li>
+				<li>vectors: a matrix of the PCA eigenvectors</li>
+				<li>fcn: the function that will be called by btShapes to draw each shape</li>
+				<li>pcs: the two PC axes for the plot</li>
+				<li>n: a two-element vector giving the number of shapes to draw along the x- and y-axes, respectively</li>
+				<li>m: number of shape dimensions (2 for 2D, 3 for 3D)</li>
+				<li>row.names: a vector giving the names of the landmarks in the same order as the shape array input to the PC analysis</li>
+				<li>pc.margin: a two-element vector giving the margins along the x- and y-axes, 
+				respectively, for the range of PC scores that are used to draw the shapes. 
+				For example, a value of 0.05 
+				will start drawing the backtransform shapes at values 5% greater than the minimum 
+				PC score along the corresponding axis and end at 5% less than the maximum PC score. 
+				This is useful for making sure the shapes fall within the plot box.</li>
+			</ul>
+
+			<p>
+			The remaining two input parameters ('size' and 'col') are inputs to the 'plot_beak_lateral' 
+			function so these may differ depending on how you write your shape drawing function.
+			</p>
+
+			<p>
+			If you'd like, you can then plot the points for each species on top of the backtransform shapes.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Plot points for each species</span>
+points(scores[, pcs])</pre>
+			</div>
+
+			<p>
+			Add text labels.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Add text labels</span>
+text(scores[, pcs], labels=substr(rownames(scores), 0, 3), cex=0.8, 
+	pos=1, offset=0.3)</pre>
+			</div>
+
+			<p>
+			Close the PDF graphics device.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Close the PDF graphics device</span>
+dev.off()</pre>
+
+			</div>
+			
+			This should produce the following plot:
+
+			<div class='p_image_middle_div' style="width:550px;">
+				<div><a href='../../img/tutorials/morphometrics/backtransform_morphospace.jpg' target='_blank'>
+					<img width='550px' src='../../img/tutorials/morphometrics/backtransform_morphospace.jpg' /></a></div>
+				<div class='p_image_caption' style='text-align:center;' >
+					Backtransform morphospace of 3D waterfowl beak shapes
+				</div>
+			</div>
+
+			<a name="uninterrupted_code" ></a>
+
+			<p>
+			Here is the uninterrupted code:
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Load the geomorph function</span>
+library(geomorph)
+
+<span class='code_comment'># Load the btShapes() function</span>
+source('btShapes.R')
+
+<span class='code_comment'># Read all files in 'Beak shape by species' folder into list</span>
+read_files <- lapply(paste0('Beak shape by species/', 
+	list.files('Beak shape by species')), 'read.table')
+
+<span class='code_comment'># Convert list of shape data into array</span>
+lm_array <- array(unlist(read_files), dim=c(dim(read_files[[1]]), 
+	length(read_files)), dimnames=list(rownames(read_files[[1]]), 
+	NULL, gsub('[.]txt$', '', list.files('Beak shape by species'))))
+
+<span class='code_comment'># Get generalized Procrustes coordinates</span>
+gpa_array <- gpagen(lm_array)$coords
+
+<span class='code_comment'># Convert array to matrix for PCA</span>
+gpa_mat <- t(apply(gpa_array, 3, function(y) matrix(t(y), 1)))
+
+<span class='code_comment'># Perform non-phylogenetic PCA</span>
+resEig <- eigen(cov(gpa_mat))
+
+<span class='code_comment'># Get PC scores</span>
+scores <- gpa_mat %*% resEig$vectors
+
+<span class='code_comment'># Get percent variance explained along each axis</span>
+percent.var <- (resEig$values / sum(resEig$values))*100
+
+<span class='code_comment'># Define function to draw shape</span>
+plot_beak_lateral <- function(xy, coor, size=1, col='black'){
+
+	<span class='code_comment'># If 3D, rotate points about x-axis using 3D rotation matrix</span>
+	if(ncol(coor) == 3){
+		coor <- coor %*% matrix(c(1,0,0, 0,cos(-pi/2),sin(-pi/2), 
+			0,-sin(-pi/2),cos(-pi/2)), nrow=3, ncol=3)
+	}
+
+	<span class='code_comment'># Get just x,y coordinates (orthographic projection into xy-plane)</span>
+	coor <- coor[, 1:2]
+
+	<span class='code_comment'># Get plot aspect ratio</span>
+	w <- par('pin')[1]/diff(par('usr')[1:2])
+	h <- par('pin')[2]/diff(par('usr')[3:4])
+	asp <- w/h
+	
+	<span class='code_comment'># Correct for plot aspect ratio not necessarily being 1:1</span>
+	coor[, 1] <- coor[, 1] * (1/asp)
+
+	<span class='code_comment'># Scale points and place back in position</span>
+	coor <- coor*size
+
+	<span class='code_comment'># Center about zero based on range of coordinates</span>
+	coor <- coor - matrix(colMeans(apply(coor, 2, range)), 
+		nrow=nrow(coor), ncol=ncol(coor), byrow=TRUE)
+
+	<span class='code_comment'># Move shape to PC score</span>
+	coor <- coor + matrix(xy, nrow(coor), ncol(coor), byrow=TRUE)
+
+	<span class='code_comment'># Set order in which to draw points to create polygon</span>
+	polygon_order <- c(
+		which(grepl('upper_bill_culmen', rownames(coor))),
+		rev(which(grepl('upper_bill_tomium_L', rownames(coor)))))
+
+	<span class='code_comment'># Create filled polygon</span>
+	polygon(coor[polygon_order, ], col=col, border=col)
+}
+
+<span class='code_comment'># Set PCs to plot</span>
+pcs <- 1:2
+
+<span class='code_comment'># Open PDF graphics device</span>
+pdf('Plot.pdf', width=9, height=6.5)
+
+<span class='code_comment'># Create plot box with axes and axis labels</span>
+plot(scores[, pcs], type='n', main='Backtransform morphospace',
+	xlab=paste0('PC', pcs[1], ' (', round(percent.var[pcs[1]]), '%)'),
+	ylab=paste0('PC', pcs[2], ' (', round(percent.var[pcs[2]]), '%)'))
+
+<span class='code_comment'># Plot backtransform shapes</span>
+btShapes(scores=scores, vectors=resEig$vectors, fcn=plot_beak_lateral, 
+	pcs=pcs, n=c(5,7), m=dim(lm_array)[2], row.names=dimnames(lm_array)[[1]], 
+	pc.margin=c(0.06,0.05), size=0.5, col=gray(0.7))
+
+<span class='code_comment'># Plot points for each species</span>
+points(scores[, pcs])
+
+<span class='code_comment'># Add text labels</span>
+text(scores[, pcs], labels=substr(rownames(scores), 0, 3), cex=0.8, 
+	pos=1, offset=0.3)
+
+<span class='code_comment'># Close the PDF graphics device</span>
+dev.off()</pre>
+			</div>
+
+			<a name="background_morphospace_2d" ></a>
+
+			<h2>Creating a backtransform morphospace using 2D shape data</h2>
+
+			<p>
+			Creating a backtransform morphospace using 2D shape data only requires changes 
+			to the custom function that draws each backtransform shape (the 'fcn' input to 
+			btShapes). You can easily convert the example dataset from this tutorial into 
+			a 2D dataset by taking only the first two dimensions. Since the beaks are initially 
+			aligned from front to back in the xy-plane this removes 
+			any data about the width of the beak. After converting the shape data into an 
+			array 
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Convert list of shape data into array</span>
+lm_array <- array(unlist(read_files), dim=c(dim(read_files[[1]]), 
+	length(read_files)), dimnames=list(rownames(read_files[[1]]), 
+	NULL, gsub('[.]txt$', '', list.files('Beak shape by species'))))</pre>
+			</div>
+
+			<p>
+			remove the last dimension
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Take only the first two dimensions</span>
+lm_array <- lm_array[, 1:2, ]</pre>
+			</div>
+
+			<p>
+			Note that the 'm' input parameter to btShapes should now be 2 versus 3. Using 
+			'dim(lm_array)[2]' will automatically account for this by reading the number of 
+			coordinate dimensions in lm_array.
+			</p>
+
+			<div class='p_image_middle_div' style="width:550px;">
+				<div><a href='../../img/tutorials/morphometrics/backtransform_morphospace_2d.jpg' target='_blank'>
+					<img width='550px' src='../../img/tutorials/morphometrics/backtransform_morphospace_2d.jpg' /></a></div>
+				<div class='p_image_caption' style='text-align:center;' >
+					Backtransform morphospace of 2D waterfowl beak shapes
+				</div>
+			</div>
+
+			<p>
+			The plot above shows the result of using 2D shape data. The backtransform shapes looks nearly 
+			identical because we've used the same two dimensions that we plotted last time (again, 
+			ignoring beak width and any shapes in that dimension). So we haven't lost an 
+			information for the 2D plane in which we are visualizing the shapes. This wouldn't 
+			be the case if we had visualized the beaks from top down.
+			</p>
+			
+			<p>
+			I had to change the 'size' parameter to btShapes to 0.35 versus 0.5. The percent variance explained 
+			has also changed a bit for each axis. Note that the positions of the various species 
+			in the plot has flipped along the x-axis ('biz' for Biziura lobata, the musk duck, has moved from 
+			the right to the left side). This doesn't have any special significance; 
+			the orientation or order of the PC scores along each axis 
+			in PCA is arbitrary and sometimes the axes get flipped when slight changes are 
+			made to the data.
+			</p>
+
+
+			<h2>Citing this tutorial</h2>
+
+			<p>
+			If you are using this code for a publication, please cite the following paper:
+			</p>
+
+			<div style='margin:0 0 20px 20px;padding-left:10px;'>
+			Olsen AM (2017). Feeding ecology is the primary driver of beak shape diversification in waterfowl.  
+			<i>Functional Ecology</i>. Early View. DOI: <a href='http://onlinelibrary.wiley.com/doi/10.1111/1365-2435.12890/full' target='_blank' >10.1111/1365-2435.12890</a> 
+			(<a href='https://www.researchgate.net/publication/317316889_Feeding_ecology_is_the_primary_driver_of_beak_shape_diversification_in_waterfowl' target='_blank' >Access via ResearchGate</a>).
+			</div>
+
+			<p>
+			Also be sure to cite the <a href="https://CRAN.R-project.org/package=geomorph" target="_blank" >geomorph</a> package and 
+			the <a href="https://cran.r-project.org/doc/FAQ/R-FAQ.html#Citing-R" target="_blank" >R Core Team</a>. 
+			You can generate the most up-to-date citation using the 'citation' function.
+			</p>
+
+			<div class="code" >
+				<pre class="code"><span class='code_comment'># Get current citation</span>
+citation('geomorph')
+citation('stats')</pre>
+			</div>
+
+			<p>
+			If you find an error or have a question, please <a href='../../contact.html' target='_blank'> contact me</a>!
+			</p>
+
+			<br /><br />
+
+		</div>
+		<div id="footer" class="footer" ></div>
+	</div>
+</body>
+
+<script src="../../js/sharedfunctions.js" type="text/javascript" ></script>
