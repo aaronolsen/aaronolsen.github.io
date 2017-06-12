@@ -76,7 +76,7 @@
 
 			<div class="code" >
 				<pre class="code"><span class='code_comment'># Install R packages (if not installed already)</span>
-install.packages(geomorph)</pre>
+install.packages('geomorph')</pre>
 			</div>
 			
 			<p>
@@ -515,6 +515,7 @@ lm_array <- lm_array[, 1:2, ]</pre>
 			</div>
 
 			<p>
+			Then you can run all of the subsequent code as before (you'll need to reduce the 'size' parameter in btShapes from 0.5 to 0.35).
 			Note that the 'm' input parameter to btShapes should now be 2 versus 3. Using 
 			'dim(lm_array)[2]' will automatically account for this by reading the number of 
 			coordinate dimensions in lm_array.
@@ -537,8 +538,8 @@ lm_array <- lm_array[, 1:2, ]</pre>
 			</p>
 			
 			<p>
-			I had to change the 'size' parameter to btShapes to 0.35 versus 0.5. The percent variance explained 
-			has also changed a bit for each axis. Note that the positions of the various species 
+			The percent variance explained 
+			has changed a bit for each axis. And note that the positions of the various species 
 			in the plot has flipped along the x-axis ('biz' for Biziura lobata, the musk duck, has moved from 
 			the right to the left side). This doesn't have any special significance; 
 			the orientation or order of the PC scores along each axis 
