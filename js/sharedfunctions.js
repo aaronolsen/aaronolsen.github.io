@@ -245,7 +245,7 @@ function fill_title(){
 		if(page_trail[0] == 'about_me.html') title += 'About me'
 		if(page_trail[0] == 'current_projects.html') title += 'Current projects'
 		if(page_trail[0] == 'software.html') title += 'Software'
-		if(page_trail[0] == 'tutorials.html') title += 'Tutorials'
+		if(page_trail[0] == 'tutorials.html' || page_trail[1] == 'tutorials') title += 'Tutorials'
 		if(page_trail[0] == 'stereomorph.html') title += 'StereoMorph'
 		if(page_trail[0] == 'digitizing.html') title += 'Digitizing App'
 		if(page_trail[0] == 'linkages.html') title += 'Linkages'
@@ -257,6 +257,8 @@ function fill_title(){
 		if(page_trail[0] == 'contact.html') title += 'Contact'
 		if(page_trail[0] == 'cv.html') title += 'CV'
 	}else{
+		if(page_trail[2] == 'tutorials') title += 'Tutorials'
+		if(page_trail[1] == 'tutorials') title += 'Tutorials'
 		if(page_trail[1] == 'examples' && page_trail[2] == 'linkr') title += 'linkR Examples'
 		if(page_trail[0] == 'examples.html' && page_trail[1] == 'linkr') title += 'linkR Examples'
 		if(page_trail[0] == 'interactive.html') title += 'svgViewR Interactive'
