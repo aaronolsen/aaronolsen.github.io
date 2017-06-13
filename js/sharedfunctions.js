@@ -235,7 +235,7 @@ function fill_linksidebar(){
 
 function fill_title(){
 	
-	var title='Aaron Olsen | '
+	var title=''
 
 	if(page_trail.length <= 2){
 		if(page_trail[0] == '') title += 'About me'
