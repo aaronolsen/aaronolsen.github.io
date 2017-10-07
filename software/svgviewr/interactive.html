@@ -1,82 +1,135 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<title></title>
+<title>svgViewR Interactive</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-
-<link rel="shortcut icon" href="http://www.uchicago.edu/favicon.ico"/>
+<link rel="shortcut icon" href="../../img/favicon.png"/>
 <link href="../../css/stylesheet.css" rel="stylesheet" type="text/css">
 
 <body>
 	<div id='container' class='container'>
-		<div id='header' class='header' ></div>
-		<div id='linksidebar' class='linksidebar' ></div>
-		<div id='maincontent' class='maincontent' >
-			<div id='pagetrail' class='pagetrail' ></div>
-			<h1>svgViewR Interactive Commands</h1>
 
-			<p>
-				<strong>svgViewR</strong> animations can be viewed in any compatible web browser (Safari, Firefox, Chrome, and Opera).
-				The animations are made interactive by the mouse and keyboard commands listed below.
-			</p>
-			<table style='margin-left:5px;'>
-				<tr>
-					<td width='200' class='reference_left' ><strong>spacebar</strong></td>
-					<td>Pauses and plays the animation</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>refresh</strong></td>
-					<td>Returns shapes to state when browser was originally opened</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>scroll up/down</strong></td>
-					<td>Zooms in/out by moving the shapes into and out of the screen</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>'j'</strong></td>
-					<td>Zooms out by moving shapes into the screen</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>'k'</strong></td>
-					<td>Zooms in by moving shapes out of the screen</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>↑ ↓ → ←</strong></td>
-					<td>Moves shapes up/down/right/left</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>'shift'</strong> + <strong>↑ ↓ → ←</strong></td>
-					<td>Moves shapes up/down/right/left in larger steps</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>'r'</strong> + <strong>click-and-drag</strong></td>
-					<td>Rotates shapes about y- and x- axes. Click-and-drag the mouse anywhere within the browser window. Clicking-and-dragging left and right will rotate the shapes about the y- (vertical) axis. Clicking-and-dragging up and down will rotate the shapes about the x- (horizontal) axis.</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>'r'</strong> + <strong>↑ ↓</strong></td>
-					<td>Rotates shapes about the x-axis in 10 degree increments</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>'r'</strong> + <strong>→ ←</strong></td>
-					<td>Rotates shapes about the y-axis in 10 degree increments</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>'r'</strong> + <strong>'k'</strong></td>
-					<td>Rotates shapes clockwise within the z-plane in 10 degree increments (screen)</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>'r'</strong> + <strong>'j'</strong></td>
-					<td>Rotates shapes counter-clockwise within the z-plane in 10 degree increments (screen)</td>
-				</tr>
-				<tr>
-					<td class='reference_left' ><strong>'shift'</strong> + <strong>'r'</strong> + <strong>'j' 'k' ↑ ↓ → ←</strong></td>
-					<td>Rotates shapes as stated above, but in 45 degree increments</td>
-				</tr>
-			</table>
-
-			<br /><br /><br /><br />
-
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/Red-Breasted Nuthatch.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					Red-Breasted Nuthatch
+				</div>
+			</div>
 		</div>
-		<div id='footer' class='footer' ></div>
-	</div>
-</body>
 
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../software/stereomorph.html'>StereoMorph</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../software/digitizing.html'>Digitizing App</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../software/linkr.html'>linkR</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../software/svgviewr.html'>svgViewR</a>
+			</div>
+			<div class='linksidebar_sub2link_u' >
+				<a class='linksidebar_link_u' href='../../software/svgviewr/interactive.html'>Interactive commands</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../software/dietquery.html'>dietQuery</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../software.html">software</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../software/svgviewr.html">svgviewr</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;interactive commands</div>
+
+<h1>svgViewR Interactive Commands</h1>
+
+<p>
+	<strong>svgViewR</strong> animations can be viewed in any compatible web browser (Safari, Firefox, Chrome, and Opera).
+	The animations are made interactive by the mouse and keyboard commands listed below.
+</p>
+<table style='margin-left:5px;'>
+	<tr>
+		<td width='200' class='reference_left' ><strong>spacebar</strong></td>
+		<td>Pauses and plays the animation</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>refresh</strong></td>
+		<td>Returns shapes to state when browser was originally opened</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>scroll up/down</strong></td>
+		<td>Zooms in/out by moving the shapes into and out of the screen</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>'j'</strong></td>
+		<td>Zooms out by moving shapes into the screen</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>'k'</strong></td>
+		<td>Zooms in by moving shapes out of the screen</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>↑ ↓ → ←</strong></td>
+		<td>Moves shapes up/down/right/left</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>'shift'</strong> + <strong>↑ ↓ → ←</strong></td>
+		<td>Moves shapes up/down/right/left in larger steps</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>'r'</strong> + <strong>click-and-drag</strong></td>
+		<td>Rotates shapes about y- and x- axes. Click-and-drag the mouse anywhere within the browser window. Clicking-and-dragging left and right will rotate the shapes about the y- (vertical) axis. Clicking-and-dragging up and down will rotate the shapes about the x- (horizontal) axis.</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>'r'</strong> + <strong>↑ ↓</strong></td>
+		<td>Rotates shapes about the x-axis in 10 degree increments</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>'r'</strong> + <strong>→ ←</strong></td>
+		<td>Rotates shapes about the y-axis in 10 degree increments</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>'r'</strong> + <strong>'k'</strong></td>
+		<td>Rotates shapes clockwise within the z-plane in 10 degree increments (screen)</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>'r'</strong> + <strong>'j'</strong></td>
+		<td>Rotates shapes counter-clockwise within the z-plane in 10 degree increments (screen)</td>
+	</tr>
+	<tr>
+		<td class='reference_left' ><strong>'shift'</strong> + <strong>'r'</strong> + <strong>'j' 'k' ↑ ↓ → ←</strong></td>
+		<td>Rotates shapes as stated above, but in 45 degree increments</td>
+	</tr>
+</table>
+
+<br /><br /><br /><br />
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
 <script src="../../js/sharedfunctions.js" type="text/javascript" ></script>
