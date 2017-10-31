@@ -11,7 +11,7 @@ a:visited{					/* visited link */
 a:hover{					/* mouse over link */
 }
 a:active{					/* selected link */
-} 	
+}
 
 h1{
 	# margin:10px 0px 0px 10px;
@@ -32,6 +32,12 @@ h5{
 	font-size:1.1em;
 	font-weight:normal;
 	margin:0px 0px 0px 0px;
+}
+
+img.center{
+	display: block;	
+	margin-left: auto;
+    margin-right: auto;
 }
 
 .container{
@@ -110,12 +116,16 @@ h5{
 	float:right;
 }
 
+.maincontentfill{
+	margin:10px 0px 0px 0px;
+}
+
 .linksidebar{
 	# border:purple 1px solid;
 	# background-color:yellow;
 	# height:150px;
 	font-size:1.3em;
-	margin:0px 0px 10px 0px;
+	margin:15px 0px 10px 5px;
 	float:left;
 }
 
@@ -128,13 +138,19 @@ h5{
 .linksidebar_sublink, .linksidebar_sublink_u{
 	# background-color:purple;
 	font-size:0.75em;
-	margin:5px 5px 5px 25px;
+	margin:5px 5px 5px 20px;
 }
 
 .linksidebar_sub2link, .linksidebar_sub2link_u{
 	# background-color:purple;
 	font-size:0.65em;
-	margin:5px 5px 5px 50px;
+	margin:5px 5px 5px 40px;
+}
+
+.linksidebar_sub3link, .linksidebar_sub3link_u{
+	# background-color:purple;
+	font-size:0.65em;
+	margin:5px 5px 5px 60px;
 }
 
 .linksidebar_mainlink_u, .linksidebar_sublink_u, .linksidebar_sub2link_u{
@@ -200,14 +216,14 @@ td.cv_date_single{
 	width:50px;
 }
 
-div.code{
+div.code, div.bcode{
 	margin:0 0 20px 20px;
 	padding-left:10px;
 	background-color:#eeeeee;
 	overflow-x:hidden;
 }
 
-pre.code{
+pre.code, pre.bcode{
 	font-family:Monaco, courier;
 	font-size:0.7em;
 	color:black;
