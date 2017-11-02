@@ -5,7 +5,7 @@ header_image_caption_bpadding = 22
 
 sidebar_p = 0.25
 bn_sidebar_main = 10
-sidebar_padding = new Array(10, 0, 10, 20)
+sidebar_padding = new Array(0, 0, 0, 0)
 maincontent_padding = new Array(10, 10, 10, 10)
 
 url_split = document.URL.split("/");
