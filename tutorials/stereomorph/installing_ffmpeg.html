@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - Getting started</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1.1 Installing StereoMorph</a>
+			</div>
+				<div class='linksidebar_sub3link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/installing_ffmpeg.html'>1.2 Installing ffmpeg (for video)</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph/installing_stereomorph.html">1 getting started</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;1.2 installing ffmpeg (for video)</div>
+
+
+<div class='maincontentfill'>
+	<h1>1.2 Installing ffmpeg on Mac OS (only for video)</h1>
+
+	<p>
+		If you are only using StereoMorph with photographs (not video) then this section can 
+		be skipped. As of version 1.6, StereoMorph has some basic video-handling capabilities. 
+		This includes calibrating two video cameras using video files, rather than using a 
+		set of photographs or already extracted frames from each video.
+	</p>
+	<p>
+		R does not have native support for reading frames from video files. Thus, a codec 
+		library must be installed in order for StereoMorph to extract frames from video files. 
+		Once the codec is installed and accessible from the command line, all video handling 
+		can be done within R. This section will show you how to install the video codec library 
+		<a href="https://ffmpeg.org/" target="_blank" >ffmpeg</a>. Currently, these ffmpeg installation 
+		instructions are only suitable for Mac OS X.
+	</p>
+	<p>
+		1. Download the latest static build of ffmpeg for your operating system (less than 80 MB unzipped). 
+		On the <a href="https://ffmpeg.org/download.html" target="_blank" >ffmpeg download site</a> you'll find 
+		links to the static builds under "Get the packages". For example, the most 
+		recent static build for Mac OS X can be downloaded <a href="http://www.ffmpegmac.net/" target="_blank" >here</a>.
+	</p>
+	<p>
+		2. The downloaded static build should be a compressed folder. Unzip this folder. 
+		Inside you should see an executable named "ffmpeg" (and possibly also "ffprobe" and 
+		"ffserver", which we do not need). Move the ffmpeg executable to the "Downloads" folder.
+	</p>
+	<p>
+		3. We will now copy the ffmpeg file into "/usr/local/bin". The easiest way to do 
+		this is through Terminal. Open the Terminal app (for entering command line codes). 
+		Note that all of the following commands are to be entered into Terminal (not into the R console).
+	</p>
+	<p>
+		In Terminal, navigate to the folder containing the ffmpeg file using the "cd" 
+		(change directory) command. Type "cd" followed by the file path to your Downloads 
+		folder. For example, the path on my system is "/Users/aaron/Downloads".
+	</p>
+
+<div class="bcode" ><pre class="bcode">
+<span class="code_function" >cd</span> /Users/aaron/Downloads
+</pre></div>
+
+	<p>
+		Make sure that there is a bin folder "/usr/local/bin/" using the "mkdir" command 
+		(make directory). The "sudo" before mkdir simply adds extra permissions to the 
+		commands so that the codec library will be accessible to your system (you may be 
+		prompted to type in your password).
+	</p>
+
+<div class="bcode" ><pre class="bcode">
+<span class="code_function" >sudo mkdir</span> /usr/local/bin/
+</pre></div>
+
+	<p>
+		If this returns a line that includes "File exists", then this folder already 
+		exists on your system.
+	</p>
+
+	<p>
+		Copy the ffmpeg file into /usr/local/bin using the "cp" command.
+	</p>
+
+<div class="bcode" ><pre class="bcode">
+<span class="code_function" >sudo cp</span> ./ffmpeg /usr/local/bin
+</pre></div>
+
+	<p>
+		Set the access permissions to ffmpeg so that it can be called by R using the "chmod" 
+		command. The numeric code "755" specifies a permission level that allows ffmpeg 
+		to be called from R.
+	</p>
+
+<div class="bcode" ><pre class="bcode">
+<span class="code_function" >sudo chmod</span> 755 /usr/local/bin/ffmpeg
+</pre></div>
+
+	<p>
+		4. To make sure that system can find the ffmpeg command, we'll add /usr/local/bin 
+		to the $PATH variable. This is a set of directories that the system looks in when 
+		searching for a command. Use the "cd" command (but without any path after it) to 
+		navigate to the home folder.
+	</p>
+	
+<div class="bcode" ><pre class="bcode">
+<span class="code_function" >cd</span>
+</pre></div>
+
+	<p>
+		Then use the "open" command to open the bash_profile.
+	</p>
+	
+<div class="bcode" ><pre class="bcode">
+<span class="code_function" >open</span> -e .bash_profile
+</pre></div>
+
+	<p>
+		If the bash_profile doesn't exist, you can create it using the following "touch" 
+		command and then use the open command.
+	</p>
+
+<div class="bcode" ><pre class="bcode">
+<span class="code_function" >touch</span> .bash_profile
+</pre></div>
+
+	<p>
+		The bash_profile should open in TextEdit. Add a new line at the end of the document 
+		and paste in the following:
+	</p>
+
+<pre>	export PATH="/usr/local/bin:$PATH"</pre>
+
+	<p>
+		5. Save the bash_profile and then close and re-open Terminal (this will refresh 
+		Terminal so that it reflects the changes in the bash_profile). In Terminal use the 
+		"echo" command to print the current $PATH variable.
+	</p>
+
+<div class="bcode" ><pre class="bcode">
+<span class="code_function" >echo</span> $PATH
+</pre></div>
+
+	<p>
+		You should see "/usr/local/bin" between colons or at the beginning of the path followed by a colon.
+	</p>
+
+	<p>
+		We can now check that ffmpeg is properly installed by simply typing "ffpmeg" in 
+		Terminal. If ffmpeg has been properly installed and can be located on the system, 
+		this should print the version number, copyright and other configuration details.
+	</p>
+
+<div class="bcode" ><pre class="bcode">
+<span class="code_function" >ffmpeg</span>
+</pre></div>
+
+	<br />
+	<div>
+		<div style="float:left"><strong>Previous:</strong> <a href="installing_stereomorph.html">Installing StereoMorph</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="cameras_photography.html" >Cameras for stereo photography</a></div>
+	</div>
+
+</div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>
