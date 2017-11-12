@@ -223,6 +223,17 @@ div.code, div.bcode{
 	overflow-x:hidden;
 }
 
+div.img_caption{
+    margin: 10px auto 0px auto;
+    width: 75%;
+    text-align:center;
+    font-size:0.9em;
+}
+
+div.tutorial_previous_next{
+	margin-top:30px;
+}
+
 pre.code, pre.bcode{
 	font-family:Monaco, courier;
 	font-size:0.7em;
