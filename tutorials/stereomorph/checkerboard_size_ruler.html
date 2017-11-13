@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - Creating a checkerboard</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3.1 Choosing a size</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/creating_a_checkerboard.html'>3.2 Creating a checkerboard</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/checkerboard_size_dpi.html'>3.3 Measuring square size using DPI</a>
+			</div>
+				<div class='linksidebar_sub3link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/checkerboard_size_ruler.html'>3.4 Measuring square size using a ruler</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/creating_checkerboard_stand.html'>3.5 Creating a checkerboard stand</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph/choose_checkerboard_size.html">3 creating a checkerboard</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;3.4 measuring square size using a ruler</div>
+
+
+<div class="maincontentfill">
+	<h1>3.4 Measuring square size using a ruler</h1>
+
+	<p>
+		This section will show you how to precisely measure the square sizes in a checkerboard 
+		pattern using an independent standard such as a ruler. The 
+		<a href="checkerboard_size_dpi.html" >previous section</a>
+		demonstrated how to calculate the size of printed squares based on the size of the 
+		squares in pixels, the DPI and the scaling. For most applications that should predict 
+		the size of the squares fairly well. But if your setup requires exceptionally high 
+		accuracy or you are unsure about the accuracy of your printer, you can follow the 
+		steps in this section.
+	</p>
+	<p>
+		1. Find a ruler. The required precision of the ruler will depend on the application. 
+		A standard office ruler should work well for most applications. If you require high 
+		accuracy, you can use a precision ruler. For this tutorial I used a 12" Single 
+		"A" - #46-IM precision rule by Schaedler (approximately $30, including tax and 
+		shipping), which has an accuracy tolerance of better than 0.00024".
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/schaedler_precision_rule.jpg' />
+	<div class='img_caption' >
+		A precision ruler.
+	</div>
+
+	<p>
+		2. Take a photograph of the ruler and the checkerboard pattern so that they are 
+		both visible in the image.
+	</p>
+
+	<img width='400px' class='center' src='../../img/tutorials/stereomorph/7x6_checkerboard_ruler.jpg' />
+	<div class='img_caption' >
+		A photograph of a 7x6 checkerboard pattern and a ruler. Nikon D5000 with AF-S DX Nikkor 
+		18-55mm lens at 55mm, f/36.
+	</div>
+
+	<p>
+		There are few important points when taking the photograph:
+	</p>
+
+	<ul>
+		<li>
+			Make sure that the entire checkerboard pattern falls within the image.
+		</li>
+		<li>
+			Use a camera lens with minimal lens distortion. For the above image, I used an 
+			18-55mm zoom lens zoomed in all the way to 55mm. At 18mm the lens would have 
+			significant barrel distortion but zoomed in to 55mm the distortion is negligible.
+		</li>
+		<li>
+			Position the camera and checkerboard so that the checkerboard is approximately 
+			coplanar with the image plane or the end of the camera lens (i.e. the long-axis of 
+			the lens should be at a right angle to the checkerboard). If the checkerboard is at 
+			an angle relative to the image plane, some squares will be closer to the image plane 
+			than others, resulting in a difference in size on the imaging plane (this is the 
+			perspective effect).
+		</li>
+		<li>
+			For the same reason, the ruler should be in the same plane as the checkerboard 
+			pattern. If the ruler has some depth to it, raise the checkerboard so that it 
+			is coplanar with the points you'll be digitizing on the ruler.
+		</li>
+		<li>
+			Position the ruler so that it is not at the very edge of the image. It is not 
+			possible to eliminate lens distortion entirely when taking a photograph and the 
+			edges will generally have the highest distortion. So it is best to keep 
+			everything being measured away from the edges.
+		</li>
+	</ul>
+
+	<p>
+		3. Upload the photograph of the checkerboard and ruler to your computer. Be sure 
+		the image name does not contain commas or periods. If you'd like to work through 
+		the example below, you can 
+		<a href="../../software/stereomorph/tutorial_files/7x6.jpg" target='_blank' >
+		download an example image, "7x6.jpg" here (0.3 MB)</a>. Note that this checkerboard 
+		is slightly different from the one we created earlier. It has 7x6 internal corners 
+		and the square size in the image was 144 pixels (printed at 10% scaling). Save 
+		this image to your R working directory.
+	</p>
+	<p>
+		4. Load the StereoMorph library if it isn't already loaded.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the StereoMorph library</span>
+<span class="code_function" >library</span>(StereoMorph) 
+</pre></div>
+
+	<p>
+		5. All of the remaining steps will be performed within the 
+		<a href="digitizing_application" >StereoMorph digitizing application</a>. This is 
+		a browser-based application for manually digitizing landmarks and curves in photographs.
+	</p>
+	<p>
+		The application is launched from R and opens in your default web browser; you do 
+		not need to be connected to the internet to launch the app (it runs on an internal 
+		server). To launch the app, use the function digitizeImages() with the following 
+		parameters: <em>image.file</em> (an image or folder of images to be digitized) and 
+		<em>shapes.file</em> (a file or folder where the digitized data will be saved). 
+		Using the example image, "7x6.jpeg", the function call looks like this:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Open the digitizing application</span>
+<span class="code_function" >digitizeImages</span>(image.file=<span class="code_quote" >'7x6.jpg'</span>, shapes.file=<span class="code_quote" >'7x6.txt'</span>)
+</pre></div>
+
+	<img width='670px' class='center' src='../../img/tutorials/stereomorph/measure_checkerboard_digitizing_app.jpg' />
+	<div class='img_caption' >
+		The StereoMorph digitizing app.
+	</div>
+
+	<p>
+		Once the app launches you should see the image on the left side of the window and 
+		a control panel on the right side. The 
+		<a href="digitizing_application" >Digitizing photographs</a>
+		section will explain the features of the app in more detail. For this section we 
+		will just measure the checkerboard square size and digitize points on the ruler.
+	</p>
+	<p>
+		6. Click on the "Scaling" tab in the right upper corner of the window.
+	</p>
+
+	<img width='300px' class='center' src='../../img/tutorials/stereomorph/scaling_panel.jpg' />
+	<div class='img_caption' >
+		The Scaling panel of the digitizing app.
+	</div>
+
+	<p>
+		7. In the text field to the right of "Internal corners", enter the number of 
+		internal corners along each dimension of the checkerboard, separated by a comma, 
+		and click "Find Checkerboard".
+	</p>
+
+	<img width='300px' class='center' src='../../img/tutorials/stereomorph/scaling_enter_corner_count.jpg' />
+	<div class='img_caption' >
+		Entering the number of internal corners.
+	</div>
+
+	<p>
+		The StereoMorph function findCheckerboardCorners() will then automatically detect 
+		the internal corners of the checkerboard. This can take up to 20-30 seconds depending 
+		on the size of the image. Once these have been detected, yellow dots and lines will 
+		be displayed on top of the image with a small "1" indicating the first corner.
+	</p>
+
+	<img width='350px' class='center' src='../../img/tutorials/stereomorph/measure_detected_corners.jpg' />
+	<div class='img_caption' >
+		The detected corners displayed on top of the image.
+	</div>
+
+	<p>
+		Note that for measuring the square size, the order in which the corners are detected 
+		doesn't matter. However, the order will become important later during the calibration 
+		step. Also, you'll see in the Scaling panel that the square size (in pixels) is 
+		measured once the corners are detected.
+	</p>
+
+	<img width='300px' class='center' src='../../img/tutorials/stereomorph/detected_square_size.jpg' />
+
+	<p>
+		8. To get the square size in millimeters, all we need now is the conversion factor 
+		from pixels to millimeters (i.e. how many millimeters correspond to a single pixel 
+		in the image). Select "Ruler point 1" in the Scaling panel in order to set 
+		this as the current landmark.
+	</p>
+
+	<img width='300px' class='center' src='../../img/tutorials/stereomorph/select_ruler_point_1.jpg' />
+
+	<p>
+		9. Then move your cursor to the ruler mark at 12 cm in the image and double-click. 
+		This will create a landmark at that position.
+	</p>
+
+	<img width='400px' class='center' src='../../img/tutorials/stereomorph/digitize_ruler_point_1.jpg' />
+	<div class='img_caption' >
+		Double-click to add a landmark.
+	</div>
+
+	<p>
+		You can zoom in and out of the image by scrolling and you can move around the image 
+		by clicking and dragging the image with the mouse. If you want to change the position 
+		of the landmark, first make sure the landmark is selected by double-clicking on the 
+		landmark or clicking on the row in the Scaling panel (the landmark will turn from 
+		blue to green). Then click and drag the landmark with the mouse or use the arrow 
+		keys to move by a pixel at a time. To delete a landmark, first select the landmark 
+		and then press 'd'.
+	</p>
+	<p>
+		10. Digitize an addition 5 ruler points, selecting them in the Scaling panel and 
+		then placing them at the marks for 11, 10, 9, 8 and 7 cm. Every time you add a 
+		ruler point, the app will automatically create a new row in the ruler point table. 
+		The app will also continually update the corresponding ruler interval (in pixels) 
+		as you add or change ruler points.
+	</p>
+
+	<img width='450px' class='center' src='../../img/tutorials/stereomorph/digitized_ruler_points.jpg' />
+
+	<p>
+		11. In the Scaling panel, enter the distance between each consecutive ruler point 
+		with the units, in this case 10 mm. The app will calculate the checkerboard square 
+		size and this will be displayed to the right of "Checkerboard square size (units)".
+	</p>
+
+	<img width='400px' class='center' src='../../img/tutorials/stereomorph/add_ruler_interval.jpg' />
+	<div class='img_caption' >
+		A measured checkerboard square size of 5.087 mm.
+	</div>
+
+	<p>
+		In this case, the measured square size is 5.0870 mm (your results will likely differ 
+		a bit because you are unlikely to digitize the exact same pixel coordinates). For 
+		this 7x6 checkerboard, the square size was 144 pixels and the checkerboard was printed 
+		at 10% scaling. Based on the equations for 
+		<a href="checkerboard_size_dpi.html" >based on the DPI and printer scaling</a> 
+		we would expect the printed square size to be 0.2 inches (5.08 mm). Note that our 
+		precision measurement differs by only 0.007 mm (7 microns) from what we expected. 
+		If you select a different ruler interval, select different points on the ruler, etc. 
+		you are likely to get a slightly different measurement but in general these measures 
+		should not differ by more than 0.2% of the square size.
+	</p>
+	<p>
+		Note also that in addition to calculating the size of the checkerboard, the scaling 
+		panel tells you the size of each pixel in the units you specify. In this case, 
+		each pixel is about 0.021 mm wide (21 microns). You won't be able to measure the 
+		checkerboard square size much below this threshold since you can't digitize at a 
+		resolution smaller than a pixel. However, by sampling many points on the ruler it's 
+		possible to achieve a slightly higher resolution than the pixel resolution. We'll 
+		see later that the checkerboard corner detection also uses local image sampling 
+		around the corner to achieve a resolution greater than the pixel resolution.
+	</p>
+	<p>
+		12. Click "Save" to save the checkerboard corners, ruler points and scaling data 
+		to the file you specified using the <em>shapes.file</em> parameter. If you'd like 
+		to refer back to the square size measurement you can read either re-launch the 
+		digitizing app using digitizeImages() with the same input parameters (all of the 
+		saved data will be loaded in) or you can read the shape file directly. StereoMorph 
+		uses a custom XML-like format to save these data; you'll find the checkerboard 
+		square size saved within the "square.size" tag in the shapes file.
+	</p>
+
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="checkerboard_size_dpi.html" >Measuring square size using DPI and scaling</a></div>
+	</div>
+</div>
+
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>

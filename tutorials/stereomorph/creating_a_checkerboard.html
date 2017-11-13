@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - Creating a checkerboard</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3.1 Choosing a size</a>
+			</div>
+				<div class='linksidebar_sub3link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/creating_a_checkerboard.html'>3.2 Creating a checkerboard</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/checkerboard_size_dpi.html'>3.3 Measuring square size using DPI</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/checkerboard_size_ruler.html'>3.4 Measuring square size using a ruler</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/creating_checkerboard_stand.html'>3.5 Creating a checkerboard stand</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph/choose_checkerboard_size.html">3 creating a checkerboard</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;3.2 creating a checkerboard</div>
+
+
+<div class="maincontentfill">
+	<h1>3.2 Creating a checkerboard</h1>
+
+	<p>
+		Materials needed for this section:
+	</p>
+	<ul>
+		<li>Cardstock paper</li>
+		<li>A flat, hard surface of the same dimensions as the desired checkerboard</li>
+		<li>Glue or tape with which to attach paper to surface</li>
+	</ul>
+
+	<p>
+		This section will show you how to create your own checkerboard using the StereoMorph function drawCheckerboard().
+	</p>
+	<p>
+		1. Be sure that you've <a href="installing_stereomorph.html" >installed the StereoMorph package</a> 
+		and load the StereoMorph library into the current R session.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the StereoMorph library</span>
+<span class="code_function" >library</span>(StereoMorph) 
+</pre></div>
+
+	<p>
+		2. Then call drawCheckerboard() with the following parameters: <em>nx</em> (number of 
+		internal corners horizontally), <em>ny</em> (number of internal corners vertically), 
+		<em>square.size</em> (size of the squares in the image in pixels), <em>filename</em> 
+		(where the image will be saved, including the filename).
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Create checkerboard</span>
+<span class="code_function" >drawCheckerboard</span>(nx=8, ny=6, square.size=180, filename=<span class="code_quote" >'Checkerboard 8x6 (180px).JPG'</span>)
+</pre></div>
+
+	<p>
+		This will create a checkerboard with 8 internal corners along one dimension, 6 
+		internal corners along the other dimension and squares that are 180 pixels along 
+		each side. Note that throughout this tutorial "square size" refers to the 
+		length along any one side of the square (not, for instance, a diagonal distance or 
+		area). Also, note that the number of internal corners are not the number of squares 
+		but the number of intersections of black squares. We care about the number of 
+		internal corners, rather than the number squares, because it's actually the internal 
+		corners that will be detected.
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/8_x_6_checkerboard.jpg' />
+	<div class='img_caption' >
+		Checkerboard with 8 x 6 internal corners.
+	</div>
+
+	<p>
+		Also, note that the checkerboard has a different number of internal corners along 
+		each dimension. This is essential to ensure that the corners are returned in the 
+		same order when the checkerboard is photographed in different orientations.
+	</p>
+	<p>
+		3. You can now print the checkerboard. I've been able to achieve great calibrations 
+		with inexpensive, desktop printers so any decent printer should do. Even when attaching 
+		the paper to a hard surface it's best to use a thicker paper such as cardstock. 
+		Once taped or glued to a hard surface, cardstock is less likely to get bubbles 
+		from moisture over time. In the printer prompt, print the checkerboard at 10% scaling.
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/print_checkerboard_scaling.jpg' />
+	<div class='img_caption' >
+		Printing an 8x6 checkerboard at 10% scaling.
+	</div>
+
+	<p>
+		4. Attach the checkerboard to a flat, hard surface using glue or tape. This way, 
+		the checkerboard can be more easily positioned at different angles without bending. 
+		If you don't require exceptionally high accuracy, a flat piece of wood or cardboard 
+		should be sufficient. If you want an exceptionally flat surface, I recommend plexiglass 
+		(at least 0.22 inches thick).
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/plexiglass_plates.jpg' />
+	<div class='img_caption' >
+		Thick plexiglass (0.22") works well as a flat surface for high-accuracy applications.
+	</div>
+
+	<p>
+		The checkerboard doesn't have to be aligned with the edge of the flat surface. 
+		For high-accuracy applications be sure to push out any bubbles between the paper 
+		and the surface. I use a spray adhesive to apply the checkerboard to be sure that 
+		it lays flat across the entire surface.
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/checkerboard_on_plexiglass.jpg' />
+	<div class='img_caption' >
+		Checkerboard glued to plexiglass.
+	</div>
+
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="choose_checkerboard_size.html" >Choosing a good checkerboard size</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="checkerboard_size_dpi.html" >Measuring square size using DPI and scaling</a></div>
+	</div>
+</div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>
