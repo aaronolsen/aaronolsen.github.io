@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - Getting started</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+				<div class='linksidebar_sub3link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/installing_stereomorph.html'>1.1 Installing StereoMorph</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_ffmpeg.html'>1.2 Installing ffmpeg (for video)</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph/installing_stereomorph.html">1 getting started</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;1.1 installing stereomorph</div>
+
+
+<div class='maincontentfill'>
+	<h1>1.1 Installing StereoMorph</h1>
+	<p>
+		This section will show you how to install the R package <a href='https://cran.r-project.org/package=StereoMorph' target='_blank'>StereoMorph</a>. 
+		The <a href='https://cran.r-project.org/' target='_blank'>R</a> project is a computing 
+		language and platform that allows users to freely upload and share software packages.
+	</p>
+	<p>
+		1. If you do not already have R installed on your computer, begin by
+		<a href='https://cran.r-project.org/' target='_blank'>installing R</a>. 
+		R can be installed on Windows, Linux and Mac OS X.
+	</p>
+	<p>
+		2. Once installed, open R.
+	</p>
+	<p>
+		3. Go to <em>Packages & Data</em> > <em>Package Installer</em>
+	</p>
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/install_package.jpg' />
+	<p>
+		4. Find the StereoMorph package binary by typing "StereoMorph" into the <em>Package Search box</em> 
+		and clicking <em>Get List</em> (the repository version of StereoMorph may be greater than the version in the image below).
+	</p>
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/find_stereomorph.jpg' />
+
+	<p>
+		5. Check the box next to <em>Install Dependencies</em>. This ensures that all the packages that 
+		StereoMorph requires to run will be installed as well. Then click <em>Install Selected</em> to install StereoMorph.
+	</p>
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/install_selected.jpg' />
+
+	<p>
+	6. Throughout this tutorial I've included code that you can use to reproduce examples. 
+	Code is indicated in the courier font style on a gray background as in the example below, 
+	with comments indicated in orange and function names in blue. Code is in the R language, 
+	unless otherwise indicated.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print 'Hello world!'</span>
+<span class="code_function" >print</span>('Hello world!')
+</pre></div>
+
+	<p>
+	To run each line of code, simply copy and paste the code into the R console.
+	</p>
+
+	<p>
+	7. Before calling any StereoMorph functions, load the StereoMorph package into the current R session using the library command.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the StereoMorph package</span>
+<span class="code_function" >library</span>(StereoMorph)
+</pre></div>
+
+	<br />
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="../stereomorph.html" >StereoMorph Tutorial</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="installing_ffmpeg.html" >Installing ffmpeg</a> (only if using video)</div>
+	</div>
+
+</div>
+
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>
