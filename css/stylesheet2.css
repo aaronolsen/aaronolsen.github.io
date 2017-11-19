@@ -13,6 +13,10 @@ a:hover{					/* mouse over link */
 a:active{					/* selected link */
 }
 
+a.incomplete_link{
+	color:red;
+}
+
 h1{
 	# margin:10px 0px 0px 10px;
 	margin:0px;
@@ -256,6 +260,11 @@ span.comment{
 	color:#777777;
 }
 
+span.in_line_code{
+	font-family:Monaco, courier;
+	font-size:0.8em;
+	color:#777777;
+}
 div.code_left{
 	float:left;
 	color:black;
