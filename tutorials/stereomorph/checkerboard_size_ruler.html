@@ -53,6 +53,21 @@
 				<div class='linksidebar_sub3link' >
 				<a class='linksidebar_link' href='../../tutorials/stereomorph/creating_checkerboard_stand.html'>3.5 Creating a checkerboard stand</a>
 			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4 Arranging the cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_general.html'>5 Calibrating stereo cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/photographing_objects.html'>6 Photographing objects</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/digitizing_video.html'>7 Digitizing application</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8 Reconstruction</a>
+			</div>
 			<div class='linksidebar_sublink' >
 				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
 			</div>
@@ -164,13 +179,13 @@
 
 	<p>
 		5. All of the remaining steps will be performed within the 
-		<a href="digitizing_application" >StereoMorph digitizing application</a>. This is 
+		<a class='incomplete_link' href="digitizing_application" >StereoMorph digitizing application</a>. This is 
 		a browser-based application for manually digitizing landmarks and curves in photographs.
 	</p>
 	<p>
 		The application is launched from R and opens in your default web browser; you do 
 		not need to be connected to the internet to launch the app (it runs on an internal 
-		server). To launch the app, use the function digitizeImages() with the following 
+		server). To launch the app, use the function <span class='in_line_code'>digitizeImages()</span> with the following 
 		parameters: <em>image.file</em> (an image or folder of images to be digitized) and 
 		<em>shapes.file</em> (a file or folder where the digitized data will be saved). 
 		Using the example image, "7x6.jpeg", the function call looks like this:
@@ -189,7 +204,7 @@
 	<p>
 		Once the app launches you should see the image on the left side of the window and 
 		a control panel on the right side. The 
-		<a href="digitizing_application" >Digitizing photographs</a>
+		<a class='incomplete_link' href="digitizing_application" >Digitizing photographs</a>
 		section will explain the features of the app in more detail. For this section we 
 		will just measure the checkerboard square size and digitize points on the ruler.
 	</p>
@@ -214,7 +229,7 @@
 	</div>
 
 	<p>
-		The StereoMorph function findCheckerboardCorners() will then automatically detect 
+		The StereoMorph function <span class='in_line_code'>findCheckerboardCorners()</span> will then automatically detect 
 		the internal corners of the checkerboard. This can take up to 20-30 seconds depending 
 		on the size of the image. Once these have been detected, yellow dots and lines will 
 		be displayed on top of the image with a small "1" indicating the first corner.
@@ -309,7 +324,7 @@
 		12. Click "Save" to save the checkerboard corners, ruler points and scaling data 
 		to the file you specified using the <em>shapes.file</em> parameter. If you'd like 
 		to refer back to the square size measurement you can read either re-launch the 
-		digitizing app using digitizeImages() with the same input parameters (all of the 
+		digitizing app using <span class='in_line_code'>digitizeImages()</span> with the same input parameters (all of the 
 		saved data will be loaded in) or you can read the shape file directly. StereoMorph 
 		uses a custom XML-like format to save these data; you'll find the checkerboard 
 		square size saved within the "square.size" tag in the shapes file.
@@ -317,6 +332,7 @@
 
 	<div class='tutorial_previous_next' >
 		<div style="float:left"><strong>Previous:</strong> <a href="checkerboard_size_dpi.html" >Measuring square size using DPI and scaling</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="creating_checkerboard_stand.html" >Creating a checkerboard stand</a></div>
 	</div>
 </div>
 

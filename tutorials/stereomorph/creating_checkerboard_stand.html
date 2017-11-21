@@ -44,14 +44,14 @@
 				<div class='linksidebar_sub3link' >
 				<a class='linksidebar_link' href='../../tutorials/stereomorph/creating_a_checkerboard.html'>3.2 Creating a checkerboard</a>
 			</div>
-				<div class='linksidebar_sub3link_u' >
-				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/checkerboard_size_dpi.html'>3.3 Measuring square size using DPI</a>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/checkerboard_size_dpi.html'>3.3 Measuring square size using DPI</a>
 			</div>
 				<div class='linksidebar_sub3link' >
 				<a class='linksidebar_link' href='../../tutorials/stereomorph/checkerboard_size_ruler.html'>3.4 Measuring square size using a ruler</a>
 			</div>
-				<div class='linksidebar_sub3link' >
-				<a class='linksidebar_link' href='../../tutorials/stereomorph/creating_checkerboard_stand.html'>3.5 Creating a checkerboard stand</a>
+				<div class='linksidebar_sub3link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/creating_checkerboard_stand.html'>3.5 Creating a checkerboard stand</a>
 			</div>
 			<div class='linksidebar_sub2link' >
 				<a class='linksidebar_link' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4 Arranging the cameras</a>
@@ -84,52 +84,69 @@
 
 		<div id='maincontent' class='maincontent' >
 
-			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph/choose_checkerboard_size.html">3 creating a checkerboard</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;3.3 measuring square size using dpi</div>
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph/choose_checkerboard_size.html">3 creating a checkerboard</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;3.5 creating a checkerboard stand</div>
 
 
 <div class="maincontentfill">
-	<h1>3.3 Measuring square size using DPI and scaling</h1>
+	<h1>3.5 Creating a checkerboard stand</h1>
 
 	<p>
-		We know that the squares were 180 pixels in the image file, but how large are the 
-		squares once they are printed on paper? We must know the size of the squares in 
-		real units (e.g. mm, inches) in order to properly scale our calibration. For a 
-		rough estimate, we can simply measure the length across the entire checkerboard 
-		and divide by the number of squares.
+		This section will show you how to precisely measure the square sizes in a checkerboard 
+		pattern using an independent standard such as a ruler. The 
+		<a href="checkerboard_size_ruler.html" >previous section</a>
+		demonstrated how to calculate the size of printed squares based on the size of the 
+		squares in pixels, the DPI and the scaling. For most applications that should predict 
+		the size of the squares fairly well. But if your setup requires exceptionally high 
+		accuracy or you are unsure about the accuracy of your printer, you can follow the 
+		steps in this section.
 	</p>
+
 	<p>
-		However, if we want to be more accurate we can calculate the real square size using 
-		known values from our printer scaling. Standard inkjet or laser printers (at least 
-		American printers) will print images at 72 dpi (dots per inch) by default. The DPI and 
-		scaling during printing determines how the size of an image in pixels will be converted 
-		into inches when the image is printed on paper. Thus, we can calculate the real square 
-		size using the square size in pixels, the printer scaling, and the printer DPI (dots 
-		per inch):
+		Materials needed for this section:
 	</p>
+	<ul>
+		<li>Needle-nose pliers</li>
+		<li>Thick wire (around 16 gauge)</li>
+	</ul>
 
-	<img width='400px' class='center' src='../../img/tutorials/stereomorph/printed_square_size_in_inches.jpg' />
-
-	<br>Or an additional conversion to mm can be added:<br><br>
-
-	<img width='500px' class='center' src='../../img/tutorials/stereomorph/printed_square_size_in_mm.jpg' />
-	
 	<p>
-		The square size of 180 pixels and 10% scaling used in this example were chosen 
-		purposely to create printed squares that are 0.25 inches (6.35 mm) along each side 
-		when printed at 72 DPI. Once you've measured the square size, it's good to write 
-		it on the front of the checkerboard lightly in small script with a pencil. This 
-		way you can read the square size directly from any photographs you take during the 
-		calibration.
+		If you are using StereoMorph for stereo photography, it's useful to have a stand 
+		that will hold the checkerboard in place while you take calibration photos with 
+		multiple cameras.
 	</p>
 
-	<img width='500px' class='center' src='../../img/tutorials/stereomorph/8x6_checkerboard_ruler.jpg' />
+	<img width='400px' class='center' src='../../img/tutorials/stereomorph/8_x_6_checkerboard_propped.jpg' />
 	<div class='img_caption' >
-		An 8x6 checkerboard printed at 10% scaling and 72 DPI will create 0.25 inch (6.35 mm) squares.
+		A simple checkerboard stand.
+	</div>
+
+	<p>
+		If you were to simply hold the checkerboard with your hand you would have to ensure 
+		the cameras took photographs at the exact same time. For stereo video, the checkerboard 
+		can be moved manually since the videos will have to be synchronized anyway.
+	</p>
+
+	<img width='400px' class='center' src='../../img/tutorials/stereomorph/creating_checkerboard_stand.jpg' />
+	<div class='img_caption' >
+		Constructing a simple stand by bending a single piece of wire.
+	</div>
+
+	<p>
+		The type of stand you'll need depends on the size of your stereo setup. If your 
+		checkerboard isn't too heavy, you can create a simple stand with some wire and 
+		pliers as shown above. For a large, heavy checkerboard you may need to attach the 
+		hard surface to another object via a hinge and use heavy objects to prop the 
+		checkerboard at different angles.
+	</p>
+
+	<img width='400px' class='center' src='../../img/tutorials/stereomorph/hinged_checkerboard_at_angles.jpg' />
+	<div class='img_caption' >
+		A hinged stand.
 	</div>
 
 	<div class='tutorial_previous_next' >
-		<div style="float:left"><strong>Previous:</strong> <a href="creating_a_checkerboard.html" >Creating a checkerboard</a></div>
-		<div style="float:right"><strong>Next:</strong> <a href="checkerboard_size_ruler.html" >Measuring square size using a ruler</a></div>
+		<div style="float:left"><strong>Previous:</strong> <a href="checkerboard_size_ruler.html" >Measuring square size using a ruler</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="arranging_cameras_photography.html" >Arranging the cameras</a></div>
 	</div>
 </div>
 
