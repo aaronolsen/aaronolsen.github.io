@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - Calibrating stereo cameras</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4 Arranging the cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_general.html'>5 Calibrating stereo cameras</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_general.html'>5.1 General calibration steps and parameters</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_photographs.html'>5.2 Calibrating with photographs</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_video.html'>5.3 Calibrating with video</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_coefficients.html'>5.4 Calculating calibration coefficients</a>
+			</div>
+				<div class='linksidebar_sub3link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/calibration_accuracy.html'>5.5 Determining calibration accuracy</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/photographing_objects.html'>6 Photographing objects</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/digitizing_video.html'>7 Digitizing application</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8 Reconstruction</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph/calibration_general.html">5 calibrating stereo cameras</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;5.5 determining calibration accuracy</div>
+
+
+<div class="maincontentfill">
+	<h1>5.5 Determining the calibration accuracy</h1>
+	<p>
+		The optimization should generally converge on a value (reconstruction error) less 
+		than 1 for each minimization. This value is in pixels so regardless of the scale 
+		of your setup this error should be less than 1. If for some reason a particular 
+		set is not converging the function might stop running the minimization and switch 
+		to the next set. If the optimization fails to converge for all of the sets there 
+		is probably an error in the correspondence between the two corner sets. Most commonly 
+		this is due to corners that are in different orders between two views or between 
+		different aspects. The DLT coefficients corresponding to the optimization with the 
+		lowest error will then be saved in the "calibration.txt" file as an 11x2 matrix.
+	</p>
+	<p>
+		Once the best calibration is selected, the <span class='in_line_code'>calibrateCameras()</span> tests the calibration 
+		accuracy using all of the available calibration checkerboards. Note that these errors 
+		are measured using the same checkerboard that was used for the calibration. 
+		Therefore, they cannot be used to test whether the <strong>scaling</strong> of the calibration 
+		is correct. To test the accuracy of the calibration including scaling it's best to 
+		<a class='incomplete_link' href='testing_the_accuracy_using_a_second_checkerboard.html' >test the accuracy 
+		using an additional checkerboard with a different square size</a>. The error diagnostics 
+		are the same in both cases so they will be described in this section. This section will use the 
+		<a href='calibration_photographs.html' >calibrating from photographs</a> 
+		example to explain how to interpret the various calibration error tests.
+	</p>
+	<p>
+		After the coefficient estimation, <span class='in_line_code'>calibrateCameras()</span> 
+		prints a "dltTestCalibration Summary":
+	</p>
+
+<div class="code" ><pre class="code">
+dltTestCalibration Summary
+	Number of aspects: 8
+	Number of views: 2
+	Square size: 6.35 mm
+	Number of points per aspect: 48
+	Aligned ideal to reconstructed (AITR) point position errors:
+		AITR RMS Errors (X,Y,Z): 0.0138 mm, 0.0118 mm, 0.0226 mm
+		Mean AITR Distance Error: 0.0257 mm
+		AITR Distance RMS Error: 0.0292 mm
+	Inter-point distance (IPD) errors:
+		IPD RMS Error: 0.0178 mm
+		IPD Mean Absolute Error: 0.0141 mm
+		Mean IPD error: -0.00112 mm
+	Adjacent-pair distance errors:
+		Mean adjacent-pair distance error: -0.00122 mm
+		Mean adjacent-pair absolute distance error: 0.0167 mm
+		SD of adjacent-pair distance error: 0.0193 mm
+	Epipolar errors:
+		Epipolar RMS Error: 0.246 px
+		Epipolar Mean Error: 0.246 px
+		Epipolar Max Error: 1.522 px
+		SD of Epipolar Error: 0.208 px
+</pre></div>
+
+	<p>
+		This read-out summarizes four main error measurements:
+	</p>
+
+	<ul>
+		<li>
+			<strong>Aligned ideal to reconstructed (AITR) errors</strong>: The AITR error aligns an 
+			ideal (perfect) checkerboard to the reconstructed corners using least squares 
+			alignment. Then, the distance is measured between each ideal checkerboard corner 
+			and its corresponding reconstructed corner. If the corners were perfectly 
+			reconstructed, the ideal and reconstructed points would overlap perfectly. The 
+			"AITR RMS errors" are the alignment errors along each dimension (x,y,z) 
+			in the coordinate system of the calibration points. This coordinate system 
+			depends on the orientation of the first checkerboard so it is somewhat arbitrary. 
+			But if you have larger error along one dimension than another it will generally 
+			show up here. For the tutorial project the error is greatest along the z-axis 
+			but overall the mean errors are low (less than 25 microns along any dimension).
+		</li>
+		<li>
+			<strong>Inter-point distance (IPD) errors</strong>: The IPD error summarizes distance 
+			rather than positional errors. For every reconstructed checkerboard, random 
+			pairs of points (without re-sampling) are chosen and the distance between them 
+			is compared to the distance on an ideal checkerboard. Unlike AITR error, this 
+			measure doesn't allow a comparison of the error along different dimensions. 
+			Additionally, while a range of different lengths are used to calculate the error 
+			the lengths can only be as large as the checkerboard. The IPD error should be 
+			about the same order of magnitude as the AITR error. For the tutorial project 
+			the IPD error is less than 20 microns. The reconstructed distances can be either 
+			shorter or longer than the actual distance. The "Mean IPD error" takes 
+			the simple mean of these errors: If there is no bias toward over- or 
+			underestimation of distance this should be near zero.
+		</li>
+		<li>
+			<strong>Adjacent-pair distance errors</strong>: This is identical to IPD error except 
+			that the error is determined only using pairs of adjacent checkerboard corners. 
+			This means the ideal distances are uniform and the same size as the square size. 
+			Since the corners in each pair are uniformly close together, their mean position 
+			(the mid-point) can be used to look at how IPD error varies as a function of 
+			position in the calibration volume.
+		</li>
+		<li>
+			<strong>Epipolar errors</strong>: For two cameras arranged in stereo a point in one 
+			camera view must fall along a line in a second camera view. This line is that 
+			point's epipolar line. The distance between a point's epipolar line and its 
+			corresponding point in that second camera view is the epipolar error. Since the 
+			error is a measure of distance between a line and point in the image plane 
+			the units are pixels.
+		</li>
+	</ul>
+	
+	<p>
+		It's important to consider the magnitude of these errors relative to the pixel 
+		resolution of the cameras and the size of the calibrated volume. For the tutorial 
+		project the image resolution is around 30 microns/pixel (using 12 MP cameras). 
+		Since digitized coordinates are limited to pixel resolution the reconstructed errors 
+		should always be greater 30 microns. Note that the calibration errors can be lower 
+		than this because the checkerboard corners are detected to subpixel resolution by 
+		sampling a small window of pixels around each internal corner and fitting a sub-pixel 
+		corner position. Also, the calibrated volume is approximately 60 mm x 80 mm x 100 
+		mm. Thus, the mean distance (IPD) error is less than 0.03% of the length along 
+		any one dimension of the space.
+	</p>
+	<p>
+		In addition to the error summary read-out, <span class='in_line_code'>calibrateCameras()</span> 
+		creates several error diagnostic plots for a complete assessment of the error. These will be saved in a 
+		folder "Error tests" within the same folder as the "calibration.txt" 
+		file (if the "Error tests" folder doesn't exist before running 
+		<span class='in_line_code'>calibrateCameras()</span> one will be created). The plots 
+		for the tutorial calibration can be found in "Run 1/Calibrate/Error tests".
+	</p>
+	<p>
+		For example, the function creates a boxplot of the IPD errors, separated by aspect 
+		(left) and a histogram of the IPD errors (right) pooled from all aspects.
+	</p>
+	<img width='700px' class='center' src='../../img/tutorials/stereomorph/calib_error_diagnostics_ipd.jpg' />
+	<p>
+		And the equivalent plots for epipolar error:
+	</p>
+	<img width='700px' class='center' src='../../img/tutorials/stereomorph/calib_error_diagnostics_epipolar.jpg' />
+	<p>
+		The function creates a plot of the IPD error as a function of the length between 
+		the two corners being measured to verify that error is not strongly correlated with 
+		the length being measured.
+	</p>
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/ipd_error_error_v_length.jpg' />
+	<p>
+		The function also uses all the reconstructed corners to identify the major axes 
+		through the calibration volume and plots the IPD error as a function of the position 
+		along each of these major axes. This is an easy way to get an idea of the size of 
+		the total calibrated volume and check whether the error is greater along one 
+		dimension than another.
+	</p>
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/ipd_error_error_ma.jpg' />
+
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="calibration_coefficients.html" >Calculating calibration coefficients</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="photographing_objects.html" >Photographing objects</a></div>
+	</div>
+</div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>
