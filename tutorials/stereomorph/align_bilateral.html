@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - Align bilateral landmarks</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph.html'>StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4 Arranging the cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_general.html'>5 Calibrating stereo cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/photographing_objects.html'>6 Photographing objects</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/digitizing_video.html'>7 Digitizing application</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8 Reconstruction</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/visualizing_shape.html'>9 Visualizing shape data</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reflect_missing.html'>10 Reflecting bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/align_bilateral.html'>11 Aligning bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/extracting_frames.html'>12 Additional features</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/citing.html'>13 Citing StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/acknowledgements.html'>14 Acknowledgements</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/knex/large_u_joint.html'>K'nex models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;11 aligning bilateral landmarks</div>
+
+
+<div class="maincontentfill">
+	<h1>11 Align bilateral landmarks</h1>
+	<p>
+		The 3D shape data produced so far have an entirely arbitrary orientation in 3D space. 
+		For subsequent analyses this shouldn't make a difference but for visualization purposes 
+		it can be useful to place the shape data in a consistent orientation. If you have 
+		bilateral shape data (left/right), you can align the shapes to the midline plane 
+		such that all points at the midline will have z-values of 0. This section will 
+		show you how to use the StereoMorph function <span class='in_line_code'>alignShapesToMidline()</span> to align 
+		landmarks and curves to the midline plane.
+	</p>
+	<p>
+		If you'd like to try using <span class='in_line_code'>alignShapesToMidline()</span> 
+		with an example dataset you can 
+		<a href='../../software/stereomorph/tutorial_files/Stereo_shape_set.zip' >download this stereo landmark and curve set (10 KB)</a>. 
+		Unzip the folder's contents into your current R working directory.
+	</p>
+	<p>
+		1. Begin by loading the StereoMorph library.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the StereoMorph package</span>
+<span class="code_function" >library</span>(StereoMorph)
+</pre></div>
+
+	<p>
+		As with <a href='reflect_missing.html'>reflecting missing landmarks</a>, 
+		in order for <span class='in_line_code'>alignShapesToMidline()</span> to recognize which 
+		landmarks are left, right, or on the midline, your landmark names will have to follow 
+		a particular convention. Landmark names that are right or left should end in 
+		"_" followed by either "R" or "L". Capitalization doesn't matter, so 
+		"r" or "l" will also work. These can be followed by numbers (e.g. for curve points) 
+		but should not be followed by other letters. All landmarks that don't have these 
+		endings will be treated as midline landmarks. For example, here are examples of 
+		acceptable landmark names to indicate a side:
+	<p>
+
+<div class="code" ><pre class="code">
+jugal_upperbeak_L
+jugal_upperbeak_r
+jugal_upperbeak_R0202
+</pre></div>
+
+	</p>
+		2. The <span class='in_line_code'>alignShapesToMidline()</span> function takes the 
+		same two main inputs as <span class='in_line_code'>reflectMissingShapes()</span>:
+
+	<ul>
+		<li><strong>shapes</strong>: the shape data to be aligned</li>
+		<li><strong>file</strong>: where the aligned shapes should be saved</li>
+	</ul>
+	<p>
+		These two inputs also allow quite a bit of flexibility. For instance, the function call to align shapes for one 3D shape file looks like this:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Align shapes to midline</span>
+asm <- <span class="code_function" >alignShapesToMidline</span>(shapes=<span class="code_quote" >'Reflected/bubo_virginianus_FMNH488595.txt'</span>, 
+   file=<span class="code_quote" >'Aligned/bubo_virginianus_FMNH488595.txt'</span>)
+</pre></div>
+
+	<p>
+		If the input to <span class='in_line_code'>alignShapesToMidline()</span> is a single 
+		set of shapes, the function will output the aligned shape data as a shape data structure. 
+		As shown in <a href='read_shape.html' >Reading shape data</a>, you can access the 
+		reflected landmarks using the "$" operator:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print landmarks</span>
+asm$landmarks
+</pre></div>
+
+	<p>
+		Note that if you want all of your midline landmarks to have 0 z-values, you'll need 
+		to run <a href='reflect_missing.html'>reflection</a> with average set to TRUE.
+	</p>
+	<p>
+		3. You can run <span class='in_line_code'>alignShapesToMidline()</span> over multiple 
+		files at once by making <strong>shapes</strong> and <strong>file</strong> vectors 
+		of corresponding file paths:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Specify multiple specimens</span>
+specimen <- <span class="code_function" >c</span>(<span class="code_quote" >'bubo_virginianus_FMNH488595.txt'</span>, 
+     <span class="code_quote" >'psittacus_erithacus_FMNH312899_a1.txt'</span>)
+
+<span class="code_comment" ># Align shapes to midline</span>
+asm <- <span class="code_function" >alignShapesToMidline</span>(shapes=<span class="code_function" >paste0</span>(<span class="code_quote" >'Reflected/'</span>, specimen), 
+   file=<span class="code_function" >paste0</span>(<span class="code_quote" >'Aligned/'</span>, specimen))
+</pre></div>
+
+	<p>
+		Currently, for this input type the function returns NULL.
+	</p>
+	<p>
+		4. To run <span class='in_line_code'>alignShapesToMidline()</span> over all the files 
+		in a particular folder, use paths to folders as input rather than to particular files. 
+		If a folder input to <strong>file</strong> doesn't exist then one will be created.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Align shapes to midline</span>
+asm <- <span class="code_function" >alignShapesToMidline</span>(shapes=<span class="code_quote" >'Reflected'</span>, file=<span class="code_quote" >'Aligned'</span>)
+</pre></div>
+
+	<p>
+		5. You can also input a shape structure rather than a shape file.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Read shapes</span>
+shapes <- <span class="code_function" >readShapes</span>(file=<span class="code_quote" >'Reflected/bubo_virginianus_FMNH488595.txt'</span>)
+
+<span class="code_comment" ># Align shapes to midline</span>
+asm <- <span class="code_function" >alignShapesToMidline</span>(shapes=shapes)
+</pre></div>
+
+	<p>
+		Note that <strong>file</strong> can be omitted, in which case the function will not 
+		create a file for the aligned shape data and will only return a shapes list. <strong>file</strong> 
+		can only be omitted for single shape set input to <span class='in_line_code'>alignShapesToMidline()</span>.
+	</p>
+	<p>
+		7. Lastly, <strong>print.progress</strong> can be set to TRUE in order to view the 
+		alignment errors:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Align shapes to midline and print error summary</span>
+asm <- <span class="code_function" >alignShapesToMidline</span>(shapes=shapes, print.progress=TRUE)
+</pre></div>
+
+	<p>
+		The printed errors are the distance of the midline points from the midline. If you've 
+		previously reflected the shape data with average set to TRUE all of these errors will 
+		be zero since all midline points will be aligned perfectly with the midline.
+	</p>
+	<p>
+		8. To visualize the aligned shape data, you can use the <span class='in_line_code'>plot3d()</span> 
+		function as shown previously in <a href='visualizing_shape.html'>Visualizing shape data</a>.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the rgl package</span>
+<span class="code_function" >library</span>(rgl)
+
+<span class="code_comment" ># Read shapes</span>
+shapes <- <span class="code_function" >readShapes</span>(file=<span class="code_quote" >'Aligned/bubo_virginianus_FMNH488595.txt'</span>)
+
+<span class="code_comment" ># Get landmarks</span>
+lm <- shapes$landmarks
+
+<span class="code_comment" ># Set landmark range</span>
+r <- <span class="code_function" >apply</span>(lm, 2, <span class="code_quote" >'max'</span>) - <span class="code_function" >apply</span>(lm, 2, <span class="code_quote" >'min'</span>)
+
+<span class="code_comment" ># Plot landmarks</span>
+<span class="code_function" >plot3d</span>(lm, aspect=<span class="code_function" >c</span>(r/r[3]), size=7)
+
+<span class="code_comment" ># Plot curves</span>
+<span class="code_function" >lapply</span>(shapes$curves, plot3d, size=4, col=<span class="code_quote" >'lightblue'</span>, add=TRUE)
+</pre></div>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/bubo_virginianus_FMNH488595_align.jpg' />
+	<div class='img_caption' >
+		Plot of aligned landmarks and curves using <span class='in_line_code'>plot3d()</span> in the rgl package.
+	</div>
+
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="reflecting_missing.html" >Reflecting bilateral landmarks</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="extracting_frames.html" >Extracting video frames</a></div>
+	</div>
+</div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>

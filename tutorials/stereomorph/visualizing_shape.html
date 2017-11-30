@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - Visualizing shape data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph.html'>StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4 Arranging the cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_general.html'>5 Calibrating stereo cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/photographing_objects.html'>6 Photographing objects</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/digitizing_video.html'>7 Digitizing application</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8 Reconstruction</a>
+			</div>
+			<div class='linksidebar_sub2link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/visualizing_shape.html'>9 Visualizing shape data</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reflect_missing.html'>10 Reflecting bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/align_bilateral.html'>11 Aligning bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/extracting_frames.html'>12 Additional features</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/citing.html'>13 Citing StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/acknowledgements.html'>14 Acknowledgements</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/knex/large_u_joint.html'>K'nex models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;9 visualizing shape data</div>
+
+
+<div class="maincontentfill">
+	<h1>9 Visualizing shape data</h1>
+	<p>
+		This section will demonstrate how to plot landmarks and curves using the R package 
+		<a href='https://cran.r-project.org/web/packages/rgl/index.html' target='_blank' >rgl</a>
+		If you'd like to try using <span class='in_line_code'>readShapes()</span> with an example dataset you can 
+		<a href='../../software/stereomorph/tutorial_files/Stereo_shape_set.zip' >download this stereo landmark and curve set (10 KB)</a>, 
+		previously used in  <a href='reconstructing_landmarks.html' >3D reconstruction</a>. Unzip the folder's 
+		contents into your current R working directory.
+	</p>
+	<p>
+		1. Begin by loading the StereoMorph and rgl packages.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the StereoMorph and rgl packages</span>
+<span class="code_function" >library</span>(StereoMorph)
+<span class="code_function" >library</span>(rgl)
+</pre></div>
+
+	<p>
+		2. Read in the shapes from a file in the tutorial project 'Shapes 3D' folder.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Read shapes</span>
+shapes <- <span class="code_function" >readShapes</span>(file=<span class="code_quote" >'Shapes 3D/bubo_virginianus_FMNH488595.txt'</span>)
+
+<span class="code_comment" ># Save the landmark matrix into a separate variable</span>
+lm <- shapes$landmarks
+</pre></div>
+
+	<p>
+		3. Define the ranges of x,y,z values of the plots as a variable. This will be used 
+		to set the aspect ratio of the plot box. Otherwise, <span class='in_line_code'>plot3d()</span> will plot the points 
+		in a box with equal lengths on all sides.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Define range</span>
+r <- <span class="code_function" >apply</span>(lm, 2, <span class="code_quote" >'max'</span>) - <span class="code_function" >apply</span>(lm, 2, <span class="code_quote" >'min'</span>)
+
+<span class="code_comment" ># Use plot3d to plot the landmarks within a bounding box</span>
+<span class="code_function" >plot3d</span>(lm, aspect=<span class="code_function" >c</span>(r/r[3]), size=7)
+</pre></div>
+
+	<p>
+		4. To plot the curve points, use <span class='in_line_code'>lapply()</span> to apply <span class='in_line_code'>plot3d()</span> to each element of the 
+		list <span class='in_line_code'>shapes</span>.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Plot curve points</span>
+<span class="code_function" >lapply</span>(shapes$curves, plot3d, size=4, col=<span class="code_quote" >'lightblue'</span>, add=TRUE)
+</pre></div>
+
+	<p>
+		The rgl plot opens in an interactive window that allows you to rotate the coordinates using the mouse.
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/bubo_virginianus_FMNH488595_reconstruct.jpg' />
+	<div class='img_caption' >
+		Plot of reconstructed and unified landmarks and curve points using <span class='in_line_code'>plot3d()</span> in the rgl package.
+	</div>
+
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="read_shape.html" >Reading shape data</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="reflect_missing.html" >Reflecting bilateral landmarks</a></div>
+	</div>
+</div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>

@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - 3D Reconstruction</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph.html'>StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4 Arranging the cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_general.html'>5 Calibrating stereo cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/photographing_objects.html'>6 Photographing objects</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/digitizing_video.html'>7 Digitizing application</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8 Reconstruction</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8.1 Reconstructing landmarks</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/measuring_lengths.html'>8.2 Measuring 3D lengths</a>
+			</div>
+				<div class='linksidebar_sub3link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/reconstructing_landmarks_curves.html'>8.3 Reconstructing landmarks and curves</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/read_shape.html'>8.4 Reading shape data</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/visualizing_shape.html'>9 Visualizing shape data</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reflect_missing.html'>10 Reflecting bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/align_bilateral.html'>11 Aligning bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/extracting_frames.html'>12 Additional features</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/citing.html'>13 Citing StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/acknowledgements.html'>14 Acknowledgements</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/knex/large_u_joint.html'>K'nex models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph/reconstructing_landmarks.html">8 reconstruction</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;8.3 reconstructing landmarks and curves</div>
+
+
+<div class="maincontentfill">
+	<h1>8.3 Reconstructing landmarks and curves</h1>
+	<p>
+		If you've digitized both landmarks and curves you can use <span class='in_line_code'>reconstructStereoSets()</span> 
+		to reconstruct both at the same time. If you'd like to try this with an example you can 
+		<a href='../../software/stereomorph/tutorial_files/Stereo_shape_set.zip' >download this stereo landmark and curve set (10 KB)</a>, 
+		previously used in the 
+		<a href='digitizing_photographs.html' >digitizing photographs</a> section. Unzip the 
+		folder's contents into your current R working directory.
+	</p>
+
+	<p>
+		1. Call <span class='in_line_code'>reconstructStereoSets()</span>.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Reconstruct landmarks and curves</span>
+<span class="code_function" >reconstructStereoSets</span>(shapes.2d=<span class="code_quote" >'Shapes 2D'</span>, shapes.3d=<span class="code_quote" >'Shapes 3D'</span>, 
+   cal.file=<span class="code_quote" >'calibration.txt'</span>, even.spacing=<span class="code_quote" >'even_spacing.txt'</span>)
+</pre></div>
+
+	<p>
+		For curves, the function needs an additional parameter, <strong>even.spacing</strong> that 
+		specifies how many points will be reconstructed along each curve. This can be a '.txt' 
+		file listing how many curve points you'd like each reconstructed curve to have. On 
+		each line of the '.txt' file, list the curve name and the number of points (see 
+		<a href='../../software/stereomorph/tutorial_files/even_spacing.txt' target='_blank' >this example file</a>).
+		You can also make <strong>even.spacing</strong> a single integer if you want each curve to 
+		have the same number of points.
+	</p>
+	<p>
+		If you've photographed the same object in different orientations (if you have multiple 
+		aspects) the landmarks and curves in each aspect will be in different coordinate 
+		systems. These can be aligned with one another based on shared landmarks between 
+		sets into a single set, which is referred to here as "unification". By default, 
+		the <span class='in_line_code'>reconstructStereoSets()</span> function performs both 
+		reconstruction and unification as long as 
+		<a href='photographing_objects.html' >aspect labels have been added to all of the image names</a> 
+		(e.g. "_a1", "_a2", etc.).
+	</p>
+
+	<p>
+		If the input parameter <strong>print.progress</strong> is TRUE (the default), the 
+		function prints each of the steps along with the associated errors. If you try this 
+		with the 
+		<a href='../../software/stereomorph/tutorial_files/Stereo_shape_set.zip' target='_blank' >example stereo shape set</a>, 
+		you'll see that one of the objects (bubo_virginianus_FMNH488595) has three different 
+		aspects. Landmark reconstruction is performed for each of these three aspects. Plus, 
+		the first aspect has 4 curves which are also reconstructed. Your mean landmark 
+		reconstruction errors should be near or less than 1 pixel. The curve reconstruction 
+		errors can range from 1-10 pixels. Then all three aspects are unified. Since there 
+		are three aspects, there are two separate unifications: two aspects are unified, 
+		then the third is unified with this unified set. The two errors after "Unification RMS Error" 
+		are the errors for each of these unifications in the same units as the calibration 
+		(here, mm).
+	</p>
+
+	<p>
+		The second specimen (psittacus_erithacus_FMNH312899) in the example stereo set has 
+		landmarks digitized in two aspects but I deliberately chose landmarks such that 
+		there is only 1 common landmark between the two sets. For this reason the function 
+		reports that there are not enough common points for unification. In this case, the 
+		function will save each aspect as a separate 3D set (retaining the "_a#"). 
+		To unify 3D sets you theoretically need at least 3, non-colinear points in common 
+		between the sets. However, in practice more common points are required (at least 5-6) 
+		to get a good alignment between the two sets.
+	</p>
+
+	<p>
+		2. There are several optional input parameters to <span class='in_line_code'>reconstructStereoSets()</span> 
+		that can be helpful. For instance, if you only want to reconstruct/unify one or 
+		more particular specimens, you can specify these as a vector using the input parameter 
+		<strong>set.names</strong>.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Only run for particular file(s) using set.names</span>
+<span class="code_function" >reconstructStereoSets</span>(shapes.2d=<span class="code_quote" >'Shapes 2D'</span>, shapes.3d=<span class="code_quote" >'Shapes 3D'</span>, 
+   cal.file=<span class="code_quote" >'calibration.txt'</span>, even.spacing=<span class="code_quote" >'even_spacing.txt'</span>,
+   set.names=<span class="code_function" >c</span>(<span class="code_quote" >'psittacus_erithacus_FMNH312899'</span>))
+</pre></div>
+
+	<p>
+		3. If you want to run the function only for specimens where the 2D shape files 
+		have changed, you can set <strong>update.only</strong> to TRUE (default is FALSE).
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Only run on modified files using update.only</span>
+<span class="code_function" >reconstructStereoSets</span>(shapes.2d=<span class="code_quote" >'Shapes 2D'</span>, shapes.3d=<span class="code_quote" >'Shapes 3D'</span>, 
+   cal.file=<span class="code_quote" >'calibration.txt'</span>, even.spacing=<span class="code_quote" >'even_spacing.txt'</span>, update.only=TRUE)
+</pre></div>
+
+	<p>
+		This saves time in running the function so that as you are digitizing specimens 
+		you can run <span class='in_line_code'>reconstructStereoSets()</span> only for those 
+		files that actually need to be updated.
+	</p>
+
+	<p>
+		4. If you want the function to print more details as it runs, you can set the input 
+		parameter <strong>verbose</strong> to TRUE (default is FALSE). For instance, this will print 
+		the reconstruction error for each of the landmarks. This is helpful for identifying 
+		incorrectly digitized markers.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print more error details using verbose</span>
+<span class="code_function" >reconstructStereoSets</span>(shapes.2d=<span class="code_quote" >'Shapes 2D'</span>, shapes.3d=<span class="code_quote" >'Shapes 3D'</span>, 
+   cal.file=<span class="code_quote" >'calibration.txt'</span>, even.spacing=<span class="code_quote" >'even_spacing.txt'</span>, verbose=TRUE)
+</pre></div>
+
+	<p>
+		Here are some additional input parameters that might be helpful:
+	</p>
+
+	<ul>
+		<li>
+			<strong>reconstruct.curves</strong>: (default TRUE) Make FALSE to only reconstruct 
+			landmarks.
+		</li>
+		<li>
+			<strong>unify</strong>: (default TRUE) Make FALSE to reconstruct all aspects 
+			as separate sets (no unification).
+		</li>
+		<li>
+			<strong>min.common</strong>: (default 3) This is the minimum number of common 
+			points between sets that are required for unification. It is helpful to set this 
+			higher than 3 (e.g. 5) so that you can easily identify when you need more common 
+			points between different aspects.
+		</li>
+	</ul>
+
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="measuring_lengths.html" >Measuring 3D lengths</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="read_shape.html" >Reading shape data</a></div>
+	</div>
+</div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>

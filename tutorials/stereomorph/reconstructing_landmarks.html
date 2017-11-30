@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - 3D Reconstruction</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph.html'>StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4 Arranging the cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_general.html'>5 Calibrating stereo cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/photographing_objects.html'>6 Photographing objects</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/digitizing_video.html'>7 Digitizing application</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8 Reconstruction</a>
+			</div>
+				<div class='linksidebar_sub3link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8.1 Reconstructing landmarks</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/measuring_lengths.html'>8.2 Measuring 3D lengths</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks_curves.html'>8.3 Reconstructing landmarks and curves</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/read_shape.html'>8.4 Reading shape data</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/visualizing_shape.html'>9 Visualizing shape data</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reflect_missing.html'>10 Reflecting bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/align_bilateral.html'>11 Aligning bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/extracting_frames.html'>12 Additional features</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/citing.html'>13 Citing StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/acknowledgements.html'>14 Acknowledgements</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/knex/large_u_joint.html'>K'nex models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;8 reconstruction&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;8.1 reconstructing landmarks</div>
+
+
+<div class="maincontentfill">
+	<h1>8.1 Reconstructing landmarks</h1>
+	<p>
+		Once you have landmarks or curves digitized in two or more views you can reconstruct 
+		them into 3D. This section will explain how to do this using the <span class='in_line_code'>reconstructStereoSets()</span> 
+		function. Before preceding, load the StereoMorph library, if it itsn't already loaded.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the StereoMorph package</span>
+<span class="code_function" >library</span>(StereoMorph)
+</pre></div>
+
+	<p>
+		If you've only digitized landmarks and do not have multiple aspects per object, 
+		you can use <span class='in_line_code'>reconstructStereoSets()</span> to reconstruct 
+		all the landmarks for a set of digitized images. If you'd like to try this with an example you can 
+		<a href='../../software/stereomorph/tutorial_files/Stereo_landmark_set.zip' >download 
+		this stereo landmark set (10 KB)</a>, 
+		previously used in the 
+		<a href='digitizing_video.html' >digitizing video frames</a>
+		section. Unzip the folder's contents into your current R working directory.
+	</p>
+	<p>
+		1. Call <span class='in_line_code'>reconstructStereoSets()</span> with the following three parameters.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Reconstruct all digitized landmarks in Shapes 2D folder</span>
+<span class="code_function" >reconstructStereoSets</span>(shapes.2d=<span class="code_quote" >'Shapes 2D'</span>, shapes.3d=<span class="code_quote" >'Shapes 3D'</span>, 
+   cal.file=<span class="code_quote" >'calibration.txt'</span>)
+</pre></div>
+
+	<p>
+		These parameters refer to:
+	</p>
+
+	<ul>
+		<li>
+			<strong>shapes.2d</strong>: A folder containing digitized (2D) shape data, 
+			separated into different folders by view. This is the same folder of shape 
+			files you used with the digitizing application (see 
+			<a href='digitizing_photographs.html' >digitizing photographs</a>).
+		</li>
+		<li>
+			<strong>shapes.3d</strong>: A folder where the reconstructed data should be 
+			saved. If this folder doesn't exist, it will be created.
+		</li>
+		<li>
+			<strong>cal.file</strong>: The calibration file produced by <span class='in_line_code'>calibrateCameras()</span>.
+		</li>
+	</ul>
+
+	<p>
+		The <span class='in_line_code'>reconstructStereoSets()</span> function will reconstruct 
+		all the landmarks digitized in at least two views and save these into the 
+		"shapes.3d" folder using the same name as the corresponding 2D shape files. 
+		The reconstructed landmarks will be in the same units used in the calibration step 
+		(for the example above this is mm).
+	</p>
+
+	<p>
+		2. StereoMorph saves these files in a special xml-format that can be read using the 
+		StereoMorph function <span class='in_line_code'>readShapes()</span>. Use 
+		<span class='in_line_code'>readShapes()</span> to read these reconstructed 
+		landmarks from the 3D shapes folder.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Read all digitized landmarks in Shapes 3D folder</span>
+shapes <- <span class="code_function" >readShapes</span>(file=<span class="code_quote" >'Shapes 3D'</span>)
+
+<span class="code_comment" ># Print all the recontructed landmarks as an array</span>
+shapes$landmarks
+</pre></div>
+
+	<p>
+		If there are multiple files in the "Shapes 3D" folder then the landmarks 
+		will be returned as an array in which the first dimension is the landmarks, the 
+		second dimension is the xyz-coordinates, and the third dimension is every image or 
+		frame. Note that when reading all landmarks from several files in this way, if a 
+		landmark is not digitized in every image it will be NA for those images. Thus, this 
+		landmark array will always be as long as all of the unique landmarks digitized in 
+		the entire image set.
+	</p>
+
+	<p>
+		3. For example, you can use the following code to access different landmarks of interest.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Access a landmark from the first image</span>
+shapes$landmarks[<span class="code_quote" >'caudal_fin_fork'</span>, , 1]
+
+<span class="code_comment" ># Access a landmark from all images</span>
+shapes$landmarks[<span class="code_quote" >'caudal_fin_fork'</span>, , ]
+
+<span class="code_comment" ># Access all landmarks from the first image</span>
+shapes$landmarks[ , , 1]
+</pre></div>
+
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="digitizing_shortcuts.html" >Keyboard shortcuts</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="measuring_lengths.html" >Measuring 3D lengths</a></div>
+	</div>
+</div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>

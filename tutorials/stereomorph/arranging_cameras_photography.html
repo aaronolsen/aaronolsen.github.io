@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - Arranging the cameras</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph.html'>StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4 Arranging the cameras</a>
+			</div>
+				<div class='linksidebar_sub3link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4.1 Arranging cameras for stereo photography</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_general.html'>5 Calibrating stereo cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/photographing_objects.html'>6 Photographing objects</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/digitizing_video.html'>7 Digitizing application</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8 Reconstruction</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/visualizing_shape.html'>9 Visualizing shape data</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reflect_missing.html'>10 Reflecting bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/align_bilateral.html'>11 Aligning bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/extracting_frames.html'>12 Additional features</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/citing.html'>13 Citing StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/acknowledgements.html'>14 Acknowledgements</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/knex/large_u_joint.html'>K'nex models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;4 arranging the cameras&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;4.1 arranging cameras for stereo photography</div>
+
+
+<div class="maincontentfill">
+	<h1>4.1 Arranging cameras for stereo photography</h1>
+	<p>
+		The basic idea behind a stereo camera setup is to use information from two 
+		different views of the same object in order to reconstruct features visible in both 
+		views into 3D. A single view or image of an object has a information on the shape 
+		of features along the two dimensions of the image plane but not along the third 
+		dimension (going into and out of the image plane). Thus, by combining the information 
+		from two different views it is possible to obtain  three-dimensional information 
+		on position and shape.
+	</p>
+	<p>
+		There are a number of ways to arrange cameras in stereo. This section will outline 
+		some general considerations to help you determine which camera arrangement will 
+		work best for your application. Once you've found a configuration that works well 
+		for your application, make sure you check its accuracy (either using the 
+		<a href='calibration_accuracy.html' >calibration images</a> 
+		or a <a href='test_accuracy_checkerboard.html' >separate set of images</a> 
+		before collecting data.
+	</p>
+
+	<p>
+		Materials needed for this section:
+	</p>
+	<ul>
+		<li>2 cameras (see <a href='choosing_cameras_general.html' >Choosing cameras for stereo photography</a>)</li>
+		<li>Camera remotes</li>
+		<li>2 sturdy tripods</li>
+		<li>Tape</li>
+	</ul>
+
+	<p>
+		General considerations in arranging the cameras:
+	</p>
+	<p>
+		1. The views among the cameras must overlap such that the feature or features of 
+		interest are visible in both camera views. If you want to collect data on features 
+		around an entire object (for example the top, side and bottom of a skull) you can 
+		rotate the specimen and take two or more pairs of photographs of the same object. 
+		You'll end up with two or more separate sets of landmarks and/or curves. As long 
+		as there are three or more landmarks common among the different sets these can be 
+		aligned, or "unified", based on these common landmarks into a single set. 
+		StereoMorph has a function that will do this automatically, which will be detailed 
+		in <a href='reconstructing_landmarks.html' >Unification of reconstructed sets</a>.
+	</p>
+	<p>
+		2. Theoretically, there is a trade-off between the ease of digitizing and reconstruction 
+		accuracy. For instance, if the angle between two camera views in a stereo setup is 90 degrees,
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/cameras_at_90_degrees.jpg' />
+	<div class='img_caption' >
+		Two-camera stereo setup with the cameras at 90 degrees relative to one another.
+	</div>
+
+	<p>
+		you will have high reconstruction accuracy (together, the two views give you full 
+		information on a point's position along all three axes) however the views will be 
+		so divergent that it will be difficult to identify the same point in both views. 
+		A point visible in one view may not even be visible in the other. If the angle 
+		between two cameras is reduced to around 20 degrees
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/cameras_at_20_degrees.jpg' />
+	<div class='img_caption' >
+		Two-camera stereo setup with the cameras at 20 degrees relative to one another.
+	</div>
+
+	<p>
+		it's much easier to find the same point in both views (the views are nearly the same), 
+		however these slight differences in position are now the only information available 
+		on the point's position along the depth axis (orthogonal to the image planes). In 
+		practice, I've found that cameras positioned with a small angle relative to one 
+		another still provide high reconstruction accuracy but do not work as well for 
+		curve reconstruction. It's best to start with the cameras as close together as 
+		possible (more convergent views), test the accuracy and make the views more divergent 
+		if the accuracy is worse than what you're willing to accept.
+	</p>
+	<p>
+		The cameras were arranged as shown below for the accompanying example project.
+	</p>
+
+	<img width='300px' class='center' src='../../img/tutorials/stereomorph/stereo_camera_setup_side_by_side.jpg' />
+	<div class='img_caption' >
+		One possible camera arrangement.
+	</div>
+
+	<p>
+		This is a nice setup because the orientation of both views is the same. By moving 
+		the cameras and changing the angle you can change the extent of divergence between 
+		the views. Also the table provides an easy place to set the objects and lights. An 
+		alternative setup is to have one camera on the tabletop and the other camera on the 
+		floor.
+	</p>
+
+	<img width='300px' class='center' src='../../img/tutorials/stereomorph/stereo_camera_setup_top_side.jpg' />
+	<div class='img_caption' >
+		An alternative camera arrangement.
+	</div>
+
+	<p>
+		A disadvantage to this setup is that the view from one camera will be "upside-down" 
+		relative to the other. You can flip all of the images once they're loaded on your 
+		computer to compensate for this.
+	</p>
+
+	<p>
+		3. It is <em>essential</em> that the cameras not move during the entire process of 
+		calibration and photographing specimens. The cameras can be calibrated before or 
+		after data collection but throughout and between these steps the cameras must 
+		remain in the exact same position. Because the camera is often positioned half 
+		a meter or more away from the object, even a small shift of the camera can translate 
+		into a large shift in the image frame, causing large inaccuracies.
+	</p>
+	<p>
+		If you position a tripod on a smooth surface, such as a table top, put small rubber 
+		squares under each tripod foot to keep the tripod from slipping.
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/rubber_under_tripod_foot.jpg' />
+
+	<p>
+		4. Before you take any photographs, you can attach small pieces of tape to the 
+		tabletop or some other fixed surface within the calibration space and visible 
+		from both camera views.
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/camera_stability_check.jpg' />
+
+	<p>
+		By taking a photograph from both views before you begin and then after you have 
+		finished photographing all objects with a particular calibration you can compare 
+		the before and after photographs to be sure that both cameras remained motionless 
+		throughout the photographing process.
+	</p>
+	<p>
+		5. Just as the cameras should not move during the entire process of calibration and 
+		object photographing, the camera settings themselves should not change. This 
+		includes the zoom (focal length) and the focus. The calibration is specific to a 
+		particular focal length and focus, so if either of these changes the calibration 
+		will no longer be accurate. Additionally, if your lens has vibration reduction (VR) 
+		you should turn this off. Vibration reduction uses a small gyroscope in the lens 
+		to compensate for camera motion and reduce blur. The spinning and stopping of the 
+		gyroscope can cause the image frame to shift randomly while taking photos.
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/autofocus_and_vr_off.jpg' />
+	<div class='img_caption' >
+		Turn off auto-focus and vibration reduction, if applicable.
+	</div>
+
+	<p>
+		6. It's best to use a remote (wireless or cord) to release the shutter so you 
+		minimizing touching the shutter button on the cameras as much as possible.
+	</p>
+
+	<img width='400px' class='center' src='../../img/tutorials/stereomorph/camera_remotes.jpg' />
+	<div class='img_caption' >
+		Shutter remotes lessen the chances of the cameras moving during data collection.
+	</div>
+
+	<p>
+		I've found that pressing buttons on the camera lightly (such as for reviewing photos) 
+		doesn't cause significant movement of the cameras but pressing the shutter button 
+		requires more force and doing it repeatedly causes the cameras to move significantly 
+		over a series of photographs. A wireless remote is the best option since you can 
+		trigger both cameras with one remote (note that if the objects you are photographing 
+		are not moving the photographs do not have to be taken simultaneously).
+	</p>
+	<p>
+		7. Make sure that all connections and screws in the tripod and between the tripod 
+		and the camera are tight. This reduces the possibility of any motion of the cameras 
+		during data collection.
+	</p>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/tighten_connections.jpg' />
+	<div class='img_caption' >
+		Ensure tight connections in the tripod and between the tripod and camera.
+	</div>
+
+	<p>
+		8. Set the cameras to the smallest aperture (this is the largest f-value).
+	</p>
+
+	<img width='400px' class='center' src='../../img/tutorials/stereomorph/minimum_aperture.jpg' />
+	<div class='img_caption' >
+		A smaller aperture is ideal because it increases depth of field. Without increasing the lighting, the exposure time will increase.
+	</div>
+
+	<p>
+		The smaller the aperture, the greater the depth of field (i.e. the more things are 
+		in focus both close and far away from the camera). This is essential in a stereo 
+		camera setup because in order to digitize points accurately throughout the calibration 
+		volume they must be in focus.
+	</p>
+
+	<p>
+		9. If possible, set your camera to manual mode.
+	</p>
+
+	<img width='200px' class='center' src='../../img/tutorials/stereomorph/manual_mode.jpg' />
+	<div class='img_caption' >
+		Manual mode on a Nikon.
+	</div>
+
+	<p>
+		This allows you to control both the aperture and shutter speed. Once you have the 
+		cameras arranged take some sample photos of the objects to find a good shutter speed 
+		(exposure) for your lighting. I've found that the automatic exposure on my camera 
+		is not always reliable and that it's better to simply have the same exposure throughout.
+	</p>
+
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="creating_checkerboard_stand.html" >Creating a checkerboard stand</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="calibration_general.html" >General calibration steps and parameters</a></div>
+	</div>
+</div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>

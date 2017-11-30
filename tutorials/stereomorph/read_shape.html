@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - 3D Reconstruction</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph.html'>StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4 Arranging the cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_general.html'>5 Calibrating stereo cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/photographing_objects.html'>6 Photographing objects</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/digitizing_video.html'>7 Digitizing application</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8 Reconstruction</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8.1 Reconstructing landmarks</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/measuring_lengths.html'>8.2 Measuring 3D lengths</a>
+			</div>
+				<div class='linksidebar_sub3link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks_curves.html'>8.3 Reconstructing landmarks and curves</a>
+			</div>
+				<div class='linksidebar_sub3link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/read_shape.html'>8.4 Reading shape data</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/visualizing_shape.html'>9 Visualizing shape data</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reflect_missing.html'>10 Reflecting bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/align_bilateral.html'>11 Aligning bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/extracting_frames.html'>12 Additional features</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/citing.html'>13 Citing StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/acknowledgements.html'>14 Acknowledgements</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/knex/large_u_joint.html'>K'nex models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph/reconstructing_landmarks.html">8 reconstruction</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;8.4 reading shape data</div>
+
+
+<div class="maincontentfill">
+	<h1>8.4 Reading shape data</h1>
+	<p>
+		The reconstructed landmarks and curve points are saved into the 3D shapes folder. 
+		StereoMorph saves these files in a special xml-format that can be read using the 
+		StereoMorph function <span class='in_line_code'>readShapes()</span>. If you'd like 
+		to try using <span class='in_line_code'>readShapes()</span> with an example dataset 
+		you can 
+		<a href='../../software/stereomorph/tutorial_files/Stereo_shape_set.zip' target='_blank' >download this stereo landmark and curve set (10 KB)</a>, 
+		previously used in the 
+		<a href='digitizing_photographs.html' >digitizing photographs</a> section. Unzip the 
+		folder's contents into your current R working directory.
+	</p>
+	<p>
+		1. Input a single file to readShapes to read all the shape data from that file.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Read 3D landmarks and curves from a particular file (object)</span>
+shapes <- <span class="code_function" >readShapes</span>(file=<span class="code_quote" >'Shapes 3D/bubo_virginianus_FMNH488595.txt'</span>)
+</pre></div>
+
+	<p>
+		This reads all of the shape data from bubo_virginianus_FMNH488595.txt into the list 
+		structure "shapes" used by StereoMorph to organize different types of shape data. 
+		This structure has a custom print format that tells you all of the shapes in the list:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print the contents of shapes</span>
+shapes
+</pre></div>
+
+	<p>
+		The two shapes within "shapes" are landmarks and curves. The landmarks are in a 
+		34 x 3 matrix, where the rows correspond to the landmarks and the columns to the 
+		3D reconstructed coordinates. To access the landmarks matrix, use the '$' operator 
+		(as you would use to access any list element):
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print the landmarks</span>
+shapes$landmarks
+</pre></div>
+
+	<p>
+		You can then access any of the landmarks by using the standard matrix notation in R:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print the xyz-coordinates of the cranium_occipital landmark</span>
+shapes$landmarks[<span class="code_quote" >'cranium_occipital'</span>, ]
+</pre></div>
+
+	<p>
+		The curve points require one extra step. Each curve can have a different number of 
+		points, so each is saved within a separate list, accessible by the curve name. To 
+		get a list of the curve names, use the '$' operator with 'curves' and the <span class='in_line_code'>names()</span> 
+		function:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print the curve names</span>
+names(shapes$curves)
+</pre></div>
+
+	<p>
+		These are the 4 curves that have 3D coordinates. Use the '$' operator to return a 
+		particular curve, which yields a n x 3 matrix, where n is the number of points in 
+		the curve (specified previously through <strong>even.spacing</strong>).
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print the upper_bill_tomium_L curve points </span>
+shapes$curves$upper_bill_tomium_L
+</pre></div>
+
+	<p>
+		2. By inputting multiple filenames into <span class='in_line_code'>readShapes()</span>, 
+		you can read all the shape data from those files at once to create a landmark array 
+		or larger list structures of curves. Specify two files to be read by <span class='in_line_code'>readShapes()</span>:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Specify multiple shape files</span>
+file <- <span class="code_function" >c</span>(<span class="code_quote" >'Shapes 3D/bubo_virginianus_FMNH488595.txt'</span>, 
+   <span class="code_quote" >'Shapes 3D/psittacus_erithacus_FMNH312899_a1.txt'</span>)
+
+<span class="code_comment" ># Read shape files</span>
+shapes <- <span class="code_function" >readShapes</span>(file=file)
+</pre></div>
+
+	<p>
+		Shapes is still a list, but now the landmarks are an array of dimensions n x m x k, 
+		where n is the number of landmarks, m is the number of dimensions, and k is the number 
+		of files. Also, the curves have gained an additional level. The first level are the 
+		files that have been read, then each curve.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print the contents of shapes</span>
+shapes
+</pre></div>
+
+	<p>
+		Like before, the '$' operator can be used to access the landmarks, accessing, for 
+		example, a particular landmark across all of the files,
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print the xyz-coordinates of cranium_occipital across the files</span>
+shapes$landmarks[<span class="code_quote" >'cranium_occipital'</span>, , ]
+</pre></div>
+
+	<p>
+		or accessing all the landmarks for a particular file.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print all the landmarks for bubo_virginianus_FMNH488595</span>
+shapes$landmarks[, , <span class="code_quote" >'bubo_virginianus_FMNH488595'</span>]
+</pre></div>
+
+	<p>
+		3. In addition to inputting a vector of files for <span class='in_line_code'>readShapes()</span>, 
+		you can also input a folder containing shape files. In that case <span class='in_line_code'>readShapes()</span> will 
+		read in all of the shape files in that folder:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Read all shape files in folder Shapes 3D</span>
+shapes <- <span class="code_function" >readShapes</span>(file=<span class="code_quote" >'Shapes 3D'</span>)
+</pre></div>
+
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="reconstructing_landmarks_curves.html" >Reconstructing landmarks and curves</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="visualizing_shape.html" >Visualizing shape data</a></div>
+	</div>
+</div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>

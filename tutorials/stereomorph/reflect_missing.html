@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>StereoMorph - Reflect bilateral landmarks</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/American Wigeon.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					American Wigeon
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph.html'>StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/installing_stereomorph.html'>1 Getting started</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choosing_cameras_general.html'>2 Choosing cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/choose_checkerboard_size.html'>3 Creating a checkerboard</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/arranging_cameras_photography.html'>4 Arranging the cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/calibration_general.html'>5 Calibrating stereo cameras</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/photographing_objects.html'>6 Photographing objects</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/digitizing_video.html'>7 Digitizing application</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/reconstructing_landmarks.html'>8 Reconstruction</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/visualizing_shape.html'>9 Visualizing shape data</a>
+			</div>
+			<div class='linksidebar_sub2link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/stereomorph/reflect_missing.html'>10 Reflecting bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/align_bilateral.html'>11 Aligning bilateral landmarks</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/extracting_frames.html'>12 Additional features</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/citing.html'>13 Citing StereoMorph</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph/acknowledgements.html'>14 Acknowledgements</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/knex/large_u_joint.html'>K'nex models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/stereomorph.html">stereomorph</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;10 reflecting bilateral landmarks</div>
+
+
+<div class="maincontentfill">
+	<h1>10 Reflect missing bilateral landmarks</h1>
+	<p>
+		When digitizing landmarks and curves you might not be able to digitize every point 
+		on both the left and right side. For objects that have bilateral symmetry you can 
+		use pairs of left and right points and points within the midline plane to define 
+		the midline plane and then project landmarks that are missing on one side across 
+		the midline plane. Even if you have data for both the left and right side you might 
+		want to average the sides to create a final shape that has perfect bilateral symmetry. 
+		This can be useful for reducing noise or for making subsequent analyses simpler. 
+		This section will show how to use the StereoMorph function <span class='in_line_code'>reflectMissingShapes()</span> 
+		to do both of these operations.
+	</p>
+	<p>
+		If you'd like to try using <span class='in_line_code'>reflectMissingShapes()</span> 
+		with an example dataset you can 
+		<a href='../../software/stereomorph/tutorial_files/Stereo_shape_set.zip' >download this stereo landmark and curve set (10 KB)</a>. 
+		Unzip the folder's contents into your current R working directory.
+	</p>
+	<p>
+		1. Begin by loading the StereoMorph library.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the StereoMorph package</span>
+<span class="code_function" >library</span>(StereoMorph)
+</pre></div>
+
+	<p>
+		In order for <span class='in_line_code'>reflectMissingShapes()</span> to recognize 
+		which landmarks are left, right, or on the midline, your landmark names will have 
+		to follow a particular convention. Landmark names that are right or left should end 
+		in "_" followed by either "R" or "L". Capitalization doesn't matter, so "r" 
+		or "l" will also work. These can be followed by numbers (e.g. for curve points) 
+		but should not be followed by other letters. All landmarks that don't have these 
+		endings will be treated as midline landmarks. For example, here are examples of 
+		acceptable landmark names to indicate a side:
+	</p>
+
+<div class="code" ><pre class="code">
+jugal_upperbeak_L
+jugal_upperbeak_r
+jugal_upperbeak_R0202
+</pre></div>
+
+	<p>
+		2. The <span class='in_line_code'>reflectMissingShapes()</span> function takes two main 
+		inputs:
+	</p>
+		
+	<ul>
+		<li><strong>shapes</strong>: the shape data to be reflected</li>
+		<li><strong>file</strong>: where the reflected shapes should be saved</li>
+	</ul>
+
+	<p>
+		But these two inputs allow quite a bit 
+		of flexibility. For example, the function call to reflect missing landmarks for 
+		one 3D shape file looks like this:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Reflect missing shape data</span>
+rms <- <span class="code_function" >reflectMissingShapes</span>(shapes=<span class="code_quote" >'Shapes 3D/bubo_virginianus_FMNH488595.txt'</span>, 
+	file=<span class="code_quote" >'Reflected/bubo_virginianus_FMNH488595.txt'</span>, average=TRUE)
+</pre></div>
+
+	<p>
+		If the directory in "file" doesn't exist, one will automatically be created. Note 
+		that <strong>average</strong> is set to TRUE (default is FALSE). This will average 
+		all of the bilateral landmarks such that all midline landmarks are within a single, 
+		midline plane and all left and right landmarks are reflected perfectly across the 
+		midline plane.
+	</p>
+	<p>
+		If the input to <span class='in_line_code'>reflectMissingShapes()</span> is a single 
+		set of shapes, the function will output the reflected shape data as a shape data 
+		structure. As shown in <a href='read_shape.html' >Reading shape data</a>, you 
+		can access the reflected landmarks using the "$" operator:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Print reflected landmarks</span>
+rms$landmarks
+</pre></div>
+
+	<p>
+		2. You can run <span class='in_line_code'>reflectMissingShapes()</span> over multiple 
+		files at once by making <strong>shapes</strong> and <strong>file</strong> vectors 
+		of corresponding file paths:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Set shape files to reflect</span>
+specimen <- <span class="code_function" >c</span>(<span class="code_quote" >'bubo_virginianus_FMNH488595.txt'</span>, 
+   <span class="code_quote" >'psittacus_erithacus_FMNH312899_a1.txt'</span>)
+
+<span class="code_comment" ># Reflect missing shape data for specified files</span>
+rms <- <span class="code_function" >reflectMissingShapes</span>(shapes=<span class="code_function" >paste0</span>(<span class="code_quote" >'Shapes 3D/'</span>, specimen), 
+   file=<span class="code_function" >paste0</span>(<span class="code_quote" >'Reflected/'</span>, specimen), average=TRUE)
+</pre></div>
+
+	<p>
+		Currently, for this input type the function returns NULL.
+	</p>
+	<p>
+		3. To run <span class='in_line_code'>reflectMissingShapes()</span> over all the files 
+		in a particular folder, use paths to folders as input rather than to particular 
+		files. If a folder input to <strong>file</strong> doesn't exist then one will be created.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Reflect missing shape data for all files in a folder</span>
+rms <- <span class="code_function" >reflectMissingShapes</span>(shapes=<span class="code_quote" >'Shapes 3D'</span>, file=<span class="code_quote" >'Reflected'</span>, 
+   average=TRUE)
+</pre></div>
+
+	<p>
+		You can also input a shape structure rather than a shape file.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Read shape file</span>
+shapes <- <span class="code_function" >readShapes</span>(file=<span class="code_quote" >'Shapes 3D/bubo_virginianus_FMNH488595.txt'</span>)
+
+<span class="code_comment" ># Reflect missing shape data for shape data</span>
+rms <- <span class="code_function" >reflectMissingShapes</span>(shapes=shapes, average=TRUE)
+</pre></div>
+
+	<p>
+		<strong>file</strong> can be omitted, in which case the function will not create a 
+		file for the reflected shape data and will only return a shapes list. <strong>file</strong> 
+		can only be omitted for single shape set input to <span class='in_line_code'>reflectMissingShapes()</a>.
+	</p>
+	<p>
+		4. Lastly, <strong>print.progress</strong> can be set to TRUE in order to view the 
+		reflection errors:
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Reflect missing shapes and print error summary</span>
+rms <- <span class="code_function" >reflectMissingShapes</span>(shapes=shapes, average=TRUE, 
+   print.progress=TRUE)
+</pre></div>
+
+	<p>
+		5. To visualize the reflected shape data, you can use the <span class='in_line_code'>plot3d()</span> 
+		function as shown previously in <a href='visualizing_shape.html' >Visualizing shape data</a>.
+	</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the rgl package</span>
+<span class="code_function" >library</span>(rgl)
+
+<span class="code_comment" ># Read shapes</span>
+shapes <- <span class="code_function" >readShapes</span>(file=<span class="code_quote" >'Reflected/bubo_virginianus_FMNH488595.txt'</span>)
+
+<span class="code_comment" ># Get landmarks</span>
+lm <- shapes$landmarks
+
+<span class="code_comment" ># Set landmark range</span>
+r <- <span class="code_function" >apply</span>(lm, 2, <span class="code_quote" >'max'</span>) - <span class="code_function" >apply</span>(lm, 2, <span class="code_quote" >'min'</span>)
+
+<span class="code_comment" ># Plot landmarks</span>
+<span class="code_function" >plot3d</span>(lm, aspect=<span class="code_function" >c</span>(r/r[3]), size=7)
+
+<span class="code_comment" ># Plot curves</span>
+<span class="code_function" >lapply</span>(shapes$curves, plot3d, size=4, col=<span class="code_quote" >'lightblue'</span>, add=TRUE)
+</pre></div>
+
+	<img width='500px' class='center' src='../../img/tutorials/stereomorph/bubo_virginianus_FMNH488595_reflect.jpg' />
+	<div class='img_caption' >
+		Plot of reflected landmarks and curves using <span class='in_line_code'>plot3d()</span> in the rgl package.
+	</div>
+
+	<div class='tutorial_previous_next' >
+		<div style="float:left"><strong>Previous:</strong> <a href="read_shape.html" >Reading shape data</a></div>
+		<div style="float:right"><strong>Next:</strong> <a href="align_bilateral.html" >Aligning bilateral landmarks</a></div>
+	</div>
+</div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>
