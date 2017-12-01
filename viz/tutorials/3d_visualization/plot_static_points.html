@@ -1,0 +1,4185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>SVG Viewer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+<script type="text/javascript" >
+	// Parameters set by user
+	var animation_reverse = 0;
+	var animation_duration = 1;
+	var animation_repeat = -1;
+	var animation_count = 0;
+	var margin = 20;
+	var background_color = 'white';
+	var svgviewr_version = 'NA';
+	var start_rotate = 1;
+	var show_control_panel = 1;
+</script>
+
+<svg_doc xmlns="http://www.w3.org/2000/svg" version="1.1" style="visibility:hidden;" >
+	<point z-index="0" layer="" x="-1.05780396" y="-4.3538408" z="-0.92850997" label="" r="2" stroke="#8C0072" stroke-width="2" fill="#8C0072" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.91540474" y="-1.48823699" z="0.36322337" label="" r="2" stroke="#870077" stroke-width="2" fill="#870077" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.1252878" y="0.23962284" z="0.48387935" label="" r="2" stroke="#FF0000" stroke-width="2" fill="#FF0000" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.88781162" y="0.3008529" z="1.44306254" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.2464633" y="-1.26498177" z="-0.34092827" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.42969244" y="0.47773973" z="-1.01328732" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-4.41785196" y="0.91549372" z="0.64503328" label="" r="2" stroke="#870077" stroke-width="2" fill="#870077" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.57956516" y="-1.3340611" z="0.70455856" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.12516324" y="4.1461527" z="-0.84981341" label="" r="2" stroke="#770087" stroke-width="2" fill="#770087" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.71155637" y="-1.99328011" z="-0.78550947" label="" r="2" stroke="#A60058" stroke-width="2" fill="#A60058" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="7.62025354" y="-1.97793334" z="-0.57734025" label="" r="2" stroke="#3900C5" stroke-width="2" fill="#3900C5" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.88763339" y="-1.73277449" z="0.08015071" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.44705398" y="3.35507223" z="-1.75492612" label="" r="2" stroke="#960068" stroke-width="2" fill="#960068" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.60980258" y="-2.597497" z="0.28329369" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.50353819" y="1.9927419" z="0.32115428" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.44546636" y="-1.67776525" z="0.00941396" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.37591792" y="-0.36958654" z="2.1366334" label="" r="2" stroke="#960068" stroke-width="2" fill="#960068" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.57084123" y="0.28422844" z="0.2004109" label="" r="2" stroke="#7C0082" stroke-width="2" fill="#7C0082" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.40085943" y="-0.96262769" z="0.55563963" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.34778062" y="-3.8073351" z="-0.91118667" label="" r="2" stroke="#8C0072" stroke-width="2" fill="#8C0072" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.35056494" y="-0.83314247" z="0.22026654" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-5.47973596" y="1.77548946" z="-1.11734524" label="" r="2" stroke="#62009C" stroke-width="2" fill="#62009C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.523667" y="-0.98675166" z="0.01126312" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.3631364" y="-1.69990711" z="0.23989345" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-8.46503365" y="1.47258772" z="0.57962365" label="" r="2" stroke="#1400EA" stroke-width="2" fill="#1400EA" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.74644467" y="1.02405745" z="-0.32238978" label="" r="2" stroke="#EA0014" stroke-width="2" fill="#EA0014" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.38281598" y="2.37851237" z="-1.43963346" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.28311971" y="-5.24776158" z="-0.64225567" label="" r="2" stroke="#5800A6" stroke-width="2" fill="#5800A6" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.62506118" y="0.82390289" z="-0.65846864" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.18880137" y="0.66206325" z="0.65930937" label="" r="2" stroke="#A1005D" stroke-width="2" fill="#A1005D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.76859393" y="3.34799241" z="-0.15281777" label="" r="2" stroke="#A1005D" stroke-width="2" fill="#A1005D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.46575044" y="0.19870219" z="-1.27177194" label="" r="2" stroke="#A1005D" stroke-width="2" fill="#A1005D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.94142122" y="-0.23046168" z="-1.00058809" label="" r="2" stroke="#F4000A" stroke-width="2" fill="#F4000A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.21662583" y="4.42680095" z="-1.4001826" label="" r="2" stroke="#6D0091" stroke-width="2" fill="#6D0091" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.4330481" y="3.58768465" z="-0.72285217" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="9.15555254" y="3.22931182" z="-0.03655499" label="" r="2" stroke="#0500F9" stroke-width="2" fill="#0500F9" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.70780802" y="0.11758118" z="0.87745251" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.37133444" y="-2.03167786" z="0.1026368" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.45051721" y="-0.63909575" z="1.29563635" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.02925302" y="-1.99887754" z="-0.25035006" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.436162" y="1.18538933" z="-0.66773865" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.4896377" y="1.81617983" z="0.71842348" label="" r="2" stroke="#8C0072" stroke-width="2" fill="#8C0072" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-7.06361312" y="0.7399149" z="0.06119785" label="" r="2" stroke="#3E00C0" stroke-width="2" fill="#3E00C0" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.9348958" y="0.96239897" z="0.81878492" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.51092615" y="0.18392988" z="0.04347617" label="" r="2" stroke="#F90005" stroke-width="2" fill="#F90005" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.56810002" y="-1.36188609" z="-0.9674525" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.26219509" y="-2.23528694" z="0.92845458" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.07281237" y="6.25406785" z="-0.38816272" label="" r="2" stroke="#4E00B0" stroke-width="2" fill="#4E00B0" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.79247344" y="-1.82560042" z="-0.5463209" label="" r="2" stroke="#870077" stroke-width="2" fill="#870077" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.58327782" y="-1.69025687" z="-0.39546495" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.86591605" y="-1.92791411" z="-1.06640467" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.86652085" y="-1.85689944" z="0.84257253" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.98234043" y="0.79105395" z="0.32875689" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.49771645" y="-1.87983553" z="-0.62855228" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.67050062" y="-2.4189508" z="-1.5593977" label="" r="2" stroke="#7C0082" stroke-width="2" fill="#7C0082" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.72644128" y="1.9173795" z="-2.03476698" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.36032948" y="1.21417131" z="0.32470218" label="" r="2" stroke="#EA0014" stroke-width="2" fill="#EA0014" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.47296181" y="-0.28448412" z="-1.59442056" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.03618604" y="2.78916917" z="-1.0169011" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-4.59038109" y="1.46883339" z="0.63430459" label="" r="2" stroke="#7C0082" stroke-width="2" fill="#7C0082" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.13054451" y="-2.90222874" z="0.48419754" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.67156671" y="-0.70659991" z="0.17843094" label="" r="2" stroke="#EF000F" stroke-width="2" fill="#EF000F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.67379423" y="0.65048069" z="0.29859986" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.26705559" y="5.00419978" z="-0.61542608" label="" r="2" stroke="#7C0082" stroke-width="2" fill="#7C0082" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.22731344" y="-1.87008657" z="-0.08757458" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.46263012" y="3.80842904" z="0.96753768" label="" r="2" stroke="#5800A6" stroke-width="2" fill="#5800A6" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.82732399" y="2.97631546" z="-0.60446286" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.07848824" y="1.30242881" z="0.31422772" label="" r="2" stroke="#870077" stroke-width="2" fill="#870077" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.36199677" y="-0.01553362" z="0.09633609" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.8510189" y="3.98531883" z="-0.65208611" label="" r="2" stroke="#4E00B0" stroke-width="2" fill="#4E00B0" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-4.99992787" y="1.69350054" z="-2.36044713" label="" r="2" stroke="#680096" stroke-width="2" fill="#680096" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.74400154" y="-0.1594151" z="0.06407292" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.92458002" y="-1.4293648" z="0.22396675" label="" r="2" stroke="#AB0053" stroke-width="2" fill="#AB0053" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.92378547" y="0.89039639" z="0.58580505" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.99859545" y="-0.97764118" z="-0.82413185" label="" r="2" stroke="#DF001F" stroke-width="2" fill="#DF001F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.29324709" y="-1.09087345" z="-0.09830901" label="" r="2" stroke="#82007C" stroke-width="2" fill="#82007C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-5.70367052" y="0.88605208" z="-0.01870062" label="" r="2" stroke="#62009C" stroke-width="2" fill="#62009C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.79633301" y="4.1100718" z="1.19356908" label="" r="2" stroke="#960068" stroke-width="2" fill="#960068" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.76446082" y="2.00237423" z="0.38435779" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.73163889" y="0.96199887" z="0.82293561" label="" r="2" stroke="#AB0053" stroke-width="2" fill="#AB0053" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.79884249" y="-3.60473949" z="-1.04593829" label="" r="2" stroke="#A60058" stroke-width="2" fill="#A60058" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.44166538" y="0.21909888" z="1.42142076" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.00028434" y="-0.05155707" z="-1.21073644" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.01245208" y="0.95419952" z="0.62785795" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.485577" y="-4.21699359" z="0.51871013" label="" r="2" stroke="#680096" stroke-width="2" fill="#680096" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.92036404" y="-0.64796912" z="-0.52038065" label="" r="2" stroke="#EA0014" stroke-width="2" fill="#EA0014" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.03139898" y="-2.01611125" z="0.10981685" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="6.61446094" y="-0.25816274" z="-0.35692527" label="" r="2" stroke="#5D00A1" stroke-width="2" fill="#5D00A1" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.86231746" y="0.15174591" z="1.78613155" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.22438443" y="0.99232743" z="-1.19837643" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.27245572" y="1.1405867" z="0.92583286" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.76347026" y="0.02107028" z="-1.10285881" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.32031499" y="3.22258898" z="2.22042648" label="" r="2" stroke="#72008C" stroke-width="2" fill="#72008C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.31058859" y="-0.16247439" z="-0.53199193" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.72828926" y="-0.64564419" z="0.50205757" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.63152413" y="-0.65988423" z="0.34291268" label="" r="2" stroke="#F90005" stroke-width="2" fill="#F90005" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-5.54685802" y="2.29755779" z="0.57232744" label="" r="2" stroke="#5D00A1" stroke-width="2" fill="#5D00A1" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.65962991" y="0.49147272" z="-0.91115701" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.01094124" y="-1.8019106" z="-0.15371465" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.39547539" y="-3.33446955" z="0.47966593" label="" r="2" stroke="#AB0053" stroke-width="2" fill="#AB0053" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.26575066" y="3.28302183" z="-0.99909181" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.8396359" y="-1.5746963" z="-1.27097626" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.47396121" y="3.25345061" z="-2.71343342" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.47407841" y="1.69616358" z="1.16681164" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-4.15506592" y="-0.93824399" z="0.04308952" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-4.54168019" y="-0.38342131" z="-0.1083191" label="" r="2" stroke="#870077" stroke-width="2" fill="#870077" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.13995424" y="-3.94497064" z="-0.9824953" label="" r="2" stroke="#82007C" stroke-width="2" fill="#82007C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.16389443" y="-3.97708334" z="0.54151376" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.14197526" y="-1.57313599" z="-0.34160812" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.63444884" y="-0.17938708" z="0.61770418" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.68006186" y="-4.83624285" z="-1.60133716" label="" r="2" stroke="#82007C" stroke-width="2" fill="#82007C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.76819605" y="-1.57433414" z="0.04459067" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.5613686" y="-2.85300743" z="-0.91604107" label="" r="2" stroke="#A60058" stroke-width="2" fill="#A60058" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.90790545" y="-0.14390717" z="-0.39763722" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.12018627" y="2.25317591" z="-0.27326448" label="" r="2" stroke="#960068" stroke-width="2" fill="#960068" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-6.3630927" y="-0.39294679" z="0.30209155" label="" r="2" stroke="#5300AB" stroke-width="2" fill="#5300AB" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.79565583" y="1.42838145" z="-0.19331268" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.42317836" y="-1.6044823" z="-2.09242314" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.02829385" y="2.57995558" z="0.59510264" label="" r="2" stroke="#AB0053" stroke-width="2" fill="#AB0053" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.22654407" y="0.2606742" z="-0.16741744" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.96743414" y="3.43545064" z="-0.83709676" label="" r="2" stroke="#82007C" stroke-width="2" fill="#82007C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.23410502" y="2.69051781" z="-0.4780629" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-4.00001385" y="2.69097167" z="2.00204631" label="" r="2" stroke="#770087" stroke-width="2" fill="#770087" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.67209935" y="1.79967115" z="-0.18849345" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.8394809" y="0.48854538" z="1.69617061" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.56595182" y="1.10472886" z="0.55989089" label="" r="2" stroke="#EF000F" stroke-width="2" fill="#EF000F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.76355914" y="-1.80021437" z="-1.51823117" label="" r="2" stroke="#A60058" stroke-width="2" fill="#A60058" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.31769672" y="2.16693494" z="-0.34369999" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.9271737" y="-1.31851517" z="1.18490303" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.28105572" y="-2.51321972" z="1.08923836" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.88157746" y="-1.29069506" z="0.37280082" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.9783686" y="2.60190216" z="-1.60611762" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.91297397" y="4.19470449" z="-1.46564483" label="" r="2" stroke="#770087" stroke-width="2" fill="#770087" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.1934293" y="-0.29764422" z="0.17233431" label="" r="2" stroke="#870077" stroke-width="2" fill="#870077" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="6.08416696" y="-0.34994051" z="-3.69474824" label="" r="2" stroke="#4E00B0" stroke-width="2" fill="#4E00B0" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.09644152" y="3.33724142" z="-1.89040985" label="" r="2" stroke="#82007C" stroke-width="2" fill="#82007C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.78548547" y="1.39592854" z="-0.27499728" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.93590362" y="3.21355992" z="-1.55565504" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.19383555" y="2.91869934" z="-1.30403271" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.80789536" y="-0.92521101" z="-1.38449972" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.73098303" y="-2.12541868" z="1.70868219" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.42720071" y="-4.0864692" z="-0.87631576" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.01386224" y="-1.84773462" z="-0.84321071" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.83047437" y="2.00285796" z="-1.43081152" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-5.31260827" y="-0.48735693" z="-0.10504704" label="" r="2" stroke="#72008C" stroke-width="2" fill="#72008C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.45191217" y="-1.39906314" z="0.76023845" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.88342619" y="2.59566143" z="1.2039886" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.27732878" y="1.47326476" z="0.30577901" label="" r="2" stroke="#7C0082" stroke-width="2" fill="#7C0082" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.52100395" y="-1.12515533" z="1.02627731" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.14381996" y="-3.78344239" z="1.39411687" label="" r="2" stroke="#72008C" stroke-width="2" fill="#72008C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.75522799" y="-2.68665806" z="0.64762707" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.96640607" y="-1.25324539" z="-1.47044858" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="7.53371711" y="-0.99906017" z="0.12806807" label="" r="2" stroke="#4300BB" stroke-width="2" fill="#4300BB" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.80438045" y="1.38043299" z="1.99307334" label="" r="2" stroke="#AB0053" stroke-width="2" fill="#AB0053" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.08977265" y="-1.03859024" z="0.0460883" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.87880731" y="1.59631166" z="0.30800433" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.30328205" y="1.11114164" z="0.05148165" label="" r="2" stroke="#EA0014" stroke-width="2" fill="#EA0014" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.89768193" y="-2.43625098" z="-0.62613531" label="" r="2" stroke="#7C0082" stroke-width="2" fill="#7C0082" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.73369735" y="-4.09947675" z="1.35688864" label="" r="2" stroke="#8C0072" stroke-width="2" fill="#8C0072" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.27873567" y="-1.60172606" z="0.50946066" label="" r="2" stroke="#A1005D" stroke-width="2" fill="#A1005D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.87766996" y="4.12895279" z="-0.47207391" label="" r="2" stroke="#7C0082" stroke-width="2" fill="#7C0082" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.1255978" y="1.27724281" z="-2.11969061" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.7023838" y="2.52965841" z="-1.08890243" label="" r="2" stroke="#A1005D" stroke-width="2" fill="#A1005D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.55619376" y="0.70288164" z="1.09403484" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.28732534" y="0.19157607" z="-0.32597062" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.20064895" y="2.1789172" z="-1.1937975" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.09651811" y="0.2654576" z="-0.19805882" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.52492975" y="2.63309707" z="-1.04067034" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="7.45893772" y="2.41869117" z="0.26914274" label="" r="2" stroke="#3900C5" stroke-width="2" fill="#3900C5" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.97850378" y="1.7178243" z="0.36711067" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.634792" y="1.07085782" z="0.33621924" label="" r="2" stroke="#770087" stroke-width="2" fill="#770087" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.96188231" y="1.55471282" z="-1.08387848" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.79616313" y="-1.33060669" z="0.94567234" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.58505816" y="-0.1790421" z="1.2407296" label="" r="2" stroke="#EA0014" stroke-width="2" fill="#EA0014" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.1351429" y="-0.29128778" z="0.03352251" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.71247189" y="0.16172744" z="-0.09776229" label="" r="2" stroke="#F4000A" stroke-width="2" fill="#F4000A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.41206675" y="-1.06647416" z="1.04610364" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="6.55778725" y="1.91915616" z="-2.57741113" label="" r="2" stroke="#4E00B0" stroke-width="2" fill="#4E00B0" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.43230556" y="-1.04914787" z="-0.90806508" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.88430431" y="-1.10388651" z="-0.28068406" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.78920246" y="2.03194252" z="-0.78291898" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.28647053" y="0.30118776" z="-0.68915006" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.13796532" y="-1.59183702" z="-0.03255087" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.7992678" y="1.07229237" z="1.60090797" label="" r="2" stroke="#A1005D" stroke-width="2" fill="#A1005D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.19524226" y="-0.19512815" z="-1.75273135" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.00772613" y="-0.55179889" z="-0.98401964" label="" r="2" stroke="#DF001F" stroke-width="2" fill="#DF001F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.79545656" y="0.02638599" z="1.63510973" label="" r="2" stroke="#DF001F" stroke-width="2" fill="#DF001F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.43220782" y="-3.72636015" z="-1.44168391" label="" r="2" stroke="#960068" stroke-width="2" fill="#960068" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.5793884" y="1.09265092" z="-0.57006094" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.22031302" y="-2.36763157" z="0.33847438" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.77422474" y="-2.36792804" z="0.62925115" label="" r="2" stroke="#A1005D" stroke-width="2" fill="#A1005D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.54129182" y="-0.97143699" z="1.91302606" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.90347084" y="-0.39287445" z="-0.29056719" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.57726671" y="-0.03734621" z="-0.60864009" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.70369132" y="0.30789793" z="-0.23864007" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.10899592" y="1.78046016" z="-0.65828496" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.31406769" y="-0.92352616" z="-0.23325575" label="" r="2" stroke="#F4000A" stroke-width="2" fill="#F4000A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.0543872" y="-0.5769354" z="-0.76090558" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.05683345" y="1.48729452" z="0.51376642" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.01838354" y="0.41804692" z="-0.46679377" label="" r="2" stroke="#FF0000" stroke-width="2" fill="#FF0000" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.63198257" y="0.12833592" z="-0.7935313" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.01591328" y="0.25651062" z="-0.53102511" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.9376406" y="0.23423867" z="-0.50981945" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.09613562" y="0.24150896" z="0.62179544" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.41602745" y="3.41837254" z="-0.44193045" label="" r="2" stroke="#960068" stroke-width="2" fill="#960068" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.79531466" y="-1.09662631" z="-0.85014997" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.55507739" y="-0.53716838" z="-0.08173005" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.06576325" y="-0.60715968" z="0.39459865" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.22991259" y="0.00255144" z="-0.40384236" label="" r="2" stroke="#F4000A" stroke-width="2" fill="#F4000A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.33795049" y="-3.71242066" z="0.33327322" label="" r="2" stroke="#8C0072" stroke-width="2" fill="#8C0072" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.16970422" y="-2.8226961" z="-1.79603273" label="" r="2" stroke="#680096" stroke-width="2" fill="#680096" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.23113182" y="-0.33716093" z="0.77372158" label="" r="2" stroke="#82007C" stroke-width="2" fill="#82007C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.83896313" y="-1.63381802" z="0.31469455" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-6.75968501" y="2.28856084" z="-1.02775422" label="" r="2" stroke="#3E00C0" stroke-width="2" fill="#3E00C0" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.46437983" y="-0.54185697" z="0.1150234" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="6.40959197" y="3.74178515" z="-1.21830383" label="" r="2" stroke="#4300BB" stroke-width="2" fill="#4300BB" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.46468963" y="1.90339015" z="-0.70157046" label="" r="2" stroke="#960068" stroke-width="2" fill="#960068" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.91435652" y="0.31750495" z="-0.70717757" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-4.55544209" y="-1.1871517" z="-0.91973553" label="" r="2" stroke="#82007C" stroke-width="2" fill="#82007C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.18411074" y="0.29892628" z="1.09935609" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.04048445" y="2.28037538" z="-0.58446954" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.97511319" y="2.11859187" z="0.68749679" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.0846985" y="0.95556014" z="0.38751599" label="" r="2" stroke="#EF000F" stroke-width="2" fill="#EF000F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.5009473" y="0.92436057" z="0.21051712" label="" r="2" stroke="#B0004E" stroke-width="2" fill="#B0004E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.98237989" y="-5.84331909" z="-1.02206342" label="" r="2" stroke="#62009C" stroke-width="2" fill="#62009C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.18717663" y="2.27526653" z="0.58057668" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.68958911" y="-2.81493912" z="-0.74666524" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.32327204" y="-1.57487372" z="0.24750448" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.57399124" y="-2.29619189" z="1.77325538" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.26473784" y="2.29166823" z="0.96963301" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-4.03825301" y="-1.76936041" z="2.56985112" label="" r="2" stroke="#770087" stroke-width="2" fill="#770087" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.15069744" y="-1.13179773" z="-0.51785634" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.99421944" y="0.66734448" z="-0.09718462" label="" r="2" stroke="#6D0091" stroke-width="2" fill="#6D0091" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.53651434" y="-1.33265045" z="-0.19923385" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.33991538" y="-1.34366531" z="0.73880494" label="" r="2" stroke="#DF001F" stroke-width="2" fill="#DF001F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-7.80467673" y="-2.07142954" z="-0.45420358" label="" r="2" stroke="#2400DA" stroke-width="2" fill="#2400DA" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="6.38609028" y="2.16549444" z="-0.05109869" label="" r="2" stroke="#5800A6" stroke-width="2" fill="#5800A6" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.05964986" y="-4.42575345" z="-1.08277848" label="" r="2" stroke="#7C0082" stroke-width="2" fill="#7C0082" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.22759406" y="6.20770801" z="-1.61146102" label="" r="2" stroke="#5D00A1" stroke-width="2" fill="#5D00A1" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.86874555" y="1.7873513" z="0.17317415" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.26163208" y="2.34487799" z="0.56271467" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.18796895" y="0.75169228" z="0.96174207" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="6.28834119" y="-1.66907179" z="-0.22668878" label="" r="2" stroke="#62009C" stroke-width="2" fill="#62009C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.37125923" y="4.49641731" z="0.87339887" label="" r="2" stroke="#680096" stroke-width="2" fill="#680096" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.16095126" y="-0.09339425" z="0.05506837" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.35703578" y="-2.20979345" z="1.08141055" label="" r="2" stroke="#A1005D" stroke-width="2" fill="#A1005D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.70783336" y="0.18506536" z="0.85524173" label="" r="2" stroke="#AB0053" stroke-width="2" fill="#AB0053" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.32557474" y="2.58992764" z="0.34645716" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.65651785" y="1.64528924" z="-1.01763291" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.73927423" y="-0.21663449" z="-1.24208042" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.17327238" y="3.43652176" z="-0.58676734" label="" r="2" stroke="#870077" stroke-width="2" fill="#870077" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.74691599" y="-1.55283624" z="-2.16258395" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-7.00430643" y="0.18384772" z="-0.27358315" label="" r="2" stroke="#4300BB" stroke-width="2" fill="#4300BB" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.86444234" y="-1.51868889" z="-0.38882241" label="" r="2" stroke="#AB0053" stroke-width="2" fill="#AB0053" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.82702656" y="1.74628213" z="0.51830777" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.41399039" y="0.54454231" z="0.63872444" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-4.16392565" y="-0.99422645" z="-0.33956131" label="" r="2" stroke="#8C0072" stroke-width="2" fill="#8C0072" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.86173053" y="0.58965048" z="-1.02181932" label="" r="2" stroke="#CA0034" stroke-width="2" fill="#CA0034" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.39927335" y="-2.54324986" z="-1.84759311" label="" r="2" stroke="#960068" stroke-width="2" fill="#960068" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.27685088" y="3.12728109" z="0.91270811" label="" r="2" stroke="#A60058" stroke-width="2" fill="#A60058" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.23649351" y="-1.12030132" z="-0.05226099" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.68718147" y="-3.89458978" z="0.94567711" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.75006143" y="1.53250807" z="-0.30576655" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.84041953" y="0.23113897" z="-0.74656615" label="" r="2" stroke="#F90005" stroke-width="2" fill="#F90005" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.16380965" y="-3.08202464" z="0.23264963" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-9.00981218" y="-1.23584387" z="1.22628479" label="" r="2" stroke="#0000FF" stroke-width="2" fill="#0000FF" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.2130094" y="-0.23007847" z="0.53509704" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.35478437" y="-2.45607871" z="0.10251409" label="" r="2" stroke="#BB0043" stroke-width="2" fill="#BB0043" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="8.25103126" y="-4.69474271" z="-2.16464066" label="" r="2" stroke="#0500F9" stroke-width="2" fill="#0500F9" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.11061255" y="4.33627887" z="0.50853943" label="" r="2" stroke="#91006D" stroke-width="2" fill="#91006D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.52151956" y="0.58638315" z="1.75130906" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.62921231" y="-0.95353944" z="0.19144754" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.78840233" y="-1.2256581" z="-0.33991825" label="" r="2" stroke="#72008C" stroke-width="2" fill="#72008C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.81103146" y="1.28130621" z="1.16878349" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.81768043" y="-0.3980057" z="-0.02167238" label="" r="2" stroke="#E4001A" stroke-width="2" fill="#E4001A" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="4.28019612" y="-0.91859122" z="-1.35949231" label="" r="2" stroke="#960068" stroke-width="2" fill="#960068" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="3.66182588" y="-1.65576405" z="-1.96654521" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.40665028" y="-0.50457607" z="-0.91876396" label="" r="2" stroke="#EF000F" stroke-width="2" fill="#EF000F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.75456598" y="-0.81482281" z="-1.21019376" label="" r="2" stroke="#DF001F" stroke-width="2" fill="#DF001F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.1989405" y="-0.68318429" z="-0.00482006" label="" r="2" stroke="#FF0000" stroke-width="2" fill="#FF0000" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.61149127" y="-1.08893972" z="-0.48680922" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="6.51985901" y="-3.56798124" z="0.70900568" label="" r="2" stroke="#4300BB" stroke-width="2" fill="#4300BB" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.13279462" y="2.60204287" z="-0.64268765" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.17562384" y="0.85285122" z="-0.00677393" label="" r="2" stroke="#EF000F" stroke-width="2" fill="#EF000F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.78782909" y="-2.33498468" z="0.3069657" label="" r="2" stroke="#C50039" stroke-width="2" fill="#C50039" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.02704923" y="1.97060943" z="-0.76032799" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.08639802" y="0.67289574" z="1.591688" label="" r="2" stroke="#DF001F" stroke-width="2" fill="#DF001F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.57268346" y="-2.51428303" z="-0.59389416" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="5.23055623" y="-0.1887598" z="-1.55617369" label="" r="2" stroke="#82007C" stroke-width="2" fill="#82007C" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-3.73475516" y="3.45350901" z="0.47934328" label="" r="2" stroke="#770087" stroke-width="2" fill="#770087" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.5661829" y="-0.32823265" z="-0.37900915" label="" r="2" stroke="#D0002E" stroke-width="2" fill="#D0002E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-4.82600638" y="-4.40673169" z="0.07239224" label="" r="2" stroke="#4E00B0" stroke-width="2" fill="#4E00B0" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.05782198" y="2.30758575" z="-1.36027833" label="" r="2" stroke="#C0003E" stroke-width="2" fill="#C0003E" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="2.34726647" y="3.36335349" z="-1.44364227" label="" r="2" stroke="#9C0062" stroke-width="2" fill="#9C0062" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.49493679" y="-1.37229314" z="0.95841734" label="" r="2" stroke="#DF001F" stroke-width="2" fill="#DF001F" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-1.69772232" y="0.82328025" z="2.31903704" label="" r="2" stroke="#B60048" stroke-width="2" fill="#B60048" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="1.28822762" y="0.14272675" z="-1.86245103" label="" r="2" stroke="#DA0024" stroke-width="2" fill="#DA0024" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="0.34798275" y="2.07400746" z="0.14320621" label="" r="2" stroke="#D50029" stroke-width="2" fill="#D50029" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-2.96581357" y="-1.90745446" z="-0.79505045" label="" r="2" stroke="#A1005D" stroke-width="2" fill="#A1005D" fill-opacity="1" stroke-opacity="1" ></point>
+	<point z-index="0" layer="" x="-0.15996712" y="-1.10883585" z="0.29484089" label="" r="2" stroke="#EA0014" stroke-width="2" fill="#EA0014" fill-opacity="1" stroke-opacity="1" ></point>
+	<path z-index="0" layer="Bounding panel fill" d="M-10.8 -7.8 -5.8 L 10.8 -7.8 -5.8 L 10.8 8.4 -5.8 L -10.8 8.4 -5.8 Z" label="" stroke="none" stroke-width="0" fill="black" stroke-opacity="1" fill-opacity="0" ></path>
+	<path z-index="0" layer="Bounding panel outline" d="M-10.8 -7.8 -5.8 L 10.8 -7.8 -5.8 L 10.8 8.4 -5.8 L -10.8 8.4 -5.8 Z" label="" stroke="black" stroke-width="1" fill="none" stroke-opacity="0.4" fill-opacity="1" ></path>
+	<path z-index="0" layer="Bounding panel fill" d="M-10.8 -7.8 -5.8 L -10.8 8.4 -5.8 L -10.8 8.4 5 L -10.8 -7.8 5 Z" label="" stroke="none" stroke-width="0" fill="black" stroke-opacity="1" fill-opacity="0" ></path>
+	<path z-index="0" layer="Bounding panel outline" d="M-10.8 -7.8 -5.8 L -10.8 8.4 -5.8 L -10.8 8.4 5 L -10.8 -7.8 5 Z" label="" stroke="black" stroke-width="1" fill="none" stroke-opacity="0.4" fill-opacity="1" ></path>
+	<path z-index="0" layer="Bounding panel fill" d="M-10.8 -7.8 -5.8 L 10.8 -7.8 -5.8 L 10.8 -7.8 5 L -10.8 -7.8 5 Z" label="" stroke="none" stroke-width="0" fill="black" stroke-opacity="1" fill-opacity="0" ></path>
+	<path z-index="0" layer="Bounding panel outline" d="M-10.8 -7.8 -5.8 L 10.8 -7.8 -5.8 L 10.8 -7.8 5 L -10.8 -7.8 5 Z" label="" stroke="black" stroke-width="1" fill="none" stroke-opacity="0.4" fill-opacity="1" ></path>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="-7.8" z1="-5.8" x2="-10.8" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-9" y1="-7.8" z1="-5.8" x2="-9" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-7.2" y1="-7.8" z1="-5.8" x2="-7.2" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-5.4" y1="-7.8" z1="-5.8" x2="-5.4" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-3.6" y1="-7.8" z1="-5.8" x2="-3.6" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.8" y1="-7.8" z1="-5.8" x2="-1.8" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0" y1="-7.8" z1="-5.8" x2="0" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.8" y1="-7.8" z1="-5.8" x2="1.8" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="3.6" y1="-7.8" z1="-5.8" x2="3.6" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="5.4" y1="-7.8" z1="-5.8" x2="5.4" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="7.2" y1="-7.8" z1="-5.8" x2="7.2" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="9" y1="-7.8" z1="-5.8" x2="9" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-7.8" z1="-5.8" x2="10.8" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-7.8" z1="-5.8" x2="-10.8" y2="-7.8" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-6" z1="-5.8" x2="-10.8" y2="-6" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-4.2" z1="-5.8" x2="-10.8" y2="-4.2" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-2.4" z1="-5.8" x2="-10.8" y2="-2.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-0.6" z1="-5.8" x2="-10.8" y2="-0.6" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="1.2" z1="-5.8" x2="-10.8" y2="1.2" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="3" z1="-5.8" x2="-10.8" y2="3" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="4.8" z1="-5.8" x2="-10.8" y2="4.8" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="6.6" z1="-5.8" x2="-10.8" y2="6.6" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="8.4" z1="-5.8" x2="-10.8" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="-7.8" z1="-5.8" x2="-10.8" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="-6" z1="-5.8" x2="-10.8" y2="-6" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="-4.2" z1="-5.8" x2="-10.8" y2="-4.2" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="-2.4" z1="-5.8" x2="-10.8" y2="-2.4" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="-0.6" z1="-5.8" x2="-10.8" y2="-0.6" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="1.2" z1="-5.8" x2="-10.8" y2="1.2" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="3" z1="-5.8" x2="-10.8" y2="3" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="4.8" z1="-5.8" x2="-10.8" y2="4.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="6.6" z1="-5.8" x2="-10.8" y2="6.6" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="8.4" z1="-5.8" x2="-10.8" y2="8.4" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="8.4" z1="-5.8" x2="-10.8" y2="-7.8" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="8.4" z1="-4" x2="-10.8" y2="-7.8" z2="-4" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="8.4" z1="-2.2" x2="-10.8" y2="-7.8" z2="-2.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="8.4" z1="-0.4" x2="-10.8" y2="-7.8" z2="-0.4" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="8.4" z1="1.4" x2="-10.8" y2="-7.8" z2="1.4" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="8.4" z1="3.2" x2="-10.8" y2="-7.8" z2="3.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="8.4" z1="5" x2="-10.8" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-10.8" y1="-7.8" z1="-5.8" x2="-10.8" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-9" y1="-7.8" z1="-5.8" x2="-9" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-7.2" y1="-7.8" z1="-5.8" x2="-7.2" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-5.4" y1="-7.8" z1="-5.8" x2="-5.4" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-3.6" y1="-7.8" z1="-5.8" x2="-3.6" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="-1.8" y1="-7.8" z1="-5.8" x2="-1.8" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="0" y1="-7.8" z1="-5.8" x2="0" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="1.8" y1="-7.8" z1="-5.8" x2="1.8" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="3.6" y1="-7.8" z1="-5.8" x2="3.6" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="5.4" y1="-7.8" z1="-5.8" x2="5.4" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="7.2" y1="-7.8" z1="-5.8" x2="7.2" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="9" y1="-7.8" z1="-5.8" x2="9" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-7.8" z1="-5.8" x2="10.8" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-7.8" z1="-5.8" x2="-10.8" y2="-7.8" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-7.8" z1="-4" x2="-10.8" y2="-7.8" z2="-4" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-7.8" z1="-2.2" x2="-10.8" y2="-7.8" z2="-2.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-7.8" z1="-0.4" x2="-10.8" y2="-7.8" z2="-0.4" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-7.8" z1="1.4" x2="-10.8" y2="-7.8" z2="1.4" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-7.8" z1="3.2" x2="-10.8" y2="-7.8" z2="3.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Grid" x1="10.8" y1="-7.8" z1="5" x2="-10.8" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.1" ></line>
+	<line z-index="0" layer="Ticks" x1="-10.8" y1="-7.8" z1="5" x2="-10.8" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-9" y1="-7.8" z1="5" x2="-9" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-7.2" y1="-7.8" z1="5" x2="-7.2" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-5.4" y1="-7.8" z1="5" x2="-5.4" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-3.6" y1="-7.8" z1="5" x2="-3.6" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="-1.8" y1="-7.8" z1="5" x2="-1.8" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="0" y1="-7.8" z1="5" x2="0" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="1.8" y1="-7.8" z1="5" x2="1.8" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="3.6" y1="-7.8" z1="5" x2="3.6" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="5.4" y1="-7.8" z1="5" x2="5.4" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="7.2" y1="-7.8" z1="5" x2="7.2" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="9" y1="-7.8" z1="5" x2="9" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-7.8" z1="5" x2="10.8" y2="-7.8" z2="5.54" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-7.8" z1="-5.8" x2="11.34" y2="-7.8" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-6" z1="-5.8" x2="11.34" y2="-6" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-4.2" z1="-5.8" x2="11.34" y2="-4.2" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-2.4" z1="-5.8" x2="11.34" y2="-2.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-0.6" z1="-5.8" x2="11.34" y2="-0.6" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="1.2" z1="-5.8" x2="11.34" y2="1.2" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="3" z1="-5.8" x2="11.34" y2="3" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="4.8" z1="-5.8" x2="11.34" y2="4.8" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="6.6" z1="-5.8" x2="11.34" y2="6.6" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="8.4" z1="-5.8" x2="11.34" y2="8.4" z2="-5.8" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-7.8" z1="-4" x2="11.34" y2="-7.8" z2="-4" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-7.8" z1="-2.2" x2="11.34" y2="-7.8" z2="-2.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-7.8" z1="-0.4" x2="11.34" y2="-7.8" z2="-0.4" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-7.8" z1="1.4" x2="11.34" y2="-7.8" z2="1.4" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-7.8" z1="3.2" x2="11.34" y2="-7.8" z2="3.2" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<line z-index="0" layer="Ticks" x1="10.8" y1="-7.8" z1="5" x2="11.34" y2="-7.8" z2="5" label="" stroke="black" stroke-width="1" stroke-opacity="0.5" ></line>
+	<text z-index="0" layer="Tick labels" x="-10.8" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-11</text>
+	<text z-index="0" layer="Tick labels" x="-9" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > -9</text>
+	<text z-index="0" layer="Tick labels" x="-7.2" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > -7</text>
+	<text z-index="0" layer="Tick labels" x="-5.4" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > -5</text>
+	<text z-index="0" layer="Tick labels" x="-3.6" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > -4</text>
+	<text z-index="0" layer="Tick labels" x="-1.8" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > -2</text>
+	<text z-index="0" layer="Tick labels" x="0" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >  0</text>
+	<text z-index="0" layer="Tick labels" x="1.8" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >  2</text>
+	<text z-index="0" layer="Tick labels" x="3.6" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >  4</text>
+	<text z-index="0" layer="Tick labels" x="5.4" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >  5</text>
+	<text z-index="0" layer="Tick labels" x="7.2" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >  7</text>
+	<text z-index="0" layer="Tick labels" x="9" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >  9</text>
+	<text z-index="0" layer="Tick labels" x="10.8" y="-7.99656" z="6.08" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 11</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-7.99656" z="-5.8" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-7.8</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-6.19656" z="-5.8" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-6.0</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-4.39656" z="-5.8" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-4.2</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-2.59656" z="-5.8" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-2.4</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-0.79656" z="-5.8" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.6</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="1.00344" z="-5.8" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.2</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="2.80344" z="-5.8" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 3.0</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="4.60344" z="-5.8" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 4.8</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="6.40344" z="-5.8" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 6.6</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="8.20344" z="-5.8" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 8.4</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-7.99656" z="-4" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-4.0</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-7.99656" z="-2.2" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-2.2</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-7.99656" z="-0.4" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >-0.4</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-7.99656" z="1.4" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 1.4</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-7.99656" z="3.2" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 3.2</text>
+	<text z-index="0" layer="Tick labels" x="11.88" y="-7.99656" z="5" font-size="2.34" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" > 5.0</text>
+	<text z-index="0" layer="Axis labels" x="0" y="-7.99656" z="7.7" font-size="2.52" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >x</text>
+	<text z-index="0" layer="Axis labels" x="13.5" y="0.10344" z="-5.8" font-size="2.52" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >y</text>
+	<text z-index="0" layer="Axis labels" x="13.5" y="-7.99656" z="-0.4" font-size="2.52" text-anchor="middle" font-family="Arial" opacity="1" font-weight="" letter-spacing="0" fill="black" writing-mode="" glyph-orientation-vertical="" >z</text>
+</svg_doc>
+
+<body style="margin:0px;background-color:;overflow:hidden;" >
+	<a id='keydown' type='checkbox' onkeydown="javascript:;" ></a>
+	<div id="control_icons" class="control_icons" >
+		<div id="control_icon_control" class="control_icon" onClick="javascript:showHideControlPanel();" style="" title="No control panel contents to display" >
+			<a id="control_icon_control_vertical" class="control_icon" style="font-size:0.55em;line-height:18px;" >&#124;</a>
+			<a id="control_icon_control_horizontal" class="control_icon" style="position:relative;right:0px;top:-17px;font-size:0.55em;" >&#8213;</a>
+		</div>
+		<div id="control_icon_rotate" class="control_icon" style="border:1px solid #000000;" onClick="javascript:toggle_rotate_mode('rotate');" title="Turn on rotate mode or press and hold 'r'" >
+			<a id="control_icon_rotate_arrow" class="control_icon" style="line-height:22px;font-size:0.7em;color:black;" >&#8634;</a>
+		</div>
+		<div id="control_icon_translate" class="control_icon" style="border:1px solid #cccccc;color:#cccccc;" onClick="javascript:toggle_rotate_mode('translate');" title="Translate mode on, click and drag to move object"  >
+			<a class="control_icon" style="font-size:0.6em;line-height:18px;" >&#8597;</a>
+			<a class="control_icon" style="font-size:0.6em;position:relative;right:0px;top:-18px;" >&#8596;</a>
+		</div>
+		<div class="control_icon" onClick="javascript:about_alert();" title="About SVGViewR" >
+			<a class="control_icon" style="font-size:0.6em;font-family:Times;line-height:21px;" ><i>i</i></a>
+		</div>
+	</div>
+	
+	<div id="control_container" class="control_container" style="display:none;width: 85px;" >
+		<div id="control_main" class="control_main" >
+	
+			<div id="control_animation_container" class="control_animation_container" >
+				<div id="control_animation_header" class="control_animation_header" >
+					<a id="control_animation_click" class="control_animation_click" onClick="javascript:show_hide_control(this);" >&#9660;</a>
+					Animation
+				</div>
+				<div id="control_animation_main" class="control_animation_main" >
+	
+					<div class="control_animation_frame" >
+						<div id="control_play" class="control_icon_play" onClick="playPauseAnimation();" title="Pause animation or press the spacebar" >
+							<a id="control_icon_play" class="control_icon_play" >&#9612; &#9612;</a>
+						</div>
+						<div class="control_animation_frame_range" >
+							<input id="animation_frame_range_input" type="range" title="Click to skip to frame" class="control_animation_frame_range" oninput="inputAnimationState(this)" value=100 />
+						</div>
+						<div class="control_animation_frame_count" >
+							<input id="animation_frame_count_input" type="number" oninput="inputAnimationState(this)" title="Enter number to skip to frame" class="control_animation_frame_count" min="1" max="10" step="1" value="1" />
+						</div>
+					</div>
+					<div style="border-bottom:1px solid #aaaaaa;margin:0px 10px;" ></div>
+					<div class="control_animation_frame" >
+						<div class="control_animation_duration" >
+							<a title="Change the speed of the animation" >Animation duration: </a>
+							<input id="animation_duration_input" type="number" oninput="changeAnimationDuration(this);" title="Change the speed of the animation" class="control_animation_duration" min="0" max="60" step="1" value="1" />
+							sec
+						</div>
+						<div class="control_animation_reverse" >
+							<a title="Run the animation in reverse after the last frame" >Reverse</a>
+							<input id="animation_reverse_checkbox" type="checkbox" title="Run the animation in reverse after the last frame" name="animation_reverse_checkbox" onchange="toggleAnimationReverse();" value="1"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<svg id="world" style="background-color:;width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1;" onload="Javascript:onLoadFunctions();" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
+</body>
+
+<style>
+	body{
+		font-family: Arial, Corbel, Myriad Pro, Cabin, League Gothic, 'sans serif';
+		font-size: 13px;
+	}
+	
+	a.control_layer_text_nochild{
+		padding-left:2px;
+	}
+	
+	a.control_layer_layer_vis{
+	}
+	
+	a.control_click{
+		font-size:2em;
+	}
+	
+	a.control_icon_play{
+		color:white;
+		font-size:0.8em;
+		letter-spacing:-1px;
+		line-height:19px;
+	}
+	
+	a.control_rotate{
+		font-weight:900;
+		font-size:1.7em;
+		color:#cccccc;
+	}
+	
+	a.control_translate{
+		font-weight:900;
+		font-size:1.45em;
+		vertical-align:31%;
+		color:black;
+	}
+	
+	span.control_layer_shape_vis{
+	/*	font-size:1.8em; */
+	/*	line-height:0.6; */
+	/*	vertical-align:-1%; */
+	}
+	
+	a.control_layer_level1{padding-left:0px;}
+	a.control_layer_level2{padding-left:15px;}
+	a.control_layer_level3{padding-left:30px;}
+	a.control_layer_level4{padding-left:45px;}
+	
+	div.control_animation_duration{
+		float:left;
+		padding:0px 0px 0px 5px;
+		color:white;
+		background-color:;
+	}
+	
+	div.control_animation_frame{
+		height:25px;
+		background-color:;
+		margin:5px 0px 0px 0px;
+		padding:0px 0px 0px 0px;
+	}
+	
+	div.control_animation_frame_range{
+		text-align:center;
+		float:left;
+		height:18px;
+		margin:0px 0px 0px 2px;
+		padding:2px 0px 0px 0px;
+		background-color:;
+	/*	background-color:green; */
+	/*	border-right:1px solid rgb(200,200,200); */
+	}
+	
+	div.control_animation_main{
+		background-color: rgba(0,0,0,0.5);
+		margin:0px 0px 9px 0px;
+		padding:3px 0px 10px 0px;
+		height:50px;
+	}
+	
+	div.control_animation_reverse{
+		float:left;
+		color:white;
+		margin:1px 0px 0px 40px;
+		background-color:;
+	}
+	
+	div.control_container{
+	    border-radius: 10px;
+		background-color: rgba(0,0,0,0.3);
+		cursor: default;
+		position: fixed;
+	/*	padding:5px 0px 10px 0px; */
+		top: 20px;
+		right: 60px;
+	}
+	
+	div.control_icons{
+		position: fixed;
+		width: 30px;
+		top: 20px;
+		right: 20px;
+	}
+	
+	div.control_icon{
+		cursor: default;
+	    border-radius: 50%;
+		width: 20px;
+		font-size:2em;
+		height: 20px;
+		font-weight:100;
+		text-align:center;
+		background-color:white;
+		border:1px solid black;
+		margin:0 0 5px 0;
+	}
+	
+	div.control_icon_play{
+		float:left;
+		cursor: default;
+		background-color:;
+		width: 18px;
+		height: 20px;
+		padding:0px 0px 0px 5px;
+		text-align:center;
+	}
+	
+	div.control_main{
+		margin:5px 0px 5px 0px;
+	}
+	
+	div.control_layers_container, div.control_animation_container{
+	/*	background-color: rgba(0,0,0,0.2); */
+		margin:0px 0px 5px 0px;
+	}
+	
+	div.control_layers_header, div.control_animation_header{
+		padding:0px 0px 1px 3px;
+		color:white;
+	}
+	
+	div.control_layers_main{
+		background-color: rgba(255,255,255,0.8);
+		margin:0px 0px 0px 0px;
+		padding:3px 0px 10px 2px;
+		height:150px;
+		overflow-y: scroll;
+	}
+	
+	div.control_layer_subheader_label{
+	/*	background-color:red; */
+		float:left;
+		width:50px;
+		text-align:center;
+	/*	border-right:1px solid rgb(225, 225, 225); */
+		border-right:1px solid white;
+	/*	font-size: 12px; */
+	/*	letter-spacing: 0.1px; */
+	}
+	
+	div.control_layer_subheader{
+		background-color: rgba(0,0,0,0.5);
+	/*	background-color: ; */
+		width:296px;
+		color:white;
+	/*	font-weight:bold; */
+		margin:0px;
+		padding:2px;
+	/*	border:1px solid black; */
+	/*	border-bottom:1px solid black; */
+	}
+	
+	div.control_layer_container{
+	/*	background-color: green; */
+	/*	margin:5px 0px 0px 15px; */
+	/*	margin:5px 0px 0px 0px; */
+	}
+	
+	div.control_layer_header{
+	/*	background-color: green; */
+		margin:3px 0px 0px 0px;
+	/*	padding:0px 0px 0px 0px; */
+	}
+	
+	div.control_layer_main{
+		width:400px;
+	}
+	
+	div.control_layer_shape_vis_range{
+		float:left;
+		width:53px;
+		height:18px;
+	/*	background-color:green; */
+	/*	border-right:1px solid rgb(200,200,200); */
+	}
+	
+	input.control_layer_shape_vis_range {
+		-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+		width: 46px;
+		cursor: default;
+		margin-top: 6px;
+	}
+	
+	input.control_animation_duration{
+		width:35px;
+		margin:0px 0px 0px 0px;
+	}
+	
+	input.control_animation_frame_range {
+		-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+		width: 214px;
+		cursor: default;
+		margin: 3px 8px 0px 0px;
+		float:left;
+		background-color:transparent;
+	}
+	
+	input.control_animation_frame_count{
+		width:40px;
+		margin:0px 0px 0px 0px;
+	}
+	
+	input.control_layer_shape_vis_range::-webkit-slider-thumb, input.control_animation_frame_range::-webkit-slider-thumb {
+		-webkit-appearance: none;
+	}
+	
+	input[type=range]:focus {
+	  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+	}
+	
+	input.control_animation_frame_range::-webkit-slider-thumb {
+		height: 10px;
+		width: 6px;
+		background: #ffffff;
+		border-radius: 3px;
+		margin-top: 0px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		border: 0px solid #000000;
+	}
+	
+	input.control_layer_shape_vis_range::-webkit-slider-thumb{
+		border: 1px solid #333333;
+		height: 12px;
+		width: 5px;
+		border-radius: 3px;
+		background: #ffffff;
+		margin-top: -4px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+	}
+	
+	input.control_animation_frame_range::-webkit-slider-runnable-track {
+		height: 10px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		background: rgb(200,200,200);
+		border-radius: 3px;
+	}
+	
+	input.control_layer_shape_vis_range::-webkit-slider-runnable-track {
+		height: 3px;
+		box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		background: rgb(150,150,150);
+		border-radius: 1.3px;
+	}
+</style>
+
+
+<script type="text/javascript" >
+	var svgDocument = document.getElementById("world");
+</script>
+
+<script type="text/javascript" >
+	function add(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] + b[i];
+		return s;
+	}
+	
+	function avec(a, b){
+		s = 0;
+		var d = dot(a,a) * dot(b,b);
+		if(d < 0 || d > 0) s = Math.acos(dot(a,b)) / d;
+		return s;
+	}
+	
+	function cprod(u, v){
+		s = new Array(3);
+		s[0] = u[1]*v[2] - u[2]*v[1];
+		s[1] = u[2]*v[0] - u[0]*v[2];
+		s[2] = u[0]*v[1] - u[1]*v[0];
+		return s;	
+	}
+	
+	function dist(a, b){
+		var i;
+		var s = 0;
+		for(i = 0;i < a.length;i++) s += Math.pow(b[i] - a[i], 2)
+		return Math.sqrt(s);
+	}
+	
+	function dot(a, b){
+		var i;
+		var s = 0;
+		for(i = 0;i < a.length;i++) s += a[i]*b[i];
+		return s;
+	}
+	
+	function addC(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] + b;
+		return s;
+	}
+	
+	function inv(a){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = 1 / a[i];
+		return s;
+	}
+	
+	function max() {
+	    var args = Array.prototype.slice.call(arguments);
+	    return Math.max.apply(Math, args.filter(function(val) {
+	       return !isNaN(val);
+	    }));
+	}
+	
+	function min() {
+	    var args = Array.prototype.slice.call(arguments);
+	    return Math.min.apply(Math, args.filter(function(val) {
+	       return !isNaN(val);
+	    }));
+	}
+	
+	function multC(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] * b;
+		return s;
+	}
+	
+	function multM(a, b){
+		var i, j, k;
+		var s = new Array();
+		for (var i = 0, len = a.length; i < len; i++){
+			if(!a[0].length){
+				s[i] = 0;
+				for (var j = 0, len = a.length; j < len; j++){
+					s[i] += a[j]*b[j][i];
+				}
+			}else{
+				s[i] = new Array(a[i].length);
+				for (var k = 0, len = a[i].length; k < len; k++){
+					s[i][k] = 0;
+					for (var j = 0, len = a[i].length; j < len; j++){
+						s[i][k] += a[i][j]*b[j][k];
+					}
+				}
+			}
+		}
+		return s;
+	}
+	
+	function rotateTrig(r){return {sin : -Math.sin(r), cos : Math.cos(r)};}
+	
+	function rotateVector(v, deg){
+		var rad = degToRad(deg);
+		var vec = new Array(v[0]*Math.cos(rad) - v[1]*Math.sin(rad), v[0]*Math.sin(rad) + v[1]*Math.cos(rad));
+		return vec;
+	}
+	
+	function rotateX1(a, t) {
+		var tmp = a.y;
+		a.y = (t.cos * a.y) - (t.sin * a.z);
+		a.z = (t.sin * tmp) + (t.cos * a.z);
+		return a;
+	}
+	
+	function rotateY1(a, t) {
+		var tmp = a.x;
+		a.x = (t.cos * a.x) + (t.sin * a.z);
+		a.z = - (t.sin * tmp) + (t.cos * a.z);
+		return a;
+	}
+	
+	function rotateZ1(a, t) {
+		var tmp = a.x;
+		a.x = (t.cos * a.x) - (t.sin * a.y);
+		a.y = (t.sin * tmp) + (t.cos * a.y);
+		return a;
+	}
+	
+	function rotateX2(a, t) {
+		var tmp = a.y;
+		a.y = sub(multC(a.y, t.cos), multC(a.z, t.sin));
+		a.z = add(multC(tmp, t.sin), multC(a.z, t.cos));
+		return a;
+	}
+	
+	function rotateY2(a, t) {
+		var tmp = a.x;
+		a.x = add(multC(a.x, t.cos), multC(a.z, t.sin));
+		a.z = sub(multC(a.z, t.cos), multC(tmp, t.sin));
+		return a;
+	}
+	
+	function rotateZ2(a, t) {
+		var tmp = a.x;
+		a.x = sub(multC(a.x, t.cos), multC(a.y, t.sin));
+		a.y = add(multC(tmp, t.sin), multC(a.y, t.cos));
+		return a;
+	}
+	
+	function sub(a, b){
+		s = new Array(a.length);
+		for (var i = 0, len = a.length; i < len; i++) s[i] = a[i] - b[i];
+		return s;
+	}
+	
+	function tMatrixEP(v, a){
+		a = -a;
+		v = uvector(v);
+	
+		var t0 = Math.cos(a/2);
+		var t1 = v[0]*Math.sin(a/2)
+		var t2 = v[1]*Math.sin(a/2)
+		var t3 = v[2]*Math.sin(a/2)
+	
+		var r = new Array(3);
+		r[0] = new Array(2*(Math.pow(t0, 2) + Math.pow(t1, 2)) - 1, 2*(t1*t2 - t0*t3), 2*(t1*t3 + t0*t2));
+		r[1] = new Array(2*(t1*t2 + t0*t3), 2*(Math.pow(t0, 2) + Math.pow(t2, 2)) - 1, 2*(t2*t3 - t0*t1));
+		r[2] = new Array(2*(t1*t3 - t0*t2), 2*(t2*t3 + t0*t1), 2*(Math.pow(t0, 2) + Math.pow(t3, 2)) - 1);
+	
+		return r;
+	}
+	
+	function uvector(v){
+		var i, r;
+		var s = 0;
+		for(i = 0;i < v.length;i++) s += Math.pow(v[i], 2)
+		var d = Math.sqrt(s);
+		if(d == 0) return v;
+	
+		r = new Array();
+		for(i = 0;i < v.length;i++) r[i] = v[i]/d
+		return r;
+	}
+</script>
+<script type="text/javascript" >
+	var initialX;
+	var initialY;
+	function_name = new Array();
+	url_path = new Array();
+	innerHTML_id = new Array();
+	request_status = new Array();
+	xmlHttp = new Array();
+	time1 = new Array();
+	time2 = new Array();
+	var req_ct = 0;
+	var skip_buffer = 10;
+	var skip_to = 0;
+	var ajax_output;
+	var auto_view_r_result = 0;
+	
+	String.prototype.firstToUpperCase = function() {
+		return this.charAt(0).toUpperCase() + this.slice(1);
+	}
+	
+	Array.prototype.firstToUpperCase = function() {
+		for (var i = 0, len = this.length; i < len; i++) this[i] = this[i].firstToUpperCase();
+		return this;
+	}
+	
+	function about_alert(){
+		alert('svgViewR is a browser-based viewer that allows users to interactively visualize 3D vector graphics and animations. Visualizations can be made in R, using the package svgViewR, and easily distributed as a single HTML file with nearly universal compatibility across browsers and operating systems. This visualization was made using svgViewR version ' + svgviewr_version + '.\n\nsvgViewR was created by Aaron Olsen and is freely available under a GPL-3 license. For more information, please visit:\n\nhttp://cran.r-project.org/web/packages/svgViewR');
+	}
+	
+	function ajax_alert_return(j, xmlHttp_object){
+		alert(xmlHttp_object[j].responseText);
+	}
+	
+	function ajax_fill_element(j, xmlHttp_object){
+		document.getElementById(innerHTML_id[j]).innerHTML = xmlHttp_object[j].responseText;
+		window.status= '';
+	}
+	
+	function ajax_fill_element_return_call(j, xmlHttp_object){
+		document.getElementById(innerHTML_id[j]).innerHTML = xmlHttp_object[j].responseText;
+		on_ajax_request_return();
+	}
+	
+	function ajax_fill_element_return_call2(j, xmlHttp_object){
+		document.getElementById(innerHTML_id[j]).innerHTML = xmlHttp_object[j].responseText;
+		on_ajax_request_return2(url_path[j]);
+	}
+	
+	function ajax_get_xml_http_object(){
+		var xmlHttp=null;
+		try{ // Firefox, Opera 8.0+, Safari
+			xmlHttp = new XMLHttpRequest();}
+		catch(e){ // Internet Explorer		
+			try{
+				xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");}
+			catch(e){
+				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");}
+		}
+		return xmlHttp;
+	}
+	
+	function ajax_request(url, send_content, call_function, element_id){
+		url_path[req_ct] = url;
+		function_name[req_ct] = call_function;
+		innerHTML_id[req_ct] = element_id;
+		request_status[req_ct] = 0;
+	
+		xmlHttp[req_ct]=ajax_get_xml_http_object();
+		if(xmlHttp[req_ct]==null){
+			alert ("Browser does not support HTTP Request");
+			return;}
+		xmlHttp[req_ct].onreadystatechange=ajax_state_changed;
+		xmlHttp[req_ct].open("POST", url, true);
+		xmlHttp[req_ct].setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlHttp[req_ct].send(send_content);	
+		window.status= 'Command to ' + url + ' sent.';
+	
+		time1[req_ct] = new Date().getTime() / 1000;
+	
+		req_ct++;
+	}
+	
+	function ajax_state_changed(){
+		var j;
+		for(j = skip_to;j < xmlHttp.length; j++){
+			if(request_status[j] == 1){continue;}
+			if(xmlHttp[j].readyState==4 || xmlHttp[j].readyState=="complete"){
+				//alert(skip_to + ' -- ' + j);
+				eval(function_name[j] + '(j, xmlHttp)');
+	
+				time2[j] = new Date().getTime() / 1000;
+				if(document.getElementById("run_time")) document.getElementById("run_time").innerHTML = "Run-time: " + Math.round((time2[j] - time1[j])*100)/100 + " sec";
+				
+				request_status[j] = 1;
+				if(j - skip_buffer > 0){skip_to = j - skip_buffer;}
+			}	
+		}
+	}
+	
+	function array_unique(arr) {
+		var hash = {}, result = [];
+		for(var i = 0, l = arr.length;i < l;++i){
+	    	if(hash[ arr[i] ] === true) continue;
+			hash[ arr[i] ] = true;
+			result.push(arr[i]);    	
+	    }
+	    return result;
+	}
+	
+	function array_unique_properties(arr, property) {
+		var hash = {}, result = [];
+		for(var i = 0, l = arr.length;i < l;++i){
+	    	if(hash[ arr[i][property] ] === true) continue;
+			hash[ arr[i][property] ] = true;
+			result.push(arr[i][property]);    	
+	    }
+	    return result;
+	}
+	
+	function baseName(ev) {
+		var id = ev.target.getAttribute("id");
+		return id;
+	}
+	
+	var BrowserDetect = {
+		//Source: http://www.quirksmode.org/js/detect.html
+	
+		init: function () {
+			this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+			this.version = this.searchVersion(navigator.userAgent)
+				|| this.searchVersion(navigator.appVersion)
+				|| "an unknown version";
+			this.OS = this.searchString(this.dataOS) || "an unknown OS";
+		},
+		searchString: function (data) {
+			for (var i=0;i<data.length;i++)	{
+				var dataString = data[i].string;
+				var dataProp = data[i].prop;
+				this.versionSearchString = data[i].versionSearch || data[i].identity;
+				if (dataString) {
+					if (dataString.indexOf(data[i].subString) != -1)
+						return data[i].identity;
+				}
+				else if (dataProp)
+					return data[i].identity;
+			}
+		},
+		searchVersion: function (dataString) {
+			var index = dataString.indexOf(this.versionSearchString);
+			if (index == -1) return;
+			return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+		},
+		dataBrowser: [
+			{
+				string: navigator.userAgent,
+				subString: "Chrome",
+				identity: "Chrome"
+			},
+			{ 	string: navigator.userAgent,
+				subString: "OmniWeb",
+				versionSearch: "OmniWeb/",
+				identity: "OmniWeb"
+			},
+			{
+				string: navigator.vendor,
+				subString: "Apple",
+				identity: "Safari",
+				versionSearch: "Version"
+			},
+			{
+				prop: window.opera,
+				identity: "Opera",
+				versionSearch: "Version"
+			},
+			{
+				string: navigator.vendor,
+				subString: "iCab",
+				identity: "iCab"
+			},
+			{
+				string: navigator.vendor,
+				subString: "KDE",
+				identity: "Konqueror"
+			},
+			{
+				string: navigator.userAgent,
+				subString: "Firefox",
+				identity: "Firefox"
+			},
+			{
+				string: navigator.vendor,
+				subString: "Camino",
+				identity: "Camino"
+			},
+			{		// for newer Netscapes (6+)
+				string: navigator.userAgent,
+				subString: "Netscape",
+				identity: "Netscape"
+			},
+			{
+				string: navigator.userAgent,
+				subString: "MSIE",
+				identity: "Explorer",
+				versionSearch: "MSIE"
+			},
+			{
+				string: navigator.userAgent,
+				subString: "Gecko",
+				identity: "Mozilla",
+				versionSearch: "rv"
+			},
+			{ 		// for older Netscapes (4-)
+				string: navigator.userAgent,
+				subString: "Mozilla",
+				identity: "Netscape",
+				versionSearch: "Mozilla"
+			}
+		],
+		dataOS : [
+			{
+				string: navigator.platform,
+				subString: "Win",
+				identity: "Windows"
+			},
+			{
+				string: navigator.platform,
+				subString: "Mac",
+				identity: "Mac"
+			},
+			{
+				   string: navigator.userAgent,
+				   subString: "iPhone",
+				   identity: "iPhone/iPod"
+		    },
+			{
+				string: navigator.platform,
+				subString: "Linux",
+				identity: "Linux"
+			}
+		]
+	
+	};
+	
+	BrowserDetect.init();
+	
+	function clean(array, deleteValue){
+	
+		var array_clean = new Array();
+	
+		if(deleteValue == undefined) var deleteValue = '';
+	
+		var j = 0;
+		for(var i = 0; i < array.length; i++) {
+	
+			if(array[i] == deleteValue) continue;
+			if(isNaN(deleteValue) && isNaN(array[i])) continue;
+	
+			array_clean[j] = array[i];
+	
+			j++;
+		}
+	
+		return array_clean;
+	}
+	
+	function createCookie(name, value, sec){
+	
+		if (sec) {
+			var date = new Date();
+			date.setTime(date.getTime()+(sec*1000));
+			var expires = "; expires="+date.toGMTString();
+		}
+		else var expires = "";
+		document.cookie = name+"="+value+expires+"; path=/";
+	}
+	
+	function degToRad(d){
+		return d*(Math.PI/180);
+	}
+	
+	function detectKeyUp(e){
+		var evt = e || window.event;
+		if(evt.keyCode==82 && globalkeypress == "r"){globalkeypress = '';return;}
+	}
+	
+	function deleteCookie(name) {
+		createCookie(name,"",-1);
+	}
+	
+	function detectKeyDown(e){
+		var evt = e || window.event;
+		if(evt.keyCode==82){globalkeypress = 'r';} // r
+		if(evt.shiftKey === true){
+			if(globalkeypress == 'r'){
+				if(evt.keyCode==37){setKeyEvent("rotateYaxis", 45);} // left arrow
+				if(evt.keyCode==39){setKeyEvent("rotateYaxis", -45);} // right arrow
+				if(evt.keyCode==38){setKeyEvent("rotateXaxis", 45);} // up arrow
+				if(evt.keyCode==40){setKeyEvent("rotateXaxis", -45);} // down arrow
+				if(evt.keyCode==74){setKeyEvent("rotateZaxis", -45);} // j
+				if(evt.keyCode==75){setKeyEvent("rotateZaxis", 45);} // k
+			}else{
+				if(evt.keyCode==37){setKeyEvent("translateX", -10);} // left arrow
+				if(evt.keyCode==39){setKeyEvent("translateX", 10);} // right arrow
+				if(evt.keyCode==38){setKeyEvent("translateY", 10);} // up arrow
+				if(evt.keyCode==40){setKeyEvent("translateY", -10);} // down arrow
+				if(evt.keyCode==74){setKeyEvent("translateZ", 10);} // j
+				if(evt.keyCode==75){setKeyEvent("translateZ", -10);} // k
+			}
+		}else{
+			if(evt.metaKey === true){
+			}else{
+				if(globalkeypress == 'r'){
+					if(evt.keyCode==37){setKeyEvent("rotateYaxis", 10);} // left arrow
+					if(evt.keyCode==39){setKeyEvent("rotateYaxis", -10);} // right arrow
+					if(evt.keyCode==38){setKeyEvent("rotateXaxis", 10);} // up arrow
+					if(evt.keyCode==40){setKeyEvent("rotateXaxis", -10);} // down arrow
+					if(evt.keyCode==74){setKeyEvent("rotateZaxis", -10);} // j
+					if(evt.keyCode==75){setKeyEvent("rotateZaxis", 10);} // k
+				}else{
+					if(evt.keyCode==37){setKeyEvent("translateX", -1);} // left arrow
+					if(evt.keyCode==39){setKeyEvent("translateX", 1);} // right arrow
+					if(evt.keyCode==38){setKeyEvent("translateY", 1);} // up arrow
+					if(evt.keyCode==40){setKeyEvent("translateY", -1);} // down arrow
+					if(evt.keyCode==74){setKeyEvent("translateZ", 1);} // j
+					if(evt.keyCode==75){setKeyEvent("translateZ", -1);} // k
+					//if(evt.keyCode==80){} // p
+					if(evt.keyCode==32){setKeyEvent("playPauseAnimation");} // space-bar
+				}
+			}
+		}
+	}
+	
+	function doEvent(){
+	
+		var i, len;
+		var dx = 0;
+		var dy = 0;
+		var dz = 0;
+	
+		if (currentEvent == "callZoomIn"){
+			if(zoom <= 400){
+				zoom = zoom + 4;
+				depth = Math.floor(zoom * (eyez - maxzoom) / 100 + eyez);
+			}
+		}
+	
+		if (currentEvent == "callZoomOut"){
+			if(zoom >= 175){
+				zoom = zoom - 4;
+				depth = Math.floor(zoom * (eyez - maxzoom) / 100 + eyez);
+			}
+		}
+	
+		if(currentEvent == "translateZ") d = -d;
+	
+		// Apply translation
+		if (currentEvent == "translateX" || currentEvent == "translateY" || currentEvent == "translateZ")
+			for (i = 0, len = shape_transform.length; i < len; i++) eval(currentEvent + '(' + shape_transform[i] + ', d)');
+	
+		// Apply rotation
+	//	var t1 = new Date().getTime();
+		if (currentEvent == "rotateXaxis" || currentEvent == "rotateYaxis" || currentEvent == "rotateZaxis")
+			for (i = 0, len = shape_transform.length; i < len; i++) eval(currentEvent + '(' + shape_transform[i] + ', degToRad(d))');
+	//	var t2 = new Date().getTime();
+	//	alert(t2 - t1)
+	
+		if (currentEvent == "playPauseAnimation"){
+			playPauseAnimation();
+		}
+	}
+	
+	function extract_number(strString){
+		var strValidChars = "0123456789.-";
+		var strChar;
+		var returnString = "";
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		for (i = 0; i < strString.length; i++){
+			strChar = strString.charAt(i);
+			if(strValidChars.indexOf(strChar) > -1) returnString += strChar;
+		}
+		return parseFloat(returnString);
+	}
+	
+	function extract_alpha(strString){
+		var strNonAlphaChars = "0123456789.-";
+		var strChar;
+		var returnString = "";
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		for (i = 0; i < strString.length; i++){
+			strChar = strString.charAt(i);
+			if(strNonAlphaChars.indexOf(strChar) == -1) returnString += strChar;
+		}
+		return returnString;
+	}
+	
+	function firstToUpperCase(string){
+		if(typeof string === 'string'){
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		}else{
+			var string_array = new Array();
+			for (var i = 0, len = string.length; i < len; i++) string_array[i] = firstToUpperCase(string[i]);
+			return string_array;
+		}
+	}
+	
+	function getCookie(Name){ 
+		var re=new RegExp(Name+"=[^;]+", "i"); //construct RE to search for target name/value pair
+		if (document.cookie.match(re)) //if cookie found
+			return document.cookie.match(re)[0].split("=")[1] //return its value
+		return false;
+	}
+	
+	function getMouseXYLocal(e){
+		if(IE){return new Array(event.clientX,event.clientY);}else{return new Array(e.pageX,e.pageY);}
+	}
+	
+	function getStyle(el, styleProp) {
+	  var value, defaultView = (el.ownerDocument || document).defaultView;
+	  // W3C standard way:
+	  if (defaultView && defaultView.getComputedStyle) {
+	    // sanitize property name to css notation
+	    // (hypen separated words eg. font-Size)
+	    styleProp = styleProp.replace(/([A-Z])/g, "-$1").toLowerCase();
+	    return defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+	  } else if (el.currentStyle) { // IE
+	    // sanitize property name to camelCase
+	    styleProp = styleProp.replace(/\-(\w)/g, function(str, letter) {
+	      return letter.toUpperCase();
+	    });
+	    value = el.currentStyle[styleProp];
+	    // convert other units to pixels on IE
+	    if (/^\d+(em|pt|%|ex)?$/i.test(value)) { 
+	      return (function(value) {
+	        var oldLeft = el.style.left, oldRsLeft = el.runtimeStyle.left;
+	        el.runtimeStyle.left = el.currentStyle.left;
+	        el.style.left = value || 0;
+	        value = el.style.pixelLeft + "px";
+	        el.style.left = oldLeft;
+	        el.runtimeStyle.left = oldRsLeft;
+	        return value;
+	      })(value);
+	    }
+	    return value;
+	  }
+	}
+	
+	function getWindowHeight(){
+		var y = 0;
+		if (self.innerHeight) {
+			y = self.innerHeight;
+		} else if (document.documentElement && document.documentElement.clientHeight) {
+			y = document.documentElement.clientHeight;
+		} else if (document.body) {
+			y = document.body.clientHeight;
+		}
+	
+		return y;
+	}
+	
+	function getWindowWidth(){
+		var x = 0;
+		if (self.innerHeight) {
+			x = self.innerWidth;
+		} else if (document.documentElement && document.documentElement.clientHeight) {
+			x = document.documentElement.clientWidth;
+		} else if (document.body) {
+			x = document.body.clientWidth;
+		}
+		
+		return x;
+	}
+	
+	function has_numeric(strString){
+		var strValidChars = "0123456789.-";
+		var strChar;
+		var blnResult = false;
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		//  test strString consists of valid characters listed above
+		for (i = 0; i < strString.length && blnResult == false; i++){
+			strChar = strString.charAt(i);
+			if (strValidChars.indexOf(strChar) > -1){
+				blnResult = true;
+			}
+		}
+		return blnResult;
+	}
+	
+	function is_array(input){
+		return typeof(input)=='object'&&(input instanceof Array);
+	}
+	
+	function is_numeric(strString){
+		var strValidChars = "0123456789.-";
+		var strChar;
+		var blnResult = true;
+		var i;
+		
+		if (strString.length == 0) return false;
+	
+		//  test strString consists of valid characters listed above
+		for (i = 0; i < strString.length && blnResult == true; i++){
+			strChar = strString.charAt(i);
+			if (strValidChars.indexOf(strChar) == -1){
+				blnResult = false;
+			}
+		}
+		return blnResult;
+	}
+	
+	function listCookies(){
+	
+	    var all_cookies = document.cookie.split(';');
+	    var cookies = new Array();
+	
+	    for (var i = 0; i < all_cookies.length; i++) {
+			var cookie_split = all_cookies[i].split('=');
+			cookies[i] = {name : cookie_split[0], value : cookie_split[1]};
+	    }
+	
+	    return cookies;
+	}
+	
+	function mouseDownEvent(e){
+	
+		e.preventDefault();
+	
+		initialX = e.clientX;
+		initialY = e.clientY;
+		mousedown = 1;
+	}
+	
+	function mouseUpEvent(e){	
+	
+		e.preventDefault();
+	
+		mousedown = 0;
+	}
+	
+	function on_ajax_request_return2(url){
+		ajax_request(url, 'function=print_ui', 'ajax_fill_element', 'ui_div');
+		if(auto_view_r_result){
+			document.getElementById('r_call_view').submit();
+		}
+		window.status= '';
+	}
+	
+	function open_text_in_new_window(){
+		window.open('A.html','A','width=300, height=200');
+	}
+	
+	function parse_style_string(string){
+	
+		style_array = new Array();
+		string_split1 = string.split(";");
+	
+		for(i in string_split1){
+			if(string_split1[i] == "") continue;
+			string_split2 = string_split1[i].split(":");
+			style_array[string_split2[0]] = string_split2[1];
+		}
+	
+		return style_array; 
+	}
+	
+	function scrollEvent(e){
+		var id = baseName(e);
+		var delta = 0;
+	
+		//var start_a = new Date().getTime();
+	
+		if(IE){
+			s_initialX = event.clientX + document.body.scrollLeft;
+			s_initialY = event.clientY + document.body.scrollTop;
+			if(!event){event = window.event;}
+	    	var delta = event.wheelDelta / 40;
+		}else{
+			s_initialX = e.pageX;
+			s_initialY = e.pageY;
+		}
+	
+		if(e.detail){
+			var delta = -e.detail*5;
+			var max = 8;
+			if(delta > max){delta = max;}
+			if(delta < -max){delta = -max;}
+			zoom_shape(Math.round(delta*0.2)/20,s_initialX,s_initialY);
+		}
+	
+		if(e.wheelDelta){ // SAFARI
+			var delta = e.wheelDelta;
+			var max = 60;
+			if(delta > max){delta = max;}
+			if(delta < -max){delta = -max;}
+			zoom_shape(Math.round(delta*0.1)/20,s_initialX,s_initialY);
+		}
+	
+		//var end_a = new Date().getTime();
+		//document.getElementById("div_status").innerHTML += (end_a - start_a) + ' msec<br />';
+	
+	}
+	
+	function setKeyEvent(eventin,dist){
+		currentEvent = eventin;
+		d = dist;
+	
+		if (eventin !== "nothing" && eventin !== "refreshtozero"){
+	
+			doEvent();
+			updateShapes();
+	
+			set_key_event_calls += 1;
+	
+			//document.getElementById("div_status").innerHTML = set_key_event_calls;
+	
+	//	var start_b = new Date().getTime();
+	//	var end_b = new Date().getTime();
+	//	alert('A: ' + (end_a - start_a) + ' msec' + '\n' + 'B: ' + (end_b - start_b) + ' msec');
+		}
+	}
+	
+	function setEvents(e) {
+		var eventHandler = detectKeyDown;
+		document['on'+this.id] = eventHandler;
+	}
+	
+	function setViewboxProperties(){
+		window_properties.height = getWindowHeight();
+		window_properties.width = getWindowWidth();
+	
+		view_box.height = window_properties.height;
+		view_box.width = window_properties.width;
+	
+		x_window_shift = view_box.width/2;
+		y_window_shift = view_box.height/2;
+	}
+	
+	function sortasc(a,b){
+		return a - b;
+	}
+	
+	function string_to_array_cs(string){
+	
+		var i, j;
+		var t_arr = string.split(",");
+	
+		r_arr = new Array();
+		for(i = 0;i < t_arr.length;i++){
+			i_arr = trim(t_arr[i]).split(" ");
+			
+			r_arr[i] = new Array();
+			for(j = 0;j < i_arr.length;j++) r_arr[i][j] = parseFloat(i_arr[j])
+		}
+	
+		return r_arr;
+	}
+	
+	function updateVisibility(){
+	
+		var i,j;
+		var visibility;
+		var layers = new Array();
+	
+		// CYCLE THROUGH TABLE ELEMENTS
+		var div_control_panel_layers = document.getElementById("control_panel_layers");
+		var items = div_control_panel_layers.getElementsByTagName("*");
+		for (i = items.length; i--;) {
+	
+			if(items[i].tagName == 'TD' && items[i].name == 'label') layer = items[i].innerHTML;
+	
+			if(items[i].tagName == 'INPUT'){
+				layers[i] = new Array();
+				layers[i].name = layer;
+				if(items[i].checked){layers[i].visibility = '';}else{layers[i].visibility = 'hidden';}
+			}
+		}	
+	
+		var items = svgDocument.getElementsByTagName("*");
+		for (i = items.length; i--;) {
+	
+			visibility = '';
+			for(j in layers) if(items[i].getAttribute("layer") == layers[j].name) visibility = layers[j].visibility;
+			items[i].setAttribute("visibility", visibility);
+		}
+	}
+	
+	function toggle_div_visibility(id){
+		div = document.getElementById(id);
+		if(div.style.visibility == 'hidden'){
+			div.style.visibility = '';
+			div.style.height = '';
+			//div.style.width = new_width + 'px';
+		}else{
+			div.style.visibility = 'hidden';
+			div.style.height = '0px';
+			div.style.width = '0px';
+		}
+	}
+	
+	function trim(stringToTrim){
+		//http://www.somacon.com/p355.php
+		return stringToTrim.replace(/^\s+|\s+$/g,"");
+	}
+	
+	function ltrim(stringToTrim){
+		//http://www.somacon.com/p355.php
+		return stringToTrim.replace(/^\s+/,"");
+	}
+	
+	function rtrim(stringToTrim){
+		//http://www.somacon.com/p355.php
+		return stringToTrim.replace(/\s+$/,"");
+	}
+</script>
+<script type="text/javascript" >
+	//var shape_tags = ['arrow', 'circle', 'line', 'path', 'pathC', 'point', 'polygon', 'text'];
+	var shape_tags = ['circle', 'image', 'line', 'arrow', 'text', 'path', 'point'];
+	var shape_names = firstToUpperCase(shape_tags);
+	//var shape_transform = addC(shape_tags, 's').concat(['pointsAnimate']);
+	var shape_transform = addC(shape_tags, 's').concat(addC(shape_tags, 'sAnimate'));
+	
+	// Create global arrays for shapes
+	for (var i = 0, len = shape_tags.length; i < len; i++){
+		eval(shape_tags[i] + 's = new Array();');
+		eval(shape_tags[i] + 'sAttributes = new Array();');
+		eval(shape_tags[i] + 'sAnimate = new Array();');
+		eval(shape_tags[i] + 'sAnimateI = [];');
+		eval(shape_tags[i] + 'sAttributesAnimate = new Array();');
+		eval('var ' + shape_tags[i] + 's_animate;');
+	}
+	
+	pathCs = new Array();
+	pathCsAttributes = new Array();
+	pathCsAttributesAnimate = new Array();
+	
+	ZOrders = new Array();
+	Layers = new Array();
+	
+	var zoom = 280;
+	var maxzoom = -200;
+	var frame_adv = 1;
+	var eyez = 300;
+	var depth = Math.floor(zoom * (eyez - maxzoom) / 100 + eyez);
+	
+	var shape_properties = [
+		'x', 'y', 'z', 
+		'x1', 'y1', 'z1', 'x2', 'y2', 'z2', 
+		'cx', 'cy', 'cz',
+		'l', 'a', 'h', 'w'
+	];
+	
+	var attribute_properties = [
+		'r', 'fill', 'stroke', 'fill_opacity', 'stroke_opacity', 'opacity', 'stroke_width', 
+		'z_index', 'text_anchor', 'font_size', 'font_family', 'font_style', 
+		'font_weight', 'letter_spacing', 'writing_mode', 'glyph_orientation_vertical', 
+		'src', 'preserveAspectRatio'
+	];
+	
+	var properties = shape_properties.concat(attribute_properties);
+	var opacity_types = ['opacity', 'stroke_opacity', 'fill_opacity'];
+	var rotate_mode = true;
+	
+	var animation_length = 0;
+	var frame_width = 10;
+	var object_name = 'shape_viewer_3d';
+	var max_arrowhead_size = 15;
+	
+	view_box = new Array();
+	window_properties = new Array();
+	
+	var set_key_event_calls = 0;
+	
+	var anim_n = 0;
+	var arrow_angle = 25;
+	var currentEvent = "nothing";
+	var globalkeypress = '';
+	var IE = document.all ? true : false
+	var initiate = 0;
+	var zoom_speed = 5;
+	var sort_shapes = 0;
+	var stop_anim = 0;
+	var svgns = "http://www.w3.org/2000/svg";
+	var tempX = 0;
+	var tempY = 0;
+	var mousedown = 0;
+	var control_panel_visible = true;
+	
+	var point_color_r = 100;
+	var point_color_g = 0;
+	var point_color_b = 0;
+	var point_opacity = 0.5;
+	var point_radius = 4;
+	
+	var line_color_r = 0;
+	var line_color_g = 0;
+	var line_color_b = 0;
+	var line_width = 1;
+	var line_opacity = 1;
+	
+	var prevX, prevY;
+	var ajax_output;
+	
+	test_array = new Array();
+	
+	zindex = new Array();
+	points_i_to_k = new Array();
+	RefPoints = new Array();
+	Shapes = new Array();
+	Textlinks = new Array();
+	
+	AnimatePoints = new Array();
+	AnimateArrows = new Array();
+	AnimateLines = new Array();
+	
+	Translate = new Array();
+	Rotate = new Array();
+	
+	function animateShapes(anim_frame){
+	
+		var i, j, k, len, len_i, len_j;
+		var shape;
+		var anim_n_i = anim_n;
+	
+		// If animation frame is undefined
+		if(anim_frame == undefined){
+	
+			// If no animation reverse, reset frame number to zero at end
+			if(!animation_reverse){
+				if(anim_n >= animation_length || anim_n <= 0){
+					anim_n = 0;
+					frame_adv = 1;
+				}
+			}
+	
+			// If animation reverse is true reverse direction of frame count
+			if(animation_reverse){
+				if(anim_n <= 0) frame_adv = 1
+				if(anim_n >= animation_length){
+					anim_n = animation_length-1;
+					frame_adv = -1;
+				}
+			}
+		
+			// INCREASE ANIMATION REPEAT COUNT
+			if(anim_n < anim_n_i) animation_count++
+	
+		}else{
+	
+			// Check that frame number is greater than zero
+			if(anim_frame < 0) var anim_frame = 0;
+	
+			// Check that frame number does not exceed animation length
+			if(anim_frame >= animation_length) var anim_frame = animation_length-1;
+			
+			anim_n = anim_frame;
+		}
+	
+		// IF MAXIMUM NUMBER OF REPEATS IS REACHED, STOP ANIMATION
+		if(animation_repeat > -1 && animation_count > animation_repeat){
+			clearInterval(intervalID);
+			return;
+		}
+	
+		// alert('Frame number: ' + anim_n + '\n' + 'Number of repeats: ' + animation_count)
+	
+		// ANIMATE SHAPES
+		if(circles_animate){
+			for(i = 0, len = circlesAnimate.length;i < len; i++){
+				circles[circlesAnimateI[i]].x = circlesAnimate[i].x[anim_n];
+				circles[circlesAnimateI[i]].y = circlesAnimate[i].y[anim_n];
+				circles[circlesAnimateI[i]].z = circlesAnimate[i].z[anim_n];
+				circles[circlesAnimateI[i]].r = circlesAnimate[i].r[anim_n];
+			}
+		}
+	
+		if(images_animate){
+			for(i = 0, len = imagesAnimate.length;i < len; i++){
+				images[imagesAnimateI[i]].x1 = imagesAnimate[i].x1[anim_n];
+				images[imagesAnimateI[i]].y1 = imagesAnimate[i].y1[anim_n];
+				images[imagesAnimateI[i]].z1 = imagesAnimate[i].z1[anim_n];
+				images[imagesAnimateI[i]].x2 = imagesAnimate[i].x2[anim_n];
+				images[imagesAnimateI[i]].y2 = imagesAnimate[i].y2[anim_n];
+				images[imagesAnimateI[i]].z2 = imagesAnimate[i].z2[anim_n];
+			}
+		}
+	
+		if(lines_animate){
+			for(i = 0, len = linesAnimate.length;i < len; i++){
+				lines[linesAnimateI[i]].x1 = linesAnimate[i].x1[anim_n];
+				lines[linesAnimateI[i]].y1 = linesAnimate[i].y1[anim_n];
+				lines[linesAnimateI[i]].z1 = linesAnimate[i].z1[anim_n];
+				lines[linesAnimateI[i]].x2 = linesAnimate[i].x2[anim_n];
+				lines[linesAnimateI[i]].y2 = linesAnimate[i].y2[anim_n];
+				lines[linesAnimateI[i]].z2 = linesAnimate[i].z2[anim_n];
+			}
+		}
+	
+		if(arrows_animate){
+			for(i = 0, len = arrowsAnimate.length;i < len; i++){
+				arrows[arrowsAnimateI[i]].x1 = arrowsAnimate[i].x1[anim_n];
+				arrows[arrowsAnimateI[i]].y1 = arrowsAnimate[i].y1[anim_n];
+				arrows[arrowsAnimateI[i]].z1 = arrowsAnimate[i].z1[anim_n];
+				arrows[arrowsAnimateI[i]].x2 = arrowsAnimate[i].x2[anim_n];
+				arrows[arrowsAnimateI[i]].y2 = arrowsAnimate[i].y2[anim_n];
+				arrows[arrowsAnimateI[i]].z2 = arrowsAnimate[i].z2[anim_n];
+			}
+		}
+	
+		if(points_animate){
+			for(i = 0, len = pointsAnimate.length;i < len; i++){
+				points[pointsAnimateI[i]].x = pointsAnimate[i].x[anim_n];
+				points[pointsAnimateI[i]].y = pointsAnimate[i].y[anim_n];
+				points[pointsAnimateI[i]].z = pointsAnimate[i].z[anim_n];
+			}
+		}
+	
+		if(texts_animate){
+			for(i = 0, len = textsAnimate.length;i < len; i++){
+				texts[textsAnimateI[i]].x = textsAnimate[i].x[anim_n];
+				texts[textsAnimateI[i]].y = textsAnimate[i].y[anim_n];
+				texts[textsAnimateI[i]].z = textsAnimate[i].z[anim_n];
+				texts[textsAnimateI[i]].s = textsAnimate[i].s[anim_n];
+			}
+		}
+	
+		// ANIMATE ATTRIBUTES
+	
+		if(circles_attributes_animate){
+	
+			for(i = 0, len_i = circlesAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(circlesAttributesAnimate[i][attribute_properties[j]] == null) continue
+					if(attribute_properties[j] == 'r') continue // 'r' is saved in 'circles'
+	
+					circlesAttributes[circlesAttributesAnimate[i].i][attribute_properties[j]] = 
+						circlesAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('circle' + circlesAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(circlesAttributes[circlesAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(images_attributes_animate){
+	
+			for(i = 0, len_i = imagesAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(imagesAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					imagesAttributes[imagesAttributesAnimate[i].i][attribute_properties[j]] = 
+						imagesAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('image' + imagesAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(imagesAttributes[imagesAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(lines_attributes_animate){
+	
+			for(i = 0, len_i = linesAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(linesAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					linesAttributes[linesAttributesAnimate[i].i][attribute_properties[j]] = 
+						linesAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('line' + linesAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(linesAttributes[linesAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(arrows_attributes_animate){
+	
+			for(i = 0, len_i = arrowsAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(arrowsAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					arrowsAttributes[arrowsAttributesAnimate[i].i][attribute_properties[j]] = 
+						arrowsAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('arrow' + arrowsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(arrowsAttributes[arrowsAttributesAnimate[i].i]));
+				shape = svgDocument.getElementById('arrowha' + arrowsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(arrowsAttributes[arrowsAttributesAnimate[i].i]));
+				shape = svgDocument.getElementById('arrowhb' + arrowsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(arrowsAttributes[arrowsAttributesAnimate[i].i]));
+			}
+		}
+	
+		if(points_attributes_animate){
+	
+			for(i = 0, len_i = pointsAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(pointsAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					pointsAttributes[pointsAttributesAnimate[i].i][attribute_properties[j]] = 
+						pointsAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('point' + pointsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(pointsAttributes[pointsAttributesAnimate[i].i]));
+				shape.setAttribute("r", pointsAttributesAnimate[i].r[anim_n]);
+			}
+		}
+	
+		if(texts_attributes_animate){
+	
+			for(i = 0, len_i = textsAttributesAnimate.length;i < len_i; i++){
+				for(j = 0, len_j = attribute_properties.length;j < len_j; j++){
+	
+					if(textsAttributesAnimate[i][attribute_properties[j]] == null) continue
+	
+					textsAttributes[textsAttributesAnimate[i].i][attribute_properties[j]] = 
+						textsAttributesAnimate[i][attribute_properties[j]][anim_n];
+				}
+	
+				shape = svgDocument.getElementById('text' + textsAttributesAnimate[i].i);
+				shape.setAttribute("style", attributesToString(textsAttributes[textsAttributesAnimate[i].i]));
+			}
+		}
+	
+		// Update animation controls
+		var frame_input =document.getElementById('animation_frame_count_input');
+	
+		// Check that frame controls are present
+		if(frame_input !== null){
+	
+			// Add frame count to animation frame input
+			document.getElementById('animation_frame_count_input').value = (anim_n+1);
+	
+			// Update slider position
+			document.getElementById('animation_frame_range_input').value = Math.round(((anim_n) / (animation_length-1))*100);
+		}
+	
+		anim_n = anim_n + frame_adv;
+		updateShapes();
+	
+		return;
+	}
+	
+	function applyCookies(){
+	
+		var cookies = listCookies();
+	
+		for (i = 0; i < cookies.length; i++) {
+	
+			if(cookies[i].value == undefined) continue;
+	
+			// Call function call cookies using eval
+			if(cookies[i].value == 'eval') eval(cookies[i].name);
+		}
+	}
+	
+	function changeLayerOpacity(layer, opacity){
+	
+		var i, j, len, len_j;
+		var match;
+		var shape;
+		var opacity_i, stroke_opacity_i, fill_opacity_i;
+		var animate_idx;
+	
+		for (i = 0, len = Layers.length; i < len; i++) {
+	
+			match = false;
+			
+			if(Layers[i].layer.length == 1){
+				
+				if(Layers[i].layer == layer) match = true;
+	
+			}else{
+				for (j = 0, len_j = Layers[i].layer.length; j < len_j; j++) if(Layers[i].layer[j] == layer) match = true;
+			}
+	
+			if(!match) continue;
+			
+			var opacity_i;
+			var stroke_opacity_i;
+			var fill_opacity_i;
+			var opacity_animate_i;
+			var stroke_opacity_animate_i;
+			var fill_opacity_animate_i;
+	
+			for (j = 0, len_j = opacity_types.length; j < len_j; j++){
+	
+				eval('var is_attribute = ' + Layers[i].type + 'sAttributes[' + Layers[i].i + '].' + opacity_types[j] + ';')
+					
+				if(is_attribute == undefined) continue;
+	
+				eval(Layers[i].type + 'sAttributes[' + Layers[i].i + '].' + opacity_types[j] + ' = ' + opacity + ';');
+				var shape = svgDocument.getElementById(Layers[i].type + Layers[i].i);
+				eval('shape.setAttribute("style", attributesToString(' + Layers[i].type + 'sAttributes[' + Layers[i].i + ']));');
+	
+				if(Layers[i].type == 'arrow'){
+					var shape = svgDocument.getElementById(Layers[i].type + 'ha' + Layers[i].i);
+					eval('shape.setAttribute("style", attributesToString(' + Layers[i].type + 'sAttributes[' + Layers[i].i + ']));');
+	
+					var shape = svgDocument.getElementById(Layers[i].type + 'hb' + Layers[i].i);
+					eval('shape.setAttribute("style", attributesToString(' + Layers[i].type + 'sAttributes[' + Layers[i].i + ']));');
+				}
+			}
+			
+			if(Layers[i].type !== 'path'){
+				
+				eval('animate_idx = ' + Layers[i].type + 'sAttributes[' + Layers[i].i + '].animate');
+	
+				if(animate_idx !== null){
+	
+					for (j = 0, len_j = opacity_types.length; j < len_j; j++){
+	
+						eval(opacity_types[j] + '_i = ' + Layers[i].type + 'sAttributesAnimate[' + animate_idx 
+							+ '].' + opacity_types[j] + ';')
+	
+						eval('if(' + opacity_types[j] + '_i !== undefined && ' + opacity_types[j] + 
+							'_i !== null){' + Layers[i].type + 'sAttributesAnimate[' + animate_idx 
+							+ '].' + opacity_types[j] + ' = null;}');
+					}
+				}
+			}
+		}
+	}
+	
+	function fitShapesToWindow(){
+	
+		var i;
+		var len;
+		var shape_limits;
+		var xmin = [], xmax = [], ymin = [], ymax = [], zmin = [], zmax = [];
+	
+		// Get coordinate limits in space
+		for (i = 0, len = shape_transform.length; i < len; i++){
+	
+			// Get limits for each shape
+			eval('shape_limits = limits(' + shape_transform[i] + ');');
+	
+			if(shape_limits.xmin == undefined) continue;
+			if(shape_limits.xmin == -Infinity) continue;
+			if(isNaN(shape_limits.xmin)) continue;
+	
+			// Add limits to array
+			xmin.push(shape_limits.xmin);
+			xmax.push(shape_limits.xmax);
+			ymin.push(shape_limits.ymin);
+			ymax.push(shape_limits.ymax);
+			zmin.push(shape_limits.zmin);
+			zmax.push(shape_limits.zmax);
+		}
+	
+		// Remove NaN and Infinity values
+		xmin = clean(xmin, NaN);
+		xmin = clean(xmin, Infinity);
+		xmax = clean(xmax, NaN);
+		xmax = clean(xmax, Infinity);
+		ymin = clean(ymin, NaN);
+		ymin = clean(ymin, Infinity);
+		ymax = clean(ymax, NaN);
+		ymax = clean(ymax, Infinity);
+		zmin = clean(zmin, NaN);
+		zmin = clean(zmin, Infinity);
+		zmax = clean(zmax, NaN);
+		zmax = clean(zmax, Infinity);
+	
+		// Find ranges for all shapes
+		xmin = min.apply(Math, xmin);
+		ymin = min.apply(Math, ymin);
+		zmin = min.apply(Math, zmin);
+	
+		// Find ranges for all shapes
+		xmax = max.apply(Math, xmax);
+		ymax = max.apply(Math, ymax);
+		zmax = max.apply(Math, zmax);
+	
+		// Find ranges
+		var x_range = xmax - xmin;
+		var y_range = ymax - ymin;
+		var z_range = zmax - zmin;
+	
+		// Replace any zero x,y ranges with maximum range
+		var max_range = max.apply(Math, [x_range, y_range, z_range]);
+		if(x_range == 0) x_range = max_range;
+		if(y_range == 0) y_range = max_range;
+	
+		// If all ranges are zero, make scaling 1
+		if(x_range == 0 && y_range == 0 && z_range == 0){
+	
+			scaling = 1;
+	
+		}else{
+	
+			// Get window dimensions
+			if(z_range == 0){
+				var view_width = getWindowWidth() - 5*margin;
+				var view_height = getWindowHeight() - 5*margin;
+			}else{
+				var view_width = getWindowWidth() - 2*margin;
+				var view_height = getWindowHeight() - 2*margin;
+			}
+	
+			// Find projection factor
+			var u = -(depth - eyez) / ((z_range / 2) - eyez);
+			var u2 = -(depth - eyez) / ((-z_range / 2) - eyez);
+	
+			// Solve for scaling from each dimension
+			var scaling_x = 1 / ((((x_range / 2) * (depth - eyez)) / (eyez * ((getWindowWidth() - margin) - x_window_shift))) + ((z_range / 2) / eyez));
+			var scaling_y = 1 / ((((y_range / 2) * (depth - eyez)) / (eyez * ((getWindowHeight() - margin) - y_window_shift))) + ((z_range / 2) / eyez));
+	
+			// Take minimum scaling
+			scaling = Math.min(scaling_x, scaling_y)
+		}
+		
+		//alert('Ranges:\nx:\t' + xmin + ', ' + xmax + ' (' + x_range + ')\ny:\t' + ymin + ', ' + ymax + ' (' + y_range + ')\nz:\t' + zmin + ', ' + zmax + ' (' + z_range + ')');
+		
+		// Find center
+		var center = [(xmin + x_range/2), (ymin + y_range/2), (zmin + z_range/2)];
+	
+		// Center all shapes
+		for (i = 0, len = shape_transform.length; i < len; i++) eval('translate(' + shape_transform[i] + ', ' + -center[0] + ', ' + -center[1] + ', ' + -center[2] + ')');
+	
+		// Scale all shapes
+		for (i = 0, len = shape_transform.length; i < len; i++) eval('scale(' + shape_transform[i] + ', ' + scaling + ')');
+	
+		return;
+	}
+	
+	function getMouseMoveXY(e){
+	
+		if(initiate == 0){
+			prevX = initialX;
+			prevY = initialY;
+		}
+		initiate = 1;
+	
+		if(IE){
+			tempX = e.clientX + document.body.scrollLeft;
+			tempY = e.clientY + document.body.scrollTop;
+		}else{
+			tempX = e.pageX;
+			tempY = e.pageY;
+		}  
+	
+		if (tempX < 0){tempX = 0;}
+		if (tempY < 0){tempY = 0;}  
+	
+		if(mousedown == 1 && globalkeypress == ''){
+	
+			distX = tempX - prevX;
+			distY = prevY - tempY;
+			
+			if(distX !== 0){setKeyEvent("translateX", distX/4.667);}  // manually calibrated
+			if(distY !== 0){setKeyEvent("translateY", distY/4.667);}
+		}
+		if(mousedown == 1 && (globalkeypress == 'r' || rotate_mode == true)){
+			distX = tempX - prevX;
+			distY = prevY - tempY;
+			
+			if(distX !== 0){setKeyEvent("rotateYaxis", -distX);}
+			if(distY !== 0){setKeyEvent("rotateXaxis", distY);}
+		}
+	
+		prevX = tempX
+		prevY = tempY
+	
+		return false;
+	}
+	
+	function get_transformations(){
+	
+		if(document.getElementsByTagName("transformation").length){
+			for(i = 0;i < document.getElementsByTagName("transformation").length;i++){
+	
+				var svg_elem = document.getElementsByTagName("transformation")[i];
+	
+				// SET TRANSLATE ARRAY
+				if(svg_elem.getAttribute("translate") !== null) Translate = Translate.concat(string_to_array_cs(svg_elem.getAttribute("translate")))
+	
+				// SET ROTATE ARRAY
+				if(svg_elem.getAttribute("rotate") !== null) Rotate = Rotate.concat(string_to_array_cs(svg_elem.getAttribute("rotate")))
+			}
+		}
+	}
+	
+	function getShapes(){
+	
+		var i, j, k;
+		var len_j, len_k;
+		var shape_tag;
+		var doc_shapes;
+		var doc_shapes_len;
+		var property_name;
+		var attributes_animate;
+	
+		// ADD LINESC TO SHAPES FOR LOCAL USE ONLY
+		var shape_tags_loc = shape_tags.slice();
+		shape_tags_loc.push('pathC');
+	
+		for(i = 0; i < shape_tags_loc.length; i++){
+		
+			shape_tag = shape_tags_loc[i];
+			if(shape_tag == 'image') shape_tag = 'img';
+			
+			doc_shapes = document.getElementsByTagName(shape_tag)
+	
+			if(!doc_shapes.length) continue;
+	
+			for(j = 0, len_j = doc_shapes.length;j < len_j; j++){
+	
+				// Clear property variables
+				for(k = 0, len_k = properties.length;k < len_k; k++)
+					eval("var " + properties[k] + " = null;var " + properties[k] + "_init = null;");
+	
+				// SET SHAPE PROPERTIES
+				for(k = 0, len_k = shape_properties.length;k < len_k; k++){
+	
+					property_name = shape_properties[k].replace(/_/g, '-')
+	
+					if(doc_shapes[j].getAttribute(property_name) == null) continue;
+					
+					if(doc_shapes[j].getAttribute(property_name).indexOf(',') > -1){
+						eval(shape_properties[k] + " = doc_shapes[j].getAttribute(\"" + property_name + "\").split(\",\");");
+						eval("animation_length = " + shape_properties[k] + ".length;");
+						eval(shape_properties[k] + "_init = " + shape_properties[k] + "[0]");
+					}else{
+						eval(shape_properties[k] + "_init = doc_shapes[j].getAttribute(\"" + property_name + "\");");
+						eval(shape_properties[k] + " = null");
+					}
+				}
+	
+				// Set attribute properties
+				attributes_animate = false;
+				for(k = 0, len_k = attribute_properties.length;k < len_k; k++){
+	
+					property_name = attribute_properties[k].replace(/_/g, '-')
+	
+					if(doc_shapes[j].getAttribute(property_name) == null) continue;
+	
+					if(doc_shapes[j].getAttribute(property_name).indexOf(',') > -1 && doc_shapes[j].getAttribute(property_name).indexOf('rgb') == -1 && property_name !== 'src'){
+						eval(attribute_properties[k] + " = doc_shapes[j].getAttribute(\"" + property_name + "\").split(\",\");");
+						eval("animation_length = " + attribute_properties[k] + ".length;");
+						eval(attribute_properties[k] + "_init = " + attribute_properties[k] + "[0]");
+						attributes_animate = true;
+					}else{
+						eval(attribute_properties[k] + "_init = doc_shapes[j].getAttribute(\"" + property_name + "\");");
+						eval(attribute_properties[k] + " = null");
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'circle'){
+	
+					circles[j] = new circle(parseFloat(cx_init), parseFloat(cy_init), parseFloat(cz_init), parseFloat(r_init));
+	
+					// Multiple center coordinates given but only single radius, replicate to same length
+					if(cx !== null && r == null){
+						r = Array.apply(null, new Array(cx.length)).map(String.prototype.valueOf, r_init);
+					}
+	
+					// Multiple radii given but only single center coordinate, replicate to same length
+					if(cx == null && r !== null){
+						cx = Array.apply(null, new Array(r.length)).map(String.prototype.valueOf, cx_init);
+						cy = Array.apply(null, new Array(r.length)).map(String.prototype.valueOf, cy_init);
+						cz = Array.apply(null, new Array(r.length)).map(String.prototype.valueOf, cz_init);
+					}
+	
+					if(cx !== null){
+						circlesAnimate[circlesAnimate.length] = new circleAnimate(
+							cx.map(parseFloat), cy.map(parseFloat), cz.map(parseFloat), r.map(parseFloat)
+						);
+						circlesAnimateI.push(j);
+					}
+	
+					circlesAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : circlesAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						circlesAttributesAnimate[circlesAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'image'){
+	
+					images[j] = new line(
+						parseFloat(x1_init), parseFloat(y1_init), parseFloat(z1_init), 
+						parseFloat(x2_init), parseFloat(y2_init), parseFloat(z2_init));
+	
+					if(x1 !== null){
+						imagesAnimate[imagesAnimate.length] = new lineAnimate(
+							x1.map(parseFloat), y1.map(parseFloat), z1.map(parseFloat), 
+							x2.map(parseFloat), y2.map(parseFloat), z2.map(parseFloat)
+						);
+						imagesAnimateI.push(j);
+					}
+	
+					imagesAttributes[j] = new imageAttributes(
+						(!src_init ? 0 : src_init),
+						(!preserveAspectRatio_init ? 'none' : preserveAspectRatio_init),
+						(!opacity_init ? 1 : opacity_init),
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : imagesAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						imagesAttributesAnimate[imagesAttributesAnimate.length] = 
+							new imageAttributesAnimate(j, src, preserveAspectRatio, opacity, z_index);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'arrow'){
+	
+					arrows[j] = new arrow(
+						parseFloat(x1_init), parseFloat(y1_init), parseFloat(z1_init), 
+						parseFloat(x2_init), parseFloat(y2_init), parseFloat(z2_init),
+						parseFloat(l_init), parseFloat(a_init));
+	
+					if(x1 !== null){
+						arrowsAnimate[arrowsAnimate.length] = new arrowAnimate(
+							x1.map(parseFloat), y1.map(parseFloat), z1.map(parseFloat), 
+							x2.map(parseFloat), y2.map(parseFloat), z2.map(parseFloat),
+							parseFloat(l_init), parseFloat(a_init)
+						);
+						arrowsAnimateI.push(j);
+					}
+	
+					arrowsAttributes[j] = new shapeAttributes(
+						"none",
+						"none",
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : arrowsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						arrowsAttributesAnimate[arrowsAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'line'){
+	
+					lines[j] = new line(
+						parseFloat(x1_init), parseFloat(y1_init), parseFloat(z1_init), 
+						parseFloat(x2_init), parseFloat(y2_init), parseFloat(z2_init));
+	
+					if(x1 !== null){
+						linesAnimate[linesAnimate.length] = new lineAnimate(
+							x1.map(parseFloat), y1.map(parseFloat), z1.map(parseFloat), 
+							x2.map(parseFloat), y2.map(parseFloat), z2.map(parseFloat)
+						);
+						linesAnimateI.push(j);
+					}
+	
+					linesAttributes[j] = new shapeAttributes(
+						"none",
+						"none",
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : linesAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						linesAttributesAnimate[linesAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'pathC'){
+					
+					pathCs[j] = doc_shapes[j].getAttribute("d").split(",");
+	
+					pathCsAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : pathCsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						pathCsAttributesAnimate[pathCsAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index
+						);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'path'){
+	
+					paths[j] = parseSVGPath(doc_shapes[j].getAttribute("d"))
+	
+					pathsAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						'',
+						(!z_index_init ? 0 : z_index_init),
+						null
+					);
+				}
+	
+				if(shape_tags_loc[i] == 'point'){
+	
+					if(x !== null){
+						pointsAnimate[pointsAnimate.length] = new pointAnimate(x.map(parseFloat), y.map(parseFloat), z.map(parseFloat));
+						pointsAnimateI.push(j);
+					}
+	
+					points[j] = new point(parseFloat(x_init), parseFloat(y_init), parseFloat(z_init));
+	
+					pointsAttributes[j] = new shapeAttributes(
+						(!fill_init ? "none" : fill_init),
+						(!fill_opacity_init ? 1 : fill_opacity_init),
+						(!stroke_init ? "black" : stroke_init),
+						(!stroke_opacity_init ? 1 : stroke_opacity_init),
+						(!stroke_width_init ? 1 : stroke_width_init),
+						(!r_init ? 1 : r_init),
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : pointsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						pointsAttributesAnimate[pointsAttributesAnimate.length] = 
+							new shapeAttributesAnimate(j, fill, fill_opacity, stroke, 
+							stroke_opacity, stroke_width, r, z_index);
+					}
+				}
+	
+				if(shape_tags_loc[i] == 'text'){
+	
+					// Multiple coordinates given but only single font size, replicate to same length
+					if(x !== null && font_size == null){
+						font_size = Array.apply(null, new Array(x.length)).map(String.prototype.valueOf, font_size_init);
+					}
+	
+					// Multiple font sizes given but only single coordinate, replicate to same length
+					if(x == null && font_size !== null){
+						x = Array.apply(null, new Array(font_size.length)).map(String.prototype.valueOf, x_init);
+						y = Array.apply(null, new Array(font_size.length)).map(String.prototype.valueOf, y_init);
+						z = Array.apply(null, new Array(font_size.length)).map(String.prototype.valueOf, z_init);
+					}
+	
+					if(x !== null){
+						textsAnimate[textsAnimate.length] = new textAnimate(x.map(parseFloat), y.map(parseFloat), z.map(parseFloat), font_size.map(parseFloat));
+						textsAnimateI.push(j);
+					}
+	
+					texts[j] = new text(parseFloat(x_init), parseFloat(y_init), parseFloat(z_init), (!font_size_init ? 12 : font_size_init));
+	
+					textsAttributes[j] = new textAttributes(
+						doc_shapes[j].childNodes[0].nodeValue,
+						(!text_anchor_init ? "middle" : text_anchor_init),
+						(!fill_init ? "black" : fill_init),
+						(!opacity_init ? 1 : opacity_init),
+						(!font_family_init ? "Arial" : font_family_init),
+						(!font_style_init ? "" : font_style_init),
+						(!font_weight_init ? "" : font_weight_init),
+						(!letter_spacing_init ? 0 : letter_spacing_init),
+						(!writing_mode_init ? "" : writing_mode_init),
+						(!glyph_orientation_vertical_init ? "" : glyph_orientation_vertical_init),
+						(!z_index_init ? 0 : z_index_init),
+						(!attributes_animate ? null : textsAttributesAnimate.length)
+					);
+	
+					if(attributes_animate){
+						textsAttributesAnimate[textsAttributesAnimate.length] = 
+							new textAttributesAnimate(j, text_anchor, fill, 
+							opacity, font_family, font_style, font_weight, letter_spacing, 
+							writing_mode, glyph_orientation_vertical, z_index);
+					}
+				}
+	
+				ZOrders.push(new ZOrder( (!z_index_init ? 0 : z_index_init), j, shape_tags_loc[i] ));
+	
+				if(doc_shapes[j].getAttribute("layer") !== null)
+					Layers.push(new Layer(doc_shapes[j].getAttribute("layer").split(","), j, shape_tags_loc[i]));
+			}
+		}
+	
+		// SET REFERENCE POINTS
+		RefPoints = new Array(0,0,0)
+	}
+	
+	function onLoadFunctions(evt){
+	
+		svgns = "http://www.w3.org/2000/svg";
+		XLINK = "http://www.w3.org/1999/xlink";
+	
+		svgDocument = document.getElementById("world");
+	
+		window.onresize = function(event) {
+			onWindowResize();
+			updateShapes();
+		}
+	
+		if(BrowserDetect.browser == "Firefox"){
+			svgDocument.style.width = getWindowWidth() + "px";
+			svgDocument.style.height = getWindowHeight() + "px";
+		}
+	
+		document.getElementById('keydown').focus();
+		document.getElementById('keydown').onclick = setEvents;
+		document.getElementById('keydown').onclick();
+		document.onkeyup = detectKeyUp;
+	//	document.onmousemove = getMouseMoveXY;
+	//	document.onmousedown = mouseDownEvent;
+	//	document.onmouseup = mouseUpEvent;
+	
+		svgDocument.onmousemove = getMouseMoveXY;
+		svgDocument.onmousedown = mouseDownEvent;
+		svgDocument.onmouseup = mouseUpEvent;
+	
+		svgDocument.onkeyup = detectKeyUp;
+		svgDocument.onkeydown = detectKeyDown;
+		if(window.addEventListener){svgDocument.addEventListener('DOMMouseScroll', scrollEvent, false);}
+		svgDocument.onmousewheel = scrollEvent;
+	
+		setViewboxProperties();
+		getShapes();
+		get_transformations();
+		setAnimationParameters();
+	
+		// Apply default show/hide control panel
+		if(show_control_panel){showHideControlPanel("show", false);}else{showHideControlPanel("hide", false);}
+		if(start_rotate){toggle_rotate_mode("rotate", false);}else{toggle_rotate_mode("translate", false);}
+	
+		// Set background color
+		svgDocument.style.backgroundColor = background_color;
+	
+		renderShapes();
+		fitShapesToWindow();
+		updateShapes();
+		applyCookies();
+		writeControlIcon();
+	
+		if(animation_length > 1) startAnimation();
+		
+		//changeLayerOpacity('Joint constraints', 0.2);
+	
+		// Clear all cookies
+		//var cookies = listCookies();for (var i = 0; i < cookies.length; i++) deleteCookie(cookies[i].name);
+	}
+	
+	function onWindowResize(){
+	
+		if(BrowserDetect.browser == "Firefox"){
+			svgDocument.style.width = getWindowWidth() + "px";
+			svgDocument.style.height = getWindowHeight() + "px";
+		}
+	
+		setViewboxProperties();
+		fitShapesToWindow();
+	}
+	
+	function playPauseAnimation(state){
+	
+		// If state is undefined, reverse current state
+		if(state == undefined){
+			if(stop_anim == 1){stop_anim = 0;}else{stop_anim = 1;}
+		}else{
+			if(state == 'stop'){stop_anim = 1;}else{stop_anim = 0;}
+		}
+	
+		var control_play = document.getElementById('control_play');
+		var control_icon_play = document.getElementById('control_icon_play');
+	
+		if(stop_anim == 1){
+			// Pause animation
+			clearInterval(intervalID);
+			
+			if(control_play == null) return;
+	
+			// Set play/pause icon to play
+			control_play.title = 'Click to play animation or press the spacebar';
+			control_play.style.padding = '0px 2px 0px 3px';
+			control_icon_play.innerHTML = '&#9654;';
+			control_icon_play.style.fontSize = '1.2em';
+			control_icon_play.style.lineHeight = '23px';
+			control_icon_play.style.letterSpacing = '-1px';
+		}else{
+			// Play animation
+			startAnimation();
+	
+			if(control_play == null) return;
+	
+			// Set play/pause icon to pause
+			control_play.title = 'Click to pause animation or press the spacebar';
+			control_play.style.padding = '0px 0px 0px 5px';
+			control_icon_play.innerHTML = '&#9612; &#9612;';
+			control_icon_play.style.fontSize = '0.8em';
+			control_icon_play.style.lineHeight = '19px';
+			control_icon_play.style.letterSpacing = '-1px';
+		}
+	}
+	
+	function renderShapes(){ 	 	
+	
+		var i;
+		var idx;
+		var len;
+		var shape;
+		var svg_shape_type;
+	
+		// Sort by Z-Order
+		ZOrders.sort(function(a,b){return a.z - b.z})
+	
+		// Add shapes to SVG document
+		for (i = 0, len = ZOrders.length; i < len; i++) {
+	
+			idx = ZOrders[i].i;
+	
+			svg_shape_type = ZOrders[i].type;
+			if(svg_shape_type == 'point') svg_shape_type = 'circle';
+			if(svg_shape_type == 'pathC') svg_shape_type = 'path';
+			if(svg_shape_type == 'arrow') svg_shape_type = 'line';
+	
+			shape = document.createElementNS(svgns, svg_shape_type);
+			shape.setAttribute("id", ZOrders[i].type + idx);
+	
+			eval('shape.setAttribute("style", attributesToString(' + ZOrders[i].type + 'sAttributes[' + idx + ']))');
+	
+			if(ZOrders[i].type == 'image'){
+				shape.setAttributeNS('http://www.w3.org/1999/xlink', 'href', imagesAttributes[idx].src);
+				shape.setAttribute("preserveAspectRatio", imagesAttributes[idx].preserveAspectRatio);
+			}
+	
+			if(ZOrders[i].type == 'text'){
+				var textBlock = document.createTextNode(textsAttributes[idx].text);
+				shape.appendChild(textBlock);
+			}
+	
+			if(ZOrders[i].type == 'point') shape.setAttribute("r", pointsAttributes[idx].r);
+	
+			svgDocument.appendChild(shape);
+	
+			if(ZOrders[i].type == 'arrow'){
+				shape = document.createElementNS(svgns, svg_shape_type);
+				shape.setAttribute("id", ZOrders[i].type + 'ha' + idx);
+				eval('shape.setAttribute("style", attributesToString(' + ZOrders[i].type + 'sAttributes[' + idx + ']))');
+				svgDocument.appendChild(shape);
+				shape = document.createElementNS(svgns, svg_shape_type);
+				shape.setAttribute("id", ZOrders[i].type + 'hb' + idx);
+				eval('shape.setAttribute("style", attributesToString(' + ZOrders[i].type + 'sAttributes[' + idx + ']))');
+				svgDocument.appendChild(shape);
+			}
+		}
+	
+		return;
+	}
+	
+	function setAnimationParameters(){
+	
+		var i, len;
+		var property_length;
+	
+		for (i = 0, len = shape_tags.length; i < len; i++){
+	
+			property_length = 'x';
+	
+			if(shape_tags[i] == 'line' || shape_tags[i] == 'arrow') property_length = 'x1';
+	
+			eval('if(' + shape_tags[i] + 'sAnimate.length){' + shape_tags[i] + 's_animate = true;' + 
+				'}else{' + shape_tags[i] + 's_animate = false;}');
+		}
+	
+		// TEST WHETHER TO ANIMATE SHAPE ATTRIBUTES
+		for (i = 0, len = shape_tags.length; i < len; i++){
+	
+			eval('if(' + shape_tags[i] + 'sAttributesAnimate.length){' + shape_tags[i] + 's_attributes_animate = true;' + 
+				'}else{' + shape_tags[i] + 's_attributes_animate = false;}');
+		}
+	
+		if(document.getElementById('animation_frame_count_input') == null) return;
+	
+		// If there is no animation, hide animation controls
+		if(animation_length == 0){
+			document.getElementById('control_animation_container').style.display = 'none';
+			return;
+		}
+	
+		// Update animation control max
+		document.getElementById('animation_frame_count_input').max = animation_length;
+	
+		// Update animation duration
+		document.getElementById('animation_duration_input').value = animation_duration;
+		
+		// Set animation reverse setting
+		document.getElementById('animation_reverse_checkbox').checked = animation_reverse;
+	}
+	
+	function startAnimation(){
+		intervalID = setInterval(animateShapes, Math.round((animation_duration*1000) / animation_length));
+	}
+	
+	function svg_path_string_to_array(string){
+	
+		var i, j, a;
+		var s = "";
+		
+		// SPLIT PATH BY LETTERS, NUMBERS, SPACES OR COMMAS
+		// TO ADD!!: Z AT THE END OF THE PATH
+		m_arr = new Array();
+		for(i=0;i < string.length;i++){
+			a = string.substring(i, i+1);
+	
+			if(is_numeric(a) == is_numeric(s)) s += a
+			if(a == " " || a == ","){
+				m_arr[m_arr.length] = trim(s.toUpperCase());
+				s = "";
+			}
+			if(is_numeric(a) !== is_numeric(s)){
+				if(s.length) m_arr[m_arr.length] = trim(s.toUpperCase())
+				s = a;
+			}
+		}
+		m_arr[m_arr.length] = trim(s.toUpperCase());
+	
+		r_arr = new Array();
+		if(is_numeric(m_arr[3])){
+			for(j = 0, k = 0;j < m_arr.length;j = j + 4, k++){
+				r_arr[k] = new Array();
+				r_arr[k][0] = m_arr[j];
+				r_arr[k][1] = parseFloat(m_arr[j+1]);
+				r_arr[k][2] = parseFloat(m_arr[j+2]);
+				r_arr[k][3] = parseFloat(m_arr[j+3]);
+			}
+		}else{
+			if(m_arr[3] == "Q"){
+	
+				r_arr[0] = new Array();
+				r_arr[0][0] = m_arr[0];
+				r_arr[0][1] = parseFloat(m_arr[1]);
+				r_arr[0][2] = parseFloat(m_arr[2]);
+				for(j = 4, k = 1;j < m_arr.length;j = j + 2, k++){
+					r_arr[k] = new Array();
+					r_arr[k][0] = "";
+					r_arr[k][1] = parseFloat(m_arr[j]);
+					r_arr[k][2] = parseFloat(m_arr[j+1]);
+				}
+				r_arr[1][0] = "Q";
+				if(!is_numeric(m_arr[m_arr.length-1])) r_arr[r_arr.length-1][0] = m_arr[m_arr.length-1]			
+			}else{
+				for(j = 0, k = 0;j < m_arr.length;j = j + 3, k++){
+					r_arr[k] = new Array();
+					r_arr[k][0] = m_arr[j];
+					r_arr[k][1] = parseFloat(m_arr[j+1]);
+					r_arr[k][2] = parseFloat(m_arr[j+2]);
+				}
+			}
+		}
+	
+		return r_arr;
+	}
+	
+	function updateShapes(){
+	
+		var i;
+		var len;
+		var shape;
+	
+		var i, j, k, n_i0, n_i1, pathd, u, u1, u2, len;
+		var circle, n_i, type, visibility, vec;
+		var x, y, x1, x2, y1, y2;
+	
+		// Find perspective projections for shapes
+		for (i = 0, len = shape_tags.length; i < len; i++){
+			eval('var ' + shape_tags[i] + 's_proj = project(' + shape_tags[i] + 's, depth, eyez, x_window_shift, y_window_shift);');
+		}
+	
+		for (i = 0, len = circles_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('circle' + i);
+			shape.setAttribute("cx", circles_proj[i].x);
+			shape.setAttribute("cy", circles_proj[i].y);
+			shape.setAttribute("r", circles_proj[i].r);
+		}
+	
+		for (i = 0, len = images_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('image' + i);
+			shape.setAttribute("x", images_proj[i].x1);
+			shape.setAttribute("y", images_proj[i].y1);
+			shape.setAttribute("height", images_proj[i].y2-images_proj[i].y1);
+			shape.setAttribute("width", images_proj[i].x2-images_proj[i].x1);
+		}
+	
+		for (i = 0, len = lines_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('line' + i);
+			shape.setAttribute("x1", lines_proj[i].x1);
+			shape.setAttribute("y1", lines_proj[i].y1);
+			shape.setAttribute("x2", lines_proj[i].x2);
+			shape.setAttribute("y2", lines_proj[i].y2);
+		}
+	
+		for (i = 0, len = arrows_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('arrow' + i);
+			shape.setAttribute("x1", arrows_proj[i].x1);
+			shape.setAttribute("y1", arrows_proj[i].y1);
+			shape.setAttribute("x2", arrows_proj[i].x2);
+			shape.setAttribute("y2", arrows_proj[i].y2);
+	
+			// Arrow head (1st half)
+			var shape = svgDocument.getElementById('arrowha' + i);
+			shape.setAttribute("x1", arrows_proj[i].x2);
+			shape.setAttribute("y1", arrows_proj[i].y2);
+			shape.setAttribute("x2", arrows_proj[i].hax);
+			shape.setAttribute("y2", arrows_proj[i].hay);
+	
+			// Arrow head (2nd half)
+			var shape = svgDocument.getElementById('arrowhb' + i);
+			shape.setAttribute("x1", arrows_proj[i].x2);
+			shape.setAttribute("y1", arrows_proj[i].y2);
+			shape.setAttribute("x2", arrows_proj[i].hbx);
+			shape.setAttribute("y2", arrows_proj[i].hby);
+		}
+	
+		for (i = 0, len = texts_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('text' + i);
+			shape.setAttribute("x", texts_proj[i].x);
+			shape.setAttribute("y", texts_proj[i].y);
+			shape.setAttribute("font-size", 'font-size:' + texts_proj[i].s + 'px');
+			textsAttributes[i].font_size = texts_proj[i].s;
+			shape.setAttribute("style", attributesToString(textsAttributes[i]));
+		}
+	
+		for (i = 0, len = points_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('point' + i);
+			shape.setAttribute("cx", points_proj[i].x);
+			shape.setAttribute("cy", points_proj[i].y);
+			if(isNaN(points_proj[i].x)){shape.setAttribute("visibility", "hidden");}else{shape.setAttribute("visibility", "");}
+		}
+	
+		for (i = 0, len = paths_proj.length; i < len; i++) {
+			var shape = svgDocument.getElementById('path' + i);
+			shape.setAttribute("d", pathToString(paths_proj[i]));
+		}
+	
+		for (i = 0, len = pathCs.length; i < len; i++) {
+			var shape = svgDocument.getElementById('pathC' + i);
+			shape.setAttribute("d", pointsToPath(points_proj, pathCs[i]));
+		}
+	
+		return;
+	}
+	
+	function zoom_shape(d, mouseX, mouseY){
+		if(d == 0){return;}
+	
+		var zoom_speed_n = zoom_speed;
+		if(BrowserDetect.browser == "Firefox") var zoom_speed_n = zoom_speed*0.5;
+	
+		var d = d/zoom_speed_n;
+	
+		// Scale all shapes
+		for (i = 0, len = shape_transform.length; i < len; i++) eval('scale(' + shape_transform[i] + ', ' + [1 + d] + ')');
+	
+		updateShapes();
+	}
+</script>
+<script type="text/javascript" >
+	//******************************** Shape constructors **********************************//
+	
+	function circle(x, y, z, r) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.r = r;
+	}
+	
+	function circleAnimate(x, y, z, r) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.r = r;
+	}
+	
+	function circleProject(x, y, r) {
+		this.x = x;
+		this.y = y;
+		this.r = r;
+	}
+	
+	function line(x1, y1, z1, x2, y2, z2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+	}
+	
+	function lineAnimate(x1, y1, z1, x2, y2, z2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+	}
+	
+	function lineProject(x1, y1, x2, y2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
+	}
+	
+	function arrow(x1, y1, z1, x2, y2, z2, l, a) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+		this.l = l;
+		this.a = a;
+	}
+	
+	function arrowAnimate(x1, y1, z1, x2, y2, z2, l, a) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.z1 = z1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.z2 = z2;
+		this.l = l;
+		this.a = a;
+	}
+	
+	function arrowProject(x1, y1, x2, y2, hax, hay, hbx, hby) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.hax = hax;
+		this.hay = hay;
+		this.hbx = hbx;
+		this.hby = hby;
+	}
+	
+	function path(x, y, z, d, close) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.d = d;
+		this.close = close;
+	}
+	
+	function pathProject(x, y, d, close) {
+		this.x = x;
+		this.y = y;
+		this.d = d;
+		this.close = close;
+	}
+	
+	function point(x, y, z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+	
+	function pointAnimate(x, y, z, i) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.i = i;
+	}
+	
+	function pointProject(x, y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	function text(x, y, z, s) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.s = s;
+	}
+	
+	function textAnimate(x, y, z, s, i) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.s = s;
+		this.i = i;
+	}
+	
+	function textProject(x, y, s) {
+		this.x = x;
+		this.y = y;
+		this.s = s;
+	}
+	
+	function ZOrder(z, i, type){
+		this.z = z;
+		this.i = i;
+		this.type = type;
+	}
+	
+	function Layer(layer, i, type){
+		this.layer = layer;
+		this.i = i;
+		this.type = type;
+	}
+	
+	//*************************** Shape attribute constructors *****************************//
+	
+	function imageAttributes(src, preserveAspectRatio, opacity, z_index, animate) {
+		this.src = src;
+		this.preserveAspectRatio = preserveAspectRatio;
+		this.opacity = opacity;
+		this.z_index = z_index;
+		this.animate = animate;
+	}
+	
+	function imageAttributesAnimate(i, src, preserveAspectRatio, opacity, z_index) {
+		this.i = i;
+		this.src = src;
+		this.preserveAspectRatio = preserveAspectRatio;
+		this.opacity = opacity;
+		this.z_index = z_index;
+	}
+	
+	function shapeAttributes(fill, fill_opacity, stroke, stroke_opacity, stroke_width, r, z_index, animate) {
+		this.fill = fill;
+		this.fill_opacity = fill_opacity;
+		this.stroke = stroke;
+		this.stroke_opacity = stroke_opacity;
+		this.stroke_width = stroke_width;
+		this.z_index = z_index;
+		this.r = r;
+		this.animate = animate;
+	}
+	
+	function shapeAttributesAnimate(i, fill, fill_opacity, stroke, stroke_opacity, stroke_width, r, z_index) {
+		this.i = i;
+		this.fill = fill;
+		this.fill_opacity = fill_opacity;
+		this.stroke = stroke;
+		this.stroke_opacity = stroke_opacity;
+		this.stroke_width = stroke_width;
+		this.r = r;
+		this.z_index = z_index;
+	}
+	
+	function textAttributes(text, text_anchor, fill, opacity, font_family, font_style, font_weight, letter_spacing, writing_mode, glyph_orientation_vertical, z_index, animate) {
+		this.text = text;
+		this.text_anchor = text_anchor;
+		this.fill = fill;
+		this.opacity = opacity;
+		this.font_family = font_family;
+		this.font_style = font_style;
+		this.font_weight = font_weight;
+		this.letter_spacing = letter_spacing;
+		this.writing_mode = writing_mode;
+		this.glyph_orientation_vertical = glyph_orientation_vertical;
+		this.z_index = z_index;
+		this.animate = animate;
+	}
+	
+	function textAttributesAnimate(i, text_anchor, fill, opacity, font_family, font_style, font_weight, letter_spacing, writing_mode, glyph_orientation_vertical, z_index) {
+		this.i = i;
+		this.text_anchor = text_anchor;
+		this.fill = fill;
+		this.opacity = opacity;
+		this.font_family = font_family;
+		this.font_style = font_style;
+		this.font_weight = font_weight;
+		this.letter_spacing = letter_spacing;
+		this.writing_mode = writing_mode;
+		this.glyph_orientation_vertical = glyph_orientation_vertical;
+		this.z_index = z_index;
+	}
+	
+	//*********************************** Shape methods ************************************//
+	
+	circle.prototype = {
+	    scale: function (s) {
+			this.x *= s;
+			this.y *= s;
+			this.z *= s;
+			this.r *= s;
+	    },
+	
+	    rotateXaxis: function (t) {rotateX1(this, t);},
+	    rotateYaxis: function (t) {rotateY1(this, t);},
+	    rotateZaxis: function (t) {rotateZ1(this, t);},
+	
+		translateX: function (d) {this.x += d;},
+	    translateY: function (d) {this.y += d;},
+	    translateZ: function (d) {this.z += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x += dx;
+			this.y += dy;
+			this.z += dz;
+	    },
+	
+	    project: function (d, e, xs, ys) {
+			var u = -(d - e) / (this.z - e);
+			return new circleProject((u * this.x) + xs, -(u * this.y) + ys, this.r);
+	    },
+	
+	    limits: function () {return {x:[this.x + this.r, this.x - this.r], y:[this.y + this.r, this.y - this.r], z:[this.z]};}
+	}
+	
+	line.prototype = {
+	    scale: function (s) {
+			this.x1 *= s;
+			this.y1 *= s;
+			this.z1 *= s;
+			this.x2 *= s;
+			this.y2 *= s;
+			this.z2 *= s;
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = (t.cos * this.y1) - (t.sin * this.z1);
+			this.z1 = (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.y2;
+			this.y2 = (t.cos * this.y2) - (t.sin * this.z2);
+			this.z2 = (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) + (t.sin * this.z1);
+			this.z1 = - (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) + (t.sin * this.z2);
+			this.z2 = - (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) - (t.sin * this.y1);
+			this.y1 = (t.sin * tmp) + (t.cos * this.y1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) - (t.sin * this.y2);
+			this.y2 = (t.sin * tmp) + (t.cos * this.y2);
+	    },
+	
+	    translateX: function (d) {this.x1 += d;this.x2 += d;},
+	    translateY: function (d) {this.y1 += d;this.y2 += d;},
+	    translateZ: function (d) {this.z1 += d;this.z2 += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 += dx;
+			this.y1 += dy;
+			this.z1 += dz;
+			this.x2 += dx;
+			this.y2 += dy;
+			this.z2 += dz;
+	    },
+	
+	    project: function (d, e, xs, ys) {
+			var u1 = -(d - e) / (this.z1 - e);
+			var u2 = -(d - e) / (this.z2 - e);
+			return new lineProject((u1 * this.x1) + xs,-(u1 * this.y1) + ys, (u2 * this.x2) + xs, -(u2 * this.y2) + ys);
+	    },
+	
+	    limits: function () {return {x:[this.x1, this.x2], y:[this.y1, this.y2], z:[this.z1, this.z2]}}
+	}
+	
+	arrow.prototype = {
+	    scale: function (s) {
+			this.x1 *= s;
+			this.y1 *= s;
+			this.z1 *= s;
+			this.x2 *= s;
+			this.y2 *= s;
+			this.z2 *= s;
+			this.l *= s;
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = (t.cos * this.y1) - (t.sin * this.z1);
+			this.z1 = (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.y2;
+			this.y2 = (t.cos * this.y2) - (t.sin * this.z2);
+			this.z2 = (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) + (t.sin * this.z1);
+			this.z1 = - (t.sin * tmp) + (t.cos * this.z1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) + (t.sin * this.z2);
+			this.z2 = - (t.sin * tmp) + (t.cos * this.z2);
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = (t.cos * this.x1) - (t.sin * this.y1);
+			this.y1 = (t.sin * tmp) + (t.cos * this.y1);
+			var tmp = this.x2;
+			this.x2 = (t.cos * this.x2) - (t.sin * this.y2);
+			this.y2 = (t.sin * tmp) + (t.cos * this.y2);
+	    },
+	
+	    translateX: function (d) {this.x1 += d;this.x2 += d;},
+	    translateY: function (d) {this.y1 += d;this.y2 += d;},
+	    translateZ: function (d) {this.z1 += d;this.z2 += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 += dx;
+			this.y1 += dy;
+			this.z1 += dz;
+			this.x2 += dx;
+			this.y2 += dy;
+			this.z2 += dz;
+	    },
+	
+	    project: function (d, e, xs, ys) {
+	
+			var u1 = -(d - e) / (this.z1 - e);
+			var u2 = -(d - e) / (this.z2 - e);
+			var v21 = [this.x2-this.x1,this.y2-this.y1,this.z2-this.z1];
+			var v12 = [this.x1-this.x2,this.y1-this.y2,this.z1-this.z2];
+			var v12u = uvector(v12);
+			var c_prod1 = uvector(cprod(v21, [0,0,1]));
+			var c_prod2 = uvector(cprod(v21, [c_prod1[0],c_prod1[1],c_prod1[2]]));
+			if(c_prod2[0] == 0 && c_prod2[1] == 0 && c_prod2[2] == 0) c_prod2 = [0,1,0];
+			if(Math.abs(c_prod2[0]) > 0.98) c_prod2 = [0,1,0];
+			var rm1 = tMatrixEP(c_prod2, this.a);
+			var rm2 = tMatrixEP(c_prod2, -this.a);
+	
+			// Adjust arrowhead length so that it is longer when z-component is higher (or else front on view hides most of arrowhead)
+			var ahl = this.l+(Math.pow(Math.abs(v12u[2]),10)/1)*0.6*this.l -(Math.abs(v12u[0]*v12u[1])/0.5)*0.2*this.l
+			
+			var ha = add(multM(multC(v12u, ahl), rm1), [this.x2, this.y2, this.z2]);
+			var hb = add(multM(multC(v12u, ahl), rm2), [this.x2, this.y2, this.z2]);
+			var hau = -(d - e) / (ha[2] - e);
+			var hbu = -(d - e) / (hb[2] - e);
+			
+			return new arrowProject((u1 * this.x1) + xs,-(u1 * this.y1) + ys, (u2 * this.x2) + xs, -(u2 * this.y2) + ys,
+				(hau * ha[0]) + xs, -(hau * ha[1]) + ys, (hbu * hb[0]) + xs, -(hbu * hb[1]) + ys);
+	    },
+	
+	    limits: function () {return {x:[this.x1, this.x2], y:[this.y1, this.y2], z:[this.z1, this.z2]}}
+	}
+	
+	path.prototype = {
+	 
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+		project: function(d, e, xs, ys){
+			var u;
+			var x = new Array(this.x.length);
+			var y = new Array(this.x.length);
+			for (var i = 0, len = this.x.length; i < len; i++){
+				u = -(d - e) / (this.z[i] - e);
+				x[i] = (u * this.x[i]) + xs;
+				y[i] = -(u * this.y[i]) + ys;
+			}
+			//var u = multC(inv(addC(this.z, -e)), -(d - e));
+			//return {x:addC(multC(this.x, u), xs), y:addC(multC(this.y, -u), ys), d:this.d, close:this.close};
+			return new pathProject(x, y, this.d, this.close);
+		},
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x), max.apply(Math, this.x)], 
+	    		y:[min.apply(Math, this.y), max.apply(Math, this.y)], 
+	    		z:[min.apply(Math, this.z), max.apply(Math, this.z)]
+			};
+	    }
+	}
+	
+	point.prototype = {
+	    scale: function (s) {
+			this.x *= s;
+			this.y *= s;
+			this.z *= s;
+	    },
+	
+	    rotateXaxis: function (t) {rotateX1(this, t);},
+	    rotateYaxis: function (t) {rotateY1(this, t);},
+	    rotateZaxis: function (t) {rotateZ1(this, t);},
+	
+	    translateX: function (d) {this.x += d;},
+	    translateY: function (d) {this.y += d;},
+	    translateZ: function (d) {this.z += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x += dx;
+			this.y += dy;
+			this.z += dz;
+	    },
+	
+		project: function (d, e, xs, ys) {
+			var u = -(d - e) / (this.z - e);
+			return new pointProject((u * this.x) + xs, -(u * this.y) + ys);
+		},
+	
+	    limits: function () {return {x:[this.x], y:[this.y], z:[this.z]};}
+	}
+	
+	text.prototype = {
+	    scale: function (s) {
+			this.x *= s;
+			this.y *= s;
+			this.z *= s;
+			this.s *= s;
+	    },
+	
+	    rotateXaxis: function (t) {rotateX1(this, t);},
+	    rotateYaxis: function (t) {rotateY1(this, t);},
+	    rotateZaxis: function (t) {rotateZ1(this, t);},
+	
+	    translateX: function (d) {this.x += d;},
+	    translateY: function (d) {this.y += d;},
+	    translateZ: function (d) {this.z += d;},
+	
+	    translate: function (dx, dy, dz) {
+			this.x += dx;
+			this.y += dy;
+			this.z += dz;
+	    },
+	
+		project: function (d, e, xs, ys) {
+			var u = -(d - e) / (this.z - e);
+			return new textProject((u * this.x) + xs, -(u * this.y) + ys, this.s);
+		},
+	
+	    limits: function () {return {x:[this.x], y:[this.y], z:[this.z]};}
+	}
+	
+	circleAnimate.prototype = {
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+			this.r = multC(this.r, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, add(this.x, this.r)), min.apply(Math, sub(this.x, this.r)), max.apply(Math, add(this.x, this.r)), max.apply(Math, sub(this.x, this.r))], 
+	    		y:[min.apply(Math, add(this.y, this.r)), min.apply(Math, sub(this.y, this.r)), max.apply(Math, add(this.y, this.r)), max.apply(Math, sub(this.y, this.r))], 
+	    		z:[min.apply(Math, add(this.z, this.r)), min.apply(Math, sub(this.z, this.r)), max.apply(Math, add(this.z, this.r)), max.apply(Math, sub(this.z, this.r))], 
+			};
+	    }
+	}
+	
+	pointAnimate.prototype = {
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x), max.apply(Math, this.x)], 
+	    		y:[min.apply(Math, this.y), max.apply(Math, this.y)], 
+	    		z:[min.apply(Math, this.z), max.apply(Math, this.z)]
+			};
+	    }
+	}
+	
+	lineAnimate.prototype = {
+	    scale: function (s) {
+			this.x1 = multC(this.x1, s);
+			this.y1 = multC(this.y1, s);
+			this.z1 = multC(this.z1, s);
+			this.x2 = multC(this.x2, s);
+			this.y2 = multC(this.y2, s);
+			this.z2 = multC(this.z2, s);
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = sub(multC(this.y1, t.cos), multC(this.z1, t.sin));
+			this.z1 = add(multC(tmp, t.sin), multC(this.z1, t.cos));
+			var tmp = this.y2;
+			this.y2 = sub(multC(this.y2, t.cos), multC(this.z2, t.sin));
+			this.z2 = add(multC(tmp, t.sin), multC(this.z2, t.cos));
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = add(multC(this.x1, t.cos), multC(this.z1, t.sin));
+			this.z1 = sub(multC(this.z1, t.cos), multC(tmp, t.sin));
+			var tmp = this.x2;
+			this.x2 = add(multC(this.x2, t.cos), multC(this.z2, t.sin));
+			this.z2 = sub(multC(this.z2, t.cos), multC(tmp, t.sin));
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = sub(multC(this.x1, t.cos), multC(this.y1, t.sin));
+			this.y1 = add(multC(tmp, t.sin), multC(this.y1, t.cos));
+			var tmp = this.x2;
+			this.x2 = sub(multC(this.x2, t.cos), multC(this.y2, t.sin));
+			this.y2 = add(multC(tmp, t.sin), multC(this.y2, t.cos));
+	    },
+	
+	    translateX: function (d) {
+	    	this.x1 = addC(this.x1, d);
+	    	this.x2 = addC(this.x2, d);
+	    },
+	    translateY: function (d) {
+	    	this.y1 = addC(this.y1, d);
+	    	this.y2 = addC(this.y2, d);
+	    },
+	    translateZ: function (d) {
+	    	this.z1 = addC(this.z1, d);
+	    	this.z2 = addC(this.z2, d);
+	    },
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 = addC(this.x1, dx);
+			this.y1 = addC(this.y1, dy);
+			this.z1 = addC(this.z1, dz);
+			this.x2 = addC(this.x2, dx);
+			this.y2 = addC(this.y2, dy);
+			this.z2 = addC(this.z2, dz);
+	    },
+	
+	   limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x1), min.apply(Math, this.x2), max.apply(Math, this.x1), max.apply(Math, this.x2)], 
+	    		y:[min.apply(Math, this.y1), min.apply(Math, this.y2), max.apply(Math, this.y1), max.apply(Math, this.y2)], 
+	    		z:[min.apply(Math, this.z1), min.apply(Math, this.z2), max.apply(Math, this.z1), max.apply(Math, this.z2)]
+			};
+	    }
+	}
+	
+	arrowAnimate.prototype = {
+	    scale: function (s) {
+			this.x1 = multC(this.x1, s);
+			this.y1 = multC(this.y1, s);
+			this.z1 = multC(this.z1, s);
+			this.x2 = multC(this.x2, s);
+			this.y2 = multC(this.y2, s);
+			this.z2 = multC(this.z2, s);
+	    },
+	
+	    rotateXaxis: function (t) {
+			var tmp = this.y1;
+			this.y1 = sub(multC(this.y1, t.cos), multC(this.z1, t.sin));
+			this.z1 = add(multC(tmp, t.sin), multC(this.z1, t.cos));
+			var tmp = this.y2;
+			this.y2 = sub(multC(this.y2, t.cos), multC(this.z2, t.sin));
+			this.z2 = add(multC(tmp, t.sin), multC(this.z2, t.cos));
+	    },
+	    rotateYaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = add(multC(this.x1, t.cos), multC(this.z1, t.sin));
+			this.z1 = sub(multC(this.z1, t.cos), multC(tmp, t.sin));
+			var tmp = this.x2;
+			this.x2 = add(multC(this.x2, t.cos), multC(this.z2, t.sin));
+			this.z2 = sub(multC(this.z2, t.cos), multC(tmp, t.sin));
+	    },
+	    rotateZaxis: function (t) {
+			var tmp = this.x1;
+			this.x1 = sub(multC(this.x1, t.cos), multC(this.y1, t.sin));
+			this.y1 = add(multC(tmp, t.sin), multC(this.y1, t.cos));
+			var tmp = this.x2;
+			this.x2 = sub(multC(this.x2, t.cos), multC(this.y2, t.sin));
+			this.y2 = add(multC(tmp, t.sin), multC(this.y2, t.cos));
+	    },
+	
+	    translateX: function (d) {
+	    	this.x1 = addC(this.x1, d);
+	    	this.x2 = addC(this.x2, d);
+	    },
+	    translateY: function (d) {
+	    	this.y1 = addC(this.y1, d);
+	    	this.y2 = addC(this.y2, d);
+	    },
+	    translateZ: function (d) {
+	    	this.z1 = addC(this.z1, d);
+	    	this.z2 = addC(this.z2, d);
+	    },
+	
+	    translate: function (dx, dy, dz) {
+			this.x1 = addC(this.x1, dx);
+			this.y1 = addC(this.y1, dy);
+			this.z1 = addC(this.z1, dz);
+			this.x2 = addC(this.x2, dx);
+			this.y2 = addC(this.y2, dy);
+			this.z2 = addC(this.z2, dz);
+	    },
+	
+	   limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x1), min.apply(Math, this.x2), max.apply(Math, this.x1), max.apply(Math, this.x2)], 
+	    		y:[min.apply(Math, this.y1), min.apply(Math, this.y2), max.apply(Math, this.y1), max.apply(Math, this.y2)], 
+	    		z:[min.apply(Math, this.z1), min.apply(Math, this.z2), max.apply(Math, this.z1), max.apply(Math, this.z2)]
+			};
+	    }
+	}
+	
+	textAnimate.prototype = {
+	    scale: function (s) {
+			this.x = multC(this.x, s);
+			this.y = multC(this.y, s);
+			this.z = multC(this.z, s);
+			this.s = multC(this.s, s);
+	    },
+	
+	    rotateXaxis: function (t) {rotateX2(this, t);},
+	    rotateYaxis: function (t) {rotateY2(this, t);},
+	    rotateZaxis: function (t) {rotateZ2(this, t);},
+	
+	    translateX: function (d) {this.x = addC(this.x, d);},
+	    translateY: function (d) {this.y = addC(this.y, d);},
+	    translateZ: function (d) {this.z = addC(this.z, d);},
+	
+	    translate: function (dx, dy, dz) {
+			this.x = addC(this.x, dx);
+			this.y = addC(this.y, dy);
+			this.z = addC(this.z, dz);
+	    },
+	
+	    limits: function () {
+	    	return {
+	    		x:[min.apply(Math, this.x), max.apply(Math, this.x)], 
+	    		y:[min.apply(Math, this.y), max.apply(Math, this.y)], 
+	    		z:[min.apply(Math, this.z), max.apply(Math, this.z)]
+			};
+	    }
+	}
+	
+	//********************************** Shape functions ***********************************//
+	
+	function attributesToString(attributes){
+	
+		s = "";
+	
+		if(attributes.stroke !== undefined) s += "stroke:" + attributes.stroke + ";";
+		if(attributes.stroke_width !== undefined) s += "stroke-width:" + attributes.stroke_width + ";";
+		if(attributes.stroke_opacity !== undefined) s += "stroke-opacity:" + attributes.stroke_opacity + ";";
+		if(attributes.fill !== undefined) s += "fill:" + attributes.fill + ";";
+		if(attributes.fill_opacity !== undefined) s += "fill-opacity:" + attributes.fill_opacity + ";";
+		if(attributes.r !== undefined) s += "r:" + attributes.r + ";";
+	
+		if(attributes.opacity !== undefined) s += "opacity:" + attributes.opacity + ";";
+		if(attributes.font_family !== undefined) s += "font-family:" + attributes.font_family + ";";
+		if(attributes.font_size !== undefined) s += "font-size:" + attributes.font_size + ";";
+		if(attributes.font_weight !== undefined) s += "font-weight:" + attributes.font_weight + ";";
+		if(attributes.font_style !== undefined) s += "font-style:" + attributes.font_style + ";";
+		if(attributes.letter_spacing !== undefined) s += "letter-spacing:" + attributes.letter_spacing + ";";
+		if(attributes.text_anchor !== undefined) s += "text-anchor:" + attributes.text_anchor + ";";
+		if(attributes.writing_mode !== undefined) s += "writing-mode:" + attributes.writing_mode + ";";
+		if(attributes.glyph_orientation_vertical !== undefined) s += "glyph-orientation-vertical:" + attributes.glyph_orientation_vertical + ";";
+	
+		return s;
+	}
+	
+	function parseSVGPath(path_in){
+	
+		// Add spaces between numbers and letters
+		var str = path_in.replace(/((\.|-|\d)+)/g, function (_, num){return ' ' + num + ' ';}).trim();
+	
+		// Split path
+		str_split = str.split(/[\s|,]/);
+	
+		// Remove empty values
+		str_split = clean(str_split);
+	
+		// Check for z at the end (closed path), and if found remove from end
+		var close = false;
+		if(str_split[str_split.length-1] == 'Z' || str_split[str_split.length-1] == 'z'){
+			close = true;
+			str_split.pop();
+		}
+	
+		var x = new Array();
+		var y = new Array();
+		var z = new Array();
+		var d = new Array();
+	
+		// Sort into x,y,z coordinates and path type characters
+		var num_ct = 0;
+		for (var i = 0, len = str_split.length; i < len; i++){
+	
+			if(is_numeric(str_split[i])){
+				if(num_ct == 0) x.push(parseFloat(str_split[i]));
+				if(num_ct == 1) y.push(parseFloat(str_split[i]));
+				if(num_ct == 2) z.push(parseFloat(str_split[i]));
+				if(num_ct == 3){
+					d.push(',');
+					x.push(parseFloat(str_split[i]));
+					num_ct = 1;
+					continue;
+				}
+				num_ct++;
+			}else{
+				d.push(str_split[i]);
+				num_ct = 0;
+			}
+		}
+		
+		//alert(str_split)
+		//alert(x + '\n' + y + '\n' + z + '\n' + d + '\n' + close)
+	
+		return new path(x, y, z, d, close);
+	}
+	
+	function pathToString(path){
+	
+		var str = "";
+		for (var i = 0, len = path.x.length; i < len; i++){
+			str += path.d[i] + ' ' + path.x[i] + ' ' + path.y[i] + ' ';
+		}
+		str = str.trim();
+		if(path.close) str += ' Z';
+	
+		return str;
+	}
+	
+	function pointsToPath(points, d){
+	
+		var i;
+		var str = "", letter = "";
+	
+		for (i = 0, len = d.length; i < len; i++){
+			if(i == 0) letter = "M";
+			if(i > 0) letter = "L";
+			str += letter + " " + points[d[i]-1].x + " " + points[d[i]-1].y + " ";
+		}
+	
+		str = str.trim();
+	
+		return str;
+	}
+	
+	function project(object, d, e, xs, ys){
+		var projection = new Array();
+		for (var i = 0, len = object.length; i < len; i++) projection[i] = object[i].project(d, e, xs, ys);
+		return projection;
+	}
+	
+	function scale(object, s){
+		for (var i = 0, len = object.length; i < len; i++) object[i].scale(s);
+	}
+	
+	function translate(object, dx, dy, dz){
+		for (var i = 0, len = object.length; i < len; i++) object[i].translate(dx, dy, dz);
+	}
+	
+	function rotateXaxis(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].rotateXaxis(rotateTrig(d));}
+	function rotateYaxis(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].rotateYaxis(rotateTrig(d));}
+	function rotateZaxis(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].rotateZaxis(rotateTrig(d));}
+	
+	function translateX(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].translateX(d);}
+	function translateY(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].translateY(d);}
+	function translateZ(object, d){for (var i = 0, len = object.length; i < len; i++) object[i].translateZ(d);}
+	
+	function limits(object){
+	
+		if(object.length == 0) return {NaN,NaN, NaN,NaN, NaN,NaN}
+	
+		var shape_limits;
+		var x = [], y = [], z = [];
+	
+		for (var i = 0, len = object.length; i < len; i++){
+	
+			shape_limits = object[i].limits();
+	
+			x.push.apply(x, shape_limits.x);
+			y.push.apply(y, shape_limits.y);
+			z.push.apply(z, shape_limits.z);
+		}
+	
+		// Remove NaN values
+		x = clean(x, NaN);
+		y = clean(y, NaN);
+		z = clean(z, NaN);
+		
+		if(x.length == 0) return {NaN,NaN, NaN,NaN, NaN,NaN}
+		
+		return {
+			xmin:min.apply(Math, x), xmax:max.apply(Math, x),
+			ymin:min.apply(Math, y), ymax:max.apply(Math, y),
+			zmin:min.apply(Math, z), zmax:max.apply(Math, z)
+		}
+	}
+</script>
+<script type="text/javascript" >
+	function changeAnimationDuration(element){
+		
+		if(!is_numeric(element.value)) return;
+	
+		// Set new animation duration
+		animation_duration = parseFloat(element.value);
+	
+		// If animation is already stopped, return
+		if(stop_anim == 1) return;
+	
+		// If animation is running, stop and re-start
+		clearInterval(intervalID);
+		startAnimation();
+	}
+	
+	function find_layer_children(container, layers){
+	
+		var container_class;
+		var header;
+		var header_class;
+		var main_class;
+		var i, j;
+		var main;
+	
+		if(layers == undefined) layers = [];
+	
+		for(i = 0; i < container.childNodes.length; i++){
+	
+			container_class = container.childNodes[i].className;
+	
+			if(container_class == undefined) continue
+	
+			if(container_class == 'control_layer_header'){
+			
+				header = container.childNodes[i];
+	
+				for(j = 0; j < header.childNodes.length; j++){
+				
+					header_class = header.childNodes[j].className;
+	
+					if(header_class != 'control_layer_text' && header_class != 'control_layer_text_nochild') continue
+	
+					layers.push(header.childNodes[j].innerHTML)
+				}
+			}
+	
+			if(container_class == 'control_layer_main') main = container.childNodes[i];
+		}
+	
+		if(main == undefined) return layers;
+	
+		for(i = 0; i < main.childNodes.length; i++){
+	
+			main_class = main.childNodes[i].className;
+	
+			if(main_class == undefined || main_class != 'control_layer_container') continue
+	
+			layers.concat(find_layer_children(main.childNodes[i], layers))
+		}
+	
+		return layers;
+	}
+	
+	function inputAnimationState(element){
+		
+		// Pause animation
+		playPauseAnimation('stop');
+		
+		if(element.id == 'animation_frame_range_input'){
+			
+			anim_n = Math.round(((element.value) / 100)*animation_length);
+	
+			animateShapes();
+		}
+	
+		if(element.id == 'animation_frame_count_input'){
+		
+			if(!is_numeric(element.value)) return;
+	
+			anim_n = parseFloat(element.value) - 1;
+			
+			animateShapes();
+		}
+	}
+	
+	function layer_visibility(element){
+	
+		var class_name;
+		var div_header = element.parentNode.parentNode;
+		var div_container = element.parentNode.parentNode.parentNode;
+		var i;
+		
+		// Get parent layer
+		for(i = 0; i < div_header.childNodes.length; i++){
+	
+			class_name = div_header.childNodes[i].className;
+			if(class_name == undefined) continue
+			if(class_name != 'control_layer_text' && class_name != 'control_layer_text_nochild') continue
+	
+			var parent_layer = div_header.childNodes[i].innerHTML;
+		}
+	
+		// Find all child layers
+		layers = find_layer_children(div_container)
+	
+		// Remove duplicate layer names
+		layers = array_unique(layers)
+	
+		// Get opacity to apply to layers
+		var opacity = element.value
+	
+		// Show hide all child layers and layers of the same name
+		layer_visibility_children(document.getElementById("control_layers_container"), layers, opacity)
+	}
+	
+	function layer_visibility_children(container, layers, opacity){
+	
+		var container_class;
+		var header;
+		var header_class;
+		var layer_text;
+		var main_class;
+		var i, j, k;
+		var idx_input;
+		var idx_vis;
+		var main;
+	
+		for(i = 0; i < container.childNodes.length; i++){
+	
+			container_class = container.childNodes[i].className;
+	
+			if(container_class == undefined) continue
+	
+			if(container_class == 'control_layer_header'){
+	
+				// Clear layer text
+				layer_text;
+	
+				header = container.childNodes[i];
+	
+				for(j = 0; j < header.childNodes.length; j++){
+					header_class = header.childNodes[j].className;
+					if(header_class == 'control_layer_shape_vis_range') idx_vis = j;
+					if(header_class == 'control_layer_text' || header_class == 'control_layer_text_nochild') layer_text = header.childNodes[j].innerHTML;
+				}
+				
+				if(layer_text == undefined) continue
+				
+				if(layers.indexOf(layer_text) > -1){
+	
+					// Change opacity for any shapes that list layer
+					changeLayerOpacity(layer_text, (opacity/100));
+	
+					// Find slider element
+					for(k = 0; k < header.childNodes[idx_vis].childNodes.length; k++){
+						if(header.childNodes[idx_vis].childNodes[k].tagName == 'INPUT') idx_input = k;
+					}
+					
+					// Change opacity slider in control panel
+					header.childNodes[idx_vis].childNodes[idx_input].value = opacity;
+				}
+			}
+	
+			if(container_class == 'control_layer_main' || container_class == 'control_layers_main' || container_class == 'control_animation_main') main = container.childNodes[i];
+		}
+	
+		if(main == undefined) return;
+	
+		for(i = 0; i < main.childNodes.length; i++){
+	
+			main_class = main.childNodes[i].className;
+	
+			if(main_class == undefined || main_class != 'control_layer_container') continue
+	
+			layer_visibility_children(main.childNodes[i], layers, opacity)
+		}
+	}
+	
+	function show_hide_control(element, action){
+	
+		if(element == null) return;
+	
+		var class_action;
+		var class_name;
+		var div_container = element.parentNode.parentNode;
+		var i;
+		
+		var win_show_sym = '&#8853;';
+		var win_hide_sym = '&#8854;';
+	
+		for(i = 0; i < div_container.childNodes.length; i++){
+	
+			class_name = div_container.childNodes[i].className;
+			
+			if(class_name == undefined) continue
+	
+			if(class_name == 'control_layers_main' || class_name == 'control_layer_main' || class_name == 'control_animation_main'){
+	
+				if(action == undefined) if(element.innerHTML.charCodeAt(0) == 9660){action = 'hide';}else{action = 'show';}
+	
+				if(action == 'hide'){
+					// Hide
+					element.innerHTML = '&#9658;';
+					div_container.childNodes[i].style.display = 'none';
+				}else{
+					// Show
+					element.innerHTML = '&#9660;';
+					div_container.childNodes[i].style.display = '';
+				}
+				
+				if(element.id !== ''){
+					if(action == 'hide'){
+						deleteCookie('show_hide_control(document.getElementById("' + element.id + '"),"show")');
+						createCookie('show_hide_control(document.getElementById("' + element.id + '"),"hide")', 'eval', 3600);
+					}else{
+						deleteCookie('show_hide_control(document.getElementById("' + element.id + '"),"hide")');
+						createCookie('show_hide_control(document.getElementById("' + element.id + '"),"show")', 'eval', 3600);
+					}
+				}
+			}
+	
+			if(class_name == 'control_layer_subheader'){
+	
+				if(action == undefined) if(element.innerHTML.charCodeAt(0) == 9660){action = 'hide';}else{action = 'show';}
+	
+				if(action == 'hide'){
+					div_container.childNodes[i].style.display = 'none';
+				}else{
+					div_container.childNodes[i].style.display = '';
+				}
+			}
+		}
+	}
+	
+	function showHideControlPanel(action, write_cookie){
+	
+		if(write_cookie == undefined) var write_cookie = true;
+	
+		// Check whether any containers within control panel are visible
+		var none_visible = true;
+		if(document.getElementById('control_layers_container') !== null && document.getElementById('control_layers_container').style.display == '') none_visible = false;
+		if(document.getElementById('control_animation_container') !== null && document.getElementById('control_animation_container').style.display == '') none_visible = false;
+	
+		if(none_visible){
+			document.getElementById('control_container').style.display = 'none';
+			writeControlIcon('control', 'disable');
+			return;
+		}
+	
+		if(action == undefined){
+			if(control_panel_visible){control_panel_visible = false;}else{control_panel_visible = true;}
+		}else{
+			if(action == 'show'){
+				control_panel_visible = true;
+			}else{
+				control_panel_visible = false;
+			}
+		}
+	
+		var control_container = document.getElementById('control_container');
+	
+		if(control_container == null) return;
+	
+		if(control_panel_visible){
+			// Show
+			control_container.style.width = '300px';
+			control_container.style.display = '';
+			writeControlIcon('control', 'show');
+			
+			if(write_cookie){
+				deleteCookie('showHideControlPanel("hide")');
+				createCookie('showHideControlPanel("show")', 'eval', 3600);
+			}
+		}else{
+			// Hide
+			control_container.style.width = '85px';
+			control_container.style.display = 'none';
+			writeControlIcon('control', 'hide');
+	
+			if(write_cookie){
+				deleteCookie('showHideControlPanel("show")');
+				createCookie('showHideControlPanel("hide")', 'eval', 3600);
+			}
+		}
+	}
+	
+	function toggleAnimationReverse(){
+		if(animation_reverse){animation_reverse = 0;}else{animation_reverse = 1;}
+	}
+	
+	function toggle_rotate_mode(element, write_cookie){
+	
+		if(write_cookie == undefined) var write_cookie = true;
+	
+		if(element == 'translate' && rotate_mode == false) return;
+		if(element == 'rotate' && rotate_mode == true) return;
+	
+		if(rotate_mode){
+			rotate_mode = false;
+			document.getElementById("control_icon_rotate").title = "Turn on rotate mode or press and hold 'r'";
+			document.getElementById("control_icon_translate").title = 'Translate mode on, click and drag to move object';
+			document.getElementById("control_icon_rotate").style.border = '1px solid #cccccc';
+			document.getElementById("control_icon_rotate_arrow").style.color = '#cccccc';
+			document.getElementById("control_icon_translate").style.border = '1px solid black';
+			document.getElementById("control_icon_translate").style.color = 'black';
+	
+			if(write_cookie){
+				deleteCookie('toggle_rotate_mode("rotate")');
+				createCookie('toggle_rotate_mode("translate")', 'eval', 3600);
+			}
+		}else{
+			rotate_mode = true;
+			document.getElementById("control_icon_rotate").title = 'Rotate mode on, click and drag to rotate object';
+			document.getElementById("control_icon_translate").title = 'Turn on translate mode';
+			document.getElementById("control_icon_rotate").style.border = '1px solid #000000';
+			document.getElementById("control_icon_rotate_arrow").style.color = 'black';
+			document.getElementById("control_icon_translate").style.border = '1px solid #cccccc';
+			document.getElementById("control_icon_translate").style.color = '#cccccc';
+	
+			if(write_cookie){
+				deleteCookie('toggle_rotate_mode("translate")');
+				createCookie('toggle_rotate_mode("rotate")', 'eval', 3600);
+			}
+		}
+	}
+	
+	function writeControlIcon(name, state){
+	
+		if(name == undefined) name = new Array('control', 'rotate', 'translate');
+		if(Array.isArray(name) == false) name = new Array(name);
+	
+		var i;
+	
+		for(i = 0; i < name.length; i++){
+			if(name[i] == 'control'){
+				if(state == undefined) continue;
+				
+				if(state == 'show'){
+					document.getElementById("control_icon_control").title = 'Hide control panel';
+					document.getElementById("control_icon_control_vertical").innerHTML = '&#8213;';
+					document.getElementById("control_icon_control_horizontal").innerHTML = '';
+				}
+				if(state == 'hide'){
+					document.getElementById("control_icon_control").title = 'Show control panel';
+					document.getElementById("control_icon_control_vertical").innerHTML = '&#124;';
+					document.getElementById("control_icon_control_horizontal").innerHTML = '&#8213;';
+				}
+				if(state == 'disable'){
+					document.getElementById("control_icon_control").title = 'No control panel contents to display';
+					document.getElementById("control_icon_control").style.color = '#cccccc';
+					document.getElementById("control_icon_control").style.border = '1px solid #cccccc';
+					document.getElementById("control_icon_control_vertical").innerHTML = '&#124;';
+					document.getElementById("control_icon_control_horizontal").innerHTML = '&#8213;';
+				}
+			}
+	
+			if(name[i] == 'rotate'){
+	
+				if(state == undefined){
+					if(BrowserDetect.browser == "Firefox"){
+						document.getElementById("control_icon_rotate_arrow").style.fontSize = '0.9em';
+						document.getElementById("control_icon_rotate_arrow").style.lineHeight = '16px';
+						document.getElementById("control_icon_rotate_arrow").style.fontWeight = '100';
+					}
+				}
+			}
+		}
+	
+	}
+</script>
