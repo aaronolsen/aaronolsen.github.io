@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>3D Visualization - Points</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/Canada Goose.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					Canada Goose
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/3d_visualization/plot_points.html'>3D Visualization</a>
+			</div>
+			<div class='linksidebar_sub2link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/3d_visualization/plot_points.html'>Plotting 3D points</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph.html'>StereoMorph User Guide</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/knex/large_u_joint.html'>K'nex models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/morphometrics.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;3d visualization&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;plotting 3d points</div>
+
+
+<div class='maincontentfill'>
+<h1>Plotting 3D points</h1>
+
+<p>
+This tutorial will show you how to plot 3D points using the R package svgViewR.
+</p><h2>Preliminary steps</h2><p>Make sure that you have 
+		<a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a> 
+		installed on your system (you can find R installation instructions 
+		<a href="https://cran.r-project.org" target="_blank" >here</a>). You will also need to <a href='https://www.r-bloggers.com/installing-r-packages/' target='_blank' >install 
+		the latest version</a> of the R package 
+		<a href='https://CRAN.R-project.org/package=svgViewR' target='_blank' >svgViewR on CRAN</a>. 
+
+		<div class="code" ><pre class="code">
+<span class="code_comment" ># Install the svgViewR package</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'svgViewR'</span>, dependencies=TRUE)
+</pre></div>
+		
+<h2>Creating an interactive visualization of static points</h2>
+
+<p>Start by loading the svgViewR package into the current R workspace.</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the svgViewR package</span>
+<span class="code_function" >library</span>(svgViewR)
+</pre></div>
+
+<p>
+Create a distribution of 3D points using the <span class='in_line_code'>rnorm()</span> function.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Set number of points to draw</span>
+n <- 300
+
+<span class="code_comment" ># Create a cloud of normally distributed 3D points</span>
+points3d <- <span class="code_function" >cbind</span>(<span class="code_function" >rnorm</span>(n, sd=3), <span class="code_function" >rnorm</span>(n, sd=2), <span class="code_function" >rnorm</span>(n, sd=1))
+</pre></div>
+
+<p>
+Open a connection to a new svgViewR .html file. All of the shapes that you draw will be 
+written to this .html file. At the end you'll be able to open this file in a web browser 
+and view the shapes as an interactive graphic.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_static_points.html'</span>)
+</pre></div>
+
+<p>
+To add some color, set each point's color on a color gradient 
+as a function of its distance from the point cloud centroid. 
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Get distance of points from the center of point cloud</span>
+pdist <- <span class="code_function" >sqrt</span>(<span class="code_function" >rowSums</span>((points3d - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(points3d), n, 3, byrow=TRUE))^2))
+
+<span class="code_comment" ># Set color gradient between red and blue</span>
+colfunc <- <span class="code_function" >colorRampPalette</span>(<span class="code_function" >c</span>(<span class="code_quote" >'red'</span>, <span class="code_quote" >'blue'</span>))
+
+<span class="code_comment" ># Set desired number of colors along gradient</span>
+col_grad <- <span class="code_function" >colfunc</span>(50)
+
+<span class="code_comment" ># Scale distances to indices and find corresponding color along gradient</span>
+col <- col_grad[(<span class="code_function" >length</span>(col_grad)-1)*(pdist - <span class="code_function" >min</span>(pdist)) / <span class="code_function" >diff</span>(<span class="code_function" >range</span>(pdist))+1]
+</pre></div>
+
+<p>
+Add these points to the html file.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Add points to file</span>
+<span class="code_function" >svg.points</span>(points3d, col=col)
+</pre></div>
+
+<p>
+Optionally, add a frame around the points. This function outputs the limits of the drawn frame. 
+To surpress this output from being written to the console send the function's output to 
+<span class='in_line_code'>svg_frame</span>.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+svg_frame <- <span class="code_function" >svg.frame</span>(points3d)
+</pre></div>
+
+<p>
+Close the connection to the .html file. This adds some closing tags that are needed for the 
+visualization to work properly.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+</pre></div>
+
+<p>
+You can now open the resulting .html file. It should look something like the image below. 
+Or check out the <a href='../../viz/tutorials/3d_visualization/plot_static_points.html' target='_blank' >resulting .html file here</a>.
+</p>
+
+<a href='../../viz/tutorials/3d_visualization/plot_static_points.html' target='_blank' >
+	<img height='400px' class='center' style='border:1px black' src='../../img/tutorials/3d_visualization/plot_static_points.jpg' />
+</a>
+<div class='img_caption' >
+	Plot of static 3D points and bounding coordinate planes.
+</div>
+
+<p>
+Note that unlike the base R plotting functions you are not required to specify limits for 
+the plot region prior to plotting shapes. When you open the .html file the javascript code 
+inside the .html file will automatically determine the necessary viewing window dimensions 
+so that all the shapes are visible.
+</p>
+
+<p>
+To rotate the graphic click and drag the cursor while holding down the 'r' key or click on the circle 
+arrow icon in the top right corner and then click and drag the cursor. To move the graphic click and 
+drag the cursor or click on the intersecting arrows icon in the top right and click and drag the cursor. 
+To zoom scroll in and out. To return to the initial orientation of the graphic (or to see 
+changes if you re-write the file) refresh the browser.
+</p>
+
+<h2>Creating an interactive visualization of animated points</h2>
+
+<p>
+These 3D points look pretty cool but they would look <em>even cooler</em> if they moved! 
+svgViewR interprets matrices as static shapes and arrays as animated shapes. So to create an 
+animated point cloud all you have to do is specify an array of points. For this example we'll 
+convert the point matrix we made in the previous example into an array.
+</p>
+
+<p>
+Start by specifying the number of iterations you'd like in the animation.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Set number of iterations</span>
+n_iter <- 100
+</pre></div>
+
+<p>
+Create an 3D point array, filled initially with the previous matrix points. The third dimension 
+of this array represents each of the animation states.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Create animated point array</span>
+points3da <- <span class="code_function" >array</span>(points3d, dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(points3d), n_iter))
+</pre></div>
+
+<p>
+To create an easy animation we'll simply multiple the xyz-coordinates at each iteration by 
+the square of the iteration, starting with 0. This will cause the points to expand at 
+an accelerating rate from the origin. Scaling the coordinates down by 0.001 keeps the 
+axis labels between 0 and 100.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Expand points from origin</span>
+<span class="code_function" >for</span>(iter in 0:(n_iter-1)){
+	points3da[, , iter] <- points3da[, , iter] * 0.001 * iter^2
+}
+</pre></div>
+
+<p>
+You're ready to plot the animated points. These can be plotted in the exact same way as the 
+static points, simply replace <span class='in_line_code' >points3d</span> with 
+<span class='in_line_code' >points3da</span>.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_animated_points.html'</span>)
+
+<span class="code_comment" ># Add points to file</span>
+<span class="code_function" >svg.points</span>(points3da, col=col)
+
+<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+svg_frame <- <span class="code_function" >svg.frame</span>(points3da)
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+</pre></div>
+
+<p>
+Open 'plot_animated_points.html' and you should now have an interactive animation like 
+<a href='../../viz/tutorials/3d_visualization/plot_animated_points.html' target='_blank' >here</a> or like in the video below.
+</p>
+
+<video style='display: block;margin: 0 auto; width: 500px;' poster='../../img/tutorials/3d_visualization/plot_animated_points.jpg' controls>
+  <source src='../../viz/tutorials/3d_visualization/plot_animated_points.mp4' type='video/mp4'>
+Your browser does not support the video tag.
+</video>
+
+</div><h2>Uninterrupted code</h2><a name="uninterrupted_code" ></a><br /><div class="code" ><pre class="code">
+<span class="code_comment" ># Load the svgViewR package</span>
+<span class="code_function" >library</span>(svgViewR)
+
+<span class="code_comment" ># Set number of points to draw</span>
+n <- 300
+
+<span class="code_comment" ># Create a cloud of normally distributed 3D points</span>
+points3d <- <span class="code_function" >cbind</span>(<span class="code_function" >rnorm</span>(n, sd=3), <span class="code_function" >rnorm</span>(n, sd=2), <span class="code_function" >rnorm</span>(n, sd=1))
+
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_static_points.html'</span>)
+
+<span class="code_comment" ># Get distance of points from the center of point cloud</span>
+pdist <- <span class="code_function" >sqrt</span>(<span class="code_function" >rowSums</span>((points3d - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(points3d), n, 3, byrow=TRUE))^2))
+
+<span class="code_comment" ># Set color gradient between red and blue</span>
+colfunc <- <span class="code_function" >colorRampPalette</span>(<span class="code_function" >c</span>(<span class="code_quote" >'red'</span>, <span class="code_quote" >'blue'</span>))
+
+<span class="code_comment" ># Set desired number of colors along gradient</span>
+col_grad <- <span class="code_function" >colfunc</span>(50)
+
+<span class="code_comment" ># Scale distances to indices and find corresponding color along gradient</span>
+col <- col_grad[(<span class="code_function" >length</span>(col_grad)-1)*(pdist - <span class="code_function" >min</span>(pdist)) / <span class="code_function" >diff</span>(<span class="code_function" >range</span>(pdist))+1]
+
+<span class="code_comment" ># Add points to file</span>
+<span class="code_function" >svg.points</span>(points3d, col=col)
+
+<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+svg_frame <- <span class="code_function" >svg.frame</span>(points3d)
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+
+<span class="code_comment" ># Set number of iterations</span>
+n_iter <- 100
+
+<span class="code_comment" ># Create animated point array</span>
+points3da <- <span class="code_function" >array</span>(points3d, dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(points3d), n_iter))
+
+<span class="code_comment" ># Expand points from origin</span>
+<span class="code_function" >for</span>(iter in 0:(n_iter-1)){
+	points3da[, , iter] <- points3da[, , iter] * 0.001 * iter^2
+}
+
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_animated_points.html'</span>)
+
+<span class="code_comment" ># Add points to file</span>
+<span class="code_function" >svg.points</span>(points3da, col=col)
+
+<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+svg_frame <- <span class="code_function" >svg.frame</span>(points3da)
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+</pre></div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>
