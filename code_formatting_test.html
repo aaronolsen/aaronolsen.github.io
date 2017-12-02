@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>Code formatting test page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="img/favicon.png"/>
+<link href="css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='img/headers/Canada Goose.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					Canada Goose
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='tutorials/3d_visualization/plot_points.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;code test</div>
+
+
+<div class='maincontentfill'>
+
+<h1>Code Formatting Test Page</h1>
+
+<p>This page is for testing the automated code formatting.</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Install R packages (if not installed already)</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'geomorph'</span>)
+
+abc <- <span class="code_function" >c</span>(<span class="code_numeric" >12</span>, <span class="code_numeric" >3.2</span>, <span class="code_numeric" >0</span>)
+abc <- <span class="code_numeric" >33.3</span>
+abc <- <span class="code_numeric" >3</span>
+abs <- [<span class="code_numeric" >3</span>, <span class="code_numeric" >3</span>]
+abs[<span class="code_numeric" >1</span>:<span class="code_numeric" >3</span>, <span class="code_numeric" >4</span>]
+
+<span class="code_comment" ># Create checkerboard</span>
+<span class="code_function" >drawCheckerboard</span>(nx=<span class="code_numeric" >8</span>, ny=<span class="code_numeric" >6</span>, square.size=<span class="code_numeric" >180</span>, filename=<span class="code_quote" >'Checkerboard 8x6 (180px).JPG'</span>)
+
+<span class="code_comment" ># Open the digitizing application</span>
+<span class="code_function" >digitizeImages</span>(image.file=<span class="code_quote" >'7x6.jpg'</span>, shapes.file=<span class="code_quote" >'7x6.txt'</span>)
+
+<span class="code_comment" ># Calibrate cameras from photographs when one view is 'upside-down'</span>
+<span class="code_function" >calibrateCameras</span>(img.dir=<span class="code_quote" >'Calibrate_images'</span>, sq.size=<span class="code_quote" >'6.35 mm'</span>, nx=<span class="code_numeric" >8</span>, ny=<span class="code_numeric" >6</span>, 
+     flip.view=TRUE, cal.file=<span class="code_quote" >'calibration.txt'</span>, corner.dir=<span class="code_quote" >'Corners'</span>,
+     verify.dir=<span class="code_quote" >'Verify'</span>, error.dir=<span class="code_quote" >'Errors'</span>)
+
+<span class="code_comment" ># Calibrate cameras from videos</span>
+<span class="code_function" >calibrateCameras</span>(img.dir=<span class="code_quote" >'Calibrate_Videos'</span>, cal.file=<span class="code_quote" >'calibration.txt'</span>, 
+     corner.dir=<span class="code_quote" >'Corners'</span>, sq.size=<span class="code_quote" >'63.42 mm'</span>, nx=<span class="code_numeric" >8</span>, ny=<span class="code_numeric" >4</span>, 
+     verify.dir=<span class="code_quote" >'Verify'</span>, error.dir=<span class="code_quote" >'Errors'</span>, undistort=TRUE,
+     num.aspects.read=<span class="code_numeric" >100</span>, fit.min.break=<span class="code_numeric" >2</span>, nlm.calls.max=<span class="code_numeric" >15</span>, 
+     objective.min=<span class="code_numeric" >0.8</span>, max.sample.optim=<span class="code_numeric" >30</span>, num.sample.est=<span class="code_numeric" >20</span>, 
+     num.aspects.sample=<span class="code_numeric" >8</span>, num.sample.sets=<span class="code_numeric" >3</span>, objective.min.break=<span class="code_numeric" >1.2</span>)
+
+dltTestCalibration Summary
+	Number of aspects: <span class="code_numeric" >8</span>
+	Number of views: <span class="code_numeric" >2</span>
+	Square size: <span class="code_numeric" >6.35</span> mm
+	Number of points per aspect: <span class="code_numeric" >48</span>
+	Aligned ideal to reconstructed (AITR) point position errors:
+		AITR RMS Errors (X,Y,Z): <span class="code_numeric" >0.0138</span> mm, <span class="code_numeric" >0.0118</span> mm, <span class="code_numeric" >0.0226</span> mm
+		Mean AITR Distance Error: <span class="code_numeric" >0.0257</span> mm
+		AITR Distance RMS Error: <span class="code_numeric" >0.0292</span> mm
+	Inter-point distance (IPD) errors:
+		IPD RMS Error: <span class="code_numeric" >0.0178</span> mm
+		IPD Mean Absolute Error: <span class="code_numeric" >0.0141</span> mm
+		Mean IPD error: -<span class="code_numeric" >0.00112</span> mm
+	Adjacent-pair distance errors:
+		Mean adjacent-pair distance error: -<span class="code_numeric" >0.00122</span> mm
+		Mean adjacent-pair absolute distance error: <span class="code_numeric" >0.0167</span> mm
+		SD of adjacent-pair distance error: <span class="code_numeric" >0.0193</span> mm
+	Epipolar errors:
+		Epipolar RMS Error: <span class="code_numeric" >0.246</span> px
+		Epipolar Mean Error: <span class="code_numeric" >0.246</span> px
+		Epipolar Max Error: <span class="code_numeric" >1.522</span> px
+		SD of Epipolar Error: <span class="code_numeric" >0.208</span> px
+
+<span class="code_comment" ># Launch the digitizing application</span>
+<span class="code_function" >digitizeImages</span>(image.file=<span class="code_quote" >'Images'</span>, shapes.file=<span class="code_quote" >'Shapes 2D'</span>, landmarks.ref=<span class="code_quote" >'landmarks.txt'</span>, 
+	cal.file=<span class="code_quote" >'calibration.txt'</span>)
+
+<span class="code_comment" ># Reconstruct all digitized landmarks in Shapes 2D folder</span>
+<span class="code_function" >reconstructStereoSets</span>(shapes.2d=<span class="code_quote" >'Shapes 2D'</span>, shapes.3d=<span class="code_quote" >'Shapes 3D'</span>, 
+   cal.file=<span class="code_quote" >'calibration.txt'</span>)
+
+<span class="code_comment" >## Load the svgViewR package</span>
+<span class="code_function" >library</span>(svgViewR)
+
+<span class="code_comment" ># Set number of points to draw</span>
+n <- <span class="code_numeric" >300</span>
+
+<span class="code_comment" ># Create a cloud of normally distributed 3D points</span>
+points3d <- <span class="code_function" >cbind</span>(<span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >3</span>), <span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >2</span>), <span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >1</span>))
+
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_static_points.html'</span>)
+
+<span class="code_comment" ># Get distance of points from the center of point cloud</span>
+pdist <- <span class="code_function" >sqrt</span>(<span class="code_function" >rowSums</span>((points3d - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(points3d), n, <span class="code_numeric" >3</span>, byrow=TRUE))^<span class="code_numeric" >2</span>))
+
+<span class="code_comment" ># Set color gradient between red and blue</span>
+colfunc <- <span class="code_function" >colorRampPalette</span>(<span class="code_function" >c</span>(<span class="code_quote" >'red'</span>, <span class="code_quote" >'blue'</span>))
+
+<span class="code_comment" ># Set desired number of colors along gradient</span>
+col_grad <- <span class="code_function" >colfunc</span>(<span class="code_numeric" >50</span>)
+
+<span class="code_comment" ># Scale distances to indices and find corresponding color along gradient</span>
+col <- col_grad[(<span class="code_function" >length</span>(col_grad)-<span class="code_numeric" >1</span>)*(pdist - <span class="code_function" >min</span>(pdist)) / <span class="code_function" >diff</span>(<span class="code_function" >range</span>(pdist))+<span class="code_numeric" >1</span>]
+
+<span class="code_comment" ># Add points to file</span>
+<span class="code_function" >svg.points</span>(points3d, col=col)
+
+<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+svg_frame <- <span class="code_function" >svg.frame</span>(points3d)
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+
+<span class="code_comment" ># Set number of iterations</span>
+n_iter <- <span class="code_numeric" >100</span>
+
+<span class="code_comment" ># Create animated point array</span>
+points3da <- <span class="code_function" >array</span>(points3d, dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(points3d), n_iter))
+
+<span class="code_comment" ># Expand points from origin</span>
+<span class="code_function" >for</span>(iter in <span class="code_numeric" >0</span>:(n_iter-<span class="code_numeric" >1</span>)){
+	points3da[, , iter] <- points3da[, , iter] * <span class="code_numeric" >0.001</span> * iter^<span class="code_numeric" >2</span>
+}
+
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_animated_points.html'</span>)
+
+<span class="code_comment" ># Add points to file</span>
+<span class="code_function" >svg.points</span>(points3da, col=col)
+
+<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+svg_frame <- <span class="code_function" >svg.frame</span>(points3da)
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+
+
+<span class="code_comment" >## Install R packages (if not installed already)</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'geomorph'</span>)
+
+<span class="code_comment" ># Load the geomorph function</span>
+<span class="code_function" >library</span>(geomorph)
+
+<span class="code_comment" ># Load the btShapes function</span>
+<span class="code_function" >source</span>(<span class="code_quote" >'btShapes.R'</span>)
+
+<span class="code_comment" ># Read all files in "Beak shape by species" folder into list</span>
+read_files <- <span class="code_function" >lapply</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'Beak shape by species/'</span>, 
+	<span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>)), <span class="code_quote" >'read.table'</span>)
+
+<span class="code_comment" ># Convert list of shape data into array</span>
+lm_array <- <span class="code_function" >array</span>(<span class="code_function" >unlist</span>(read_files), dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(read_files[[<span class="code_numeric" >1</span>]]), 
+	<span class="code_function" >length</span>(read_files)), dimnames=<span class="code_function" >list</span>(<span class="code_function" >rownames</span>(read_files[[<span class="code_numeric" >1</span>]]), 
+	NULL, <span class="code_function" >gsub</span>(<span class="code_quote" >'[.]txt$'</span>, <span class="code_quote" >''</span>, <span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>))))
+
+<span class="code_comment" ># Get generalized Procrustes coordinates</span>
+gpa_array <- <span class="code_function" >gpagen</span>(lm_array)$coords
+
+<span class="code_comment" ># Convert array to matrix for PCA</span>
+gpa_mat <- <span class="code_function" >t</span>(<span class="code_function" >apply</span>(gpa_array, <span class="code_numeric" >3</span>, <span class="code_function" >function</span>(y) <span class="code_function" >matrix</span>(<span class="code_function" >t</span>(y), <span class="code_numeric" >1</span>)))
+
+<span class="code_comment" ># Perform non-phylogenetic PCA</span>
+resEig <- <span class="code_function" >eigen</span>(<span class="code_function" >cov</span>(gpa_mat))
+
+<span class="code_comment" ># Get PC scores</span>
+scores <- gpa_mat %*% resEig$vectors
+
+<span class="code_comment" ># Get percent variance explained along each axis</span>
+percent.var <- (resEig$values / <span class="code_function" >sum</span>(resEig$values))*<span class="code_numeric" >100</span>
+
+<span class="code_comment" ># Define function to draw shape</span>
+plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size=<span class="code_numeric" >1</span>, col=<span class="code_quote" >'black'</span>){
+
+	<span class="code_comment" ># If 3D, rotate points about x-axis using 3D rotation matrix</span>
+	if(<span class="code_function" >ncol</span>(coor) == <span class="code_numeric" >3</span>){
+		coor <- coor %*% <span class="code_function" >matrix</span>(<span class="code_function" >c</span>(<span class="code_numeric" >1</span>,<span class="code_numeric" >0</span>,<span class="code_numeric" >0</span>, <span class="code_numeric" >0</span>,<span class="code_function" >cos</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>),<span class="code_function" >sin</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>), 
+			<span class="code_numeric" >0</span>,-<span class="code_function" >sin</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>),<span class="code_function" >cos</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>)), nrow=<span class="code_numeric" >3</span>, ncol=<span class="code_numeric" >3</span>)
+	}
+
+	<span class="code_comment" ># Get just x,y coordinates (orthographic projection into xy-plane)</span>
+	coor <- coor[, <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>]
+
+	<span class="code_comment" ># Get plot aspect ratio</span>
+	w <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[<span class="code_numeric" >1</span>]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[<span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>])
+	h <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[<span class="code_numeric" >2</span>]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[<span class="code_numeric" >3</span>:<span class="code_numeric" >4</span>])
+	asp <- w/h
+
+	<span class="code_comment" ># Correct for plot aspect ratio not necessarily being 1:1</span>
+	coor[, <span class="code_numeric" >1</span>] <- coor[, <span class="code_numeric" >1</span>] * (<span class="code_numeric" >1</span>/asp)
+
+	<span class="code_comment" ># Scale points and place back in position</span>
+	coor <- coor*size
+
+	<span class="code_comment" ># Center about zero based on range of coordinates</span>
+	coor <- coor - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(<span class="code_function" >apply</span>(coor, <span class="code_numeric" >2</span>, range)), 
+		nrow=<span class="code_function" >nrow</span>(coor), ncol=<span class="code_function" >ncol</span>(coor), byrow=TRUE)
+
+	<span class="code_comment" ># Move shape to PC score</span>
+	coor <- coor + <span class="code_function" >matrix</span>(xy, <span class="code_function" >nrow</span>(coor), <span class="code_function" >ncol</span>(coor), byrow=TRUE)
+
+	<span class="code_comment" ># Set order in which to draw points to create polygon</span>
+	polygon_order <- <span class="code_function" >c</span>(<span class="code_function" >which</span>(<span class="code_function" >grepl</span>(<span class="code_quote" >'upper_bill_culmen'</span>, <span class="code_function" >rownames</span>(coor))),
+		<span class="code_function" >rev</span>(<span class="code_function" >which</span>(<span class="code_function" >grepl</span>(<span class="code_quote" >'upper_bill_tomium_L'</span>, <span class="code_function" >rownames</span>(coor)))))
+
+	<span class="code_comment" ># Create filled polygon</span>
+	<span class="code_function" >polygon</span>(coor[polygon_order, ], col=col, border=col)
+}
+
+<span class="code_comment" ># Set PCs to plot</span>
+pcs <- <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>
+
+<span class="code_comment" ># Open PDF graphics device</span>
+<span class="code_function" >pdf</span>(<span class="code_quote" >'Plot.pdf'</span>, width=<span class="code_numeric" >9</span>, height=<span class="code_numeric" >6.5</span>)
+
+<span class="code_comment" ># Create plot box with axes and axis labels</span>
+<span class="code_function" >plot</span>(scores[, pcs], type=<span class="code_quote" >'n'</span>, main=<span class="code_quote" >'Backtransform morphospace'</span>,
+	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >1</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >1</span>]]), <span class="code_quote" >'%)'</span>),
+	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >2</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >2</span>]]), <span class="code_quote" >'%)'</span>))
+
+<span class="code_comment" ># Plot backtransform shapes</span>
+<span class="code_function" >btShapes</span>(scores=scores, vectors=resEig$vectors, fcn=plot_beak_lateral, 
+	pcs=pcs, n=<span class="code_function" >c</span>(<span class="code_numeric" >5</span>,<span class="code_numeric" >7</span>), m=<span class="code_function" >dim</span>(lm_array)[<span class="code_numeric" >2</span>], row.names=<span class="code_function" >dimnames</span>(lm_array)[[<span class="code_numeric" >1</span>]], 
+	pc.margin=<span class="code_function" >c</span>(<span class="code_numeric" >0.06</span>,<span class="code_numeric" >0.05</span>), size=<span class="code_numeric" >0.5</span>, col=<span class="code_function" >gray</span>(<span class="code_numeric" >0.7</span>))
+
+<span class="code_comment" ># Plot points for each species</span>
+<span class="code_function" >points</span>(scores[, pcs])
+
+<span class="code_comment" ># Add text labels</span>
+<span class="code_function" >text</span>(scores[, pcs], labels=<span class="code_function" >substr</span>(<span class="code_function" >rownames</span>(scores), <span class="code_numeric" >0</span>, <span class="code_numeric" >3</span>), cex=<span class="code_numeric" >0.8</span>, 
+	pos=<span class="code_numeric" >1</span>, offset=<span class="code_numeric" >0.3</span>)
+
+<span class="code_comment" ># Close the PDF graphics device</span>
+<span class="code_function" >dev.off</span>()
+</pre></div>
+
+</div>
+<h2>Uninterrupted code</h2><a name="uninterrupted_code" ></a><br /><div class="code" ><pre class="code">
+<span class="code_comment" ># Install R packages (if not installed already)</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'geomorph'</span>)
+
+abc <- <span class="code_function" >c</span>(<span class="code_numeric" >12</span>, <span class="code_numeric" >3.2</span>, <span class="code_numeric" >0</span>)
+abc <- <span class="code_numeric" >33.3</span>
+abc <- <span class="code_numeric" >3</span>
+abs <- [<span class="code_numeric" >3</span>, <span class="code_numeric" >3</span>]
+abs[<span class="code_numeric" >1</span>:<span class="code_numeric" >3</span>, <span class="code_numeric" >4</span>]
+
+<span class="code_comment" ># Create checkerboard</span>
+<span class="code_function" >drawCheckerboard</span>(nx=<span class="code_numeric" >8</span>, ny=<span class="code_numeric" >6</span>, square.size=<span class="code_numeric" >180</span>, filename=<span class="code_quote" >'Checkerboard 8x6 (180px).JPG'</span>)
+
+<span class="code_comment" ># Open the digitizing application</span>
+<span class="code_function" >digitizeImages</span>(image.file=<span class="code_quote" >'7x6.jpg'</span>, shapes.file=<span class="code_quote" >'7x6.txt'</span>)
+
+<span class="code_comment" ># Calibrate cameras from photographs when one view is 'upside-down'</span>
+<span class="code_function" >calibrateCameras</span>(img.dir=<span class="code_quote" >'Calibrate_images'</span>, sq.size=<span class="code_quote" >'6.35 mm'</span>, nx=<span class="code_numeric" >8</span>, ny=<span class="code_numeric" >6</span>, 
+     flip.view=TRUE, cal.file=<span class="code_quote" >'calibration.txt'</span>, corner.dir=<span class="code_quote" >'Corners'</span>,
+     verify.dir=<span class="code_quote" >'Verify'</span>, error.dir=<span class="code_quote" >'Errors'</span>)
+
+<span class="code_comment" ># Calibrate cameras from videos</span>
+<span class="code_function" >calibrateCameras</span>(img.dir=<span class="code_quote" >'Calibrate_Videos'</span>, cal.file=<span class="code_quote" >'calibration.txt'</span>, 
+     corner.dir=<span class="code_quote" >'Corners'</span>, sq.size=<span class="code_quote" >'63.42 mm'</span>, nx=<span class="code_numeric" >8</span>, ny=<span class="code_numeric" >4</span>, 
+     verify.dir=<span class="code_quote" >'Verify'</span>, error.dir=<span class="code_quote" >'Errors'</span>, undistort=TRUE,
+     num.aspects.read=<span class="code_numeric" >100</span>, fit.min.break=<span class="code_numeric" >2</span>, nlm.calls.max=<span class="code_numeric" >15</span>, 
+     objective.min=<span class="code_numeric" >0.8</span>, max.sample.optim=<span class="code_numeric" >30</span>, num.sample.est=<span class="code_numeric" >20</span>, 
+     num.aspects.sample=<span class="code_numeric" >8</span>, num.sample.sets=<span class="code_numeric" >3</span>, objective.min.break=<span class="code_numeric" >1.2</span>)
+
+dltTestCalibration Summary
+	Number of aspects: <span class="code_numeric" >8</span>
+	Number of views: <span class="code_numeric" >2</span>
+	Square size: <span class="code_numeric" >6.35</span> mm
+	Number of points per aspect: <span class="code_numeric" >48</span>
+	Aligned ideal to reconstructed (AITR) point position errors:
+		AITR RMS Errors (X,Y,Z): <span class="code_numeric" >0.0138</span> mm, <span class="code_numeric" >0.0118</span> mm, <span class="code_numeric" >0.0226</span> mm
+		Mean AITR Distance Error: <span class="code_numeric" >0.0257</span> mm
+		AITR Distance RMS Error: <span class="code_numeric" >0.0292</span> mm
+	Inter-point distance (IPD) errors:
+		IPD RMS Error: <span class="code_numeric" >0.0178</span> mm
+		IPD Mean Absolute Error: <span class="code_numeric" >0.0141</span> mm
+		Mean IPD error: -<span class="code_numeric" >0.00112</span> mm
+	Adjacent-pair distance errors:
+		Mean adjacent-pair distance error: -<span class="code_numeric" >0.00122</span> mm
+		Mean adjacent-pair absolute distance error: <span class="code_numeric" >0.0167</span> mm
+		SD of adjacent-pair distance error: <span class="code_numeric" >0.0193</span> mm
+	Epipolar errors:
+		Epipolar RMS Error: <span class="code_numeric" >0.246</span> px
+		Epipolar Mean Error: <span class="code_numeric" >0.246</span> px
+		Epipolar Max Error: <span class="code_numeric" >1.522</span> px
+		SD of Epipolar Error: <span class="code_numeric" >0.208</span> px
+
+<span class="code_comment" ># Launch the digitizing application</span>
+<span class="code_function" >digitizeImages</span>(image.file=<span class="code_quote" >'Images'</span>, shapes.file=<span class="code_quote" >'Shapes 2D'</span>, landmarks.ref=<span class="code_quote" >'landmarks.txt'</span>, 
+	cal.file=<span class="code_quote" >'calibration.txt'</span>)
+
+<span class="code_comment" ># Reconstruct all digitized landmarks in Shapes 2D folder</span>
+<span class="code_function" >reconstructStereoSets</span>(shapes.2d=<span class="code_quote" >'Shapes 2D'</span>, shapes.3d=<span class="code_quote" >'Shapes 3D'</span>, 
+   cal.file=<span class="code_quote" >'calibration.txt'</span>)
+
+<span class="code_comment" >## Load the svgViewR package</span>
+<span class="code_function" >library</span>(svgViewR)
+
+<span class="code_comment" ># Set number of points to draw</span>
+n <- <span class="code_numeric" >300</span>
+
+<span class="code_comment" ># Create a cloud of normally distributed 3D points</span>
+points3d <- <span class="code_function" >cbind</span>(<span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >3</span>), <span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >2</span>), <span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >1</span>))
+
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_static_points.html'</span>)
+
+<span class="code_comment" ># Get distance of points from the center of point cloud</span>
+pdist <- <span class="code_function" >sqrt</span>(<span class="code_function" >rowSums</span>((points3d - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(points3d), n, <span class="code_numeric" >3</span>, byrow=TRUE))^<span class="code_numeric" >2</span>))
+
+<span class="code_comment" ># Set color gradient between red and blue</span>
+colfunc <- <span class="code_function" >colorRampPalette</span>(<span class="code_function" >c</span>(<span class="code_quote" >'red'</span>, <span class="code_quote" >'blue'</span>))
+
+<span class="code_comment" ># Set desired number of colors along gradient</span>
+col_grad <- <span class="code_function" >colfunc</span>(<span class="code_numeric" >50</span>)
+
+<span class="code_comment" ># Scale distances to indices and find corresponding color along gradient</span>
+col <- col_grad[(<span class="code_function" >length</span>(col_grad)-<span class="code_numeric" >1</span>)*(pdist - <span class="code_function" >min</span>(pdist)) / <span class="code_function" >diff</span>(<span class="code_function" >range</span>(pdist))+<span class="code_numeric" >1</span>]
+
+<span class="code_comment" ># Add points to file</span>
+<span class="code_function" >svg.points</span>(points3d, col=col)
+
+<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+svg_frame <- <span class="code_function" >svg.frame</span>(points3d)
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+
+<span class="code_comment" ># Set number of iterations</span>
+n_iter <- <span class="code_numeric" >100</span>
+
+<span class="code_comment" ># Create animated point array</span>
+points3da <- <span class="code_function" >array</span>(points3d, dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(points3d), n_iter))
+
+<span class="code_comment" ># Expand points from origin</span>
+<span class="code_function" >for</span>(iter in <span class="code_numeric" >0</span>:(n_iter-<span class="code_numeric" >1</span>)){
+	points3da[, , iter] <- points3da[, , iter] * <span class="code_numeric" >0.001</span> * iter^<span class="code_numeric" >2</span>
+}
+
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_animated_points.html'</span>)
+
+<span class="code_comment" ># Add points to file</span>
+<span class="code_function" >svg.points</span>(points3da, col=col)
+
+<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+svg_frame <- <span class="code_function" >svg.frame</span>(points3da)
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+
+<span class="code_comment" >## Install R packages (if not installed already)</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'geomorph'</span>)
+
+<span class="code_comment" ># Load the geomorph function</span>
+<span class="code_function" >library</span>(geomorph)
+
+<span class="code_comment" ># Load the btShapes function</span>
+<span class="code_function" >source</span>(<span class="code_quote" >'btShapes.R'</span>)
+
+<span class="code_comment" ># Read all files in "Beak shape by species" folder into list</span>
+read_files <- <span class="code_function" >lapply</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'Beak shape by species/'</span>, 
+	<span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>)), <span class="code_quote" >'read.table'</span>)
+
+<span class="code_comment" ># Convert list of shape data into array</span>
+lm_array <- <span class="code_function" >array</span>(<span class="code_function" >unlist</span>(read_files), dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(read_files[[<span class="code_numeric" >1</span>]]), 
+	<span class="code_function" >length</span>(read_files)), dimnames=<span class="code_function" >list</span>(<span class="code_function" >rownames</span>(read_files[[<span class="code_numeric" >1</span>]]), 
+	NULL, <span class="code_function" >gsub</span>(<span class="code_quote" >'[.]txt$'</span>, <span class="code_quote" >''</span>, <span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>))))
+
+<span class="code_comment" ># Get generalized Procrustes coordinates</span>
+gpa_array <- <span class="code_function" >gpagen</span>(lm_array)$coords
+
+<span class="code_comment" ># Convert array to matrix for PCA</span>
+gpa_mat <- <span class="code_function" >t</span>(<span class="code_function" >apply</span>(gpa_array, <span class="code_numeric" >3</span>, <span class="code_function" >function</span>(y) <span class="code_function" >matrix</span>(<span class="code_function" >t</span>(y), <span class="code_numeric" >1</span>)))
+
+<span class="code_comment" ># Perform non-phylogenetic PCA</span>
+resEig <- <span class="code_function" >eigen</span>(<span class="code_function" >cov</span>(gpa_mat))
+
+<span class="code_comment" ># Get PC scores</span>
+scores <- gpa_mat %*% resEig$vectors
+
+<span class="code_comment" ># Get percent variance explained along each axis</span>
+percent.var <- (resEig$values / <span class="code_function" >sum</span>(resEig$values))*<span class="code_numeric" >100</span>
+
+<span class="code_comment" ># Define function to draw shape</span>
+plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size=<span class="code_numeric" >1</span>, col=<span class="code_quote" >'black'</span>){
+
+	<span class="code_comment" ># If 3D, rotate points about x-axis using 3D rotation matrix</span>
+	if(<span class="code_function" >ncol</span>(coor) == <span class="code_numeric" >3</span>){
+		coor <- coor %*% <span class="code_function" >matrix</span>(<span class="code_function" >c</span>(<span class="code_numeric" >1</span>,<span class="code_numeric" >0</span>,<span class="code_numeric" >0</span>, <span class="code_numeric" >0</span>,<span class="code_function" >cos</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>),<span class="code_function" >sin</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>), 
+			<span class="code_numeric" >0</span>,-<span class="code_function" >sin</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>),<span class="code_function" >cos</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>)), nrow=<span class="code_numeric" >3</span>, ncol=<span class="code_numeric" >3</span>)
+	}
+
+	<span class="code_comment" ># Get just x,y coordinates (orthographic projection into xy-plane)</span>
+	coor <- coor[, <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>]
+
+	<span class="code_comment" ># Get plot aspect ratio</span>
+	w <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[<span class="code_numeric" >1</span>]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[<span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>])
+	h <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[<span class="code_numeric" >2</span>]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[<span class="code_numeric" >3</span>:<span class="code_numeric" >4</span>])
+	asp <- w/h
+
+	<span class="code_comment" ># Correct for plot aspect ratio not necessarily being 1:1</span>
+	coor[, <span class="code_numeric" >1</span>] <- coor[, <span class="code_numeric" >1</span>] * (<span class="code_numeric" >1</span>/asp)
+
+	<span class="code_comment" ># Scale points and place back in position</span>
+	coor <- coor*size
+
+	<span class="code_comment" ># Center about zero based on range of coordinates</span>
+	coor <- coor - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(<span class="code_function" >apply</span>(coor, <span class="code_numeric" >2</span>, range)), 
+		nrow=<span class="code_function" >nrow</span>(coor), ncol=<span class="code_function" >ncol</span>(coor), byrow=TRUE)
+
+	<span class="code_comment" ># Move shape to PC score</span>
+	coor <- coor + <span class="code_function" >matrix</span>(xy, <span class="code_function" >nrow</span>(coor), <span class="code_function" >ncol</span>(coor), byrow=TRUE)
+
+	<span class="code_comment" ># Set order in which to draw points to create polygon</span>
+	polygon_order <- <span class="code_function" >c</span>(<span class="code_function" >which</span>(<span class="code_function" >grepl</span>(<span class="code_quote" >'upper_bill_culmen'</span>, <span class="code_function" >rownames</span>(coor))),
+		<span class="code_function" >rev</span>(<span class="code_function" >which</span>(<span class="code_function" >grepl</span>(<span class="code_quote" >'upper_bill_tomium_L'</span>, <span class="code_function" >rownames</span>(coor)))))
+
+	<span class="code_comment" ># Create filled polygon</span>
+	<span class="code_function" >polygon</span>(coor[polygon_order, ], col=col, border=col)
+}
+
+<span class="code_comment" ># Set PCs to plot</span>
+pcs <- <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>
+
+<span class="code_comment" ># Open PDF graphics device</span>
+<span class="code_function" >pdf</span>(<span class="code_quote" >'Plot.pdf'</span>, width=<span class="code_numeric" >9</span>, height=<span class="code_numeric" >6.5</span>)
+
+<span class="code_comment" ># Create plot box with axes and axis labels</span>
+<span class="code_function" >plot</span>(scores[, pcs], type=<span class="code_quote" >'n'</span>, main=<span class="code_quote" >'Backtransform morphospace'</span>,
+	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >1</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >1</span>]]), <span class="code_quote" >'%)'</span>),
+	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >2</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >2</span>]]), <span class="code_quote" >'%)'</span>))
+
+<span class="code_comment" ># Plot backtransform shapes</span>
+<span class="code_function" >btShapes</span>(scores=scores, vectors=resEig$vectors, fcn=plot_beak_lateral, 
+	pcs=pcs, n=<span class="code_function" >c</span>(<span class="code_numeric" >5</span>,<span class="code_numeric" >7</span>), m=<span class="code_function" >dim</span>(lm_array)[<span class="code_numeric" >2</span>], row.names=<span class="code_function" >dimnames</span>(lm_array)[[<span class="code_numeric" >1</span>]], 
+	pc.margin=<span class="code_function" >c</span>(<span class="code_numeric" >0.06</span>,<span class="code_numeric" >0.05</span>), size=<span class="code_numeric" >0.5</span>, col=<span class="code_function" >gray</span>(<span class="code_numeric" >0.7</span>))
+
+<span class="code_comment" ># Plot points for each species</span>
+<span class="code_function" >points</span>(scores[, pcs])
+
+<span class="code_comment" ># Add text labels</span>
+<span class="code_function" >text</span>(scores[, pcs], labels=<span class="code_function" >substr</span>(<span class="code_function" >rownames</span>(scores), <span class="code_numeric" >0</span>, <span class="code_numeric" >3</span>), cex=<span class="code_numeric" >0.8</span>, 
+	pos=<span class="code_numeric" >1</span>, offset=<span class="code_numeric" >0.3</span>)
+
+<span class="code_comment" ># Close the PDF graphics device</span>
+<span class="code_function" >dev.off</span>()
+</pre></div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2017 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="js/sharedfunctions2.js" type="text/javascript" ></script>
