@@ -281,7 +281,7 @@ plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size
 	<span class="code_comment" ># If 3D, rotate points about x-axis using 3D rotation matrix</span>
 	if(<span class="code_function" >ncol</span>(coor) == 3){
 		coor <- coor %*% <span class="code_function" >matrix</span>(<span class="code_function" >c</span>(1,0,0, 0,<span class="code_function" >cos</span>(-pi/2),<span class="code_function" >sin</span>(-pi/2), 
-			0,-sin(-pi/2),<span class="code_function" >cos</span>(-pi/2)), nrow=3, ncol=3)
+			0,-<span class="code_function" >sin</span>(-pi/2),<span class="code_function" >cos</span>(-pi/2)), nrow=3, ncol=3)
 	}
 
 	<span class="code_comment" ># Get just x,y coordinates (orthographic projection into xy-plane)</span>
@@ -529,7 +529,7 @@ plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size
 	<span class="code_comment" ># If 3D, rotate points about x-axis using 3D rotation matrix</span>
 	if(<span class="code_function" >ncol</span>(coor) == 3){
 		coor <- coor %*% <span class="code_function" >matrix</span>(<span class="code_function" >c</span>(1,0,0, 0,<span class="code_function" >cos</span>(-pi/2),<span class="code_function" >sin</span>(-pi/2), 
-			0,-sin(-pi/2),<span class="code_function" >cos</span>(-pi/2)), nrow=3, ncol=3)
+			0,-<span class="code_function" >sin</span>(-pi/2),<span class="code_function" >cos</span>(-pi/2)), nrow=3, ncol=3)
 	}
 
 	<span class="code_comment" ># Get just x,y coordinates (orthographic projection into xy-plane)</span>
