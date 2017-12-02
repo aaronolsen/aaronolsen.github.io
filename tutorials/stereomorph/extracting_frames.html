@@ -157,13 +157,13 @@
 2
 
 <span class="code_comment" ># To extract all frames between 3 and 10 (including 3 and 10)</span>
-3:10
+3:<span class="code_numeric" >10</span>
 
 <span class="code_comment" ># To extract every third frame between 5 and 20 (including 5 and 20)</span>
-<span class="code_function" >seq</span>(5, 20, by=3)
+<span class="code_function" >seq</span>(<span class="code_numeric" >5</span>, <span class="code_numeric" >20</span>, by=<span class="code_numeric" >3</span>)
 
 <span class="code_comment" ># To extract a particular set of frames</span>
-<span class="code_function" >c</span>(0, 4, 5, 9)
+<span class="code_function" >c</span>(<span class="code_numeric" >0</span>, <span class="code_numeric" >4</span>, <span class="code_numeric" >5</span>, <span class="code_numeric" >9</span>)
 </pre></div>
 
 	<p>
@@ -184,7 +184,7 @@
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Extract the first 20 frames from the example video</span>
-<span class="code_function" >extractFrames</span>(file=<span class="code_quote" >'Example_video.mov'</span>, save.to=<span class="code_quote" >'Frames'</span>, frames=0:19)
+<span class="code_function" >extractFrames</span>(file=<span class="code_quote" >'Example_video.mov'</span>, save.to=<span class="code_quote" >'Frames'</span>, frames=<span class="code_numeric" >0</span>:<span class="code_numeric" >19</span>)
 </pre></div>
 
 	<div class='tutorial_previous_next' >

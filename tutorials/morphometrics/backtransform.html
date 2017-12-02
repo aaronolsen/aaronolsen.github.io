@@ -199,9 +199,9 @@ create a 150 x 3 x 51 dimension array.
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Convert list of shape data into array</span>
-lm_array <- <span class="code_function" >array</span>(<span class="code_function" >unlist</span>(read_files), dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(read_files[[1]]), 
-	<span class="code_function" >length</span>(read_files)), dimnames=<span class="code_function" >list</span>(<span class="code_function" >rownames</span>(read_files[[1]]), 
-	NULL, <span class="code_function" >gsub</span>('[.]txt$', <span class="code_quote" >''</span>, <span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>))))
+lm_array <- <span class="code_function" >array</span>(<span class="code_function" >unlist</span>(read_files), dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(read_files[[<span class="code_numeric" >1</span>]]), 
+	<span class="code_function" >length</span>(read_files)), dimnames=<span class="code_function" >list</span>(<span class="code_function" >rownames</span>(read_files[[<span class="code_numeric" >1</span>]]), 
+	NULL, <span class="code_function" >gsub</span>(<span class="code_quote" >'[.]txt$'</span>, <span class="code_quote" >''</span>, <span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>))))
 </pre></div>
 
 <p>
@@ -226,7 +226,7 @@ major axes of shape variation.
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Convert array to matrix for PCA</span>
-gpa_mat <- <span class="code_function" >t</span>(<span class="code_function" >apply</span>(gpa_array, 3, <span class="code_function" >function</span>(y) <span class="code_function" >matrix</span>(<span class="code_function" >t</span>(y), 1)))
+gpa_mat <- <span class="code_function" >t</span>(<span class="code_function" >apply</span>(gpa_array, <span class="code_numeric" >3</span>, <span class="code_function" >function</span>(y) <span class="code_function" >matrix</span>(<span class="code_function" >t</span>(y), <span class="code_numeric" >1</span>)))
 
 <span class="code_comment" ># Perform non-phylogenetic PCA</span>
 resEig <- <span class="code_function" >eigen</span>(<span class="code_function" >cov</span>(gpa_mat))
@@ -235,7 +235,7 @@ resEig <- <span class="code_function" >eigen</span>(<span class="code_function" 
 scores <- gpa_mat %*% resEig$vectors
 
 <span class="code_comment" ># Get percent variance explained along each axis</span>
-percent.var <- (resEig$values / <span class="code_function" >sum</span>(resEig$values))*100
+percent.var <- (resEig$values / <span class="code_function" >sum</span>(resEig$values))*<span class="code_numeric" >100</span>
 </pre></div>
 
 <p>
@@ -276,30 +276,30 @@ by 'btShapes') so they should differ from the input parameters to 'btShapes'.
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Define function to draw shape</span>
-plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size=1, col=<span class="code_quote" >'black'</span>){
+plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size=<span class="code_numeric" >1</span>, col=<span class="code_quote" >'black'</span>){
 
 	<span class="code_comment" ># If 3D, rotate points about x-axis using 3D rotation matrix</span>
-	if(<span class="code_function" >ncol</span>(coor) == 3){
-		coor <- coor %*% <span class="code_function" >matrix</span>(<span class="code_function" >c</span>(1,0,0, 0,<span class="code_function" >cos</span>(-pi/2),<span class="code_function" >sin</span>(-pi/2), 
-			0,-<span class="code_function" >sin</span>(-pi/2),<span class="code_function" >cos</span>(-pi/2)), nrow=3, ncol=3)
+	if(<span class="code_function" >ncol</span>(coor) == <span class="code_numeric" >3</span>){
+		coor <- coor %*% <span class="code_function" >matrix</span>(<span class="code_function" >c</span>(<span class="code_numeric" >1</span>,<span class="code_numeric" >0</span>,<span class="code_numeric" >0</span>, <span class="code_numeric" >0</span>,<span class="code_function" >cos</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>),<span class="code_function" >sin</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>), 
+			<span class="code_numeric" >0</span>,-<span class="code_function" >sin</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>),<span class="code_function" >cos</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>)), nrow=<span class="code_numeric" >3</span>, ncol=<span class="code_numeric" >3</span>)
 	}
 
 	<span class="code_comment" ># Get just x,y coordinates (orthographic projection into xy-plane)</span>
-	coor <- coor[, 1:2]
+	coor <- coor[, <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>]
 
 	<span class="code_comment" ># Get plot aspect ratio</span>
-	w <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[1]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[1:2])
-	h <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[2]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[3:4])
+	w <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[<span class="code_numeric" >1</span>]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[<span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>])
+	h <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[<span class="code_numeric" >2</span>]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[<span class="code_numeric" >3</span>:<span class="code_numeric" >4</span>])
 	asp <- w/h
 
 	<span class="code_comment" ># Correct for plot aspect ratio not necessarily being 1:1</span>
-	coor[, 1] <- coor[, 1] * (1/asp)
+	coor[, <span class="code_numeric" >1</span>] <- coor[, <span class="code_numeric" >1</span>] * (<span class="code_numeric" >1</span>/asp)
 
 	<span class="code_comment" ># Scale points and place back in position</span>
 	coor <- coor*size
 
 	<span class="code_comment" ># Center about zero based on range of coordinates</span>
-	coor <- coor - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(<span class="code_function" >apply</span>(coor, 2, range)), 
+	coor <- coor - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(<span class="code_function" >apply</span>(coor, <span class="code_numeric" >2</span>, range)), 
 		nrow=<span class="code_function" >nrow</span>(coor), ncol=<span class="code_function" >ncol</span>(coor), byrow=TRUE)
 
 	<span class="code_comment" ># Move shape to PC score</span>
@@ -329,7 +329,7 @@ the remaining axes).
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Set PCs to plot</span>
-pcs <- 1:2
+pcs <- <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>
 </pre></div>
 
 <p>
@@ -339,7 +339,7 @@ where the plot will be produced.
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Open PDF graphics device</span>
-<span class="code_function" >pdf</span>(<span class="code_quote" >'Plot.pdf'</span>, width=9, height=6.5)
+<span class="code_function" >pdf</span>(<span class="code_quote" >'Plot.pdf'</span>, width=<span class="code_numeric" >9</span>, height=<span class="code_numeric" >6.5</span>)
 </pre></div>
 
 <p>
@@ -351,8 +351,8 @@ add the scores later on top of the backtransform shapes.
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Create plot box with axes and axis labels</span>
 <span class="code_function" >plot</span>(scores[, pcs], type=<span class="code_quote" >'n'</span>, main=<span class="code_quote" >'Backtransform morphospace'</span>,
-	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[1], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[1]]), <span class="code_quote" >'%)'</span>),
-	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[2], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[2]]), <span class="code_quote" >'%)'</span>))
+	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >1</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >1</span>]]), <span class="code_quote" >'%)'</span>),
+	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >2</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >2</span>]]), <span class="code_quote" >'%)'</span>))
 </pre></div>
 
 <p>
@@ -362,8 +362,8 @@ Plot the backtransform shapes in the plot box using the 'btShapes' function.
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Plot backtransform shapes</span>
 <span class="code_function" >btShapes</span>(scores=scores, vectors=resEig$vectors, fcn=plot_beak_lateral, 
-	pcs=pcs, n=<span class="code_function" >c</span>(5,7), m=<span class="code_function" >dim</span>(lm_array)[2], row.names=<span class="code_function" >dimnames</span>(lm_array)[[1]], 
-	pc.margin=<span class="code_function" >c</span>(0.06,0.05), size=0.5, col=<span class="code_function" >gray</span>(0.7))
+	pcs=pcs, n=<span class="code_function" >c</span>(<span class="code_numeric" >5</span>,<span class="code_numeric" >7</span>), m=<span class="code_function" >dim</span>(lm_array)[<span class="code_numeric" >2</span>], row.names=<span class="code_function" >dimnames</span>(lm_array)[[<span class="code_numeric" >1</span>]], 
+	pc.margin=<span class="code_function" >c</span>(<span class="code_numeric" >0.06</span>,<span class="code_numeric" >0.05</span>), size=<span class="code_numeric" >0.5</span>, col=<span class="code_function" >gray</span>(<span class="code_numeric" >0.7</span>))
 </pre></div>
 
 <p>
@@ -406,8 +406,8 @@ Add text labels.
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Add text labels</span>
-<span class="code_function" >text</span>(scores[, pcs], labels=<span class="code_function" >substr</span>(<span class="code_function" >rownames</span>(scores), 0, 3), cex=0.8, 
-	pos=1, offset=0.3)
+<span class="code_function" >text</span>(scores[, pcs], labels=<span class="code_function" >substr</span>(<span class="code_function" >rownames</span>(scores), <span class="code_numeric" >0</span>, <span class="code_numeric" >3</span>), cex=<span class="code_numeric" >0.8</span>, 
+	pos=<span class="code_numeric" >1</span>, offset=<span class="code_numeric" >0.3</span>)
 </pre></div>
 
 <p>
@@ -443,9 +443,9 @@ array
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Convert list of shape data into array</span>
-lm_array <- <span class="code_function" >array</span>(<span class="code_function" >unlist</span>(read_files), dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(read_files[[1]]), 
-	<span class="code_function" >length</span>(read_files)), dimnames=<span class="code_function" >list</span>(<span class="code_function" >rownames</span>(read_files[[1]]), 
-	NULL, <span class="code_function" >gsub</span>('[.]txt$', <span class="code_quote" >''</span>, <span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>))))
+lm_array <- <span class="code_function" >array</span>(<span class="code_function" >unlist</span>(read_files), dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(read_files[[<span class="code_numeric" >1</span>]]), 
+	<span class="code_function" >length</span>(read_files)), dimnames=<span class="code_function" >list</span>(<span class="code_function" >rownames</span>(read_files[[<span class="code_numeric" >1</span>]]), 
+	NULL, <span class="code_function" >gsub</span>(<span class="code_quote" >'[.]txt$'</span>, <span class="code_quote" >''</span>, <span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>))))
 </pre></div>
 
 <p>
@@ -454,7 +454,7 @@ remove the last dimension
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Take only the first two dimensions</span>
-lm_array <- lm_array[, 1:2, ]
+lm_array <- lm_array[, <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>, ]
 </pre></div>
 
 <p>
@@ -504,15 +504,15 @@ read_files <- <span class="code_function" >lapply</span>(<span class="code_funct
 	<span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>)), <span class="code_quote" >'read.table'</span>)
 
 <span class="code_comment" ># Convert list of shape data into array</span>
-lm_array <- <span class="code_function" >array</span>(<span class="code_function" >unlist</span>(read_files), dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(read_files[[1]]), 
-	<span class="code_function" >length</span>(read_files)), dimnames=<span class="code_function" >list</span>(<span class="code_function" >rownames</span>(read_files[[1]]), 
-	NULL, <span class="code_function" >gsub</span>('[.]txt$', <span class="code_quote" >''</span>, <span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>))))
+lm_array <- <span class="code_function" >array</span>(<span class="code_function" >unlist</span>(read_files), dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(read_files[[<span class="code_numeric" >1</span>]]), 
+	<span class="code_function" >length</span>(read_files)), dimnames=<span class="code_function" >list</span>(<span class="code_function" >rownames</span>(read_files[[<span class="code_numeric" >1</span>]]), 
+	NULL, <span class="code_function" >gsub</span>(<span class="code_quote" >'[.]txt$'</span>, <span class="code_quote" >''</span>, <span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>))))
 
 <span class="code_comment" ># Get generalized Procrustes coordinates</span>
 gpa_array <- <span class="code_function" >gpagen</span>(lm_array)$coords
 
 <span class="code_comment" ># Convert array to matrix for PCA</span>
-gpa_mat <- <span class="code_function" >t</span>(<span class="code_function" >apply</span>(gpa_array, 3, <span class="code_function" >function</span>(y) <span class="code_function" >matrix</span>(<span class="code_function" >t</span>(y), 1)))
+gpa_mat <- <span class="code_function" >t</span>(<span class="code_function" >apply</span>(gpa_array, <span class="code_numeric" >3</span>, <span class="code_function" >function</span>(y) <span class="code_function" >matrix</span>(<span class="code_function" >t</span>(y), <span class="code_numeric" >1</span>)))
 
 <span class="code_comment" ># Perform non-phylogenetic PCA</span>
 resEig <- <span class="code_function" >eigen</span>(<span class="code_function" >cov</span>(gpa_mat))
@@ -521,33 +521,33 @@ resEig <- <span class="code_function" >eigen</span>(<span class="code_function" 
 scores <- gpa_mat %*% resEig$vectors
 
 <span class="code_comment" ># Get percent variance explained along each axis</span>
-percent.var <- (resEig$values / <span class="code_function" >sum</span>(resEig$values))*100
+percent.var <- (resEig$values / <span class="code_function" >sum</span>(resEig$values))*<span class="code_numeric" >100</span>
 
 <span class="code_comment" ># Define function to draw shape</span>
-plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size=1, col=<span class="code_quote" >'black'</span>){
+plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size=<span class="code_numeric" >1</span>, col=<span class="code_quote" >'black'</span>){
 
 	<span class="code_comment" ># If 3D, rotate points about x-axis using 3D rotation matrix</span>
-	if(<span class="code_function" >ncol</span>(coor) == 3){
-		coor <- coor %*% <span class="code_function" >matrix</span>(<span class="code_function" >c</span>(1,0,0, 0,<span class="code_function" >cos</span>(-pi/2),<span class="code_function" >sin</span>(-pi/2), 
-			0,-<span class="code_function" >sin</span>(-pi/2),<span class="code_function" >cos</span>(-pi/2)), nrow=3, ncol=3)
+	if(<span class="code_function" >ncol</span>(coor) == <span class="code_numeric" >3</span>){
+		coor <- coor %*% <span class="code_function" >matrix</span>(<span class="code_function" >c</span>(<span class="code_numeric" >1</span>,<span class="code_numeric" >0</span>,<span class="code_numeric" >0</span>, <span class="code_numeric" >0</span>,<span class="code_function" >cos</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>),<span class="code_function" >sin</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>), 
+			<span class="code_numeric" >0</span>,-<span class="code_function" >sin</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>),<span class="code_function" >cos</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>)), nrow=<span class="code_numeric" >3</span>, ncol=<span class="code_numeric" >3</span>)
 	}
 
 	<span class="code_comment" ># Get just x,y coordinates (orthographic projection into xy-plane)</span>
-	coor <- coor[, 1:2]
+	coor <- coor[, <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>]
 
 	<span class="code_comment" ># Get plot aspect ratio</span>
-	w <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[1]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[1:2])
-	h <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[2]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[3:4])
+	w <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[<span class="code_numeric" >1</span>]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[<span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>])
+	h <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[<span class="code_numeric" >2</span>]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[<span class="code_numeric" >3</span>:<span class="code_numeric" >4</span>])
 	asp <- w/h
 
 	<span class="code_comment" ># Correct for plot aspect ratio not necessarily being 1:1</span>
-	coor[, 1] <- coor[, 1] * (1/asp)
+	coor[, <span class="code_numeric" >1</span>] <- coor[, <span class="code_numeric" >1</span>] * (<span class="code_numeric" >1</span>/asp)
 
 	<span class="code_comment" ># Scale points and place back in position</span>
 	coor <- coor*size
 
 	<span class="code_comment" ># Center about zero based on range of coordinates</span>
-	coor <- coor - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(<span class="code_function" >apply</span>(coor, 2, range)), 
+	coor <- coor - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(<span class="code_function" >apply</span>(coor, <span class="code_numeric" >2</span>, range)), 
 		nrow=<span class="code_function" >nrow</span>(coor), ncol=<span class="code_function" >ncol</span>(coor), byrow=TRUE)
 
 	<span class="code_comment" ># Move shape to PC score</span>
@@ -562,27 +562,27 @@ plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size
 }
 
 <span class="code_comment" ># Set PCs to plot</span>
-pcs <- 1:2
+pcs <- <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>
 
 <span class="code_comment" ># Open PDF graphics device</span>
-<span class="code_function" >pdf</span>(<span class="code_quote" >'Plot.pdf'</span>, width=9, height=6.5)
+<span class="code_function" >pdf</span>(<span class="code_quote" >'Plot.pdf'</span>, width=<span class="code_numeric" >9</span>, height=<span class="code_numeric" >6.5</span>)
 
 <span class="code_comment" ># Create plot box with axes and axis labels</span>
 <span class="code_function" >plot</span>(scores[, pcs], type=<span class="code_quote" >'n'</span>, main=<span class="code_quote" >'Backtransform morphospace'</span>,
-	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[1], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[1]]), <span class="code_quote" >'%)'</span>),
-	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[2], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[2]]), <span class="code_quote" >'%)'</span>))
+	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >1</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >1</span>]]), <span class="code_quote" >'%)'</span>),
+	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >2</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >2</span>]]), <span class="code_quote" >'%)'</span>))
 
 <span class="code_comment" ># Plot backtransform shapes</span>
 <span class="code_function" >btShapes</span>(scores=scores, vectors=resEig$vectors, fcn=plot_beak_lateral, 
-	pcs=pcs, n=<span class="code_function" >c</span>(5,7), m=<span class="code_function" >dim</span>(lm_array)[2], row.names=<span class="code_function" >dimnames</span>(lm_array)[[1]], 
-	pc.margin=<span class="code_function" >c</span>(0.06,0.05), size=0.5, col=<span class="code_function" >gray</span>(0.7))
+	pcs=pcs, n=<span class="code_function" >c</span>(<span class="code_numeric" >5</span>,<span class="code_numeric" >7</span>), m=<span class="code_function" >dim</span>(lm_array)[<span class="code_numeric" >2</span>], row.names=<span class="code_function" >dimnames</span>(lm_array)[[<span class="code_numeric" >1</span>]], 
+	pc.margin=<span class="code_function" >c</span>(<span class="code_numeric" >0.06</span>,<span class="code_numeric" >0.05</span>), size=<span class="code_numeric" >0.5</span>, col=<span class="code_function" >gray</span>(<span class="code_numeric" >0.7</span>))
 
 <span class="code_comment" ># Plot points for each species</span>
 <span class="code_function" >points</span>(scores[, pcs])
 
 <span class="code_comment" ># Add text labels</span>
-<span class="code_function" >text</span>(scores[, pcs], labels=<span class="code_function" >substr</span>(<span class="code_function" >rownames</span>(scores), 0, 3), cex=0.8, 
-	pos=1, offset=0.3)
+<span class="code_function" >text</span>(scores[, pcs], labels=<span class="code_function" >substr</span>(<span class="code_function" >rownames</span>(scores), <span class="code_numeric" >0</span>, <span class="code_numeric" >3</span>), cex=<span class="code_numeric" >0.8</span>, 
+	pos=<span class="code_numeric" >1</span>, offset=<span class="code_numeric" >0.3</span>)
 
 <span class="code_comment" ># Close the PDF graphics device</span>
 <span class="code_function" >dev.off</span>()

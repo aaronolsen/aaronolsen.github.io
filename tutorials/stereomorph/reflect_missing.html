@@ -260,13 +260,13 @@ shapes <- <span class="code_function" >readShapes</span>(file=<span class="code_
 lm <- shapes$landmarks
 
 <span class="code_comment" ># Set landmark range</span>
-r <- <span class="code_function" >apply</span>(lm, 2, <span class="code_quote" >'max'</span>) - <span class="code_function" >apply</span>(lm, 2, <span class="code_quote" >'min'</span>)
+r <- <span class="code_function" >apply</span>(lm, <span class="code_numeric" >2</span>, <span class="code_quote" >'max'</span>) - <span class="code_function" >apply</span>(lm, <span class="code_numeric" >2</span>, <span class="code_quote" >'min'</span>)
 
 <span class="code_comment" ># Plot landmarks</span>
-<span class="code_function" >plot3d</span>(lm, aspect=<span class="code_function" >c</span>(r/r[3]), size=7)
+<span class="code_function" >plot3d</span>(lm, aspect=<span class="code_function" >c</span>(r/r[<span class="code_numeric" >3</span>]), size=<span class="code_numeric" >7</span>)
 
 <span class="code_comment" ># Plot curves</span>
-<span class="code_function" >lapply</span>(shapes$curves, plot3d, size=4, col=<span class="code_quote" >'lightblue'</span>, add=TRUE)
+<span class="code_function" >lapply</span>(shapes$curves, plot3d, size=<span class="code_numeric" >4</span>, col=<span class="code_quote" >'lightblue'</span>, add=TRUE)
 </pre></div>
 
 	<img width='500px' class='center' src='../../img/tutorials/stereomorph/bubo_virginianus_FMNH488595_reflect.jpg' />

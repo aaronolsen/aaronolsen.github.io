@@ -75,7 +75,7 @@ of this tutorial</a>.
 		<a href='https://CRAN.R-project.org/package=svgViewR' target='_blank' >svgViewR on CRAN</a>. 
 
 		<div class="code" ><pre class="code">
-<span class="code_comment" ># Install the svgViewR package</span>
+<span class="code_comment" ># Install the svgViewR package (if not already installed)</span>
 <span class="code_function" >install.packages</span>(<span class="code_quote" >'svgViewR'</span>, dependencies=TRUE)
 </pre></div>
 		
@@ -94,10 +94,10 @@ Create a distribution of 3D points using the <span class='in_line_code'>rnorm()<
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Set number of points to draw</span>
-n <- 300
+n <- <span class="code_numeric" >300</span>
 
 <span class="code_comment" ># Create a cloud of normally distributed 3D points</span>
-points3d <- <span class="code_function" >cbind</span>(<span class="code_function" >rnorm</span>(n, sd=3), <span class="code_function" >rnorm</span>(n, sd=2), <span class="code_function" >rnorm</span>(n, sd=1))
+points3d <- <span class="code_function" >cbind</span>(<span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >3</span>), <span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >2</span>), <span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >1</span>))
 </pre></div>
 
 <p>
@@ -118,16 +118,16 @@ as a function of its distance from the point cloud centroid.
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Get distance of points from the center of point cloud</span>
-pdist <- <span class="code_function" >sqrt</span>(<span class="code_function" >rowSums</span>((points3d - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(points3d), n, 3, byrow=TRUE))^2))
+pdist <- <span class="code_function" >sqrt</span>(<span class="code_function" >rowSums</span>((points3d - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(points3d), n, <span class="code_numeric" >3</span>, byrow=TRUE))^<span class="code_numeric" >2</span>))
 
 <span class="code_comment" ># Set color gradient between red and blue</span>
 colfunc <- <span class="code_function" >colorRampPalette</span>(<span class="code_function" >c</span>(<span class="code_quote" >'red'</span>, <span class="code_quote" >'blue'</span>))
 
 <span class="code_comment" ># Set desired number of colors along gradient</span>
-col_grad <- <span class="code_function" >colfunc</span>(50)
+col_grad <- <span class="code_function" >colfunc</span>(<span class="code_numeric" >50</span>)
 
 <span class="code_comment" ># Scale distances to indices and find corresponding color along gradient</span>
-col <- col_grad[(<span class="code_function" >length</span>(col_grad)-1)*(pdist - <span class="code_function" >min</span>(pdist)) / <span class="code_function" >diff</span>(<span class="code_function" >range</span>(pdist))+1]
+col <- col_grad[(<span class="code_function" >length</span>(col_grad)-<span class="code_numeric" >1</span>)*(pdist - <span class="code_function" >min</span>(pdist)) / <span class="code_function" >diff</span>(<span class="code_function" >range</span>(pdist))+<span class="code_numeric" >1</span>]
 </pre></div>
 
 <p>
@@ -202,7 +202,7 @@ Start by specifying the number of iterations you'd like in the animation.
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Set number of iterations</span>
-n_iter <- 100
+n_iter <- <span class="code_numeric" >100</span>
 </pre></div>
 
 <p>
@@ -224,8 +224,8 @@ axis labels between 0 and 100.
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Expand points from origin</span>
-<span class="code_function" >for</span>(iter in 0:(n_iter-1)){
-	points3da[, , iter] <- points3da[, , iter] * 0.001 * iter^2
+<span class="code_function" >for</span>(iter in <span class="code_numeric" >0</span>:(n_iter-<span class="code_numeric" >1</span>)){
+	points3da[, , iter] <- points3da[, , iter] * <span class="code_numeric" >0.001</span> * iter^<span class="code_numeric" >2</span>
 }
 </pre></div>
 
@@ -266,25 +266,25 @@ Your browser does not support the video tag.
 <span class="code_function" >library</span>(svgViewR)
 
 <span class="code_comment" ># Set number of points to draw</span>
-n <- 300
+n <- <span class="code_numeric" >300</span>
 
 <span class="code_comment" ># Create a cloud of normally distributed 3D points</span>
-points3d <- <span class="code_function" >cbind</span>(<span class="code_function" >rnorm</span>(n, sd=3), <span class="code_function" >rnorm</span>(n, sd=2), <span class="code_function" >rnorm</span>(n, sd=1))
+points3d <- <span class="code_function" >cbind</span>(<span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >3</span>), <span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >2</span>), <span class="code_function" >rnorm</span>(n, sd=<span class="code_numeric" >1</span>))
 
 <span class="code_comment" ># Open a connection to .html file</span>
 <span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_static_points.html'</span>)
 
 <span class="code_comment" ># Get distance of points from the center of point cloud</span>
-pdist <- <span class="code_function" >sqrt</span>(<span class="code_function" >rowSums</span>((points3d - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(points3d), n, 3, byrow=TRUE))^2))
+pdist <- <span class="code_function" >sqrt</span>(<span class="code_function" >rowSums</span>((points3d - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(points3d), n, <span class="code_numeric" >3</span>, byrow=TRUE))^<span class="code_numeric" >2</span>))
 
 <span class="code_comment" ># Set color gradient between red and blue</span>
 colfunc <- <span class="code_function" >colorRampPalette</span>(<span class="code_function" >c</span>(<span class="code_quote" >'red'</span>, <span class="code_quote" >'blue'</span>))
 
 <span class="code_comment" ># Set desired number of colors along gradient</span>
-col_grad <- <span class="code_function" >colfunc</span>(50)
+col_grad <- <span class="code_function" >colfunc</span>(<span class="code_numeric" >50</span>)
 
 <span class="code_comment" ># Scale distances to indices and find corresponding color along gradient</span>
-col <- col_grad[(<span class="code_function" >length</span>(col_grad)-1)*(pdist - <span class="code_function" >min</span>(pdist)) / <span class="code_function" >diff</span>(<span class="code_function" >range</span>(pdist))+1]
+col <- col_grad[(<span class="code_function" >length</span>(col_grad)-<span class="code_numeric" >1</span>)*(pdist - <span class="code_function" >min</span>(pdist)) / <span class="code_function" >diff</span>(<span class="code_function" >range</span>(pdist))+<span class="code_numeric" >1</span>]
 
 <span class="code_comment" ># Add points to file</span>
 <span class="code_function" >svg.points</span>(points3d, col=col)
@@ -296,14 +296,14 @@ svg_frame <- <span class="code_function" >svg.frame</span>(points3d)
 <span class="code_function" >svg.close</span>()
 
 <span class="code_comment" ># Set number of iterations</span>
-n_iter <- 100
+n_iter <- <span class="code_numeric" >100</span>
 
 <span class="code_comment" ># Create animated point array</span>
 points3da <- <span class="code_function" >array</span>(points3d, dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(points3d), n_iter))
 
 <span class="code_comment" ># Expand points from origin</span>
-<span class="code_function" >for</span>(iter in 0:(n_iter-1)){
-	points3da[, , iter] <- points3da[, , iter] * 0.001 * iter^2
+<span class="code_function" >for</span>(iter in <span class="code_numeric" >0</span>:(n_iter-<span class="code_numeric" >1</span>)){
+	points3da[, , iter] <- points3da[, , iter] * <span class="code_numeric" >0.001</span> * iter^<span class="code_numeric" >2</span>
 }
 
 <span class="code_comment" ># Open a connection to .html file</span>

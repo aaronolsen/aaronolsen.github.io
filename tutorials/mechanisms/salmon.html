@@ -184,14 +184,14 @@ linkage <- <span class="code_function" >defineLinkage</span>(joint.coor=joint.co
 	lar.cons=lar.cons)
 
 <span class="code_comment" ># Set number of animation iterations</span>
-anim_len <- 9
+anim_len <- <span class="code_numeric" >9</span>
 
 <span class="code_comment" ># Set input parameters</span>
-input.param <- <span class="code_function" >list</span>(<span class="code_function" >seq</span>(0,-0.1,length=anim_len),
-	<span class="code_function" >cbind</span>(<span class="code_function" >seq</span>(0.001,-3.001,length=anim_len), <span class="code_function" >rep</span>(0, anim_len), <span class="code_function" >rep</span>(0, anim_len)))
+input.param <- <span class="code_function" >list</span>(<span class="code_function" >seq</span>(<span class="code_numeric" >0</span>,-<span class="code_numeric" >0.1</span>,length=anim_len),
+	<span class="code_function" >cbind</span>(<span class="code_function" >seq</span>(<span class="code_numeric" >0.001</span>,-<span class="code_numeric" >3.001</span>,length=anim_len), <span class="code_function" >rep</span>(<span class="code_numeric" >0</span>, anim_len), <span class="code_function" >rep</span>(<span class="code_numeric" >0</span>, anim_len)))
 
 <span class="code_comment" ># Animate linkage (this can take some time to run)</span>
-anim <- <span class="code_function" >animateLinkage</span>(linkage, input.param=input.param, input.joint=<span class="code_function" >c</span>(1,5))
+anim <- <span class="code_function" >animateLinkage</span>(linkage, input.param=input.param, input.joint=<span class="code_function" >c</span>(<span class="code_numeric" >1</span>,<span class="code_numeric" >5</span>))
 
 <span class="code_comment" ># Draw linkage</span>
 <span class="code_function" >drawLinkage</span>(anim, file=<span class="code_quote" >'salmon.html'</span>, animate.reverse=TRUE)</pre></div>

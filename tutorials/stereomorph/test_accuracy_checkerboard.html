@@ -171,7 +171,7 @@
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Test calibration against other checkerboard set</span>
 test_cal <- <span class="code_function" >testCalibration</span>(img.dir=<span class="code_quote" >'Images'</span>, cal.file=<span class="code_quote" >'calibration.txt'</span>, 
-   corner.dir=<span class="code_quote" >'Corners'</span>, sq.size=<span class="code_quote" >'5.080 mm'</span>, nx=7, ny=6, error.dir=<span class="code_quote" >'Errors'</span>, 
+   corner.dir=<span class="code_quote" >'Corners'</span>, sq.size=<span class="code_quote" >'5.080 mm'</span>, nx=<span class="code_numeric" >7</span>, ny=<span class="code_numeric" >6</span>, error.dir=<span class="code_quote" >'Errors'</span>, 
    verify.dir=<span class="code_quote" >'Verify'</span>)
 </pre></div>
 
@@ -207,27 +207,27 @@ test_cal <- <span class="code_function" >testCalibration</span>(img.dir=<span cl
 
 <div class="code" ><pre class="code">
 dltTestCalibration Summary
-     Number of aspects: 6
-     Number of views: 2
-     Square size: 5.08 mm
-     Number of points per aspect: 42
+     Number of aspects: <span class="code_numeric" >6</span>
+     Number of views: <span class="code_numeric" >2</span>
+     Square size: <span class="code_numeric" >5.08</span> mm
+     Number of points per aspect: <span class="code_numeric" >42</span>
      Aligned ideal to reconstructed (AITR) point position errors:
-          AITR RMS Errors (X, Y, Z): 0.0148 mm, 0.0220 mm, 0.0212 mm
-          Mean AITR Distance Error: 0.0309 mm
-          AITR Distance RMS Error: 0.0346 mm
+          AITR RMS Errors (X, Y, Z): <span class="code_numeric" >0.0148</span> mm, <span class="code_numeric" >0.0220</span> mm, <span class="code_numeric" >0.0212</span> mm
+          Mean AITR Distance Error: <span class="code_numeric" >0.0309</span> mm
+          AITR Distance RMS Error: <span class="code_numeric" >0.0346</span> mm
      Inter-point distance (IPD) errors:
-          IPD RMS Error: 0.0316 mm
-          IPD Mean Absolute Error: 0.0237 mm
-          Mean IPD error: -0.0161 mm
+          IPD RMS Error: <span class="code_numeric" >0.0316</span> mm
+          IPD Mean Absolute Error: <span class="code_numeric" >0.0237</span> mm
+          Mean IPD error: -<span class="code_numeric" >0.0161</span> mm
      Adjacent-pair distance errors:
-          Mean adjacent-pair distance error: 0.000650 mm
-          Mean adjacent-pair absolute distance error: 0.0167 mm
-          SD of adjacent-pair distance error: 0.0188 mm
+          Mean adjacent-pair distance error: <span class="code_numeric" >0.000650</span> mm
+          Mean adjacent-pair absolute distance error: <span class="code_numeric" >0.0167</span> mm
+          SD of adjacent-pair distance error: <span class="code_numeric" >0.0188</span> mm
      Epipolar errors:
-          Epipolar RMS Error: 0.304 px
-          Epipolar Mean Error: 0.304 px
-          Epipolar Max Error: 0.970 px
-          SD of Epipolar Error: 0.209 px
+          Epipolar RMS Error: <span class="code_numeric" >0.304</span> px
+          Epipolar Mean Error: <span class="code_numeric" >0.304</span> px
+          Epipolar Max Error: <span class="code_numeric" >0.970</span> px
+          SD of Epipolar Error: <span class="code_numeric" >0.209</span> px
 </pre></div>
 
 	<p>

@@ -126,31 +126,31 @@
 </p>
 	<div class="code" ><pre class="code">
 <span class="code_comment" ># Define the joint coordinates</span>
-joint.coor <- <span class="code_function" >rbind</span>(<span class="code_function" >c</span>(0,0,0), <span class="code_function" >c</span>(0,0.5,0), <span class="code_function" >c</span>(1,1,0), <span class="code_function" >c</span>(1,0,0))
+joint.coor <- <span class="code_function" >rbind</span>(<span class="code_function" >c</span>(<span class="code_numeric" >0</span>,<span class="code_numeric" >0</span>,<span class="code_numeric" >0</span>), <span class="code_function" >c</span>(<span class="code_numeric" >0</span>,<span class="code_numeric" >0.5</span>,<span class="code_numeric" >0</span>), <span class="code_function" >c</span>(<span class="code_numeric" >1</span>,<span class="code_numeric" >1</span>,<span class="code_numeric" >0</span>), <span class="code_function" >c</span>(<span class="code_numeric" >1</span>,<span class="code_numeric" >0</span>,<span class="code_numeric" >0</span>))
 
 <span class="code_comment" ># Define the joint types</span>
 joint.types <- <span class="code_function" >c</span>(<span class="code_quote" >'R'</span>, <span class="code_quote" >'S'</span>, <span class="code_quote" >'S'</span>, <span class="code_quote" >'R'</span>)
 
 <span class="code_comment" ># Define the joint constraint vectors</span>
-joint.cons <- <span class="code_function" >list</span>(<span class="code_function" >c</span>(0,0,1), NA, NA, <span class="code_function" >c</span>(0,0,1))
+joint.cons <- <span class="code_function" >list</span>(<span class="code_function" >c</span>(<span class="code_numeric" >0</span>,<span class="code_numeric" >0</span>,<span class="code_numeric" >1</span>), NA, NA, <span class="code_function" >c</span>(<span class="code_numeric" >0</span>,<span class="code_numeric" >0</span>,<span class="code_numeric" >1</span>))
 
 <span class="code_comment" ># Define the connections among joints</span>
-joint.conn <- <span class="code_function" >rbind</span>(<span class="code_function" >c</span>(0,1), <span class="code_function" >c</span>(1,2), <span class="code_function" >c</span>(2,3), <span class="code_function" >c</span>(3,0))
+joint.conn <- <span class="code_function" >rbind</span>(<span class="code_function" >c</span>(<span class="code_numeric" >0</span>,<span class="code_numeric" >1</span>), <span class="code_function" >c</span>(<span class="code_numeric" >1</span>,<span class="code_numeric" >2</span>), <span class="code_function" >c</span>(<span class="code_numeric" >2</span>,<span class="code_numeric" >3</span>), <span class="code_function" >c</span>(<span class="code_numeric" >3</span>,<span class="code_numeric" >0</span>))
 
 <span class="code_comment" ># Define first rectangle</span>
-rec1 <- <span class="code_function" >rbind</span>(<span class="code_function" >c</span>(-0.1,-0.1,0), <span class="code_function" >c</span>(-0.1,0.6,0), <span class="code_function" >c</span>(0.1,0.6,0), <span class="code_function" >c</span>(0.1,-0.1,0))
+rec1 <- <span class="code_function" >rbind</span>(<span class="code_function" >c</span>(-<span class="code_numeric" >0.1</span>,-<span class="code_numeric" >0.1</span>,<span class="code_numeric" >0</span>), <span class="code_function" >c</span>(-<span class="code_numeric" >0.1</span>,<span class="code_numeric" >0.6</span>,<span class="code_numeric" >0</span>), <span class="code_function" >c</span>(<span class="code_numeric" >0.1</span>,<span class="code_numeric" >0.6</span>,<span class="code_numeric" >0</span>), <span class="code_function" >c</span>(<span class="code_numeric" >0.1</span>,-<span class="code_numeric" >0.1</span>,<span class="code_numeric" >0</span>))
 
 <span class="code_comment" ># Define second rectangle</span>
-rec2 <- <span class="code_function" >rbind</span>(<span class="code_function" >c</span>(0.9,-0.1,0), <span class="code_function" >c</span>(0.9,1.1,0), <span class="code_function" >c</span>(1.1,1.1,0), <span class="code_function" >c</span>(1.1,-0.1,0))
+rec2 <- <span class="code_function" >rbind</span>(<span class="code_function" >c</span>(<span class="code_numeric" >0.9</span>,-<span class="code_numeric" >0.1</span>,<span class="code_numeric" >0</span>), <span class="code_function" >c</span>(<span class="code_numeric" >0.9</span>,<span class="code_numeric" >1.1</span>,<span class="code_numeric" >0</span>), <span class="code_function" >c</span>(<span class="code_numeric" >1.1</span>,<span class="code_numeric" >1.1</span>,<span class="code_numeric" >0</span>), <span class="code_function" >c</span>(<span class="code_numeric" >1.1</span>,-<span class="code_numeric" >0.1</span>,<span class="code_numeric" >0</span>))
 
 <span class="code_comment" ># Define the point coordinates</span>
-link.points <- <span class="code_function" >rbind</span>(rec1, <span class="code_function" >c</span>(0.5,0.75,0), rec2)
+link.points <- <span class="code_function" >rbind</span>(rec1, <span class="code_function" >c</span>(<span class="code_numeric" >0.5</span>,<span class="code_numeric" >0.75</span>,<span class="code_numeric" >0</span>), rec2)
 
 <span class="code_comment" ># Set the link associations for each point</span>
-link.assoc <- <span class="code_function" >c</span>(1,1,1,1, 2, 3,3,3,3)
+link.assoc <- <span class="code_function" >c</span>(<span class="code_numeric" >1</span>,<span class="code_numeric" >1</span>,<span class="code_numeric" >1</span>,<span class="code_numeric" >1</span>, <span class="code_numeric" >2</span>, <span class="code_numeric" >3</span>,<span class="code_numeric" >3</span>,<span class="code_numeric" >3</span>,<span class="code_numeric" >3</span>)
 
 <span class="code_comment" ># Define points to connect into paths</span>
-path.connect <- <span class="code_function" >list</span>(<span class="code_function" >c</span>(1:4,1), <span class="code_function" >c</span>(6:9,6))
+path.connect <- <span class="code_function" >list</span>(<span class="code_function" >c</span>(<span class="code_numeric" >1</span>:<span class="code_numeric" >4</span>,<span class="code_numeric" >1</span>), <span class="code_function" >c</span>(<span class="code_numeric" >6</span>:<span class="code_numeric" >9</span>,<span class="code_numeric" >6</span>))
 
 <span class="code_comment" ># Define linkage</span>
 linkage <- <span class="code_function" >defineLinkage</span>(joint.coor=joint.coor, joint.types=joint.types, 
@@ -158,7 +158,7 @@ linkage <- <span class="code_function" >defineLinkage</span>(joint.coor=joint.co
 	link.assoc=link.assoc, path.connect=path.connect)
 
 <span class="code_comment" ># Animate linkage</span>
-anim <- <span class="code_function" >animateLinkage</span>(linkage, input.param=<span class="code_function" >seq</span>(0,2*pi,length=60), input.joint=1)
+anim <- <span class="code_function" >animateLinkage</span>(linkage, input.param=<span class="code_function" >seq</span>(<span class="code_numeric" >0</span>,<span class="code_numeric" >2</span>*<span class="code_numeric" >pi</span>,length=<span class="code_numeric" >60</span>), input.joint=<span class="code_numeric" >1</span>)
 
 <span class="code_comment" ># Draw linkage</span>
 <span class="code_function" >drawLinkage</span>(anim, file=<span class="code_quote" >'RSSR.html'</span>)</pre></div>

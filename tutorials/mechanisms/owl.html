@@ -175,7 +175,7 @@ linkage <- <span class="code_function" >defineLinkage</span>(joint.coor=joint.co
 	joint.conn=joint.conn, path.connect=path.connect, ground.link=<span class="code_quote" >'neurocranium'</span>)
 
 <span class="code_comment" ># Animate linkage</span>
-anim <- <span class="code_function" >animateLinkage</span>(linkage, input.param=<span class="code_function" >seq</span>(-0.07,0.17,length=30), input.joint=1)
+anim <- <span class="code_function" >animateLinkage</span>(linkage, input.param=<span class="code_function" >seq</span>(-<span class="code_numeric" >0.07</span>,<span class="code_numeric" >0.17</span>,length=<span class="code_numeric" >30</span>), input.joint=<span class="code_numeric" >1</span>)
 
 <span class="code_comment" ># Draw linkage</span>
 <span class="code_function" >drawLinkage</span>(anim, file=<span class="code_quote" >'owl.html'</span>, animate.reverse=TRUE)</pre></div>
