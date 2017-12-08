@@ -226,14 +226,15 @@ arrow_anim[,,<span class="code_numeric" >1</span>]
 
 <p>
 Start a new plot file and add the animated arrow to the plot. Optionally, add a frame around 
-the animated arrow.
+the animated arrow. Use the <strong>len</strong> parameter to set the arrowhead length since the 
+default is not the right size.
 </p>
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Open a connection to .html file</span>
 <span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_animated_arrow.html'</span>)
 
-<span class="code_comment" ># Plot arrows</span>
+<span class="code_comment" ># Plot arrows, set arrowhead length</span>
 <span class="code_function" >svg.arrows</span>(arrow_anim, len=<span class="code_numeric" >0.5</span>)
 
 <span class="code_comment" ># Add a coordinate axis planes around the points</span>
@@ -263,8 +264,7 @@ Your browser does not support the video tag.
 
 <p>
 To create multiple arrows you'll have to call <span class='in_line_code'>svg.arrows</span> 
-for each arrow. This makes it easier to specified animated arrows. Set the number of arrows 
-you'd like to draw.
+for each arrow. Set the number of arrows you'd like to draw.
 </p>
 
 <div class="code" ><pre class="code">
@@ -283,7 +283,7 @@ arrowm <- <span class="code_function" >list</span>()
 </pre></div>
 
 <p>
-Optionally, to draw a coordinate frame around the arrows get the xyz-coordinate ranges.
+Optionally, if you'd like to draw a coordinate frame around the arrows, get the xyz-coordinate ranges.
 </p>
 
 <div class="code" ><pre class="code">
@@ -362,7 +362,7 @@ translation distance is based on the current iteration number.
 </p>
 
 <p>
-Optionally, to draw a coordinate frame around the arrows get the xyz-coordinate ranges.
+To draw a coordinate frame around the arrows get the xyz-coordinate ranges.
 </p>
 
 <div class="code" ><pre class="code">
@@ -372,7 +372,8 @@ arrow_range <- <span class="code_function" >apply</span>(<span class="code_funct
 
 <p>
 Start a new plot file and add each animated arrow, optionally adding a frame around 
-the arrows.
+the arrows. Use the <strong>len</strong> parameter to set the arrowhead length since the 
+default is not the right size.
 </p>
 
 <div class="code" ><pre class="code">
@@ -449,7 +450,7 @@ arrow_anim[,,<span class="code_numeric" >1</span>]
 <span class="code_comment" ># Open a connection to .html file</span>
 <span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_animated_arrow.html'</span>)
 
-<span class="code_comment" ># Plot arrows</span>
+<span class="code_comment" ># Plot arrows, set arrowhead length</span>
 <span class="code_function" >svg.arrows</span>(arrow_anim, len=<span class="code_numeric" >0.5</span>)
 
 <span class="code_comment" ># Add a coordinate axis planes around the points</span>
