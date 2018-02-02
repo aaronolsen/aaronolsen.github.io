@@ -41,6 +41,9 @@
 			<div class='linksidebar_sub2link' >
 				<a class='linksidebar_link' href='../../tutorials/3d_visualization/plot_spheres.html'>Plotting spheres (WebGL)</a>
 			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/3d_visualization/plot_mesh.html'>Plotting meshes (WebGL)</a>
+			</div>
 			<div class='linksidebar_sublink' >
 				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
 			</div>
@@ -152,7 +155,7 @@ To surpress this output from being written to the console send the function's ou
 </p>
 
 <div class="code" ><pre class="code">
-<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+<span class="code_comment" ># Add coordinate axis planes around the points</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(points3d)
 </pre></div>
 
@@ -248,7 +251,7 @@ static points, simply replace <span class='in_line_code' >points3d</span> with
 <span class="code_comment" ># Add points to file</span>
 <span class="code_function" >svg.points</span>(points3da, col=col)
 
-<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+<span class="code_comment" ># Add coordinate axis planes around the points</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(points3da)
 
 <span class="code_comment" ># Close the file connection</span>
@@ -298,7 +301,7 @@ col <- col_grad[(<span class="code_function" >length</span>(col_grad)-<span clas
 <span class="code_comment" ># Add points to file</span>
 <span class="code_function" >svg.points</span>(points3d, col=col)
 
-<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+<span class="code_comment" ># Add coordinate axis planes around the points</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(points3d)
 
 <span class="code_comment" ># Close the file connection</span>
@@ -321,7 +324,7 @@ points3da <- <span class="code_function" >array</span>(points3d, dim=<span class
 <span class="code_comment" ># Add points to file</span>
 <span class="code_function" >svg.points</span>(points3da, col=col)
 
-<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+<span class="code_comment" ># Add coordinate axis planes around the points</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(points3da)
 
 <span class="code_comment" ># Close the file connection</span>

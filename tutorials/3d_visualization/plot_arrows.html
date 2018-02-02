@@ -41,6 +41,9 @@
 			<div class='linksidebar_sub2link' >
 				<a class='linksidebar_link' href='../../tutorials/3d_visualization/plot_spheres.html'>Plotting spheres (WebGL)</a>
 			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/3d_visualization/plot_mesh.html'>Plotting meshes (WebGL)</a>
+			</div>
 			<div class='linksidebar_sublink' >
 				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
 			</div>
@@ -137,7 +140,7 @@ To surpress this output from being written to the console send the function's ou
 </p>
 
 <div class="code" ><pre class="code">
-<span class="code_comment" ># Add a coordinate axis planes around the arrow</span>
+<span class="code_comment" ># Add coordinate axis planes around the arrow</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(arrow)
 </pre></div>
 
@@ -240,7 +243,7 @@ default is not the right size.
 <span class="code_comment" ># Plot arrows, set arrowhead length</span>
 <span class="code_function" >svg.arrows</span>(arrow_anim, len=<span class="code_numeric" >0.5</span>)
 
-<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+<span class="code_comment" ># Add coordinate axis planes around the points</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(arrow_anim)
 
 <span class="code_comment" ># Close the file connection</span>
@@ -306,7 +309,7 @@ the arrows.
 <span class="code_comment" ># Plot arrows</span>
 <span class="code_function" >for</span>(i in <span class="code_numeric" >1</span>:n_arrows) <span class="code_function" >svg.arrows</span>(arrowm[[i]])
 
-<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+<span class="code_comment" ># Add coordinate axis planes around the points</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(arrow_range)
 
 <span class="code_comment" ># Close the file connection</span>
@@ -386,7 +389,7 @@ default is not the right size.
 <span class="code_comment" ># Plot arrows</span>
 <span class="code_function" >for</span>(i in <span class="code_numeric" >1</span>:<span class="code_function" >length</span>(arrowm_anim)) <span class="code_function" >svg.arrows</span>(arrowm_anim[[i]], len=<span class="code_numeric" >0.3</span>)
 
-<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+<span class="code_comment" ># Add coordinate axis planes around the points</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(arrow_range)
 
 <span class="code_comment" ># Close the file connection</span>
@@ -425,7 +428,7 @@ arrow
 <span class="code_comment" ># Add arrow</span>
 <span class="code_function" >svg.arrows</span>(arrow)
 
-<span class="code_comment" ># Add a coordinate axis planes around the arrow</span>
+<span class="code_comment" ># Add coordinate axis planes around the arrow</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(arrow)
 
 <span class="code_comment" ># Close the file connection</span>
@@ -456,7 +459,7 @@ arrow_anim[,,<span class="code_numeric" >1</span>]
 <span class="code_comment" ># Plot arrows, set arrowhead length</span>
 <span class="code_function" >svg.arrows</span>(arrow_anim, len=<span class="code_numeric" >0.5</span>)
 
-<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+<span class="code_comment" ># Add coordinate axis planes around the points</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(arrow_anim)
 
 <span class="code_comment" ># Close the file connection</span>
@@ -478,7 +481,7 @@ arrow_range <- <span class="code_function" >apply</span>(<span class="code_funct
 <span class="code_comment" ># Plot arrows</span>
 <span class="code_function" >for</span>(i in <span class="code_numeric" >1</span>:n_arrows) <span class="code_function" >svg.arrows</span>(arrowm[[i]])
 
-<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+<span class="code_comment" ># Add coordinate axis planes around the points</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(arrow_range)
 
 <span class="code_comment" ># Close the file connection</span>
@@ -511,7 +514,7 @@ arrow_range <- <span class="code_function" >apply</span>(<span class="code_funct
 <span class="code_comment" ># Plot arrows</span>
 <span class="code_function" >for</span>(i in <span class="code_numeric" >1</span>:<span class="code_function" >length</span>(arrowm_anim)) <span class="code_function" >svg.arrows</span>(arrowm_anim[[i]], len=<span class="code_numeric" >0.3</span>)
 
-<span class="code_comment" ># Add a coordinate axis planes around the points</span>
+<span class="code_comment" ># Add coordinate axis planes around the points</span>
 svg_frame <- <span class="code_function" >svg.frame</span>(arrow_range)
 
 <span class="code_comment" ># Close the file connection</span>
