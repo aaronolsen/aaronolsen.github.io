@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>3D Visualization - Spheres</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/Canada Goose.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					Canada Goose
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/visualization3d.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/visualization3d.html'>3D Visualization</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/3d_visualization/plot_points.html'>Plotting 3D points (SVG)</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/3d_visualization/plot_arrows.html'>Plotting 3D arrows (SVG)</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/3d_visualization/plot_spheres.html'>Plotting spheres (WebGL)</a>
+			</div>
+			<div class='linksidebar_sub2link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/3d_visualization/plot_mesh.html'>Plotting meshes (WebGL)</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph.html'>StereoMorph User Guide</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/knex/large_u_joint.html'>K'nex models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/visualization3d.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/visualization3d.html">3d visualization</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;plotting meshes (webgl)</div>
+
+
+<div class='maincontentfill'>
+<h1>Plotting meshes</h1>
+
+<p>
+This tutorial will show you how to plot an untextured mesh (specifically an 
+<a href='https://en.wikipedia.org/wiki/Wavefront_.obj_file' target='_blank' >OBJ file</a>) 
+to a standalone html file using the R package svgViewR. This tutorial uses a new WebGL-based plotting mode added in svgViewR 1.3 and 
+implemented using the <a href='https://threejs.org/' target='_blank' >three.js Javascript library</a>. 
+The uninterrupted block of code can be found at the <a href="#uninterrupted_code">end 
+of this tutorial</a>.
+</p><h2>Preliminary steps</h2><p>Make sure that you have 
+		<a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a> 
+		installed on your system (you can find R installation instructions 
+		<a href="https://cran.r-project.org" target="_blank" >here</a>). You will also need to <a href='https://www.r-bloggers.com/installing-r-packages/' target='_blank' >install 
+		the latest version</a> of the R package 
+		<a href='https://CRAN.R-project.org/package=svgViewR' target='_blank' >svgViewR on CRAN</a>. This tutorial uses a new plotting mode in svgViewR, <span class='in_line_code'>webgl</span>, 
+			that was added with the 1.3 version, so ensure that you have svgViewR version 1.3 or greater. 
+			The <span class='in_line_code'>webgl</span> currently supports only a few shape types. See 
+			the left panel for which shapes can be plotted in <span class='in_line_code'>svg</span> (old, default) 
+			or <span class='in_line_code'>webgl</span> (new) mode.
+
+		<div class="code" ><pre class="code">
+<span class="code_comment" ># Install the svgViewR package (if not already installed)</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'svgViewR'</span>, dependencies=TRUE)
+</pre></div>
+		
+<h2>Plotting a mesh</h2>
+
+<p>Start by loading the svgViewR package into the current R workspace.</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" >## Plotting a mesh</span>
+<span class="code_comment" ># Load the svgViewR package</span>
+<span class="code_function" >library</span>(svgViewR)
+</pre></div>
+
+<p>
+If you'd like to try out this tutorial with an OBJ file you can download this 
+<a href='https://aaronolsen.github.io/software/svgviewr/seashell.obj' target='_blank' >OBJ 
+of a seashell</a> (2 MB), courtesy of my colleague <a href='http://home.uchicago.edu/sedie/' target='_blank' >Stewart Edie</a>.
+Thank you Stewart for allowing me to feature this beautiful shell here! This shell is just one of over 1500 species 
+of marine bivalve that he and his colleagues have CT scanned as a part of a fantastic 
+project (biv3d) to <a href='http://home.uchicago.edu/sedie/project/biv3d/' target='_blank'>CT scan 
+every living marine bivalve species</a>. Save the <span class='in_line_code'>seashell.obj</span> 
+file to your current R working directory.
+</p>
+
+<img height='300px' class='center' style='border:1px black' src='../../img/tutorials/3d_visualization/seashell.jpg' />
+<div class='img_caption' >
+	Seashell mesh used in this tutorial (courtesy of <a href='http://home.uchicago.edu/sedie/' target='_blank' >Stewart Edie</a>).
+</div>
+
+<p>
+An untextured mesh simply consists of vertices, vertex normals, and faces. An 
+<a href='https://en.wikipedia.org/wiki/Wavefront_.obj_file' target='_blank' >OBJ</a> file 
+contains all of this information but not in a format that will be readable by a web browser. 
+In order to plot an OBJ mesh using svgViewR you'll first need to convert the OBJ file to the 
+<a href='https://en.wikipedia.org/wiki/JSON' target='_blank' >JSON</a> file format. You can 
+do this using the svgViewR function <span class='in_line_code'>objToJSON</span>.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Convert OBJ file to JSON</span>
+<span class="code_function" >objToJSON</span>(obj=<span class="code_quote" >'seashell.obj'</span>, file=<span class="code_quote" >'seashell.json'</span>)
+</pre></div>
+
+<p>
+Now that we have a compatible file format, open a connection to a new svgViewR .html file. 
+All of the shapes that you draw will be 
+written to this .html file. Once you're finished plotting, you'll be able to open this file in a web browser 
+and view the shapes as an interactive visualization. All of the needed code is contained within 
+this html file which will allow you to share this file so others can view the visualization 
+(they do not need to have R installed to view it). Note that <span class='in_line_code'>mode</span> 
+must be set to <span class='in_line_code'>webgl</span> to plot meshes; this will eventually 
+become the default mode.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_shell.html'</span>, mode=<span class="code_quote" >'webgl'</span>)
+</pre></div>
+
+<p>
+To add the mesh, use the <span class='in_line_code'>svg.mesh</span> function.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Add mesh</span>
+mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.json'</span>)
+</pre></div>
+
+<p>
+The <span class='in_line_code'>svg.mesh</span> 
+function outputs the limits and corners of the bounding box around the plotted mesh, which may be useful 
+for subsequent plotting. You can input an OBJ file directly to <span class='in_line_code'>svg.mesh</span> 
+but the function will still 
+have to run <span class='in_line_code'>objToJSON</span> to convert the file to a compatible 
+type. So if you're continually plotting the same OBJ file it's faster to perform the JSON 
+conversion once.
+</p>
+
+<p>
+Optionally, add a frame around any currently plotted shapes. Note that the mesh is plotted 
+following the vertices in the mesh file. Therefore the position and scaling of the mesh (and 
+a coordinate axis around the mesh) will be based on the mesh vertices.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Add coordinate axis planes around the mesh</span>
+svg_frame <- <span class="code_function" >svg.frame</span>()
+</pre></div>
+
+<p>
+Once you're done plotting, call the <span class='in_line_code'>svg.close</span> function. 
+This takes all of the shapes saved to an svgViewR environment, writes them to the .html file, and 
+closes the connection.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+</pre></div>
+
+<p>
+You can now open the <a href='../../viz/tutorials/3d_visualization/plot_shell.html' target='_blank' >resulting 
+.html file</a>.
+</p>
+
+<a href='../../viz/tutorials/3d_visualization/plot_shell.html' target='_blank' >
+	<img height='400px' class='center' style='border:1px black' src='../../img/tutorials/3d_visualization/plot_shell.jpg' />
+</a>
+<div class='img_caption' >
+	Plot of mesh and bounding coordinate planes.
+</div>
+
+<p>
+To rotate the graphic left-click and drag the cursor. To move (translate) the graphic right-click and 
+drag the cursor. To zoom scroll in and out. To return to the initial orientation of the graphic (or to see 
+changes if you re-write the file) refresh the browser.
+</p>
+
+<h2>Setting the mesh color</h2>
+
+<p>
+The default color for a mesh is an off-white tone. You can set the color using the 
+<span class='in_line_code'>col</span> parameter to create, for example, a blue shell.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" >## Setting the mesh color</span>
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_blue_shell.html'</span>, mode=<span class="code_quote" >'webgl'</span>)
+
+<span class="code_comment" ># Add mesh</span>
+mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.json'</span>, col=<span class="code_quote" >'DodgerBlue'</span>)
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+</pre></div>
+
+<a href='../../viz/tutorials/3d_visualization/plot_blue_shell.html' target='_blank' >
+	<img height='400px' class='center' style='border:1px black' src='../../img/tutorials/3d_visualization/plot_blue_shell.jpg' />
+</a>
+<div class='img_caption' >
+	Use <span class='in_line_code'>col</span> to change the mesh color.
+</div>
+
+</div><h2>Uninterrupted code</h2><a name="uninterrupted_code" ></a><br /><div class="code" ><pre class="code">
+<span class="code_comment" >## Plotting a mesh</span>
+<span class="code_comment" ># Load the svgViewR package</span>
+<span class="code_function" >library</span>(svgViewR)
+
+<span class="code_comment" ># Convert OBJ file to JSON</span>
+<span class="code_function" >objToJSON</span>(obj=<span class="code_quote" >'seashell.obj'</span>, file=<span class="code_quote" >'seashell.json'</span>)
+
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_shell.html'</span>, mode=<span class="code_quote" >'webgl'</span>)
+
+<span class="code_comment" ># Add mesh</span>
+mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.json'</span>)
+
+<span class="code_comment" ># Add coordinate axis planes around the mesh</span>
+svg_frame <- <span class="code_function" >svg.frame</span>()
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+
+<span class="code_comment" >## Setting the mesh color</span>
+<span class="code_comment" ># Open a connection to .html file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_blue_shell.html'</span>, mode=<span class="code_quote" >'webgl'</span>)
+
+<span class="code_comment" ># Add mesh</span>
+mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.json'</span>, col=<span class="code_quote" >'DodgerBlue'</span>)
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+</pre></div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2018 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>
