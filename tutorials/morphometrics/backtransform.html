@@ -39,6 +39,9 @@
 				<a class='linksidebar_link_u' href='../../tutorials/morphometrics/backtransform.html'>Create a backtransform morphospace</a>
 			</div>
 			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/xromm.html'>XROMM</a>
+			</div>
+			<div class='linksidebar_sublink' >
 				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
 			</div>
 			<div class='linksidebar_sublink' >
@@ -64,7 +67,9 @@
 <h1>Create a backtransform morphospace</h1>
 
 <p>
-This tutorial will show you how to create a "backtransform morphospace" in <a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a> 
+This tutorial will show you how to create a "backtransform morphospace" 
+(both <a href="#background_morphospace" >non-phylogenetic</a> and <a href="#background_morphospace_ppca">phylogenetic</a>) 
+in <a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a> 
 (below). A backtransform morphospace takes a standard morphospace plot, which 
 groups objects or biological specimens according to how similar they are in shape, 
 and adds representative shapes in a grid pattern across the plot to show intuitively 
@@ -114,8 +119,7 @@ Olsen AM (2017). Feeding ecology is the primary driver of beak shape diversifica
 All of the code in this tutorial are R commands. 
 So be sure you have <a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a>
 installed on your system. If you do not have R installed you can find installation 
-instructions <a href="https://cran.r-project.org" target="_blank" >here</a>. The uninterrupted block of code 
-can be found at the <a href="#uninterrupted_code">end of this tutorial</a>.
+instructions <a href="https://cran.r-project.org" target="_blank" >here</a>.
 </p>
 
 <p>
@@ -126,7 +130,7 @@ this package you can install it using the 'install.packages' function.
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Install R packages (if not installed already)</span>
-<span class="code_function" >install.packages</span>(<span class="code_quote" >'geomorph'</span>)
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'geomorph'</span>, dependencies=TRUE)
 </pre></div>
 
 <p>
@@ -139,7 +143,8 @@ Once the package is installed load it into the current R environment using the
 <span class="code_function" >library</span>(geomorph)
 </pre></div>
 
-<h2>Creating a backtransform morphospace using 3D shape data</h2>
+<a name="background_morphospace" ></a>
+<h2>Creating a (non-phylogenetic) backtransform morphospace using 3D shape data</h2>
 
 <p>
 The main part of this tutorial will first demonstrate making a backtransform morphospace 
@@ -235,7 +240,7 @@ resEig <- <span class="code_function" >eigen</span>(<span class="code_function" 
 scores <- gpa_mat %*% resEig$vectors
 
 <span class="code_comment" ># Get percent variance explained along each axis</span>
-percent.var <- (resEig$values / <span class="code_function" >sum</span>(resEig$values))*<span class="code_numeric" >100</span>
+per_var <- (resEig$values / <span class="code_function" >sum</span>(resEig$values))*<span class="code_numeric" >100</span>
 </pre></div>
 
 <p>
@@ -344,15 +349,15 @@ where the plot will be produced.
 
 <p>
 Create a plot box with axes and axis labels. Use the 'n' value for the 
-'type' parameter to draw the plot without plotting the scores. That way we can 
+'type' parameter to draw the plot without plotting the scores. That way you can 
 add the scores later on top of the backtransform shapes.
 </p>
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Create plot box with axes and axis labels</span>
 <span class="code_function" >plot</span>(scores[, pcs], type=<span class="code_quote" >'n'</span>, main=<span class="code_quote" >'Backtransform morphospace'</span>,
-	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >1</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >1</span>]]), <span class="code_quote" >'%)'</span>),
-	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >2</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >2</span>]]), <span class="code_quote" >'%)'</span>))
+	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >1</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(per_var[pcs[<span class="code_numeric" >1</span>]]), <span class="code_quote" >'%)'</span>),
+	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >2</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(per_var[pcs[<span class="code_numeric" >2</span>]]), <span class="code_quote" >'%)'</span>))
 </pre></div>
 
 <p>
@@ -419,7 +424,9 @@ Close the PDF graphics device.
 <span class="code_function" >dev.off</span>()
 </pre></div>
 
+<p>
 This should produce the following plot:
+</p>
 
 <div class='p_image_middle_div' style="width:550px;">
 	<div><a href='../../img/tutorials/morphometrics/backtransform_morphospace.jpg' target='_blank'>
@@ -427,7 +434,213 @@ This should produce the following plot:
 	<div class='p_image_caption' style='text-align:center;' >
 		Backtransform morphospace of 3D waterfowl beak shapes
 	</div>
-</div><a name="background_morphospace_2d" ></a>
+</div>
+
+
+
+<a name="background_morphospace_ppca" ></a>
+
+<h2>Creating a phylogenetic backtransform morphospace</h2>
+
+<p>
+The previous section showed how to use a non-phylogenetic PCA to find the major axes of shape variation. 
+However, PCA assumes that each of the data points are independent samples from a population 
+(like a standard linear regression). Since sampled taxa are not independent of 
+one another but in fact related to each other you might 
+want to incorporate the phylogeny for your taxa into the PCA analysis to account for this 
+non-independence. Another way to think about this is that if you had a sample in which many 
+taxa were all closely related and just a few distantly related taxa, you wouldn't want the many 
+closely related specimens to have an outsized influence in determining the PC axes 
+(see <a href='https://doi.org/10.1111/j.1558-5646.2009.00804.x' target='_blank' >Revell 2009</a> for a nice explanation of this). 
+This section will show you how to create a backtransform morphospace onto a phylogenetic 
+PCA (pPCA) plot.
+</p>
+
+<p>
+Before starting make sure you have the following additional R packages installed.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Install ape, phytools, and MASS (if not already installed)</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'ape'</span>, dependencies=TRUE)
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'phytools'</span>, dependencies=TRUE)
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'MASS'</span>, dependencies=TRUE)
+</pre></div>
+
+<p>
+Then load the packages into the current R environment.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the packages</span>
+<span class="code_function" >library</span>(ape)
+<span class="code_function" >library</span>(phytools)
+<span class="code_function" >library</span>(MASS)
+</pre></div>
+
+<p>
+Next, find a tree for your sampled taxa. You can download the tree for this tutorial by 
+clicking <a href='https://datadryad.org/bitstream/handle/10255/dryad.143407/Burleigh%2c%20Kimball%2c%20Braun%2c%202015%20ML%20Tree%2c%20pruned.tre?sequence=1' target='_blank' >here</a>. 
+Save this file in the web browser using 'File > Save' (be sure the file saves with a '.tre' extension and not '.txt'). 
+Then move this tree file ('Burleigh, Kimball, Braun, 2015 ML Tree, pruned.tre') to your 
+current R working directory. This tree comes from a larger tree by <a href='https://doi.org/10.1016/j.ympev.2014.12.003' target='_blank' >Burleigh, Kimball & Braun 2015</a> 
+and has been pruned down to include just the species in this tutorial.
+</p>
+
+<p>
+Load the tree using the 'read.tree' function from the ape package.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Read tree</span>
+tree <- <span class="code_function" >read.tree</span>(file=<span class="code_quote" >'Burleigh, Kimball, Braun, 2015 ML Tree, pruned.tre'</span>)
+</pre></div>
+
+<p>
+You can use the same 'gpa_mat' from the generalized Procrustes coordinates that you created in the 
+previous section but this time it will be used to perform a pPCA instead of a PCA, using the 
+'phyl.pca' function from the phytools package.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Perform phylogenetic PCA</span>
+phyl_pca <- <span class="code_function" >phyl.pca</span>(tree, Y=gpa_mat, method=<span class="code_quote" >'BM'</span>)
+</pre></div>
+
+<p>
+From the 'phyl.pca' results you can get the pPCA scores, eigenvectors, and percent variance 
+explained by each axis, just as for a non-phylogenetic PCA.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Get PC scores</span>
+ppca_scores <- phyl_pca$S
+
+<span class="code_comment" ># Get PC eigenvectors</span>
+ppca_vectors <- phyl_pca$Evec
+
+<span class="code_comment" ># Get percent variance explained along each axis</span>
+diag_values <- phyl_pca$Eval[<span class="code_function" >diag</span>(<span class="code_function" >nrow</span>(phyl_pca$Eval)) == TRUE]
+ppca_per_var <- (diag_values / <span class="code_function" >sum</span>(diag_values, na.rm=TRUE))*<span class="code_numeric" >100</span>
+</pre></div>
+
+<p>
+Lastly get a vector of the phylogenetic means using the covariance and variance-covariance 
+matrices. This will be input into 'btShapes'.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Find covariance matrix due to phylogenetic relatedness</span>
+cov_mat <- <span class="code_function" >vcv.phylo</span>(tree)[<span class="code_function" >rownames</span>(gpa_mat), <span class="code_function" >rownames</span>(gpa_mat)]
+
+<span class="code_comment" ># Compute the phylogenetic trait variance-covariance matrix to get the phylogenetic means</span>
+phy_means <- <span class="code_function" >phyl.vcv</span>(gpa_mat, cov_mat, <span class="code_numeric" >1</span>)$alpha
+</pre></div>
+
+<p>
+Set the two PC axes that you want to plot, just as in the previous section.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Set PCs to plot</span>
+pcs <- <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>
+</pre></div>
+
+<p>
+Open a PDF graphics device where the plot will be produced and create a plot box with axes 
+and axis labels. Use the 'n' value for the 'type' parameter to draw the plot without 
+plotting the scores. That way you can add the scores later on top of the backtransform shapes.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Open PDF graphics device</span>
+<span class="code_function" >pdf</span>(<span class="code_quote" >'Plot pPCA.pdf'</span>, width=<span class="code_numeric" >9</span>, height=<span class="code_numeric" >6.5</span>)
+
+<span class="code_comment" ># Create plot box with axes and axis labels</span>
+<span class="code_function" >plot</span>(ppca_scores[, pcs], type=<span class="code_quote" >'n'</span>, main=<span class="code_quote" >'Backtransform morphospace'</span>,
+	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'pPC'</span>, pcs[<span class="code_numeric" >1</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(ppca_per_var[pcs[<span class="code_numeric" >1</span>]]), <span class="code_quote" >'%)'</span>),
+	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'pPC'</span>, pcs[<span class="code_numeric" >2</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(ppca_per_var[pcs[<span class="code_numeric" >2</span>]]), <span class="code_quote" >'%)'</span>))
+</pre></div>
+
+<p>
+Plot the backtransform shapes into the current plot using the 'btShapes' function. This 
+function call uses the same input parameters as for the non-phylogenetic PCA with one additional 
+parameter for the phylogenetic means, 'phy.means'. Note that now you'll input the <i>pPCA</i> scores 
+and vectors instead of the PCA scores and vectors.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Plot backtransform shapes</span>
+<span class="code_function" >btShapes</span>(scores=ppca_scores, vectors=ppca_vectors, fcn=plot_beak_lateral, 
+	pcs=pcs, n=<span class="code_function" >c</span>(<span class="code_numeric" >6</span>,<span class="code_numeric" >8</span>), m=<span class="code_function" >dim</span>(lm_array)[<span class="code_numeric" >2</span>], row.names=<span class="code_function" >dimnames</span>(lm_array)[[<span class="code_numeric" >1</span>]], 
+	pc.margin=<span class="code_function" >c</span>(<span class="code_numeric" >0.06</span>,<span class="code_numeric" >0.05</span>), phy.means=phy_means, size=<span class="code_numeric" >0.5</span>, col=<span class="code_function" >gray</span>(<span class="code_numeric" >0.7</span>))
+</pre></div>
+
+<p>
+Add the scores and labels onto the plot, if you'd like.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Plot points for each species</span>
+<span class="code_function" >points</span>(ppca_scores[, pcs])
+
+<span class="code_comment" ># Add text labels</span>
+<span class="code_function" >text</span>(ppca_scores[, pcs], labels=<span class="code_function" >substr</span>(<span class="code_function" >rownames</span>(ppca_scores), <span class="code_numeric" >0</span>, <span class="code_numeric" >3</span>), cex=<span class="code_numeric" >0.8</span>, pos=<span class="code_numeric" >1</span>, offset=<span class="code_numeric" >0.3</span>)
+</pre></div>
+
+<p>
+And close the connection to the PDF graphics device.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Close the PDF graphics device</span>
+<span class="code_function" >dev.off</span>()
+</pre></div>
+
+<p>
+This should produce the following plot:
+</p>
+
+<div class='p_image_middle_div' style="width:550px;">
+	<div><a href='../../img/tutorials/morphometrics/backtransform_morphospace_ppca.jpg' target='_blank'>
+		<img width='550px' src='../../img/tutorials/morphometrics/backtransform_morphospace_ppca.jpg' /></a></div>
+	<div class='p_image_caption' style='text-align:center;' >
+		Phylogenetic backtransform morphospace of 3D waterfowl beak shapes
+	</div>
+</div>
+
+<p>
+It's interesting to now compare the two plots side by side. Looking at the relative positions 
+of the points, adding the phylogeny the PCA hasn't substantially changed the positions of the points relative 
+to one another. Rather it has taken all of the points and rotated them about 30 degrees relative 
+to the center of the plot. This has the effect of changing the axes of shape variation that 
+are orthogonal (uncorrelated) with one another.
+</p>
+
+<p>
+For this particular dataset there is an interesting phylogenetic pattern in that a more goose-like 
+beak (more toward the left in the pPCA morphospace) has evolved convergently multiple times 
+in waterfowl, probably at least six times (<a href='https://doi.org/10.1111/1365-2435.12890' target='_blank'>Olsen 2017</a>). 
+Once phylogeny is taken into account the variation between a more duck-like beak (probably ancestral) and 
+a more goose-like weighs more heavily on the PCA (because they represent more 'independent' transitions). 
+The end effect is that the axis differentiating duck and goose beaks is more squarely aligned 
+with the first PC axis in the pPCA (right) than in the PCA (left).
+</p>
+
+<div>
+	<div class='p_image_middle_div' style="width:700px;position:float;">
+		<div style="float:left" >
+			<img width='350px' src='../../img/tutorials/morphometrics/backtransform_morphospace.jpg' />
+			<div class='p_image_caption' style='text-align:center;' >Non-phylogenetic PCA</div>
+		</div>
+		<div style="float:right">
+			<img width='350px' src='../../img/tutorials/morphometrics/backtransform_morphospace_ppca.jpg' />
+			<div class='p_image_caption' style='text-align:center;' >Phylogenetic PCA</div>
+		</div>
+	</div>
+</div>
+
+<a name="background_morphospace_2d" ></a>
 
 <h2>Creating a backtransform morphospace using 2D shape data</h2>
 
@@ -489,104 +702,7 @@ the orientation or order of the PC scores along each axis
 in PCA is arbitrary and sometimes the axes get flipped when slight changes are 
 made to the data.
 </p>
-<h2>Uninterrupted code</h2><a name="uninterrupted_code" ></a><br /><div class="code" ><pre class="code">
-<span class="code_comment" ># Install R packages (if not installed already)</span>
-<span class="code_function" >install.packages</span>(<span class="code_quote" >'geomorph'</span>)
 
-<span class="code_comment" ># Load the geomorph function</span>
-<span class="code_function" >library</span>(geomorph)
-
-<span class="code_comment" ># Load the btShapes function</span>
-<span class="code_function" >source</span>(<span class="code_quote" >'btShapes.R'</span>)
-
-<span class="code_comment" ># Read all files in "Beak shape by species" folder into list</span>
-read_files <- <span class="code_function" >lapply</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'Beak shape by species/'</span>, 
-	<span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>)), <span class="code_quote" >'read.table'</span>)
-
-<span class="code_comment" ># Convert list of shape data into array</span>
-lm_array <- <span class="code_function" >array</span>(<span class="code_function" >unlist</span>(read_files), dim=<span class="code_function" >c</span>(<span class="code_function" >dim</span>(read_files[[<span class="code_numeric" >1</span>]]), 
-	<span class="code_function" >length</span>(read_files)), dimnames=<span class="code_function" >list</span>(<span class="code_function" >rownames</span>(read_files[[<span class="code_numeric" >1</span>]]), 
-	NULL, <span class="code_function" >gsub</span>(<span class="code_quote" >'[.]txt$'</span>, <span class="code_quote" >''</span>, <span class="code_function" >list.files</span>(<span class="code_quote" >'Beak shape by species'</span>))))
-
-<span class="code_comment" ># Get generalized Procrustes coordinates</span>
-gpa_array <- <span class="code_function" >gpagen</span>(lm_array)$coords
-
-<span class="code_comment" ># Convert array to matrix for PCA</span>
-gpa_mat <- <span class="code_function" >t</span>(<span class="code_function" >apply</span>(gpa_array, <span class="code_numeric" >3</span>, <span class="code_function" >function</span>(y) <span class="code_function" >matrix</span>(<span class="code_function" >t</span>(y), <span class="code_numeric" >1</span>)))
-
-<span class="code_comment" ># Perform non-phylogenetic PCA</span>
-resEig <- <span class="code_function" >eigen</span>(<span class="code_function" >cov</span>(gpa_mat))
-
-<span class="code_comment" ># Get PC scores</span>
-scores <- gpa_mat %*% resEig$vectors
-
-<span class="code_comment" ># Get percent variance explained along each axis</span>
-percent.var <- (resEig$values / <span class="code_function" >sum</span>(resEig$values))*<span class="code_numeric" >100</span>
-
-<span class="code_comment" ># Define function to draw shape</span>
-plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size=<span class="code_numeric" >1</span>, col=<span class="code_quote" >'black'</span>){
-
-	<span class="code_comment" ># If 3D, rotate points about x-axis using 3D rotation matrix</span>
-	if(<span class="code_function" >ncol</span>(coor) == <span class="code_numeric" >3</span>){
-		coor <- coor %*% <span class="code_function" >matrix</span>(<span class="code_function" >c</span>(<span class="code_numeric" >1</span>,<span class="code_numeric" >0</span>,<span class="code_numeric" >0</span>, <span class="code_numeric" >0</span>,<span class="code_function" >cos</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>),<span class="code_function" >sin</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>), 
-			<span class="code_numeric" >0</span>,-<span class="code_function" >sin</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>),<span class="code_function" >cos</span>(-<span class="code_numeric" >pi</span>/<span class="code_numeric" >2</span>)), nrow=<span class="code_numeric" >3</span>, ncol=<span class="code_numeric" >3</span>)
-	}
-
-	<span class="code_comment" ># Get just x,y coordinates (orthographic projection into xy-plane)</span>
-	coor <- coor[, <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>]
-
-	<span class="code_comment" ># Get plot aspect ratio</span>
-	w <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[<span class="code_numeric" >1</span>]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[<span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>])
-	h <- <span class="code_function" >par</span>(<span class="code_quote" >'pin'</span>)[<span class="code_numeric" >2</span>]/<span class="code_function" >diff</span>(<span class="code_function" >par</span>(<span class="code_quote" >'usr'</span>)[<span class="code_numeric" >3</span>:<span class="code_numeric" >4</span>])
-	asp <- w/h
-
-	<span class="code_comment" ># Correct for plot aspect ratio not necessarily being 1:1</span>
-	coor[, <span class="code_numeric" >1</span>] <- coor[, <span class="code_numeric" >1</span>] * (<span class="code_numeric" >1</span>/asp)
-
-	<span class="code_comment" ># Scale points and place back in position</span>
-	coor <- coor*size
-
-	<span class="code_comment" ># Center about zero based on range of coordinates</span>
-	coor <- coor - <span class="code_function" >matrix</span>(<span class="code_function" >colMeans</span>(<span class="code_function" >apply</span>(coor, <span class="code_numeric" >2</span>, range)), 
-		nrow=<span class="code_function" >nrow</span>(coor), ncol=<span class="code_function" >ncol</span>(coor), byrow=TRUE)
-
-	<span class="code_comment" ># Move shape to PC score</span>
-	coor <- coor + <span class="code_function" >matrix</span>(xy, <span class="code_function" >nrow</span>(coor), <span class="code_function" >ncol</span>(coor), byrow=TRUE)
-
-	<span class="code_comment" ># Set order in which to draw points to create polygon</span>
-	polygon_order <- <span class="code_function" >c</span>(<span class="code_function" >which</span>(<span class="code_function" >grepl</span>(<span class="code_quote" >'upper_bill_culmen'</span>, <span class="code_function" >rownames</span>(coor))),
-		<span class="code_function" >rev</span>(<span class="code_function" >which</span>(<span class="code_function" >grepl</span>(<span class="code_quote" >'upper_bill_tomium_L'</span>, <span class="code_function" >rownames</span>(coor)))))
-
-	<span class="code_comment" ># Create filled polygon</span>
-	<span class="code_function" >polygon</span>(coor[polygon_order, ], col=col, border=col)
-}
-
-<span class="code_comment" ># Set PCs to plot</span>
-pcs <- <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>
-
-<span class="code_comment" ># Open PDF graphics device</span>
-<span class="code_function" >pdf</span>(<span class="code_quote" >'Plot.pdf'</span>, width=<span class="code_numeric" >9</span>, height=<span class="code_numeric" >6.5</span>)
-
-<span class="code_comment" ># Create plot box with axes and axis labels</span>
-<span class="code_function" >plot</span>(scores[, pcs], type=<span class="code_quote" >'n'</span>, main=<span class="code_quote" >'Backtransform morphospace'</span>,
-	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >1</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >1</span>]]), <span class="code_quote" >'%)'</span>),
-	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'PC'</span>, pcs[<span class="code_numeric" >2</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(percent.var[pcs[<span class="code_numeric" >2</span>]]), <span class="code_quote" >'%)'</span>))
-
-<span class="code_comment" ># Plot backtransform shapes</span>
-<span class="code_function" >btShapes</span>(scores=scores, vectors=resEig$vectors, fcn=plot_beak_lateral, 
-	pcs=pcs, n=<span class="code_function" >c</span>(<span class="code_numeric" >5</span>,<span class="code_numeric" >7</span>), m=<span class="code_function" >dim</span>(lm_array)[<span class="code_numeric" >2</span>], row.names=<span class="code_function" >dimnames</span>(lm_array)[[<span class="code_numeric" >1</span>]], 
-	pc.margin=<span class="code_function" >c</span>(<span class="code_numeric" >0.06</span>,<span class="code_numeric" >0.05</span>), size=<span class="code_numeric" >0.5</span>, col=<span class="code_function" >gray</span>(<span class="code_numeric" >0.7</span>))
-
-<span class="code_comment" ># Plot points for each species</span>
-<span class="code_function" >points</span>(scores[, pcs])
-
-<span class="code_comment" ># Add text labels</span>
-<span class="code_function" >text</span>(scores[, pcs], labels=<span class="code_function" >substr</span>(<span class="code_function" >rownames</span>(scores), <span class="code_numeric" >0</span>, <span class="code_numeric" >3</span>), cex=<span class="code_numeric" >0.8</span>, 
-	pos=<span class="code_numeric" >1</span>, offset=<span class="code_numeric" >0.3</span>)
-
-<span class="code_comment" ># Close the PDF graphics device</span>
-<span class="code_function" >dev.off</span>()
-</pre></div>
 <h2>Citing this tutorial</h2>
 
 <p>
@@ -600,15 +716,18 @@ Olsen AM (2017). Feeding ecology is the primary driver of beak shape diversifica
 </div>
 
 <p>
-Also be sure to cite the <a href="https://CRAN.R-project.org/package=geomorph" target="_blank" >geomorph</a> package and 
+Be sure to cite the <a href="https://CRAN.R-project.org/package=geomorph" target="_blank" >geomorph</a> package and 
 the <a href="https://cran.r-project.org/doc/FAQ/R-FAQ.html#Citing-R" target="_blank" >R Core Team</a>. 
-You can generate the most up-to-date citation using the 'citation' function.
+And if you created a pPCA backtransform morphospace then you should also cite 
+<a href="https://CRAN.R-project.org/package=ape" target="_blank" >ape</a>,  
+<a href="https://CRAN.R-project.org/package=phytools" target="_blank" >phytools</a>, and 
+<a href='https://doi.org/10.1111/j.1558-5646.2009.00804.x' target='_blank' >Revell 2009</a>. 
+You can generate the most up-to-date citations for R packages using the 'citation' function.
 </p>
 
 <div class="code" ><pre class="code">
-<span class="code_comment" ># Get current citation</span>
+<span class="code_comment" ># Get current citation for an R package, geomorph for example</span>
 <span class="code_function" >citation</span>(<span class="code_quote" >'geomorph'</span>)
-<span class="code_function" >citation</span>(<span class="code_quote" >'stats'</span>)
 </pre></div>
 
 <p>
