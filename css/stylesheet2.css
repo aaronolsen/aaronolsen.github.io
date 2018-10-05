@@ -24,6 +24,9 @@ h1{
 h2{
 	margin:10px 0px 0px 0px;
 }
+h2.ol_tutorial{
+	margin:10px 0px 5px -30px;
+}
 h3{
 	margin:5px 0px 5px 0px;
 }
@@ -236,6 +239,10 @@ div.img_caption{
 
 div.tutorial_previous_next{
 	margin-top:30px;
+}
+
+ol.tutorial{
+	line-height:25px;
 }
 
 pre.code, pre.bcode{
