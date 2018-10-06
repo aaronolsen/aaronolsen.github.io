@@ -157,7 +157,7 @@ to this code which are detailed at the <a href="#background_morphospace_2d">end 
 Load the function <a href='https://raw.githubusercontent.com/aaronolsen/StereoMorph/master/R/btShapes.R' target='_blank' >btShapes()</a> 
 into your R workspace. To download this function file click 
 <a href='https://raw.githubusercontent.com/aaronolsen/StereoMorph/master/R/btShapes.R' target='_blank' >here</a> 
-and then 'File > Save' in the web browser (be sure the file saves with an '.R' extension and not '.txt').
+and then 'File > Save' in the web browser (be sure the file saves with an <em>'.R' extension</em> and not '.txt').
 You can put the 'btShapes.R' file anywhere on your system but it's easiest to put it in the current working directory so that 
 you only have to include the filename in the 'source' function (as below).
 The 'btShapes' function will be included 
@@ -344,7 +344,7 @@ where the plot will be produced.
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Open PDF graphics device</span>
-<span class="code_function" >pdf</span>(<span class="code_quote" >'Plot.pdf'</span>, width=<span class="code_numeric" >9</span>, height=<span class="code_numeric" >6.5</span>)
+<span class="code_function" >pdf</span>(<span class="code_quote" >'Backtransform PCA.pdf'</span>, width=<span class="code_numeric" >9</span>, height=<span class="code_numeric" >6.5</span>)
 </pre></div>
 
 <p>
@@ -457,7 +457,10 @@ PCA (pPCA) plot.
 </p>
 
 <p>
-Before starting make sure you have the following additional R packages installed.
+Before starting this section make sure you've worked through the previous section. There 
+is some overlap in the code needed for the previous section and for this section so it's 
+assumed that you have run all of the previous code in the current workspace. 
+Before starting also make sure you have the following additional R packages installed.
 </p>
 
 <div class="code" ><pre class="code">
@@ -481,7 +484,7 @@ Then load the packages into the current R environment.
 <p>
 Next, find a tree for your sampled taxa. You can download the tree for this tutorial by 
 clicking <a href='https://datadryad.org/bitstream/handle/10255/dryad.143407/Burleigh%2c%20Kimball%2c%20Braun%2c%202015%20ML%20Tree%2c%20pruned.tre?sequence=1' target='_blank' >here</a>. 
-Save this file in the web browser using 'File > Save' (be sure the file saves with a '.tre' extension and not '.txt'). 
+Save this file in the web browser using 'File > Save' (be sure the file saves with a <em>'.tre' extension</em> and not '.txt'). 
 Then move this tree file ('Burleigh, Kimball, Braun, 2015 ML Tree, pruned.tre') to your 
 current R working directory. This tree comes from a larger tree by <a href='https://doi.org/10.1016/j.ympev.2014.12.003' target='_blank' >Burleigh, Kimball & Braun 2015</a> 
 and has been pruned down to include just the species in this tutorial.
@@ -554,10 +557,10 @@ plotting the scores. That way you can add the scores later on top of the backtra
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Open PDF graphics device</span>
-<span class="code_function" >pdf</span>(<span class="code_quote" >'Plot pPCA.pdf'</span>, width=<span class="code_numeric" >9</span>, height=<span class="code_numeric" >6.5</span>)
+<span class="code_function" >pdf</span>(<span class="code_quote" >'Backtransform pPCA.pdf'</span>, width=<span class="code_numeric" >9</span>, height=<span class="code_numeric" >6.5</span>)
 
 <span class="code_comment" ># Create plot box with axes and axis labels</span>
-<span class="code_function" >plot</span>(ppca_scores[, pcs], type=<span class="code_quote" >'n'</span>, main=<span class="code_quote" >'Backtransform morphospace'</span>,
+<span class="code_function" >plot</span>(ppca_scores[, pcs], type=<span class="code_quote" >'n'</span>, main=<span class="code_quote" >'Phylogenetic backtransform morphospace'</span>,
 	xlab=<span class="code_function" >paste0</span>(<span class="code_quote" >'pPC'</span>, pcs[<span class="code_numeric" >1</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(ppca_per_var[pcs[<span class="code_numeric" >1</span>]]), <span class="code_quote" >'%)'</span>),
 	ylab=<span class="code_function" >paste0</span>(<span class="code_quote" >'pPC'</span>, pcs[<span class="code_numeric" >2</span>], <span class="code_quote" >' ('</span>, <span class="code_function" >round</span>(ppca_per_var[pcs[<span class="code_numeric" >2</span>]]), <span class="code_quote" >'%)'</span>))
 </pre></div>
