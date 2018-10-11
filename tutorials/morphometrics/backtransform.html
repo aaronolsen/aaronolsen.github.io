@@ -123,24 +123,31 @@ instructions <a href="https://cran.r-project.org" target="_blank" >here</a>.
 </p>
 
 <p>
-You will also need to have the R package <span style="color:red;"><a href="https://CRAN.R-project.org/package=geomorph" target="_blank" >geomorph</a></span> 
-installed to perform the Generalized Procrustes Analysis. If you have not installed 
-this package you can install it using the 'install.packages' function.
+You will also need to have the R packages <a href="https://CRAN.R-project.org/package=geomorph" target="_blank" >geomorph</a> 
+and <a href="https://CRAN.R-project.org/package=StereoMorph" target="_blank" >StereoMorph</a>
+installed. 
+The geomorph package will allow you to perform the Generalized Procrustes Analysis and the 
+StereoMorph package has the function for creating the backtransform morphospace. 
+For StereoMorph <em>be sure that you have a version equal to or greater than 1.6.2 installed</em> since this has the btShapes function. 
+If you have not installed 
+these packages you can install them using the 'install.packages' function.
 </p>
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Install R packages (if not installed already)</span>
 <span class="code_function" >install.packages</span>(<span class="code_quote" >'geomorph'</span>, dependencies=TRUE)
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'StereoMorph'</span>, dependencies=TRUE)
 </pre></div>
 
 <p>
-Once the package is installed load it into the current R environment using the 
+Once the package is installed, load it into the current R environment using the 
 'library' function.
 </p>
 
 <div class="code" ><pre class="code">
-<span class="code_comment" ># Load the geomorph function</span>
+<span class="code_comment" ># Load the packages</span>
 <span class="code_function" >library</span>(geomorph)
+<span class="code_function" >library</span>(StereoMorph)
 </pre></div>
 
 <a name="background_morphospace" ></a>
@@ -149,36 +156,16 @@ Once the package is installed load it into the current R environment using the
 <p>
 The main part of this tutorial will first demonstrate making a backtransform morphospace 
 using 3D shape data and a non-phylogenetic principal components analysis (PCA). 
-Using 2D shape data requires only a few modifications 
-to this code which are detailed at the <a href="#background_morphospace_2d">end of this tutorial</a>.
+Creating a <a href="#background_morphospace_ppca">phylogenetic morphospace</a> or using 
+<a href="#background_morphospace_2d">2D shape data</a> requires only a few modifications 
+to this code, which are detailed after this section.
 </p>
 
 <p>
-Load the function <a href='https://raw.githubusercontent.com/aaronolsen/StereoMorph/master/R/btShapes.R' target='_blank' >btShapes()</a> 
-into your R workspace. To download this function file click 
-<a href='https://raw.githubusercontent.com/aaronolsen/StereoMorph/master/R/btShapes.R' target='_blank' >here</a> 
-and then 'File > Save' in the web browser (be sure the file saves with an <em>'.R' extension</em> and not '.txt').
-You can put the 'btShapes.R' file anywhere on your system but it's easiest to put it in the current working directory so that 
-you only have to include the filename in the 'source' function (as below).
-The 'btShapes' function will be included 
-within the <a href="http://cran.r-project.org/web/packages/StereoMorph/index.html" target="_blank" >StereoMorph R package</a>
-after the next <a href="http://cran.r-project.org" target="_blank" >CRAN</a> 
-update, but until then it needs to be loaded separately.
-</p>
-
-<div class="code" ><pre class="code">
-<span class="code_comment" ># Load the btShapes function</span>
-<span class="code_function" >source</span>(<span class="code_quote" >'btShapes.R'</span>)
-</pre></div>
-
-<p>
-Now we need shape data to plot. These should be landmarks or curve points 
+First we need shape data to plot. These should be landmarks or curve points 
 (either two- or three-dimensional) saved in a three-dimensional array in which 
 the first array dimension is the point names, the second dimension is the xy-coordinates 
-(or xyz-coordinates for 3D data), and the third dimension is each individual/species/etc.
-</p>
-
-<p>
+(or xyz-coordinates for 3D data), and the third dimension is each individual/species/etc. 
 For this tutorial we'll use 3D landmark and curve points collected 
 from waterfowl bird beaks, originally published in  <a href='http://onlinelibrary.wiley.com/doi/10.1111/1365-2435.12890/full' target='_blank' >this paper</a> 
 looking at the correlation between beak shape and diet in waterfowl. You can 
