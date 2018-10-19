@@ -234,6 +234,18 @@ the 'span.factor' parameter).
 points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>, span.factor=<span class="code_numeric" >2</span>)
 </pre></div>
 
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Set smoothing strength (higher = more smoothing)</span>
+span.factor <- <span class="code_function" >c</span>(<span class="code_numeric" >5.3</span>,<span class="code_numeric" >6.5</span>,<span class="code_numeric" >20</span>,<span class="code_numeric" >33</span>)
+smooth.bins <- <span class="code_function" >c</span>(<span class="code_numeric" >0</span>, <span class="code_numeric" >0.05</span>, <span class="code_numeric" >0.11</span>, <span class="code_numeric" >0.30</span>, <span class="code_numeric" >1000</span>)
+
+<span class="code_comment" ># Smooth points</span>
+points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion, span.factor=span.factor, n.bins=<span class="code_function" >length</span>(span.factor),
+	smooth.bins=smooth.bins, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>, 
+	bin.replace.min=<span class="code_numeric" >10</span>, adaptive=TRUE)
+</pre></div>
+
+
 
 <br /><br />
 </div><h2>Uninterrupted code</h2><a name="uninterrupted_code" ></a><br /><div class="code" ><pre class="code">
@@ -263,6 +275,15 @@ points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xy
 
 <span class="code_comment" ># Decrease the degree of smoothing by decreasing the span.factor from the default of 18</span>
 points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>, span.factor=<span class="code_numeric" >2</span>)
+
+<span class="code_comment" ># Set smoothing strength (higher = more smoothing)</span>
+span.factor <- <span class="code_function" >c</span>(<span class="code_numeric" >5.3</span>,<span class="code_numeric" >6.5</span>,<span class="code_numeric" >20</span>,<span class="code_numeric" >33</span>)
+smooth.bins <- <span class="code_function" >c</span>(<span class="code_numeric" >0</span>, <span class="code_numeric" >0.05</span>, <span class="code_numeric" >0.11</span>, <span class="code_numeric" >0.30</span>, <span class="code_numeric" >1000</span>)
+
+<span class="code_comment" ># Smooth points</span>
+points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion, span.factor=span.factor, n.bins=<span class="code_function" >length</span>(span.factor),
+	smooth.bins=smooth.bins, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>, 
+	bin.replace.min=<span class="code_numeric" >10</span>, adaptive=TRUE)
 </pre></div>
 		</div>
 
