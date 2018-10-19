@@ -164,6 +164,17 @@ points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xy
 </pre></div>
 
 <p>
+The 'smoothMotion' function smoothes each dimension of each marker using the 
+<a href='https://stat.ethz.ch/R-manual/R-devel/library/stats/html/loess.html' target='_blank' >'loess' function</a> (R 'stats' package). 
+The 'loess' function uses polynomial fitting with degree of smoothing controlled by the parameter 'span'. 
+The degree of smoothing with 'loess' depends on the length of the time sequence so 'span' must be adjusted 
+as the time sequence increases or decreases. The 'smoothMotion' function performs this adjustment for you but 
+you can still specify the degree of smoothing using the 'span.factor' parameter. 
+The default value for this parameter is 18; this is a value that I have found to work well 
+using different motion datasets but you may need to adjust this value.
+</p>
+
+<p>
 Take a look at the diagnostic plot output by 'smoothMotion'. 
 For each marker coordinate 'smoothMotion' creates two plots side-by-side: 
 (1) the raw and smoothed x-, y-, and z-values over time (mean-centered so they fit nicely in the same plot) and 
@@ -211,15 +222,13 @@ looking at the deviation of the smoothed coordinates over time.
 </div>
 
 <p>
-The 'smoothMotion' function smoothes each dimension of each marker using the 
-<a href='https://stat.ethz.ch/R-manual/R-devel/library/stats/html/loess.html' target='_blank' >'loess' function</a> (R 'stats' package). 
-The 'loess' function uses polynomial fitting with degree of smoothing controlled by the parameter 'span'. 
-The degree of smoothing with 'loess' depends on the length of the time sequence so 'span' must be adjusted 
-as the time sequence increases or decreases. The 'smoothMotion' function performs this adjustment for you but 
-you can still specify the degree of smoothing using the 'span.factor' parameter. 
-The default value for this parameter is 18; this is a value that I have found to work well 
-using different motion datasets but you may need to adjust this value.
+In the deviation plot sharp peaks (1-2 frames only) usually indicate tracking errors (e.g. 
+the wrong bead has been identified) while broad peaks (more than 1-2 frames) usually indicate excessive smoothing. 
+The above close-up of the deviation plots has broad peaks meaning that for some frames the 
+smoothing that we have chosen is too strong. What we need 
 </p>
+
+
 
 
 smoothMotion diagnostic first row
