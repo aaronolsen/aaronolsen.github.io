@@ -225,13 +225,15 @@ looking at the deviation of the smoothed coordinates over time.
 In the deviation plot sharp peaks (1-2 frames only) usually indicate tracking errors (e.g. 
 the wrong bead has been identified) while broad peaks (more than 1-2 frames) usually indicate excessive smoothing. 
 The above close-up of the deviation plots has broad peaks meaning that for some frames the 
-smoothing that we have chosen is too strong. What we need 
+smoothing that we have chosen is too strong. One option is to decrease the degree of smoothing (by decreasing 
+the 'span.factor' parameter).
 </p>
 
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Decrease the degree of smoothing by decreasing the span.factor from the default of 18</span>
+points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>, span.factor=<span class="code_numeric" >2</span>)
+</pre></div>
 
-
-
-smoothMotion diagnostic first row
 
 <br /><br />
 </div><h2>Uninterrupted code</h2><a name="uninterrupted_code" ></a><br /><div class="code" ><pre class="code">
@@ -258,6 +260,9 @@ points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion, p
 
 <span class="code_comment" ># smoothMotion also accepts a simple 3D point array</span>
 points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>)
+
+<span class="code_comment" ># Decrease the degree of smoothing by decreasing the span.factor from the default of 18</span>
+points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>, span.factor=<span class="code_numeric" >2</span>)
 </pre></div>
 		</div>
 
