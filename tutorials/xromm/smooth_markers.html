@@ -78,20 +78,7 @@ The uninterrupted block of code can be found at the <a href="#uninterrupted_code
 </p><h2>Preliminary steps</h2><p>Make sure that you have 
 		<a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a> 
 		installed on your system (you can find R installation instructions 
-		<a href="https://cran.r-project.org" target="_blank" >here</a>). Next, install the beta version (v1.3.1) of the R package svgViewR. 
-		You can do this by downloading 
-		<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/aaronolsen/svgViewR" target="_blank" >this folder</a> 
-		(< 1MB), unzipping the contents, 
-		and then running the two commands below to load the functions into your current R environment.</p>
-
-		<div class="code" ><pre class="code">
-<span class="code_comment" ># Set the path to where the package was downloaded (customize this to your system)</span>
-pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/svgViewR-master/R'</span>
-
-<span class="code_comment" ># Load all functions in this folder into the global environment</span>
-source_apply <- <span class="code_function" >sapply</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >'/'</span>, <span class="code_function" >list.files</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >''</span>))), source, .GlobalEnv)
-</pre></div>
-		Next, install the beta version (v1.0) of the R package matools (not yet on CRAN). 
+		<a href="https://cran.r-project.org" target="_blank" >here</a>). Next, install the beta version (v1.0) of the R package matools (not yet on CRAN). 
 		You can do this by downloading 
 		<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/aaronolsen/matools" target="_blank" >this folder</a> 
 		(< 1MB), unzipping the contents, 
@@ -113,7 +100,7 @@ This can be a '3D Points' file exported from <a href='https://bitbucket.org/xrom
 </p>
 <p>
 You can try out the code in this tutorial using this 
-<a href='Nov 17 2016 Cat 01 Trial 09.csv' target='_blank' >unsmoothed 3D marker coordinates</a> file. 
+<a href='Cat01 Trial09 3DPoints raw.csv' target='_blank' >unsmoothed 3D marker coordinates</a> file. 
 This file contains the 3D coordinates of radiopaque markers implanted in a 
 channel catfish eating a worm, captured using <a href='http://xromm.org/' target='_blank' >XROMM</a>, 
 tracked using <a href='https://bitbucket.org/xromm/xmalab/wiki/Home' target='_blank' >XMALab</a>. 
@@ -125,7 +112,7 @@ coordinates from the file using the 'readMotion' function ('matools' package).
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Read unsmoothed motion</span>
-read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.csv'</span>)
+read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Cat01 Trial09 3DPoints raw.csv'</span>)
 </pre></div>
 
 <p>
@@ -136,7 +123,7 @@ the names of the "xyz" (i.e. marker) coordinates, and all of the metadata column
 </p>
 
 <div class="code" ><pre class="code">
-<span class="code_comment" ># See what is contained in the motion object</span>
+<span class="code_comment" ># See what is contained in the motion object (optional)</span>
 <span class="code_function" >print</span>(read_motion)
 </pre></div>
 
@@ -150,7 +137,7 @@ the diagnostic plot is essential to making sure you have selected an appropriate
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Smooth points in the motion object</span>
-points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>)
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw.pdf'</span>)
 </pre></div>
 
 <p>
@@ -160,12 +147,12 @@ this also works:
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># smoothMotion also accepts a simple 3D point array</span>
-points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>)
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw.pdf'</span>)
 </pre></div>
 
 <p>
 The 'smoothMotion' function smoothes each dimension of each marker using the 
-<a href='https://stat.ethz.ch/R-manual/R-devel/library/stats/html/loess.html' target='_blank' >'loess' function</a> (R 'stats' package). 
+'<a href='https://stat.ethz.ch/R-manual/R-devel/library/stats/html/loess.html' target='_blank' >loess</a>' function (R 'stats' package). 
 The 'loess' function uses polynomial fitting with degree of smoothing controlled by the parameter 'span'. 
 The degree of smoothing with 'loess' depends on the length of the time sequence so 'span' must be adjusted 
 as the time sequence increases or decreases. The 'smoothMotion' function performs this adjustment for you but 
@@ -176,17 +163,22 @@ using different motion datasets but you may need to adjust this value.
 
 <p>
 Take a look at the diagnostic plot output by 'smoothMotion'. 
-For each marker coordinate 'smoothMotion' creates two plots side-by-side: 
-(1) the raw and smoothed x-, y-, and z-values over time (mean-centered so they fit nicely in the same plot) and 
-(2) the deviation of the smoothed values from the raw values over time. 
+For each marker, 'smoothMotion' creates two plots side-by-side:
+</p>
+
+<ol>
+<li>the raw and smoothed x-, y-, and z-values over time (mean-centered so they fit nicely in the same plot)</li>
+<li>the deviation of the smoothed values from the raw values over time</li>
+</ol>
+
+<p>
 Note that since this tutorial file has 38 marker coordinates this is a fairly "tall" PDF. 
-Below is a close-up at just the first row, for the 'Epaxial_bead_cra' marker (a marker implanted in the 
-cranial portion of the epaxial or back muscles of the catfish).
+Below is a close-up of the row corresponding to the "prey bead" (a marker implanted into the prey item).
 </p>
 
 <div class='p_image_middle_div' style="width:750px;">
-	<div><a href='../../img/tutorials/xromm/smoothMotion diagnostic first row.jpg' target='_blank'>
-		<img width='750px' src='../../img/tutorials/xromm/smoothMotion diagnostic first row.jpg' /></a></div>
+	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead 18 diagnostic.jpg' target='_blank'>
+		<img width='750px' src='../../img/tutorials/xromm/smoothMotion prey_bead 18 diagnostic.jpg' /></a></div>
 	<div class='p_image_caption' style='text-align:center;' >
 		Diagnostic plots created by 'smoothMotion' for each marker showing the raw and 
 		smoothed values (left) and the deviation of the smoothed from the raw values (right).
@@ -197,9 +189,9 @@ cranial portion of the epaxial or back muscles of the catfish).
 If you zoom into the left plot of the PDF you can see the smoothed xyz-values (darker, thinner line) superimposed on the raw xyz-values.
 </p>
 
-<div class='p_image_middle_div' style="width:500px;">
-	<div><a href='../../img/tutorials/xromm/smoothMotion diagnostic values closeup.jpg' target='_blank'>
-		<img width='500px' src='../../img/tutorials/xromm/smoothMotion diagnostic values closeup.jpg' /></a></div>
+<div class='p_image_middle_div' style="width:400px;">
+	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead 18 values overlay closeup.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead 18 values overlay closeup.jpg' /></a></div>
 	<div class='p_image_caption' style='text-align:center;' >
 		Close-up of smoothed xyz coordinates (darker) superimposed on raw (lighter) coordinates. 
 		Smoothed values miss some consistent trends in the raw values.
@@ -207,14 +199,14 @@ If you zoom into the left plot of the PDF you can see the smoothed xyz-values (d
 </div>
 
 <p>
-The smoothing looks pretty good but there are some areas where there is a consistent trend 
-in the raw coordinates that is not evident in the smoothed coordinates. This is especially evident when 
-looking at the deviation of the smoothed coordinates over time.
+In some areas the smoothing looks pretty good but the time at which the prey marker suddenly starts moving (i.e. accelerates) 
+and then starts moving more slowly (i.e. decelerates) there is a mismatch between the raw and unsmoothed coordinates.
+This is especially evident when looking at the deviation of the smoothed coordinates over time.
 </p>
 
 <div class='p_image_middle_div' style="width:400px;">
-	<div><a href='../../img/tutorials/xromm/smoothMotion diagnostic deviation closeup.jpg' target='_blank'>
-		<img width='400px' src='../../img/tutorials/xromm/smoothMotion diagnostic deviation closeup.jpg' /></a></div>
+	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead 18 deviation.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead 18 deviation.jpg' /></a></div>
 	<div class='p_image_caption' style='text-align:center;' >
 		A close-up of deviation of smoothed coordinates from raw coordinates. 
 		Broad peaks (more than 1-2 frames) suggest excessive smoothing.
@@ -222,7 +214,7 @@ looking at the deviation of the smoothed coordinates over time.
 </div>
 
 <p>
-In the deviation plot sharp peaks (1-2 frames only) usually indicate tracking errors (e.g. 
+In the deviation plot, sharp peaks (1-2 frames only) usually indicate tracking errors (e.g. 
 the wrong bead has been identified) while broad peaks (more than 1-2 frames) usually indicate excessive smoothing. 
 The above close-up of the deviation plots has broad peaks meaning that for some frames the 
 smoothing that we have chosen is too strong. One option is to decrease the degree of smoothing (by decreasing 
@@ -230,31 +222,178 @@ the 'span.factor' parameter).
 </p>
 
 <div class="code" ><pre class="code">
-<span class="code_comment" ># Decrease the degree of smoothing by decreasing the span.factor from the default of 18</span>
-points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>, span.factor=<span class="code_numeric" >2</span>)
+<span class="code_comment" ># Decrease the degree of smoothing by decreasing span.factor (default is 18)</span>
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw low.pdf'</span>, 
+	span.factor=<span class="code_numeric" >2</span>)
 </pre></div>
+
+<p>
+This improves the overlap between the raw and smoothed coordinates a bit but 
+an inherent problem here is that the smoothing is being applied over regions with little to no motion and 
+regions with rapid changes in speed. 
+</p>
+
+<div class='p_image_middle_div' style="width:400px;">
+	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead 2 values overlay closeup.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead 2 values overlay closeup.jpg' /></a></div>
+	<div class='p_image_caption' style='text-align:center;' >
+		A span.factor of 2 still doesn't quite capture the motion of the prey marker.
+	</div>
+</div>
+
+<p>
+In addition, choosing a lower degree of smoothing might help with one marker but may increase 
+the noise elsewhere.
+What we need is to apply the smoothing over regions with similar velocity profiles and 
+"adapt" the degree of smoothing depending on the characteristics of each region. 
+This is covered in the next section on adaptive smoothing.
+</p>
+
+<h2>Adaptive smoothing</h2>
+
+<p>
+Adaptive smoothing allows the smoothing parameter to vary over time to better match the 
+noise-to-signal characteristics of a particular region of signal and applies the smoothing 
+to a localized region of values.
+
+The 'smoothMotion' function performs adaptive smoothing by applying a single (high) smoothing parameter, 
+finding the deviation of the raw values from the smoothed values, and separating the 
+raw values into bins based on a sliding window of mean deviations.
+The raw values are then smoothed using different values for each bin. 
+In this way raw values that deviate least from high smoothing keep a high degree of smoothing 
+while raw values that deviate the most from high smoothing are smoothed at a lower degree so 
+that signal is not "smoothed out".
+</p>
+
+<p>
+The user specifies the number of bins, the deviation values that divide the bins, and the 
+smoothing parameter applied to each bin. 
+Finding the right values for your data may take some experimentation, trying out different values 
+and examining the diagnostic plots. 
+But in my experience once you find a set of parameters that are suitable for one trial you 
+can apply these parameters to all of your trials.
+</p>
+
+<p>
+Set the number of bins, the deviation values that separate the bins, and the smoothing parameter 
+applied to each bin using the 'span.factor' and 'smooth.bins' parameters.
+Instead of using a single value, use 'span.factor' to input a vector of smoothing values, one for each bin.
+These should be listed in decreasing order (the highest degree of smoothing first). 
+The following values work well for the tutorial trial.
+</p>
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Set smoothing strength (higher = more smoothing)</span>
-span.factor <- <span class="code_function" >c</span>(<span class="code_numeric" >5.3</span>,<span class="code_numeric" >6.5</span>,<span class="code_numeric" >20</span>,<span class="code_numeric" >33</span>)
-smooth.bins <- <span class="code_function" >c</span>(<span class="code_numeric" >0</span>, <span class="code_numeric" >0.05</span>, <span class="code_numeric" >0.11</span>, <span class="code_numeric" >0.30</span>, <span class="code_numeric" >1000</span>)
+span.factor <- <span class="code_function" >c</span>(<span class="code_numeric" >33</span>, <span class="code_numeric" >20</span>, <span class="code_numeric" >6.5</span>, <span class="code_numeric" >5.3</span>)
+</pre></div>
 
+<p>
+Then set 'smooth.bins' to the deviation values that define the "boundaries" between consecutive bins. 
+This vector will have one more value than the number of bins (the first two values define the 
+boundaries of the first bin, the second and third values define the boundaries of the second bin, etc.). 
+Note that if you want all your raw values smoothed the last value should be the maximum mean deviation that you expect; 
+you can just choose a very large value (e.g. 1000). 
+You may want to not apply any smoothing to values that deviate the most from high smoothing (e.g. rapidly changing values); 
+in this case you can set this lower so that those values do not fall in any bin.
+For the tutorial trial we are using 4 bins so 'smooth.bins' has 5 values; the following values should work well.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Set the deviation values separating bins</span>
+smooth.bins <- <span class="code_function" >c</span>(<span class="code_numeric" >0</span>, <span class="code_numeric" >0.05</span>, <span class="code_numeric" >0.11</span>, <span class="code_numeric" >0.30</span>, <span class="code_numeric" >1000</span>)
+</pre></div>
+
+<p>
+Now call 'smoothMotion' as before but with the added parameters: 'span.factor', 'smooth.bins', 
+and 'bin.replace.min'. The 'bin.replace.min' is the minimum number of frames that each bin 
+should have.
+</p>
+
+<div class="code" ><pre class="code">
 <span class="code_comment" ># Smooth points</span>
-points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion, span.factor=span.factor, n.bins=<span class="code_function" >length</span>(span.factor),
-	smooth.bins=smooth.bins, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>, 
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion, span.factor=span.factor, 
+	smooth.bins=smooth.bins, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw adaptive.pdf'</span>, 
 	bin.replace.min=<span class="code_numeric" >10</span>, adaptive=TRUE)
 </pre></div>
 
+<p>
+When using adaptive smoothing an additional plot is added to diagnostic plot file (shown below for the prey marker).
+</p>
 
+<div class='p_image_middle_div' style="width:400px;">
+	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead adaptive deviation bins.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead adaptive deviation bins.jpg' /></a></div>
+	<div class='p_image_caption' style='text-align:center;' >
+		The bins assigned to each region indicated by "flat-top" lines, based on an initial rolling mean deviation from high smoothing.
+	</div>
+</div>
 
-<br /><br />
+<p>
+This plot shows you the bin assignments for each dimension (x,y,z) as a series of "flat-top" lines. 
+No visible flat-top line indicates those values were placed in the first bin (highest smoothing) while the tallest flat-top line 
+indicates those values were placed in the last bin (least smoothing). 
+These flat-top lines are superimposed on the rolling mean deviation of the values from an 
+initial smoothing (using the highest smoothing parameter specified by the user), indicated on the y-axis. 
+Note that the height of the flat-top lines does not correspond to the y-axis values and that 
+each color (red, green, blue) corresponds to each dimension (x, y, z, respectively).
+</p>
+
+<p>
+Using adaptive smoothing the deviation between raw and smoothed values for the prey marker now looks uniform across the trial. 
+There is a small region just before frame 1000 where the deviation is 0; 
+this indicates that there was no smoothing performed in that region (i.e. the raw values are equal to smoothed values). 
+This can happen when a bin is so small and the values so variable that the 'loess' function fails. 
+</p>
+
+<div class='p_image_middle_div' style="width:400px;">
+	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead adaptive deviation prey.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead adaptive deviation prey.jpg' /></a></div>
+	<div class='p_image_caption' style='text-align:center;' >
+		The deviation between raw and smoothed values for the prey marker after adaptive smoothing.
+	</div>
+</div>
+
+<p>
+Here this is ideal because this region corresponds to place on the trajectory curve when the 
+prey goes from not moving to sudden accelerations in different directions; 
+it's not really appropriate to apply smoothing to this region of the prey's trajectory. 
+Visual inspection of the coordinate trajectory plot also shows that adaptive smoothing has 
+produced nice overlap between the smoothed values and the raw values for the prey marker.
+</p>
+
+<div class='p_image_middle_div' style="width:400px;">
+	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead adaptive values overlay closeup.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead adaptive values overlay closeup.jpg' /></a></div>
+	<div class='p_image_caption' style='text-align:center;' >
+		The smoothed and raw coordinate values match nicely when adaptive smoothing is applied.
+	</div>
+</div>
+
+<h2>Saving the results</h2>
+
+<p>
+The last step is to save these results. 
+If you input a motion file, the output will be a motion object with all the original metadata. 
+You can save the motion object using using 'writeMotion'.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Save smoothed coordinates as motion object</span>
+<span class="code_function" >writeMotion</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 3DPoints smoothed.csv'</span>)
+</pre></div>
+
+<p>
+If you input an array of 3D points then the 
+output will also be an array of 3D points that you can save using the 'writeLandmarks' function.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Save smoothed coordinates (if you input a 3D array)</span>
+<span class="code_function" >writeLandmarks</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 3DPoints smoothed.csv'</span>)
+</pre></div>
+
+<br />
 </div><h2>Uninterrupted code</h2><a name="uninterrupted_code" ></a><br /><div class="code" ><pre class="code">
-<span class="code_comment" ># Set the path to where the package was downloaded (customize this to your system)</span>
-pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/svgViewR-master/R'</span>
-
-<span class="code_comment" ># Load all functions in this folder into the global environment</span>
-source_apply <- <span class="code_function" >sapply</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >'/'</span>, <span class="code_function" >list.files</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >''</span>))), source, .GlobalEnv)
-
 <span class="code_comment" ># Set the path to where the package was downloaded (customize this to your system)</span>
 pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master/R'</span>
 
@@ -262,28 +401,37 @@ pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master/R'<
 source_apply <- <span class="code_function" >sapply</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >'/'</span>, <span class="code_function" >list.files</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >''</span>))), source, .GlobalEnv)
 
 <span class="code_comment" ># Read unsmoothed motion</span>
-read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.csv'</span>)
+read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Cat01 Trial09 3DPoints raw.csv'</span>)
 
-<span class="code_comment" ># See what is contained in the motion object</span>
+<span class="code_comment" ># See what is contained in the motion object (optional)</span>
 <span class="code_function" >print</span>(read_motion)
 
 <span class="code_comment" ># Smooth points in the motion object</span>
-points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>)
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw.pdf'</span>)
 
 <span class="code_comment" ># smoothMotion also accepts a simple 3D point array</span>
-points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>)
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw.pdf'</span>)
 
-<span class="code_comment" ># Decrease the degree of smoothing by decreasing the span.factor from the default of 18</span>
-points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>, span.factor=<span class="code_numeric" >2</span>)
+<span class="code_comment" ># Decrease the degree of smoothing by decreasing span.factor (default is 18)</span>
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw low.pdf'</span>, 
+	span.factor=<span class="code_numeric" >2</span>)
 
 <span class="code_comment" ># Set smoothing strength (higher = more smoothing)</span>
-span.factor <- <span class="code_function" >c</span>(<span class="code_numeric" >5.3</span>,<span class="code_numeric" >6.5</span>,<span class="code_numeric" >20</span>,<span class="code_numeric" >33</span>)
+span.factor <- <span class="code_function" >c</span>(<span class="code_numeric" >33</span>, <span class="code_numeric" >20</span>, <span class="code_numeric" >6.5</span>, <span class="code_numeric" >5.3</span>)
+
+<span class="code_comment" ># Set the deviation values separating bins</span>
 smooth.bins <- <span class="code_function" >c</span>(<span class="code_numeric" >0</span>, <span class="code_numeric" >0.05</span>, <span class="code_numeric" >0.11</span>, <span class="code_numeric" >0.30</span>, <span class="code_numeric" >1000</span>)
 
 <span class="code_comment" ># Smooth points</span>
-points_smooth <- <span class="code_function" >smoothMotion</span>(read_motion, span.factor=span.factor, n.bins=<span class="code_function" >length</span>(span.factor),
-	smooth.bins=smooth.bins, plot.diag=<span class="code_quote" >'Nov 17 2016 Cat 01 Trial 09.pdf'</span>, 
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion, span.factor=span.factor, 
+	smooth.bins=smooth.bins, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw adaptive.pdf'</span>, 
 	bin.replace.min=<span class="code_numeric" >10</span>, adaptive=TRUE)
+
+<span class="code_comment" ># Save smoothed coordinates as motion object</span>
+<span class="code_function" >writeMotion</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 3DPoints smoothed.csv'</span>)
+
+<span class="code_comment" ># Save smoothed coordinates (if you input a 3D array)</span>
+<span class="code_function" >writeLandmarks</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 3DPoints smoothed.csv'</span>)
 </pre></div>
 		</div>
 
