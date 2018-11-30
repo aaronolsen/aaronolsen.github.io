@@ -9,9 +9,9 @@
 
 		<div id='header' class='header' >
 			<div style='position:relative;' >
-				<img id='header_image' style='float:right;' src='../../img/headers/Hairy Woodpecker.jpg' />
+				<img id='header_image' style='float:right;' src='../../img/headers/Purple Gallinule.jpg' />
 				<div id='header_image_caption' style='color:white' class='header_image_caption' >
-					Hairy Woodpecker
+					Purple Gallinule
 				</div>
 			</div>
 		</div>
@@ -38,11 +38,11 @@
 			<div class='linksidebar_sublink' >
 				<a class='linksidebar_link' href='../../tutorials/xromm.html'>XROMM</a>
 			</div>
-			<div class='linksidebar_sub2link_u' >
-				<a class='linksidebar_link_u' href='../../tutorials/xromm/smooth_markers.html'>Smooth markers</a>
-			</div>
 			<div class='linksidebar_sub2link' >
-				<a class='linksidebar_link' href='../../tutorials/xromm/unification.html'>Unification</a>
+				<a class='linksidebar_link' href='../../tutorials/xromm/smooth_markers.html'>Smooth markers</a>
+			</div>
+			<div class='linksidebar_sub2link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/xromm/unification.html'>Unification</a>
 			</div>
 			<div class='linksidebar_sub2link' >
 				<a class='linksidebar_link' href='../../tutorials/xromm/segmenting_ct.html'>Segmentation</a>
@@ -66,17 +66,20 @@
 
 		<div id='maincontent' class='maincontent' >
 
-			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/visualization3d.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/xromm.html">xromm</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;smooth markers</div>
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/visualization3d.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/xromm.html">xromm</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;unification</div>
 
 
 <div class='maincontentfill'>
-<h1>Smooth markers</h1>
+<h1>Unify CT and X-ray markers</h1>
 
 <p>
-Raw animated 3D markers used in motion analysis or rigid body animation have some level of 
-noise due mostly to digitizing or tracking errors. 
-This tutorial will show you how to smooth the trajectories of tracked markers over time to 
-remove this noise and create smooth plotted trajectories and animations.
+In marker-based animation of rigid bodies we have two sets of data: marker motion and a marked body. 
+The marker motion data is the motion of a marker set embedded in the rigid body 
+and the marked body data is full geometry (e.g. a surface mesh) of that rigid body including the embedded marker set.
+To animate that rigid body we can "unify" these two datasets. 
+By unifying (i.e. aligning) the marked body at each time point with the corresponding coordinates of the moving markers 
+we can create a body animation.
+This tutorial will show you how to unify marker motion and a marked body to create a rigid body animation.
 The uninterrupted block of code can be found at the <a href="#uninterrupted_code">end of this tutorial</a>.
 </p><h2>Preliminary steps</h2><p>Make sure that you have 
 		<a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a> 
@@ -94,53 +97,55 @@ pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master/R'<
 <span class="code_comment" ># Load all functions in this folder into the global environment</span>
 source_apply <- <span class="code_function" >sapply</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >'/'</span>, <span class="code_function" >list.files</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >''</span>))), source, .GlobalEnv)
 </pre></div>
-		<h2>Non-adaptive smoothing</h2>
+		<h2>Unification</h2>
 
 <p>
-To smooth a set of 3D coordinates you'll need an array of coordinates (in which the third dimension 
-is the position of each coordinate over time). 
-This can be a '3D Points' file exported from <a href='https://bitbucket.org/xromm/xmalab/wiki/Home' target='_blank' >XMALab</a>, for example. 
-</p>
-<p>
+For unification you'll first need a set of 3D marker coordinates over time in the form of an array (in which the third dimension 
+is the position of each coordinate over time).
+For example, these can be markers tracked and reconstructed using <a href='https://bitbucket.org/xromm/xmalab/wiki/Home' target='_blank' >XMALab</a> 
+and exported as a '3D Points' file. 
+To produce a smooth animation you can first <a href='smooth_markers.html' >smooth the marker trajectories</a>.
 You can try out the code in this tutorial using this 
-<a href='Cat01 Trial09 marker motion raw.csv' target='_blank' >unsmoothed 3D marker coordinates</a> file. 
+<a href='Cat01 Trial09 marker motion smoothed.csv' target='_blank' >smoothed 3D marker coordinates</a> file, 
+which we created in the <a href='smooth_markers.html' >marker smoothing tutorial</a>. 
 This file contains the 3D coordinates of radiopaque markers implanted in a 
 channel catfish eating a worm, captured using <a href='http://xromm.org/' target='_blank' >XROMM</a> 
 and tracked using <a href='https://bitbucket.org/xromm/xmalab/wiki/Home' target='_blank' >XMALab</a>. 
-This tutorial file also contains extra metadata associated with the trial (e.g. calibration, frame number, etc.), 
-though we are just interested in the marker coordinates at this point. 
-Download the file and move it to your current R working directory and then read the animated 
-coordinates from the file using the <span class='in_line_code'>readMotion</span> function ("matools" package).
+</p>
+
+<p>
+You'll also need the 3D coordinates of the markers as they are embedded in a marked body or bodies. 
+For example, these can be the 3D marker coordinates from a CT or surface scan of the body. 
+Since these are not animated they take the form of a simple matrix.
+You can try out the code in this tutorial using this <a href='Cat01 landmarks.csv' target='_blank' >landmark coordinates</a> file. 
+This landmark file contains the 3D coordinates of markers implanted in the channel catfish (those landmarks having "bead" in their name) 
+as well as other landmarks whose utility will become clear in subsequent steps.
+</p>
+
+<p>
+Download both of these files and move them to your current R working directory.
+Then read the animated coordinates using the <span class='in_line_code'>readMotion</span> function 
+and read the landmark coordinates using the <span class='in_line_code'>readLandmarks</span> function 
+(both from the "matools" package).
 </p>
 
 <div class="code" ><pre class="code">
-<span class="code_comment" ># Read unsmoothed motion</span>
-read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Cat01 Trial09 marker motion raw.csv'</span>)
+<span class="code_comment" ># Read smoothed marker motion</span>
+read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Cat01 Trial09 marker motion smoothed.csv'</span>)
+
+<span class="code_comment" ># Read landmark coordinates</span>
+read_landmarks <- readLandmarks(<span class="code_quote" >'Cat01 landmarks.csv'</span>)
 </pre></div>
 
 <p>
-The <span class='in_line_code'>readMotion</span> function returns a 'motion' object containing the marker coordinates ($xyz) 
-and the additional metadata. You can preview the contents of this object using the <span class='in_line_code'>print</span> function. 
-The output of the <span class='in_line_code'>print</span> command shows you the number of iterations (i.e. "time points") in the motion object (here, 1819), 
-the names of the "xyz" (i.e. marker) coordinates, and all of the metadata columns ("calibration", "frame", etc.).
+Unify
 </p>
 
 <div class="code" ><pre class="code">
-<span class="code_comment" ># See what is contained in the motion object (optional)</span>
-<span class="code_function" >print</span>(read_motion)
-</pre></div>
-
-<p>
-Next input this motion object into <span class='in_line_code'>smoothMotion</span>. 
-We'll start with the simplest type of call to <span class='in_line_code'>smoothMotion</span> in which a single smoothing parameter 
-is applied across the entire time sequence (non-adaptive smoothing). 
-Include a file path where you would like to save a PDF diagnostic plot using the <span class='in_line_code'>plot.diag</span> parameter; 
-the diagnostic plot is essential to making sure you have selected an appropriate degree of smoothing.
-</p>
-
-<div class="code" ><pre class="code">
-<span class="code_comment" ># Smooth points in the motion object</span>
-smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion, plot.diag=<span class="code_quote" >'Cat01 Trial09 marker motion raw.pdf'</span>)
+<span class="code_comment" ># Unify </span>
+unify <- unifyMotion(read_motion, xyz.mat=read_landmarks, print.progress=FALSE, 
+	plot.diag=<span class="code_quote" >'Unify.pdf'</span>, skip.bodies=<span class="code_function" >c</span>(<span class="code_quote" >'Sternohyoid'</span>, <span class="code_quote" >'Epaxial'</span>, <span class="code_quote" >'Hypaxial'</span>),
+	near.bodies=<span class="code_function" >list</span>(<span class="code_quote" >'Urohyal'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'HyoidL'</span>,<span class="code_quote" >'Neurocranium'</span>,<span class="code_quote" >'Sternohyoid'</span>)))
 </pre></div>
 
 <p>
@@ -150,12 +155,12 @@ this also works:
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># smoothMotion also accepts a simple 3D point array</span>
-smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 marker motion raw.pdf'</span>)
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw.pdf'</span>)
 </pre></div>
 
 <p>
 The <span class='in_line_code'>smoothMotion</span> function smoothes each dimension of each marker using the 
-<a href='https://stat.ethz.ch/R-manual/R-devel/library/stats/html/loess.html' target='_blank' >loess</a> function (R "stats" package). 
+<a href='https://stat.ethz.ch/R-manual/R-devel/library/stats/html/loess.html' target='_blank' >loess</a> function (R 'stats' package). 
 The <span class='in_line_code'>loess</span> function uses polynomial fitting with degree of smoothing controlled by the parameter <span class='in_line_code'>span</span>. 
 The degree of smoothing with <span class='in_line_code'>loess</span> depends on the length of the time sequence so <span class='in_line_code'>span</span> must be adjusted 
 as the time sequence increases or decreases. The <span class='in_line_code'>smoothMotion</span> function performs this adjustment for you but 
@@ -226,7 +231,7 @@ the <span class='in_line_code'>span.factor</span> parameter).
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Decrease the degree of smoothing by decreasing span.factor (default is 18)</span>
-smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 marker motion raw low.pdf'</span>, 
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw low.pdf'</span>, 
 	span.factor=<span class="code_numeric" >2</span>)
 </pre></div>
 
@@ -315,7 +320,7 @@ should have.
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Smooth points</span>
 smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion, span.factor=span.factor, 
-	smooth.bins=smooth.bins, plot.diag=<span class="code_quote" >'Cat01 Trial09 marker motion raw adaptive.pdf'</span>, 
+	smooth.bins=smooth.bins, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw adaptive.pdf'</span>, 
 	bin.replace.min=<span class="code_numeric" >10</span>, adaptive=TRUE)
 </pre></div>
 
@@ -382,7 +387,7 @@ You can save the motion object using using <span class='in_line_code'>writeMotio
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Save smoothed coordinates as motion object</span>
-<span class="code_function" >writeMotion</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 marker motion smoothed.csv'</span>)
+<span class="code_function" >writeMotion</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 3DPoints smoothed.csv'</span>)
 </pre></div>
 
 <p>
@@ -392,7 +397,7 @@ output will also be an array of 3D points that you can save using the <span clas
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Save smoothed coordinates (if you input a 3D array)</span>
-<span class="code_function" >writeLandmarks</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 marker motion smoothed.csv'</span>)
+<span class="code_function" >writeLandmarks</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 3DPoints smoothed.csv'</span>)
 </pre></div>
 
 <br />
@@ -403,20 +408,22 @@ pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master/R'<
 <span class="code_comment" ># Load all functions in this folder into the global environment</span>
 source_apply <- <span class="code_function" >sapply</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >'/'</span>, <span class="code_function" >list.files</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >''</span>))), source, .GlobalEnv)
 
-<span class="code_comment" ># Read unsmoothed motion</span>
-read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Cat01 Trial09 marker motion raw.csv'</span>)
+<span class="code_comment" ># Read smoothed marker motion</span>
+read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Cat01 Trial09 marker motion smoothed.csv'</span>)
 
-<span class="code_comment" ># See what is contained in the motion object (optional)</span>
-<span class="code_function" >print</span>(read_motion)
+<span class="code_comment" ># Read landmark coordinates</span>
+read_landmarks <- readLandmarks(<span class="code_quote" >'Cat01 landmarks.csv'</span>)
 
-<span class="code_comment" ># Smooth points in the motion object</span>
-smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion, plot.diag=<span class="code_quote" >'Cat01 Trial09 marker motion raw.pdf'</span>)
+<span class="code_comment" ># Unify </span>
+unify <- unifyMotion(read_motion, xyz.mat=read_landmarks, print.progress=FALSE, 
+	plot.diag=<span class="code_quote" >'Unify.pdf'</span>, skip.bodies=<span class="code_function" >c</span>(<span class="code_quote" >'Sternohyoid'</span>, <span class="code_quote" >'Epaxial'</span>, <span class="code_quote" >'Hypaxial'</span>),
+	near.bodies=<span class="code_function" >list</span>(<span class="code_quote" >'Urohyal'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'HyoidL'</span>,<span class="code_quote" >'Neurocranium'</span>,<span class="code_quote" >'Sternohyoid'</span>)))
 
 <span class="code_comment" ># smoothMotion also accepts a simple 3D point array</span>
-smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 marker motion raw.pdf'</span>)
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw.pdf'</span>)
 
 <span class="code_comment" ># Decrease the degree of smoothing by decreasing span.factor (default is 18)</span>
-smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 marker motion raw low.pdf'</span>, 
+smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion$xyz, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw low.pdf'</span>, 
 	span.factor=<span class="code_numeric" >2</span>)
 
 <span class="code_comment" ># Set smoothing strength (higher = more smoothing)</span>
@@ -427,14 +434,14 @@ smooth.bins <- <span class="code_function" >c</span>(<span class="code_numeric" 
 
 <span class="code_comment" ># Smooth points</span>
 smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion, span.factor=span.factor, 
-	smooth.bins=smooth.bins, plot.diag=<span class="code_quote" >'Cat01 Trial09 marker motion raw adaptive.pdf'</span>, 
+	smooth.bins=smooth.bins, plot.diag=<span class="code_quote" >'Cat01 Trial09 3DPoints raw adaptive.pdf'</span>, 
 	bin.replace.min=<span class="code_numeric" >10</span>, adaptive=TRUE)
 
 <span class="code_comment" ># Save smoothed coordinates as motion object</span>
-<span class="code_function" >writeMotion</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 marker motion smoothed.csv'</span>)
+<span class="code_function" >writeMotion</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 3DPoints smoothed.csv'</span>)
 
 <span class="code_comment" ># Save smoothed coordinates (if you input a 3D array)</span>
-<span class="code_function" >writeLandmarks</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 marker motion smoothed.csv'</span>)
+<span class="code_function" >writeLandmarks</span>(x=smooth_motion, file=<span class="code_quote" >'Cat01 Trial09 3DPoints smoothed.csv'</span>)
 </pre></div>
 		</div>
 
