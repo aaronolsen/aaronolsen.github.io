@@ -130,7 +130,7 @@ The geomorph package will allow you to perform the Generalized Procrustes Analys
 StereoMorph package has the function for creating the backtransform morphospace. 
 For StereoMorph <em>be sure that you have a version equal to or greater than 1.6.2 installed</em> since this has the btShapes function. 
 If you have not installed 
-these packages you can install them using the 'install.packages' function.
+these packages you can install them using the <span class='in_line_code'>install.packages</span> function.
 </p>
 
 <div class="code" ><pre class="code">
@@ -141,7 +141,7 @@ these packages you can install them using the 'install.packages' function.
 
 <p>
 Once the package is installed, load it into the current R environment using the 
-'library' function.
+<span class='in_line_code'>library</span> function.
 </p>
 
 <div class="code" ><pre class="code">
@@ -240,7 +240,7 @@ yourself. But the function included in this example should serve as a useful tem
 </p>
 
 <p>
-You can name the function whatever you'd like. The example below is named 'plot_beak_lateral'.
+You can name the function whatever you'd like. The example below is named <span class='in_line_code'>plot_beak_lateral</span>.
 This function takes curve points along the bottom and top margin of the beak and 
 creates a silhouette of the beak from a lateral view. The shape data that are input to this function are  
 3D so this function just takes a simple projection of the 3D shape onto the midline body plane. 
@@ -262,8 +262,8 @@ You can include any number of extra parameters that you would like to
 customize the shape drawing. In the example below there is a size parameter to 
 adjust the overall size of each backtransform shape and a color parameter to specify the 
 fill color of the beaks. The extra parameters that you specify will be passed 
-along through the 'btShapes' function (the function you create will be called 
-by 'btShapes') so they should differ from the input parameters to 'btShapes'.
+along through the <span class='in_line_code'>btShapes</span> function (the function you create will be called 
+by <span class='in_line_code'>btShapes</span>) so they should differ from the input parameters to <span class='in_line_code'>btShapes</span>.
 </p>
 
 <div class="code" ><pre class="code">
@@ -309,7 +309,7 @@ plot_beak_lateral <- <span class="code_function" >function</span>(xy, coor, size
 <p>
 To use this function in other projects you might want to save this function to its own file,
 for example 'plot_beak_lateral.R' and then load the function at the start of your 
-code using the 'source' function.
+code using the <span class='in_line_code'>source</span> function.
 </p>
 
 <p>
@@ -335,8 +335,8 @@ where the plot will be produced.
 </pre></div>
 
 <p>
-Create a plot box with axes and axis labels. Use the 'n' value for the 
-'type' parameter to draw the plot without plotting the scores. That way you can 
+Create a plot box with axes and axis labels. Use the <span class='in_line_code'>n</span> value for the 
+<span class='in_line_code'>type</span> parameter to draw the plot without plotting the scores. That way you can 
 add the scores later on top of the backtransform shapes.
 </p>
 
@@ -348,7 +348,7 @@ add the scores later on top of the backtransform shapes.
 </pre></div>
 
 <p>
-Plot the backtransform shapes in the plot box using the 'btShapes' function.
+Plot the backtransform shapes in the plot box using the <span class='in_line_code'>btShapes</span> function.
 </p>
 
 <div class="code" ><pre class="code">
@@ -359,18 +359,18 @@ Plot the backtransform shapes in the plot box using the 'btShapes' function.
 </pre></div>
 
 <p>
-Here are the input parameters to 'btShapes':
+Here are the input parameters to <span class='in_line_code'>btShapes</span>:
 </p>
 
 <ul>
-	<li>scores: a matrix of the PCA scores</li>
-	<li>vectors: a matrix of the PCA eigenvectors</li>
-	<li>fcn: the function that will be called by btShapes to draw each shape</li>
-	<li>pcs: the two PC axes for the plot</li>
-	<li>n: a two-element vector giving the number of shapes to draw along the x- and y-axes, respectively</li>
-	<li>m: number of shape dimensions (2 for 2D, 3 for 3D)</li>
-	<li>row.names: a vector giving the names of the landmarks in the same order as the shape array input to the PC analysis</li>
-	<li>pc.margin: a two-element vector giving the margins along the x- and y-axes, 
+	<li><span class='in_line_code'>scores</span>: a matrix of the PCA scores</li>
+	<li><span class='in_line_code'>vectors</span>: a matrix of the PCA eigenvectors</li>
+	<li><span class='in_line_code'>fcn</span>: the function that will be called by btShapes to draw each shape</li>
+	<li><span class='in_line_code'>pcs</span>: the two PC axes for the plot</li>
+	<li><span class='in_line_code'>n</span>: a two-element vector giving the number of shapes to draw along the x- and y-axes, respectively</li>
+	<li><span class='in_line_code'>m</span>: number of shape dimensions (2 for 2D, 3 for 3D)</li>
+	<li><span class='in_line_code'>row.names</span>: a vector giving the names of the landmarks in the same order as the shape array input to the PC analysis</li>
+	<li><span class='in_line_code'>pc.margin</span>: a two-element vector giving the margins along the x- and y-axes, 
 	respectively, for the range of PC scores that are used to draw the shapes. 
 	For example, a value of 0.05 
 	will start drawing the backtransform shapes at values 5% greater than the minimum 
@@ -379,7 +379,7 @@ Here are the input parameters to 'btShapes':
 </ul>
 
 <p>
-The remaining two input parameters ('size' and 'col') are inputs to the 'plot_beak_lateral' 
+The remaining two input parameters (<span class='in_line_code'>size</span> and <span class='in_line_code'>col</span>) are inputs to the <span class='in_line_code'>plot_beak_lateral</span> 
 function so these may differ depending on how you write your shape drawing function.
 </p>
 
@@ -476,7 +476,7 @@ and has been pruned down to include just the species in this tutorial.
 </p>
 
 <p>
-Load the tree using the 'read.tree' function from the ape package.
+Load the tree using the <span class='in_line_code'>read.tree</span> function from the ape package.
 </p>
 
 <div class="code" ><pre class="code">
@@ -485,9 +485,9 @@ tree <- <span class="code_function" >read.tree</span>(file=<span class="code_quo
 </pre></div>
 
 <p>
-You can use the same 'gpa_mat' from the generalized Procrustes coordinates that you created in the 
+You can use the same <span class='in_line_code'>gpa_mat</span> from the generalized Procrustes coordinates that you created in the 
 previous section but this time it will be used to perform a pPCA instead of a PCA, using the 
-'phyl.pca' function from the phytools package.
+<span class='in_line_code'>phyl.pca</span> function from the phytools package.
 </p>
 
 <div class="code" ><pre class="code">
@@ -496,7 +496,7 @@ phyl_pca <- <span class="code_function" >phyl.pca</span>(tree, Y=gpa_mat, method
 </pre></div>
 
 <p>
-From the 'phyl.pca' results you can get the pPCA scores, eigenvectors, and percent variance 
+From the <span class='in_line_code'>phyl.pca</span> results you can get the pPCA scores, eigenvectors, and percent variance 
 explained by each axis, just as for a non-phylogenetic PCA.
 </p>
 
@@ -514,7 +514,7 @@ ppca_per_var <- (diag_values / <span class="code_function" >sum</span>(diag_valu
 
 <p>
 Lastly get a vector of the phylogenetic means using the covariance and variance-covariance 
-matrices. This will be input into 'btShapes'.
+matrices. This will be input into <span class='in_line_code'>btShapes</span>.
 </p>
 
 <div class="code" ><pre class="code">
@@ -536,7 +536,7 @@ pcs <- <span class="code_numeric" >1</span>:<span class="code_numeric" >2</span>
 
 <p>
 Open a PDF graphics device where the plot will be produced and create a plot box with axes 
-and axis labels. Use the 'n' value for the 'type' parameter to draw the plot without 
+and axis labels. Use the <span class='in_line_code'>n</span> value for the <span class='in_line_code'>type</span> parameter to draw the plot without 
 plotting the scores. That way you can add the scores later on top of the backtransform shapes.
 </p>
 
@@ -551,9 +551,9 @@ plotting the scores. That way you can add the scores later on top of the backtra
 </pre></div>
 
 <p>
-Plot the backtransform shapes into the current plot using the 'btShapes' function. This 
+Plot the backtransform shapes into the current plot using the <span class='in_line_code'>btShapes</span> function. This 
 function call uses the same input parameters as for the non-phylogenetic PCA with one additional 
-parameter for the phylogenetic means, 'phy.means'. Note that now you'll input the <i>pPCA</i> scores 
+parameter for the phylogenetic means, <span class='in_line_code'>phy.means</span>. Note that now you'll input the <i>pPCA</i> scores 
 and vectors instead of the PCA scores and vectors.
 </p>
 
@@ -634,7 +634,7 @@ with the first PC axis in the pPCA (right) than in the PCA (left).
 
 <p>
 Creating a backtransform morphospace using 2D shape data only requires changes 
-to the custom function that draws each backtransform shape (the 'fcn' input to 
+to the custom function that draws each backtransform shape (the <span class='in_line_code'>fcn</span> input to 
 btShapes). You can easily convert the example dataset from this tutorial into 
 a 2D dataset by taking only the first two dimensions. Since the beaks are initially 
 aligned from front to back in the xy-plane this removes 
@@ -659,9 +659,9 @@ lm_array <- lm_array[, <span class="code_numeric" >1</span>:<span class="code_nu
 </pre></div>
 
 <p>
-Then you can run all of the subsequent code as before (you'll need to reduce the 'size' parameter in btShapes from 0.5 to 0.35).
-Note that the 'm' input parameter to btShapes should now be 2 versus 3. Using 
-'dim(lm_array)[2]' will automatically account for this by reading the number of 
+Then you can run all of the subsequent code as before (you'll need to reduce the <span class='in_line_code'>size</span> parameter in btShapes from 0.5 to 0.35).
+Note that the <span class='in_line_code'>m</span> input parameter to btShapes should now be 2 versus 3. Using 
+<span class='in_line_code'>dim(lm_array)[2]</span> will automatically account for this by reading the number of 
 coordinate dimensions in lm_array.
 </p>
 
