@@ -165,6 +165,7 @@ the landmarks using <span class='in_line_code'>readLandmarks</span>.
 </p>
 
 <div class="code" ><pre class="code">
+<span class="code_comment" >## Unification (solving for body transformations)</span>
 <span class="code_comment" ># Read landmark coordinates</span>
 landmarks <- readLandmarks(<span class="code_quote" >'Cat01 landmarks.csv'</span>)
 </pre></div>
@@ -191,10 +192,17 @@ read_motion <- <span class="code_function" >readMotion</span>(<span class="code_
 </pre></div>
 
 <p>
-It is essential that both the landmark and motion coordinates of the markers be at the same scaling. 
+It is <strong>essential</strong> that both the landmark and motion coordinates of the markers be at the same scaling. 
 So if your motion capture system and scanning software operate on different units, you'll need to convert one of the two so that the units are the same. 
-The tutorial datasets used here are scaled to mm.
+The tutorial datasets used here are both already scaled to the same units (mm).
+If you need to change the scaling for your data you can simply multiply <span class='in_line_code'>read_motion$xyz</span> 
+by a factor like below.
 </p>
+
+<div class="bcode" ><pre class="bcode">
+<span class="code_comment" ># Marker motion coordinates can be scaled like this (not needed for tutorial datasets)</span>
+read_motion$xyz <- read_motion$xyz * <span class="code_numeric" >10</span>
+</pre></div>
 
 <p>
 Lastly, it is necessary to specify which markers will be used in animating each rigid body. 
@@ -421,7 +429,7 @@ The animation is played back at realtime by default and this can be slowed down 
 </p>
 
 <a href='../../viz/tutorials/motion/Rigid body animation.html' target='_blank' >
-<video style='display: block;margin: 0 auto; width: 550px;' poster='../../img/tutorials/motion/unification rigid body animation screenshot.jpg' controls>
+<video style='display: block;margin: 0 auto; width: 550px;' controls>
   <source src='../../viz/tutorials/motion/unification rigid body animation.mp4' type='video/mp4'>
 Your browser does not support the video tag.
 </video>
@@ -435,13 +443,330 @@ From the animation you can see that the gray and yellow markers (the transformed
 line up pretty well but not perfectly. This is what is expected when the unification errors are low because the two marker sets align well. 
 Additionally, you'll notice how one skeletal element in particular, the suspensorium or "cheek bone" of the fish, is "wobbling". 
 This is because all of the markers associated with that element are nearly co-linear and there is not enough information to fully "constrain" the motion of that element. 
-Thus it tends to wobble about an axis defined by those nearly co-linear markers.
+Thus it tends to wobble about an axis defined by those nearly co-linear markers. 
+We'll see further along in this tutorial how to reduce this wobble using "virtual points".
 </p>
 
+<h2>Using regular expressions in unify specifications</h2>
 
-<h2>Using regular expressions</h2>
+<p>
+When we have lots of markers it gets a bit cumbersome to list the name of each marker in <span class='in_line_code'>unify.spec</span>. 
+If the markers are labeled according to a consistent naming scheme then it's much simpler to use regular expressions. 
+For example, the marker names in the tutorial dataset all begin with the body with which they're associated followed by an underscore and the word 'bead'. 
+Thus, it's possible to re-write <span class='in_line_code'>unify.spec</span> as follows. 
+</p>
 
-<h2>Saving the results</h2>
+<div class="code" ><pre class="code">
+<span class="code_comment" >## Using regular expressions in unify specifications</span>
+<span class="code_comment" ># Specify which bodies to animate and which markers to use for each body</span>
+unify.spec <- <span class="code_function" >list</span>(
+	<span class="code_quote" >'Neurocranium'</span>=<span class="code_quote" >'^Neurocranium_bead'</span>,
+	<span class="code_quote" >'SuspensoriumL'</span>=<span class="code_quote" >'^SuspensoriumL_bead'</span>,
+	<span class="code_quote" >'LowerJawL'</span>=<span class="code_quote" >'^LowerJawL_bead'</span>,
+	<span class="code_quote" >'OperculumL'</span>=<span class="code_quote" >'^OperculumL_bead'</span>
+)
+</pre></div>
+
+<p>
+Then run <span class='in_line_code'>unifyMotion</span> with the <span class='in_line_code'>regexp</span> parameter set to <span class='in_line_code'>TRUE</span> (default is <span class='in_line_code'>FALSE</span>).
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Run unifyMotion with regexp to TRUE to use regular expressions in unify.spec</span>
+unify_motion <- <span class="code_function" >unifyMotion</span>(read_motion, xyz.mat=landmarks, unify.spec=unify.spec, 
+	regexp=TRUE, plot.diag=<span class="code_quote" >'Unify.pdf'</span>)
+</pre></div>
+
+
+<h2>Saving the results for further analysis and export</h2>
+
+<p>
+There are a couple ways to save the results of unifyMotion. The first is to save the entire 
+motion object using the <span class='in_line_code'>writeMotion</span> function.
+The motion object output by <span class='in_line_code'>unifyMotion</span> is exactly the same 
+as the motion object that was put into the function only with the new body transformations added to it (as 'tmat'). 
+It is best to save the whole motion object because this retains any metadata that have been added 
+to the motion object (trial name, times, frame numbers, etc.).
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" >## Saving the results</span>
+<span class="code_comment" ># Save motion</span>
+<span class="code_function" >writeMotion</span>(x=unify_motion$motion, file=<span class="code_quote" >'Cat01 Trial09 body motion smoothed.csv'</span>)
+</pre></div>
+
+<p>
+This saved motion file can be then be read by using <span class='in_line_code'>readMotion</span>.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Read saved motion</span>
+read_saved_motion <- <span class="code_function" >readMotion</span>(file=<span class="code_quote" >'Cat01 Trial09 body motion smoothed.csv'</span>)
+</pre></div>
+
+<p>
+A second way to save the unification results is to just save the rigid body transformations. 
+This is useful if you want to use the transformations in another program 
+(such as to <a href='https://wiki.brown.edu/confluence/display/ctx/Animate+Bones+in+Maya' target='_blank'>create an animation using Maya</a>). 
+To save only the rigid body transformations, use <span class='in_line_code'>writeMotion</span> 
+but just including the 'tmat' object as shown below.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Save just the transformations</span>
+<span class="code_function" >writeMotion</span>(x=<span class="code_function" >list</span>(<span class="code_quote" >'tmat'</span>=unify_motion$motion$tmat), file=<span class="code_quote" >'Cat01 Trial09 body tmat smoothed.csv'</span>)
+</pre></div>
+
+<p>
+Lastly, since the unification errors are a matrix they can be saved simply by using the 
+utils function <span class='in_line_code'>write.csv</span> function.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Save the unification errors</span>
+<span class="code_function" >write.csv</span>(x=unify_motion$error, file=<span class="code_quote" >'Unification errors.csv'</span>)
+</pre></div>
+
+<h2>Visualizing motion relative to a particular body</h2>
+
+<p>
+When visually inspecting the results of unifyMotion it's often useful to fix the motion of one body. 
+For example, with this tutorial dataset the catfish is swimming around the tank which makes it hard to 
+see the motions of the skeletal elements in head.
+To get the motion of the elements relative to a particular body you can use the 
+<span class='in_line_code'>relativeMotion</span> function. 
+Input the motion object, which now includes the rigid body transformations, and the body that you would like to fix.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" >## Create animation of motion relative to neurocranium</span>
+<span class="code_comment" ># Get relative motion</span>
+relative_motion <- <span class="code_function" >relativeMotion</span>(motion=unify_motion$motion, fixed=<span class="code_quote" >'Neurocranium'</span>)
+</pre></div>
+
+<p>
+The <span class='in_line_code'>relativeMotion</span> function outputs a new motion object in 
+which all motions are relative to a fixed neurocranium. 
+To create a new animation, simply re-run the code above but replacing the previous motion objects with <span class='in_line_code'>relative_motion</span>, as shown below.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Create animation with fixed neurocranium</span>
+<span class="code_function" >svg.new</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'Animation fixed Neurocranium.html'</span>), mode=<span class="code_quote" >'webgl'</span>)
+<span class="code_function" >for</span>(body_name in <span class="code_function" >names</span>(unify.spec)){
+	<span class="code_function" >svg.mesh</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'meshes/Cat 01 '</span>, body_name, <span class="code_quote" >'.obj'</span>), name=body_name)
+	markers_match <- <span class="code_function" >grepl</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'^'</span>, body_name, <span class="code_quote" >'_'</span>), <span class="code_function" >dimnames</span>(relative_motion$xyz)[[<span class="code_numeric" >1</span>]])
+	body_markers <- <span class="code_function" >dimnames</span>(relative_motion$xyz)[[<span class="code_numeric" >1</span>]][markers_match]
+	<span class="code_function" >svg.spheres</span>(relative_motion$xyz[body_markers,,], col=<span class="code_quote" >'yellow'</span>)
+}
+<span class="code_function" >svg.transform</span>(relative_motion$tmat, times=relative_motion$time)
+<span class="code_function" >svg.frame</span>()
+<span class="code_function" >svg.close</span>()
+</pre></div>
+
+<a href='../../viz/tutorials/motion/Animation fixed Neurocranium.html' target='_blank' >
+<video style='display: block;margin: 0 auto; width: 550px;' controls>
+  <source src='../../viz/tutorials/motion/unification animation fixed neurocranium.mp4' type='video/mp4'>
+Your browser does not support the video tag.
+</video>
+</a>
+<div class='img_caption' >
+	Rigid body animation showing motion relative to a fixed neurocranium.
+</div>
+
+
+<h2>Constraining body motion using "Virtual points"</h2>
+
+<p>
+You may have noticed (particularly in the preceding video with motion relative to the neurocranium) 
+that the suspensorium or "cheek bone" of the fish, is "wobbling". 
+This is because all of the markers associated with that element are nearly co-linear, causing the element to 
+wobble about an axis defined by those nearly co-linear markers. 
+To reduce this wobble we can add in extra landmarks (referred to as "virtual points" or 
+"virtual markers") where we know that there is little motion of the element 
+to help constrain the motion.
+</p>
+
+<p>
+The suspensorium in catfish is attached to the neurocranium along a broad, hinge-like joint. 
+One particular part of the joint has a tough ligament tethering the suspensorium to the neurocranium, preventing translation at that point and 
+presenting an ideal virtual point to constrain the motion of the suspensorium (shown in the image below).
+</p>
+
+<div class='p_image_middle_div' style="width:400px;">
+	<div><a href='../../viz/tutorials/motion/Suspensorium virtual point.html' target='_blank'>
+		<img width='400px' src='../../img/tutorials/motion/unification suspensorium virtual point.jpg' /></a></div>
+	<div class='p_image_caption' style='text-align:center;' >
+		A virtual point (indicated by the red sphere) located at a ligamentous joint between the suspensorium and neurocranium 
+		can be added to supplement the markers and constrain the motion of the element. Click image to open interactive visualization.
+	</div>
+</div>
+
+<p>
+For the interested user, the visualization pictured above can be created using the following code:
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" >## Constraining body motion using virtual points</span>
+<span class="code_comment" ># Create visual of virtual point</span>
+<span class="code_function" >svg.new</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'Suspensorium virtual point.html'</span>), mode=<span class="code_quote" >'webgl'</span>)
+<span class="code_function" >for</span>(body_name in <span class="code_function" >c</span>(<span class="code_quote" >'Neurocranium'</span>, <span class="code_quote" >'SuspensoriumL'</span>)){
+	<span class="code_function" >svg.mesh</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'meshes/Cat 01 '</span>, body_name, <span class="code_quote" >'.obj'</span>), opacity=<span class="code_numeric" >0.5</span>)
+	markers_match <- <span class="code_function" >grepl</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'^'</span>, body_name, <span class="code_quote" >'_'</span>), <span class="code_function" >dimnames</span>(read_motion$xyz)[[<span class="code_numeric" >1</span>]])
+	body_markers <- <span class="code_function" >dimnames</span>(read_motion$xyz)[[<span class="code_numeric" >1</span>]][markers_match]
+	<span class="code_function" >svg.spheres</span>(landmarks[body_markers,], col=<span class="code_quote" >'gray'</span>)
+}
+<span class="code_function" >svg.spheres</span>(landmarks[<span class="code_quote" >'Neurocranium-SuspensoriumL_nc_susp_jt_cra'</span>,], col=<span class="code_quote" >'red'</span>)
+<span class="code_function" >svg.close</span>()
+</pre></div>
+
+<p>
+To use a virtual point during the unification step set the 3D coordinate of the virtual point 
+(in the same coordinate system as the surface meshes) and add this to the marker landmarks file. 
+I like to get virtual point coordinates in <a href='https://www.blender.org/' target='_blank'>Blender</a> by 
+<a href='https://docs.blender.org/manual/en/latest/modeling/curves/selecting.html' target='_blank'>selecting a vertex on the mesh</a> 
+and then getting the vertex XYZ coordinate from the right-side panel (see below).
+</p>
+
+<div class='p_image_middle_div' style="width:550px;">
+	<div><a href='../../img/tutorials/motion/unification blender get vertex coordinate.jpg' target='_blank'>
+		<img width='550px' src='../../img/tutorials/motion/unification blender get vertex coordinate.jpg' /></a></div>
+	<div class='p_image_caption' style='text-align:center;' >
+		<a href='https://www.blender.org/' target='_blank'>Blender</a> can be used to get the 3D coordinate of 
+		a point on a mesh. The XYZ coordinate is shown near the top right corner under 'Transform'. 
+		Be sure that 'Local' is selected.
+	</div>
+</div>
+
+<p>
+For the tutorial dataset this virtual point is labeled 'Neurocranium-SuspensoriumL_nc_susp_jt_cra' in 
+the <span class='in_line_code'>landmarks</span> matrix. 
+This virtual point will be animated with the neurocranium and then used to constrain the motion of the suspensorium. 
+</p>
+
+<p>
+To use the virtual point we just have to amend the <span class='in_line_code'>unify.spec</span> list. 
+Under <span class='in_line_code'>SuspensoriumL</span> add a new list with two labeled items: 'align' and 'point'. 
+The markers that will be used for the alignment (i.e. the markers we've been using so far) go under 'align' (this is the default). 
+Then list any virtual points after 'point' in a named list, where the name of each virtual 
+point group is the body used to animate the virtual point. 
+In this case the name of the virtual point group is 'Neurocranium' since the virtual point is animated with the neurocranium.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Add virtual point to unify specifications</span>
+unify.spec <- <span class="code_function" >list</span>(
+	<span class="code_quote" >'Neurocranium'</span>=<span class="code_quote" >'^Neurocranium'</span>,
+	<span class="code_quote" >'SuspensoriumL'</span>=<span class="code_function" >list</span>(
+		<span class="code_quote" >'align'</span>=<span class="code_quote" >'^SuspensoriumL'</span>,
+		<span class="code_quote" >'point'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'Neurocranium'</span>=<span class="code_quote" >'Neurocranium-SuspensoriumL_nc_susp_jt_cra'</span>)),
+	<span class="code_quote" >'LowerJawL'</span>=<span class="code_quote" >'^LowerJawL'</span>,
+	<span class="code_quote" >'OperculumL'</span>=<span class="code_quote" >'^OperculumL'</span>
+)
+</pre></div>
+
+<p>
+You can use as many virtual points as you'd like. 
+For example, <span class='in_line_code'>unify.spec</span> for more than one virtual point animated with a body would be:
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Multiple virtual points</span>
+unify_spec2 <- <span class="code_function" >list</span>(
+	<span class="code_quote" >'Body1'</span>=<span class="code_quote" >'^Body1'</span>,
+	<span class="code_quote" >'Body2'</span>=<span class="code_function" >list</span>(
+		<span class="code_quote" >'align'</span>=<span class="code_quote" >'^Body2'</span>,
+		<span class="code_quote" >'point'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'Body1'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Body1VirtualPoint1'</span>, <span class="code_quote" >'Body1VirtualPoint2'</span>)))
+)
+</pre></div>
+
+<p>
+You can also use virtual points associated with multiple bodies. For example, <span class='in_line_code'>unify.spec</span> for multiple 
+virtual points animated with multiple bodies would be as follows:
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Multiple virtual points</span>
+unify_spec3 <- <span class="code_function" >list</span>(
+	<span class="code_quote" >'Body1'</span>=<span class="code_quote" >'^Body1'</span>,
+	<span class="code_quote" >'Body2'</span>=<span class="code_quote" >'^Body2'</span>,
+	<span class="code_quote" >'Body3'</span>=<span class="code_function" >list</span>(
+		<span class="code_quote" >'align'</span>=<span class="code_quote" >'^Body3'</span>,
+		<span class="code_quote" >'point'</span>=<span class="code_function" >list</span>(
+			<span class="code_quote" >'Body1'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Body1VirtualPoint1'</span>, <span class="code_quote" >'Body1VirtualPoint2'</span>)),
+			<span class="code_quote" >'Body2'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Body2VirtualPoint1'</span>, <span class="code_quote" >'Body2VirtualPoint2'</span>))
+)
+</pre></div>
+
+<p>
+If regexp is <span class='in_line_code'>TRUE</span> the virtual point names will be matched using regular expressions, just like the align points.
+</p>
+
+<p>
+Importantly, <span class='in_line_code'>unifyMotion</span> does <strong>not</strong> treat virtual points 
+in the same way as the markers or "align" points.
+Instead the function first finds the pose of the body using only the align points, an axis is fit to the align points at each iteration, 
+and the body is rotated about this axis to minimize the distance between the virtual points 
+animated with the parent body (here, the neurocranium) and the dependent body (here, the suspensorium). 
+In this way the virtual points will not "pull" the body away from the markers but merely rotate the body around them. 
+This has the effect of weighting the align markers more heavily than the virtual points 
+(which is what we want since we know the align markers with more certainty than the virtual points). 
+When the align markers are nearly co-linear a virtual point supplies additional information, 
+based on known (anatomical) constraints, to constrain the motion about the axis with the most 
+uncertainty while not compromising the reconstructed motion where there is more certainty.  
+The <span class='in_line_code'>unifyMotion</span> function will automatically determine the 
+order in which to solve for the body transformations given a particular hierarchy of virtual points so 
+the order in which you list the bodies and virtual points in <span class='in_line_code'>unify.spec</span> doesn't matter.
+</p>
+
+<p>
+After updating the unify specifications, call <span class='in_line_code'>unifyMotion</span> again.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Unify motion using a virtual point</span>
+unify_motion <- <span class="code_function" >unifyMotion</span>(read_motion, xyz.mat=landmarks, unify.spec=unify.spec, 
+	regexp=TRUE, plot.diag=<span class="code_quote" >'Unify.pdf'</span>)
+</pre></div>
+
+<p>
+To visualize the results, create a new animation, adding a red sphere to indicate the new virtual point 
+and reducing the opacity of the bones so that the virtual point is visible.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Get motion relative to the neurocranium</span>
+relative_motion <- <span class="code_function" >relativeMotion</span>(unify_motion$motion, fixed=<span class="code_quote" >'Neurocranium'</span>)
+
+<span class="code_comment" ># Create an animation with the virtual point</span>
+<span class="code_function" >svg.new</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'Animation virtual fixed Neurocranium.html'</span>), mode=<span class="code_quote" >'webgl'</span>)
+<span class="code_function" >for</span>(body_name in <span class="code_function" >names</span>(unify.spec)){
+	<span class="code_function" >svg.mesh</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'meshes/Cat 01 '</span>, body_name, <span class="code_quote" >'.obj'</span>), name=body_name, opacity=<span class="code_numeric" >0.7</span>)
+	markers_match <- <span class="code_function" >grepl</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'^'</span>, body_name, <span class="code_quote" >'_'</span>), <span class="code_function" >dimnames</span>(relative_motion$xyz)[[<span class="code_numeric" >1</span>]])
+	body_markers <- <span class="code_function" >dimnames</span>(relative_motion$xyz)[[<span class="code_numeric" >1</span>]][markers_match]
+	<span class="code_function" >svg.spheres</span>(relative_motion$xyz[body_markers,,], col=<span class="code_quote" >'yellow'</span>)
+}
+<span class="code_function" >svg.spheres</span>(landmarks[<span class="code_quote" >'Neurocranium-SuspensoriumL_nc_susp_jt_cra'</span>,], col=<span class="code_quote" >'red'</span>, name=<span class="code_quote" >'Neurocranium'</span>)
+<span class="code_function" >svg.transform</span>(relative_motion$tmat, times=relative_motion$time)
+<span class="code_function" >svg.frame</span>()
+<span class="code_function" >svg.close</span>()
+</pre></div>
+
+<p>
+The addition of a single virtual point eliminates most of the previous wobbling.
+</p>
+
+<a href='../../viz/tutorials/motion/Animation virtual fixed Neurocranium.html' target='_blank' >
+<video style='display: block;margin: 0 auto; width: 550px;' controls>
+  <source src='../../viz/tutorials/motion/unification animation fixed neurocranium virtual.mp4' type='video/mp4'>
+Your browser does not support the video tag.
+</video>
+</a>
+<div class='img_caption' >
+	Rigid body animation of motion relative to a fixed neurocranium. A virtual point (red) animated with the neurocranium has been used 
+	to constrain the motion of the suspensorium, removing most of the wobble present when just using the motion capture markers ('yellow'). 
+	Click video to open interactive visualization.
+</div>
 
 <br />
 </div><h2>Uninterrupted code</h2><a name="uninterrupted_code" ></a><br /><div class="code" ><pre class="code">
@@ -460,6 +785,7 @@ pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master'</s
 <span class="code_comment" ># Load the matools package</span>
 <span class="code_function" >library</span>(matools)
 
+<span class="code_comment" >## Unification (solving for body transformations)</span>
 <span class="code_comment" ># Read landmark coordinates</span>
 landmarks <- readLandmarks(<span class="code_quote" >'Cat01 landmarks.csv'</span>)
 
@@ -512,6 +838,109 @@ unify_motion <- <span class="code_function" >unifyMotion</span>(read_motion, xyz
 <span class="code_function" >svg.frame</span>()
 
 <span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+
+<span class="code_comment" >## Using regular expressions in unify specifications</span>
+<span class="code_comment" ># Specify which bodies to animate and which markers to use for each body</span>
+unify.spec <- <span class="code_function" >list</span>(
+	<span class="code_quote" >'Neurocranium'</span>=<span class="code_quote" >'^Neurocranium_bead'</span>,
+	<span class="code_quote" >'SuspensoriumL'</span>=<span class="code_quote" >'^SuspensoriumL_bead'</span>,
+	<span class="code_quote" >'LowerJawL'</span>=<span class="code_quote" >'^LowerJawL_bead'</span>,
+	<span class="code_quote" >'OperculumL'</span>=<span class="code_quote" >'^OperculumL_bead'</span>
+)
+
+<span class="code_comment" ># Run unifyMotion with regexp to TRUE to use regular expressions in unify.spec</span>
+unify_motion <- <span class="code_function" >unifyMotion</span>(read_motion, xyz.mat=landmarks, unify.spec=unify.spec, 
+	regexp=TRUE, plot.diag=<span class="code_quote" >'Unify.pdf'</span>)
+
+<span class="code_comment" >## Saving the results</span>
+<span class="code_comment" ># Save motion</span>
+<span class="code_function" >writeMotion</span>(x=unify_motion$motion, file=<span class="code_quote" >'Cat01 Trial09 body motion smoothed.csv'</span>)
+
+<span class="code_comment" ># Read saved motion</span>
+read_saved_motion <- <span class="code_function" >readMotion</span>(file=<span class="code_quote" >'Cat01 Trial09 body motion smoothed.csv'</span>)
+
+<span class="code_comment" ># Save just the transformations</span>
+<span class="code_function" >writeMotion</span>(x=<span class="code_function" >list</span>(<span class="code_quote" >'tmat'</span>=unify_motion$motion$tmat), file=<span class="code_quote" >'Cat01 Trial09 body tmat smoothed.csv'</span>)
+
+<span class="code_comment" ># Save the unification errors</span>
+<span class="code_function" >write.csv</span>(x=unify_motion$error, file=<span class="code_quote" >'Unification errors.csv'</span>)
+
+<span class="code_comment" >## Create animation of motion relative to neurocranium</span>
+<span class="code_comment" ># Get relative motion</span>
+relative_motion <- <span class="code_function" >relativeMotion</span>(motion=unify_motion$motion, fixed=<span class="code_quote" >'Neurocranium'</span>)
+
+<span class="code_comment" ># Create animation with fixed neurocranium</span>
+<span class="code_function" >svg.new</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'Animation fixed Neurocranium.html'</span>), mode=<span class="code_quote" >'webgl'</span>)
+<span class="code_function" >for</span>(body_name in <span class="code_function" >names</span>(unify.spec)){
+	<span class="code_function" >svg.mesh</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'meshes/Cat 01 '</span>, body_name, <span class="code_quote" >'.obj'</span>), name=body_name)
+	markers_match <- <span class="code_function" >grepl</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'^'</span>, body_name, <span class="code_quote" >'_'</span>), <span class="code_function" >dimnames</span>(relative_motion$xyz)[[<span class="code_numeric" >1</span>]])
+	body_markers <- <span class="code_function" >dimnames</span>(relative_motion$xyz)[[<span class="code_numeric" >1</span>]][markers_match]
+	<span class="code_function" >svg.spheres</span>(relative_motion$xyz[body_markers,,], col=<span class="code_quote" >'yellow'</span>)
+}
+<span class="code_function" >svg.transform</span>(relative_motion$tmat, times=relative_motion$time)
+<span class="code_function" >svg.frame</span>()
+<span class="code_function" >svg.close</span>()
+
+<span class="code_comment" >## Constraining body motion using virtual points</span>
+<span class="code_comment" ># Create visual of virtual point</span>
+<span class="code_function" >svg.new</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'Suspensorium virtual point.html'</span>), mode=<span class="code_quote" >'webgl'</span>)
+<span class="code_function" >for</span>(body_name in <span class="code_function" >c</span>(<span class="code_quote" >'Neurocranium'</span>, <span class="code_quote" >'SuspensoriumL'</span>)){
+	<span class="code_function" >svg.mesh</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'meshes/Cat 01 '</span>, body_name, <span class="code_quote" >'.obj'</span>), opacity=<span class="code_numeric" >0.5</span>)
+	markers_match <- <span class="code_function" >grepl</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'^'</span>, body_name, <span class="code_quote" >'_'</span>), <span class="code_function" >dimnames</span>(read_motion$xyz)[[<span class="code_numeric" >1</span>]])
+	body_markers <- <span class="code_function" >dimnames</span>(read_motion$xyz)[[<span class="code_numeric" >1</span>]][markers_match]
+	<span class="code_function" >svg.spheres</span>(landmarks[body_markers,], col=<span class="code_quote" >'gray'</span>)
+}
+<span class="code_function" >svg.spheres</span>(landmarks[<span class="code_quote" >'Neurocranium-SuspensoriumL_nc_susp_jt_cra'</span>,], col=<span class="code_quote" >'red'</span>)
+<span class="code_function" >svg.close</span>()
+
+<span class="code_comment" ># Add virtual point to unify specifications</span>
+unify.spec <- <span class="code_function" >list</span>(
+	<span class="code_quote" >'Neurocranium'</span>=<span class="code_quote" >'^Neurocranium'</span>,
+	<span class="code_quote" >'SuspensoriumL'</span>=<span class="code_function" >list</span>(
+		<span class="code_quote" >'align'</span>=<span class="code_quote" >'^SuspensoriumL'</span>,
+		<span class="code_quote" >'point'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'Neurocranium'</span>=<span class="code_quote" >'Neurocranium-SuspensoriumL_nc_susp_jt_cra'</span>)),
+	<span class="code_quote" >'LowerJawL'</span>=<span class="code_quote" >'^LowerJawL'</span>,
+	<span class="code_quote" >'OperculumL'</span>=<span class="code_quote" >'^OperculumL'</span>
+)
+
+<span class="code_comment" ># Multiple virtual points</span>
+unify_spec2 <- <span class="code_function" >list</span>(
+	<span class="code_quote" >'Body1'</span>=<span class="code_quote" >'^Body1'</span>,
+	<span class="code_quote" >'Body2'</span>=<span class="code_function" >list</span>(
+		<span class="code_quote" >'align'</span>=<span class="code_quote" >'^Body2'</span>,
+		<span class="code_quote" >'point'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'Body1'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Body1VirtualPoint1'</span>, <span class="code_quote" >'Body1VirtualPoint2'</span>)))
+)
+
+<span class="code_comment" ># Multiple virtual points</span>
+unify_spec3 <- <span class="code_function" >list</span>(
+	<span class="code_quote" >'Body1'</span>=<span class="code_quote" >'^Body1'</span>,
+	<span class="code_quote" >'Body2'</span>=<span class="code_quote" >'^Body2'</span>,
+	<span class="code_quote" >'Body3'</span>=<span class="code_function" >list</span>(
+		<span class="code_quote" >'align'</span>=<span class="code_quote" >'^Body3'</span>,
+		<span class="code_quote" >'point'</span>=<span class="code_function" >list</span>(
+			<span class="code_quote" >'Body1'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Body1VirtualPoint1'</span>, <span class="code_quote" >'Body1VirtualPoint2'</span>)),
+			<span class="code_quote" >'Body2'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Body2VirtualPoint1'</span>, <span class="code_quote" >'Body2VirtualPoint2'</span>))
+)
+
+<span class="code_comment" ># Unify motion using a virtual point</span>
+unify_motion <- <span class="code_function" >unifyMotion</span>(read_motion, xyz.mat=landmarks, unify.spec=unify.spec, 
+	regexp=TRUE, plot.diag=<span class="code_quote" >'Unify.pdf'</span>)
+
+<span class="code_comment" ># Get motion relative to the neurocranium</span>
+relative_motion <- <span class="code_function" >relativeMotion</span>(unify_motion$motion, fixed=<span class="code_quote" >'Neurocranium'</span>)
+
+<span class="code_comment" ># Create an animation with the virtual point</span>
+<span class="code_function" >svg.new</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'Animation virtual fixed Neurocranium.html'</span>), mode=<span class="code_quote" >'webgl'</span>)
+<span class="code_function" >for</span>(body_name in <span class="code_function" >names</span>(unify.spec)){
+	<span class="code_function" >svg.mesh</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'meshes/Cat 01 '</span>, body_name, <span class="code_quote" >'.obj'</span>), name=body_name, opacity=<span class="code_numeric" >0.7</span>)
+	markers_match <- <span class="code_function" >grepl</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'^'</span>, body_name, <span class="code_quote" >'_'</span>), <span class="code_function" >dimnames</span>(relative_motion$xyz)[[<span class="code_numeric" >1</span>]])
+	body_markers <- <span class="code_function" >dimnames</span>(relative_motion$xyz)[[<span class="code_numeric" >1</span>]][markers_match]
+	<span class="code_function" >svg.spheres</span>(relative_motion$xyz[body_markers,,], col=<span class="code_quote" >'yellow'</span>)
+}
+<span class="code_function" >svg.spheres</span>(landmarks[<span class="code_quote" >'Neurocranium-SuspensoriumL_nc_susp_jt_cra'</span>,], col=<span class="code_quote" >'red'</span>, name=<span class="code_quote" >'Neurocranium'</span>)
+<span class="code_function" >svg.transform</span>(relative_motion$tmat, times=relative_motion$time)
+<span class="code_function" >svg.frame</span>()
 <span class="code_function" >svg.close</span>()
 </pre></div>
 		</div>
