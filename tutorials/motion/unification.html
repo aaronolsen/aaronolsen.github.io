@@ -413,9 +413,11 @@ This finishes writing the visualization file and prevents further objects from b
 </pre></div>
 
 <p>
-This should create the visualization shown below that can be opened in most major web browsers (preferably Chrome or Safari). 
+This should create the visualization shown below that can be opened in most major web browsers (currently works best in Chrome or Safari). 
 Note that this is a standalone html file containing all of the code and mesh data needed for the visualization so 
-it can be moved, e-mailed, etc. R is only needed to create the file, not to open it.
+it can be moved, e-mailed, etc. R is only needed to create the file, not to open it. 
+The timeline along the bottom of the browser window has tools for controlling the animation playback, including the speed (far right). 
+The animation is played back at realtime by default and this can be slowed down (<1) or sped up (>1) as needed.
 </p>
 
 <a href='../../viz/tutorials/motion/Rigid body animation.html' target='_blank' >
@@ -427,6 +429,14 @@ Your browser does not support the video tag.
 <div class='img_caption' >
 	Interactive rigid body animation created using <a href='https://cran.r-project.org/package=svgViewR' target='_blank'>svgViewR</a>.
 </div>
+
+<p>
+From the animation you can see that the gray and yellow markers (the transformed landmarks and the motion capture coordinates, respectively) 
+line up pretty well but not perfectly. This is what is expected when the unification errors are low because the two marker sets align well. 
+Additionally, you'll notice how one skeletal element in particular, the suspensorium or "cheek bone" of the fish, is "wobbling". 
+This is because all of the markers associated with that element are nearly co-linear and there is not enough information to fully "constrain" the motion of that element. 
+Thus it tends to wobble about an axis defined by those nearly co-linear markers.
+</p>
 
 
 <h2>Using regular expressions</h2>

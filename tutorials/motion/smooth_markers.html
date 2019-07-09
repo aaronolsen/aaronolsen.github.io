@@ -36,16 +36,16 @@
 				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
 			</div>
 			<div class='linksidebar_sublink' >
-				<a class='linksidebar_link' href='../../tutorials/xromm.html'>XROMM</a>
+				<a class='linksidebar_link' href='../../tutorials/motion.html'>Motion</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/motion/segmenting_ct.html'>Segmentation</a>
 			</div>
 			<div class='linksidebar_sub2link_u' >
-				<a class='linksidebar_link_u' href='../../tutorials/xromm/smooth_markers.html'>Smooth markers</a>
+				<a class='linksidebar_link_u' href='../../tutorials/motion/smooth_markers.html'>Smooth markers</a>
 			</div>
 			<div class='linksidebar_sub2link' >
-				<a class='linksidebar_link' href='../../tutorials/xromm/unification.html'>Unification</a>
-			</div>
-			<div class='linksidebar_sub2link' >
-				<a class='linksidebar_link' href='../../tutorials/xromm/segmenting_ct.html'>Segmentation</a>
+				<a class='linksidebar_link' href='../../tutorials/motion/unification.html'>Unification</a>
 			</div>
 			<div class='linksidebar_sublink' >
 				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
@@ -66,7 +66,7 @@
 
 		<div id='maincontent' class='maincontent' >
 
-			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/visualization3d.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/xromm.html">xromm</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;smooth markers</div>
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/visualization3d.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/motion.html">motion</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;smooth markers</div>
 
 
 <div class='maincontentfill'>
@@ -81,20 +81,37 @@ The uninterrupted block of code can be found at the <a href="#uninterrupted_code
 </p><h2>Preliminary steps</h2><p>Make sure that you have 
 		<a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a> 
 		installed on your system (you can find R installation instructions 
-		<a href="https://cran.r-project.org" target="_blank" >here</a>). Next, install the beta version (v1.0) of the R package matools (not yet on CRAN). 
+		<a href="https://cran.r-project.org" target="_blank" >here</a>).Next, install the beta version (v1.0) of the R package "matools" (not yet on CRAN). 
 		You can do this by downloading 
 		<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/aaronolsen/matools" target="_blank" >this folder</a> 
 		(< 1MB), unzipping the contents, 
-		and then running the two commands below to load the functions into your current R environment.</p>
+		and then running the commands below to install the package.</p>
 
-		<div class="code" ><pre class="code">
-<span class="code_comment" ># Set the path to where the package was downloaded (customize this to your system)</span>
-pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master/R'</span>
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Set the path to where the package was unzipped (customize this to your system)</span>
+pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master'</span>
 
-<span class="code_comment" ># Load all functions in this folder into the global environment</span>
-source_apply <- <span class="code_function" >sapply</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >'/'</span>, <span class="code_function" >list.files</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >''</span>))), source, .GlobalEnv)
+<span class="code_comment" ># Run the install.packages function on the matools-master folder</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'/Users/aaron/Downloads/matools-master'</span>, repos=NULL, type=<span class="code_quote" >'source'</span>)
 </pre></div>
-		<h2>Non-adaptive smoothing</h2>
+
+		<p>Alternatively, you can install "matools" using the function <span class='in_line_code'>install_github</span>, from the 
+		R package <a href="https://cran.r-project.org/package=devtools" target="_blank" >devtools</a>.</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the devtools package (once installed)</span>
+<span class="code_function" >library</span>(devtools)
+
+<span class="code_comment" ># Install the version of matools currently on github</span>
+<span class="code_function" >install_github</span>(<span class="code_quote" >'aaronolsen/matools'</span>)
+</pre></div>
+
+		<p>Once the package is installed, use the <span class='in_line_code'>library</span> function to load the package.</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the matools package</span>
+<span class="code_function" >library</span>(matools)
+</pre></div><h2>Non-adaptive smoothing</h2>
 
 <p>
 To smooth a set of 3D coordinates you'll need an array of coordinates (in which the third dimension 
@@ -180,8 +197,8 @@ Below is a close-up of the row corresponding to the "prey bead" (a marker implan
 </p>
 
 <div class='p_image_middle_div' style="width:750px;">
-	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead 18 diagnostic.jpg' target='_blank'>
-		<img width='750px' src='../../img/tutorials/xromm/smoothMotion prey_bead 18 diagnostic.jpg' /></a></div>
+	<div><a href='../../img/tutorials/motion/smoothMotion prey_bead 18 diagnostic.jpg' target='_blank'>
+		<img width='750px' src='../../img/tutorials/motion/smoothMotion prey_bead 18 diagnostic.jpg' /></a></div>
 	<div class='p_image_caption' style='text-align:center;' >
 		Diagnostic plots created by <span class='in_line_code'>smoothMotion</span> for each marker showing the raw and 
 		smoothed values (left) and the deviation of the smoothed from the raw values (right).
@@ -193,8 +210,8 @@ If you zoom into the left plot of the PDF you can see the smoothed xyz-values (d
 </p>
 
 <div class='p_image_middle_div' style="width:400px;">
-	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead 18 values overlay closeup.jpg' target='_blank'>
-		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead 18 values overlay closeup.jpg' /></a></div>
+	<div><a href='../../img/tutorials/motion/smoothMotion prey_bead 18 values overlay closeup.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/motion/smoothMotion prey_bead 18 values overlay closeup.jpg' /></a></div>
 	<div class='p_image_caption' style='text-align:center;' >
 		Close-up of smoothed xyz coordinates (darker) superimposed on raw (lighter) coordinates. 
 		Smoothed values miss some consistent trends in the raw values.
@@ -208,8 +225,8 @@ This is especially evident when looking at the deviation of the smoothed coordin
 </p>
 
 <div class='p_image_middle_div' style="width:400px;">
-	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead 18 deviation.jpg' target='_blank'>
-		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead 18 deviation.jpg' /></a></div>
+	<div><a href='../../img/tutorials/motion/smoothMotion prey_bead 18 deviation.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/motion/smoothMotion prey_bead 18 deviation.jpg' /></a></div>
 	<div class='p_image_caption' style='text-align:center;' >
 		A close-up of deviation of smoothed coordinates from raw coordinates. 
 		Broad peaks (more than 1-2 frames) suggest excessive smoothing.
@@ -237,8 +254,8 @@ regions with rapid changes in speed.
 </p>
 
 <div class='p_image_middle_div' style="width:400px;">
-	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead 2 values overlay closeup.jpg' target='_blank'>
-		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead 2 values overlay closeup.jpg' /></a></div>
+	<div><a href='../../img/tutorials/motion/smoothMotion prey_bead 2 values overlay closeup.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/motion/smoothMotion prey_bead 2 values overlay closeup.jpg' /></a></div>
 	<div class='p_image_caption' style='text-align:center;' >
 		A <span class='in_line_code'>span.factor</span> of 2 still doesn't quite capture the motion of the prey marker.
 	</div>
@@ -324,8 +341,8 @@ When using adaptive smoothing an additional plot is added to diagnostic plot fil
 </p>
 
 <div class='p_image_middle_div' style="width:400px;">
-	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead adaptive deviation bins.jpg' target='_blank'>
-		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead adaptive deviation bins.jpg' /></a></div>
+	<div><a href='../../img/tutorials/motion/smoothMotion prey_bead adaptive deviation bins.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/motion/smoothMotion prey_bead adaptive deviation bins.jpg' /></a></div>
 	<div class='p_image_caption' style='text-align:center;' >
 		The bins assigned to each region indicated by "flat-top" lines, based on an initial rolling mean deviation from high smoothing.
 	</div>
@@ -349,8 +366,8 @@ This can happen when a bin is so small and the values so variable that the <span
 </p>
 
 <div class='p_image_middle_div' style="width:400px;">
-	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead adaptive deviation prey.jpg' target='_blank'>
-		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead adaptive deviation prey.jpg' /></a></div>
+	<div><a href='../../img/tutorials/motion/smoothMotion prey_bead adaptive deviation prey.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/motion/smoothMotion prey_bead adaptive deviation prey.jpg' /></a></div>
 	<div class='p_image_caption' style='text-align:center;' >
 		The deviation between raw and smoothed values for the prey marker after adaptive smoothing.
 	</div>
@@ -365,8 +382,8 @@ produced nice overlap between the smoothed values and the raw values for the pre
 </p>
 
 <div class='p_image_middle_div' style="width:400px;">
-	<div><a href='../../img/tutorials/xromm/smoothMotion prey_bead adaptive values overlay closeup.jpg' target='_blank'>
-		<img width='400px' src='../../img/tutorials/xromm/smoothMotion prey_bead adaptive values overlay closeup.jpg' /></a></div>
+	<div><a href='../../img/tutorials/motion/smoothMotion prey_bead adaptive values overlay closeup.jpg' target='_blank'>
+		<img width='400px' src='../../img/tutorials/motion/smoothMotion prey_bead adaptive values overlay closeup.jpg' /></a></div>
 	<div class='p_image_caption' style='text-align:center;' >
 		The smoothed and raw coordinate values match nicely when adaptive smoothing is applied.
 	</div>
@@ -397,11 +414,20 @@ output will also be an array of 3D points that you can save using the <span clas
 
 <br />
 </div><h2>Uninterrupted code</h2><a name="uninterrupted_code" ></a><br /><div class="code" ><pre class="code">
-<span class="code_comment" ># Set the path to where the package was downloaded (customize this to your system)</span>
-pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master/R'</span>
+<span class="code_comment" ># Set the path to where the package was unzipped (customize this to your system)</span>
+pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master'</span>
 
-<span class="code_comment" ># Load all functions in this folder into the global environment</span>
-source_apply <- <span class="code_function" >sapply</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >'/'</span>, <span class="code_function" >list.files</span>(<span class="code_function" >paste0</span>(pkg_path, <span class="code_quote" >''</span>))), source, .GlobalEnv)
+<span class="code_comment" ># Run the install.packages function on the matools-master folder</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'/Users/aaron/Downloads/matools-master'</span>, repos=NULL, type=<span class="code_quote" >'source'</span>)
+
+<span class="code_comment" ># Load the devtools package (once installed)</span>
+<span class="code_function" >library</span>(devtools)
+
+<span class="code_comment" ># Install the version of matools currently on github</span>
+<span class="code_function" >install_github</span>(<span class="code_quote" >'aaronolsen/matools'</span>)
+
+<span class="code_comment" ># Load the matools package</span>
+<span class="code_function" >library</span>(matools)
 
 <span class="code_comment" ># Read unsmoothed motion</span>
 read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Cat01 Trial09 marker motion raw.csv'</span>)
@@ -439,7 +465,7 @@ smooth_motion <- <span class="code_function" >smoothMotion</span>(read_motion, s
 		</div>
 
 		<div id='footer' class='footer' >
-			<div style='float:left;' >© 2018 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:left;' >© 2019 Aaron Olsen. All rights reserved.<br><br></div>
 			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
 			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
 		</div>
