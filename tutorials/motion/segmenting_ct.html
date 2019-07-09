@@ -9,9 +9,9 @@
 
 		<div id='header' class='header' >
 			<div style='position:relative;' >
-				<img id='header_image' style='float:right;' src='../../img/headers/Hairy Woodpecker.jpg' />
+				<img id='header_image' style='float:right;' src='../../img/headers/Canada Goose.jpg' />
 				<div id='header_image_caption' style='color:white' class='header_image_caption' >
-					Hairy Woodpecker
+					Canada Goose
 				</div>
 			</div>
 		</div>
@@ -36,16 +36,19 @@
 				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
 			</div>
 			<div class='linksidebar_sublink' >
-				<a class='linksidebar_link' href='../../tutorials/motion.html'>Motion</a>
+				<a class='linksidebar_link' href='../../tutorials/motion.html'>Motion analysis</a>
 			</div>
 			<div class='linksidebar_sub2link_u' >
-				<a class='linksidebar_link_u' href='../../tutorials/motion/segmenting_ct.html'>Segmentation</a>
+				<a class='linksidebar_link_u' href='../../tutorials/motion/segmenting_ct.html'>Creating surface models</a>
 			</div>
 			<div class='linksidebar_sub2link' >
-				<a class='linksidebar_link' href='../../tutorials/motion/smooth_markers.html'>Smooth markers</a>
+				<a class='linksidebar_link' href='../../tutorials/motion/smooth_markers.html'>Smoothing markers</a>
 			</div>
 			<div class='linksidebar_sub2link' >
-				<a class='linksidebar_link' href='../../tutorials/motion/unification.html'>Unification</a>
+				<a class='linksidebar_link' href='../../tutorials/motion/unification.html'>Rigid body animation</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/motion/joint_motion.html'>Simulate joint motion</a>
 			</div>
 			<div class='linksidebar_sublink' >
 				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
@@ -66,46 +69,40 @@
 
 		<div id='maincontent' class='maincontent' >
 
-			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/visualization3d.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/motion.html">motion</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;segmentation</div>
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/visualization3d.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/motion.html">motion analysis</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;creating surface models</div>
 
 
 <div class="maincontentfill">
 	<h1>Segmenting elements from a CT scan</h1>
 
-	<ol class='tutorial' >
-	<h2 class='ol_tutorial' >Installing 3DSlicer</h2>
-		<li>Download <a href='https://www.slicer.org/' target='_blank'>3DSlicer</a>.</li>
-	<h2 class='ol_tutorial' >Loading the scan</h2>
-		<li>If loading a DICOM file go to File > DICOM. You will be given the option to 
-			change the default directory on your system for storing the DICOM database. 
-			The "DICOM Browser" window should open.</li>
-		<li>Click "Import" at the top left of the DICOM Browser.</li>
-		<li>Locate a folder containing a series/stack of dcm files, select this folder and 
-			click "Import". This should add a line to the DICOM Browser database.</li>
-		<li>To load the scan into the current session select its entry in the database and 
-			click "Load" in the bottom left corner of the DICOM Browser window.</li>
-	<h2 class='ol_tutorial' >Adjusting the display</h2>
-		<li>In the top toolbar click on the "Modules" drop-down menu and select "Volumes".</li>
-		<li>Open the "Display" tab.</li>
-		<li>Click on the drop-down menu to the right of "Active Volume" and click on 
-			"Rename current Volume" to give the volume a new name (e.g. "Whole body").</li>
-		<li>Select a preset "Window/Level". For segmenting bones from a CT scan the "CT-bone" 
-			option (far left) works well.</li>
-		<li>Make manual adjustments to the "Window/Level" ("W/L") or "Threshold" as 
-			needed using the sliders at the bottom of the Display tab.</li>
-	<h2 class='ol_tutorial' >Add a new segment</h2>
-		<li>In the top toolbar click on the "Modules" drop-down menu and select "Segment Editor".</li>
-		<li>In the Segment Editor click "Add".</li>
-		<li>Set an initial segment using thresholding. Click on the "Threshold" button in 
-			the "Effects" section.</li>
-		<li>Use the slider and numeric input box to set the lower and upper "Threshold Range". 
-			Note that colored shading in the 2D viewer panels will update as you change the 
-			thresholds. Use this to make sure that everything you want to include in the 
-			segmented structure is highlighted. A lower threshold value between 100 and 300 
-			should work well for bone.</li>
-		<li>Once you've found good threshold levels click "Apply".</li>
-		<li>To view the segment in 3D click the "Show 3D" button under the "Master volume" drop-down menu.</li>
-	</ol>
+	<p>
+	The <a href='https://wiki.brown.edu/confluence/display/ctx/Table+of+Contents' target='_blank' >XROMM wiki</a> maintained by Brown University 
+	has an excellent series of tutorials on creating surface models from CT scans (segmentation) so I will just link to them here.
+	</p>
+
+	<p>
+	The following tutorials cover segmenting and creating surface models in either 
+	<a href='https://horosproject.org/' target='_blank'>Horos</a> (free, Mac only), 
+	<a href='https://www.slicer.org/' target='_blank'>3D Slicer</a> (free), or 
+	<a href='https://www.thermofisher.com/us/en/home/industrial/electron-microscopy/electron-microscopy-instruments-workflow-solutions/3d-visualization-analysis-software/amira-life-sciences-biomedical.html' target='_blank'>Amira</a>.
+	</p>
+
+	<ul class='tutorial' >
+		<li><a href='https://wiki.brown.edu/confluence/display/ctx/Creating+3D+models+with+Horos' target='_blank' >Creating 3D models using Horos</a></li>
+		<li><a href='https://wiki.brown.edu/confluence/display/ctx/Creating+3D+models+with+3D+Slicer' target='_blank' >Creating 3D models using 3D Slicer</a></li>
+		<li><a href='https://wiki.brown.edu/confluence/display/ctx/Creating+3D+models+using+Amira+software' target='_blank' >Creating 3D models using Amira</a></li>
+	</ul>
+
+	<p>
+	And the following tutorials cover cleaning surface models in either 
+	<a href='http://www.meshlab.net/' target='_blank'>Meshlab</a> (free) or 
+	<a href='https://www.3dsystems.com/software?utm_source=geomagic.com&utm_medium=301' target='_blank'>Geomagic</a>.
+	</p>
+
+	<ul class='tutorial' >
+		<li><a href='https://wiki.brown.edu/confluence/display/ctx/Cleaning+3D+models+with+MeshLab' target='_blank' >Cleaning models with Meshlab</a></li>
+		<li><a href='https://wiki.brown.edu/confluence/display/ctx/Cleaning+up+3D+models+with+Geomagic' target='_blank' >Cleaning models with Geomagic</a></li>
+	</ul>
 
 </div>
 		</div>
