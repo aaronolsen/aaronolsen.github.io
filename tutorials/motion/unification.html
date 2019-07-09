@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<title>Animation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="shortcut icon" href="../../img/favicon.png"/>
+<link href="../../css/stylesheet2.css" rel="stylesheet" type="text/css">
+
+<body>
+	<div id='container' class='container'>
+
+		<div id='header' class='header' >
+			<div style='position:relative;' >
+				<img id='header_image' style='float:right;' src='../../img/headers/Purple Gallinule.jpg' />
+				<div id='header_image_caption' style='color:white' class='header_image_caption' >
+					Purple Gallinule
+				</div>
+			</div>
+		</div>
+
+		<div id='linksidebar' class='linksidebar' >
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../about_me.html'>About me</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../current_projects.html'>Current projects</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../software.html'>Software</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../tutorials/visualization3d.html'>Tutorials</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/visualization3d.html'>3D Visualization</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/morphometrics.html'>Shape analysis</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/motion.html'>Motion</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/motion/segmenting_ct.html'>Segmentation</a>
+			</div>
+			<div class='linksidebar_sub2link' >
+				<a class='linksidebar_link' href='../../tutorials/motion/smooth_markers.html'>Smooth markers</a>
+			</div>
+			<div class='linksidebar_sub2link_u' >
+				<a class='linksidebar_link_u' href='../../tutorials/motion/unification.html'>Unification</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/mechanisms.html'>Mechanism models</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/stereomorph.html'>StereoMorph User Guide</a>
+			</div>
+			<div class='linksidebar_sublink' >
+				<a class='linksidebar_link' href='../../tutorials/knex/large_u_joint.html'>K'nex models</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../contact.html'>Contact</a>
+			</div>
+			<div class='linksidebar_mainlink' >
+				<a class='linksidebar_link' href='../../cv.html'>CV</a>
+			</div>
+		</div>
+
+		<div id='maincontent' class='maincontent' >
+
+			<div id='pagetrail' class='pagetrail' ><a href="../../about_me.html">home</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/visualization3d.html">tutorials</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;<a href="../../tutorials/motion.html">motion</a>&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;unification</div>
+
+
+<div class='maincontentfill'>
+<h1>Rigid body animation</h1>
+
+<p>
+To create a marker-based animation of rigid bodies one needs two types of data. The first 
+is a body either with markers fixed to the outside of the body (if using light cameras) or 
+markers embedded inside of the body (if using X-ray cameras). The rigid bodies can be simple 
+geometric shapes representing rigid elements or full surface meshes, constructed from surface 
+or CT scans such as below.
+</p>
+
+<div class='p_image_middle_div' style="width:500px;">
+	<div><a href='../../img/tutorials/motion/unification bones with markers.jpg' target='_blank'>
+		<img width='500px' src='../../img/tutorials/motion/unification bones with markers.jpg' /></a></div>
+	<div class='p_image_caption' style='text-align:center;' >
+		Four rigid skeletal elements from a channel catfish skull with embedded markers (small metal beads). 
+		The surface meshes were created from a CT scan.
+	</div>
+</div>
+
+<p>
+The second type of data is the motion of those markers over time.
+</p>
+
+<div class='p_image_middle_div' style="width:500px;">
+	<div><a href='../../img/tutorials/motion/unification marker motions.jpg' target='_blank'>
+		<img width='500px' src='../../img/tutorials/motion/unification marker motions.jpg' /></a></div>
+	<div class='p_image_caption' style='text-align:center;' >
+		The corresponding motions of each of the markers in the previous image (colored lines) 
+		as measured from stereo X-ray video, with positions at four particular time points indicated by spheres.
+	</div>
+</div>
+
+<p>
+These two data types can then be combined (or "unified") to create a rigid body animation.
+At each time point, the marker motion coordinates are used to set the position and orientation of each rigid body
+(together these are known as the "pose" of a body).
+</p>
+
+<div class='p_image_middle_div' style="width:500px;">
+	<div><a href='../../img/tutorials/motion/unification animation bodies and markers.jpg' target='_blank'>
+		<img width='500px' src='../../img/tutorials/motion/unification animation bodies and markers.jpg' /></a></div>
+	<div class='p_image_caption' style='text-align:center;' >
+		After unification the rigid bodies (meshes from a CT scan) are animated using the marker motions. 
+		Four time points are shown from an animation of the channel catfish skull, collected from stereo X-ray video.
+	</div>
+</div>
+
+This tutorial will show you how to unify marked bodies and marker motions to create a rigid body animation.
+The uninterrupted block of code can be found at the <a href="#uninterrupted_code">end of this tutorial</a>.
+</p><h2>Preliminary steps</h2><p>Make sure that you have 
+		<a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a> 
+		installed on your system (you can find R installation instructions 
+		<a href="https://cran.r-project.org" target="_blank" >here</a>).Next, install the beta version (v1.0) of the R package "matools" (not yet on CRAN). 
+		You can do this by downloading 
+		<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/aaronolsen/matools" target="_blank" >this folder</a> 
+		(< 1MB), unzipping the contents, 
+		and then running the commands below to install the package.</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Set the path to where the package was unzipped (customize this to your system)</span>
+pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master'</span>
+
+<span class="code_comment" ># Run the install.packages function on the matools-master folder</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'/Users/aaron/Downloads/matools-master'</span>, repos=NULL, type=<span class="code_quote" >'source'</span>)
+</pre></div>
+
+		<p>Alternatively, you can install "matools" using the function <span class='in_line_code'>install_github</span>, from the 
+		R package <a href="https://cran.r-project.org/package=devtools" target="_blank" >devtools</a>.</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the devtools package (once installed)</span>
+<span class="code_function" >library</span>(devtools)
+
+<span class="code_comment" ># Install the version of matools currently on github</span>
+<span class="code_function" >install_github</span>(<span class="code_quote" >'aaronolsen/matools'</span>)
+</pre></div>
+
+		<p>Once the package is installed, use the <span class='in_line_code'>library</span> function to load the package.</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Load the matools package</span>
+<span class="code_function" >library</span>(matools)
+</pre></div><h2>Unification</h2>
+
+<p>
+For unification you'll first need a set of 3D marker coordinates, either on the surface of or embedded within a marked body or bodies. 
+For example, these can be the 3D marker coordinates from a CT or surface scan of the body. 
+Since these are not animated they take the form of a simple matrix.
+For this tutorial, you can use this <a href='Cat01 landmarks.csv' target='_blank' >landmark coordinates</a> file (as a .csv), 
+containing the markers embedded in the channel catfish skull shown in the introduction above.
+After downloading the file and moving it to your current R working directory, you can read 
+the landmarks using <span class='in_line_code'>readLandmarks</span>.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Read landmark coordinates</span>
+landmarks <- readLandmarks(<span class="code_quote" >'Cat01 landmarks.csv'</span>)
+</pre></div>
+
+<p>
+Next you'll need the positions of these same markers over time in the form of an array (in which the third dimension 
+is each frame or time point).
+For example, these can be markers tracked and reconstructed using <a href='https://bitbucket.org/xromm/xmalab/wiki/Home' target='_blank' >XMALab</a> 
+and exported as a '3D Points' file. 
+To produce a smooth animation you can first <a href='smooth_markers.html' >smooth the marker trajectories</a>.
+For this tutorial, you can use this 
+<a href='Cat01 Trial09 marker motion smoothed.csv' target='_blank' >smoothed 3D marker coordinates</a> file, 
+which was created in the <a href='smooth_markers.html' >marker smoothing tutorial</a>. 
+This file contains the 3D coordinates of radiopaque markers implanted in a 
+channel catfish, collected using <a href='http://xromm.org/' target='_blank' >XROMM</a> 
+and tracked using <a href='https://bitbucket.org/xromm/xmalab/wiki/Home' target='_blank' >XMALab</a>. 
+After downloading the file and moving it to your current R working directory, you can read 
+this file using <span class='in_line_code'>readMotion</span>.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Read smoothed marker motion</span>
+read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Cat01 Trial09 marker motion smoothed.csv'</span>)
+</pre></div>
+
+<p>
+It is essential that both the landmark and motion coordinates of the markers be at the same scaling. 
+So if your motion capture system and scanning software operate on different units, you'll need to convert one of the two so that the units are the same. 
+The tutorial datasets used here are scaled to mm.
+</p>
+
+<p>
+Lastly, it is necessary to specify which markers will be used in animating each rigid body. 
+This is done using a <span class='in_line_code'>list</span> object, in which the names of 
+each list item correspond to the name of each body and the values of each item are the markers 
+to be used for that particular body. For example, the list below can be used with the tutorial 
+landmark and motion files.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Specify which bodies to animate and which markers to use for each body</span>
+unify.spec <- <span class="code_function" >list</span>(
+	<span class="code_quote" >'Neurocranium'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Neurocranium_bead_cau'</span>, <span class="code_quote" >'Neurocranium_bead_cau_e1'</span>, <span class="code_quote" >'Neurocranium_bead_cau_e2'</span>, 
+		<span class="code_quote" >'Neurocranium_bead_cra_L'</span>, <span class="code_quote" >'Neurocranium_bead_cra_R'</span>, <span class="code_quote" >'Neurocranium_bead_mid'</span>),
+	<span class="code_quote" >'SuspensoriumL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'SuspensoriumL_bead_dor'</span>, <span class="code_quote" >'SuspensoriumL_bead_mid'</span>, <span class="code_quote" >'SuspensoriumL_bead_ven'</span>),
+	<span class="code_quote" >'LowerJawL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'LowerJawL_bead_cau'</span>, <span class="code_quote" >'LowerJawL_bead_cra'</span>, <span class="code_quote" >'LowerJawL_bead_mid'</span>),
+	<span class="code_quote" >'OperculumL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'OperculumL_bead_cau_dor'</span>, <span class="code_quote" >'OperculumL_bead_cra_dor'</span>, <span class="code_quote" >'OperculumL_bead_ven'</span>)
+)
+</pre></div>
+
+<p>
+Note that the neurocranium has six markers while the rest of the elements all have three markers. 
+To solve for the pose of a body in 3D using only markers, the body must have at least three markers 
+that are not co-linear (all in a line). Even then, more than three markers is preferable to minimize error.
+Further along this tutorial will explain how to animate a body with fewer than three markers, 
+however this requires additional information or requires making simplifying assumptions.
+</p>
+
+<p>
+It's now possible to call the <span class='in_line_code'>unifyMotion</span> function. 
+There are three additional parameters to note at this point. The first is 
+<span class='in_line_code'>print.progress</span>, which if <span class='in_line_code'>TRUE</span> will print out exactly what 
+<span class='in_line_code'>unifyMotion</span> is doing step by step (default is <span class='in_line_code'>FALSE</span>). 
+The <span class='in_line_code'>print.progress.iter</span> parameter is the iteration (or iterations) 
+for which the step-by-step progress will be printed (default is 1). Note that the errors that are printed to the 
+console as a part of <span class='in_line_code'>print.progress</span> are only the errors for that particular iteration, not 
+the entire sequence. Lastly, the <span class='in_line_code'>plot.diag</span> can be used to 
+create a plot showing the unification errors (how well the corresponding marker sets align with each other) 
+over the entire animation sequence (default is NULL). The code below will create a pdf 
+named 'Unification errors.pdf'.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Unify landmarks and motion to create an animation</span>
+unify_motion <- <span class="code_function" >unifyMotion</span>(read_motion, xyz.mat=landmarks, unify.spec=unify.spec, 
+	print.progress=TRUE, print.progress.iter=<span class="code_numeric" >1</span>, plot.diag=<span class="code_quote" >'Unification errors.pdf'</span>)
+</pre></div>
+
+<p>
+The <span class='in_line_code'>unifyMotion</span> function returns two objects, a 'motion' object 
+(<span class='in_line_code'>unify_motion$motion</span>) and an error matrix (<span class='in_line_code'>unify_motion$error</span>). 
+A first thing to do after running <span class='in_line_code'>unifyMotion$motion</span> is 
+to check the unification errors using the <span class='in_line_code'>print</span> command.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Check the unification errors</span>
+<span class="code_function" >print</span>(unify_motion$error)
+</pre></div>
+
+<p>
+This will print the error for each body for the first five iterations and then summary statistics for all iterations (min, max, and mean).
+</p>
+
+<div class="bcode" ><pre class="bcode">
+     $LowerJawL $Neurocranium $OperculumL $SuspensoriumL
+<span class="code_numeric" >1</span>    <span class="code_numeric" >0.02293696</span>    <span class="code_numeric" >0.09415792</span>  <span class="code_numeric" >0.05953781</span>     <span class="code_numeric" >0.09642377</span>
+<span class="code_numeric" >2</span>    <span class="code_numeric" >0.01589944</span>    <span class="code_numeric" >0.09062001</span>  <span class="code_numeric" >0.05473783</span>     <span class="code_numeric" >0.09440632</span>
+<span class="code_numeric" >3</span>    <span class="code_numeric" >0.01623216</span>    <span class="code_numeric" >0.08753566</span>  <span class="code_numeric" >0.05061602</span>     <span class="code_numeric" >0.09254273</span>
+<span class="code_numeric" >4</span>    <span class="code_numeric" >0.01828475</span>    <span class="code_numeric" >0.08490102</span>  <span class="code_numeric" >0.04720247</span>     <span class="code_numeric" >0.09081870</span>
+<span class="code_numeric" >5</span>    <span class="code_numeric" >0.01918041</span>    <span class="code_numeric" >0.08268930</span>  <span class="code_numeric" >0.04437062</span>     <span class="code_numeric" >0.08927868</span>
+... and <span class="code_numeric" >1814</span> more rows
+     $LowerJawL $Neurocranium $OperculumL $SuspensoriumL
+min     <span class="code_numeric" >0.00665</span>       <span class="code_numeric" >0.03968</span>     <span class="code_numeric" >0.00129</span>        <span class="code_numeric" >0.01347</span>
+max     <span class="code_numeric" >0.28014</span>       <span class="code_numeric" >0.19107</span>     <span class="code_numeric" >0.12133</span>        <span class="code_numeric" >0.31113</span>
+mean    <span class="code_numeric" >0.05060</span>       <span class="code_numeric" >0.09436</span>     <span class="code_numeric" >0.03758</span>        <span class="code_numeric" >0.09758</span>
+</pre></div>
+
+<p>
+These errors are the error after aligning the marker landmarks with the markers from the motion data. 
+If a body were perfectly rigid (i.e. no bending, stretching, etc.) and if the marker motions were collected with perfect accuracy 
+the unification errors would be zero. However, deformation of the body and errors in motion capture will inevitably lead to some unification errors. 
+In this case the errors do not exceed 0.31 mm (310 microns), which amounts to 1% or less of 
+the total length of the bodies we are animating.
+</p>
+
+<p>
+Of course another next step after unification is to create an actual animation to visualize the motion of the bodies. 
+The key piece to creating an animation is returned from <span class='in_line_code'>unifyMotion</span> as a part of the 
+'motion' object, specifically <span class='in_line_code'>unify_motion$motion$tmat</span>, 
+which is an array containing a transformation matrix for each element at each iteration.
+The next section will show how to use this 'tmat' object and the R package 
+<a href='https://cran.r-project.org/package=svgViewR' target='_blank'>svgViewR</a> to create an animation.
+</p>
+
+<h2>Creating an animation</h2>
+
+<p>
+To create a rigid body animation in R, we'll use the R package <a href='https://cran.r-project.org/package=svgViewR' target='_blank'>svgViewR</a>. 
+This package creates interactive animations as standalone html files using the <a href='https://threejs.org/' target='_blank'>threejs javascript library</a>.
+</p>
+
+<a href='../../viz/tutorials/motion/Rigid body animation.html' target='_blank' >
+	<img width='500px' class='center' style='border:1px black' src='../../img/tutorials/motion/unification rigid body animation screenshot.jpg' />
+</a>
+<div class='img_caption' >
+	Interactive animation file created using <a href='https://cran.r-project.org/package=svgViewR' target='_blank'>svgViewR</a>.
+</div>
+
+<p>
+Creating an svgViewR visualization uses a similar approach to plotting to pdf or image files in R. 
+Start by declaring a new file using the <span class='in_line_code'>svg.new</span> function, including 
+where you would like to save the file and the name you would like to give it.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" >## Create an animation</span>
+<span class="code_comment" ># Declare a new visualization file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'Rigid body animation.html'</span>, mode=<span class="code_quote" >'webgl'</span>)
+</pre></div>
+
+<p>
+Next add the surface models for each body and markers to the "scene". 
+If you're using the tutorial files you can download the surface mesh files for each of the 
+skeletal elements as a compressed folder <a href='meshes.zip' target='_blank' >here</a>.
+</p>
+
+<p>
+The easiest way to add each element is to loop through the names of the unify parameters list <span class='in_line_code'>unify.spec</span>. 
+To add a surface mesh to the scene use the <span class='in_line_code'>svg.mesh</span> function (note that currently this only works with OBJ surface models). 
+To create the animation we are going to <i>transform</i> these surface models using the transformation matrices output from <span class='in_line_code'>unifyMotion</span>. 
+But in order to known which model is which we have to specify a name for each mesh. 
+This is done using the <span class='in_line_code'>name</span> parameter in the <span class='in_line_code'>svg.mesh</span> function.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># For each body in unify.spec names</span>
+<span class="code_function" >for</span>(body_name in <span class="code_function" >names</span>(unify.spec)){
+
+	<span class="code_comment" ># Add surface mesh (OBJ) of body</span>
+	<span class="code_function" >svg.mesh</span>(file=<span class="code_function" >paste0</span>(<span class="code_quote" >'meshes/Cat 01 '</span>, body_name, <span class="code_quote" >'.obj'</span>), name=body_name)
+	
+	<span class="code_comment" ># Find markers corresponding to body using regular expression matching</span>
+	markers_match <- <span class="code_function" >grepl</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'^'</span>, body_name, <span class="code_quote" >'_'</span>), <span class="code_function" >dimnames</span>(read_motion$xyz)[[<span class="code_numeric" >1</span>]])
+
+	<span class="code_comment" ># Get marker names from first dimension of xyz motion coordinates</span>
+	body_markers <- <span class="code_function" >dimnames</span>(read_motion$xyz)[[<span class="code_numeric" >1</span>]][markers_match]
+
+	<span class="code_comment" ># Plot markers from motion capture (already animated)</span>
+	<span class="code_function" >svg.spheres</span>(x=read_motion$xyz[body_markers,,], col=<span class="code_quote" >'yellow'</span>)
+
+	<span class="code_comment" ># Plot markers as landmarks (static matrix to be transformed)</span>
+	<span class="code_function" >svg.spheres</span>(x=landmarks[body_markers,], col=<span class="code_quote" >'gray'</span>, name=body_name)
+}
+</pre></div>
+
+<p>
+To add markers to the scene we can add spheres using the <span class='in_line_code'>svg.sphere</span> function. 
+To find the markers corresponding to each body I've used a simple regular expression 
+search on the names of the markers (using the <a href='https://stat.ethz.ch/R-manual/R-devel/library/base/html/grep.html' target='_blank'>grepl</a> function). 
+For this study, each marker name begins with the body with which it is associated followed by an underscore. 
+So the markers associated with each body can be found by pasting the body name between the '^' symbol (indicating the start of the string) and an underscore.
+</p>
+
+<p>
+Additionally note that above I've added two different types of markers to the scene. 
+I added the first markers using <span class='in_line_code'>read_motion$xyz[body_markers,,]</span>. 
+These are the marker motion coordinates (obtained from the motion capture system) in the form of a three-dimensional array, 
+where the last dimension corresponds to each frame. 
+The second markers that I added, <span class='in_line_code'>landmarks[body_markers,]</span>, are the markers from the landmark matrix. 
+These are static marker coordinates but they can be animated (i.e. transformed) just like the surface models. 
+To transform these markers, the corresponding body name needs to be specified along with the markers just as for the meshes. 
+I used 'yellow' for the x-ray motion capture coordinates to help remember which is which (yellow being the background color of the radioactive symbol).
+</p>
+
+<p>
+To transform the surface meshes and markers in the scene, use the <span class='in_line_code'>svg.transform</span> function. 
+The transformation object from <span class='in_line_code'>unify_motion$motion</span> can be passed directly to the 
+<span class='in_line_code'>tmarr</span> parameter.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Apply transformations to any plotted objects with names matching elements</span>
+<span class="code_function" >svg.transform</span>(tmarr=unify_motion$motion$tmat, times=read_motion$time)
+</pre></div>
+
+<p>
+The body names are contained within the 'tmat' object (as the names of the 3rd dimension) so they will be 
+automatically read by the function. If the names are not present or if the names are dropped, 
+they can also be entered using the <span class='in_line_code'>applyto</span> parameter). 
+Additionally, the time (in seconds) corresponding to each iteration 
+must be passed in through the <span class='in_line_code'>times</span> parameter. The times corresponding 
+to each frame are contained in the original motion file. 
+Entering the times allows the animation renderer to faithfully reproduce the motion at a specified rate.
+</p>
+
+<p>
+If desired, a coordinate system can be added around all objects currently in the scene using 
+<span class='in_line_code'>svg.frame()</span>.
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Add a coordinate system around all drawn objects</span>
+<span class="code_function" >svg.frame</span>()
+</pre></div>
+
+<p>
+And lastly, close the connection to the visualization file using <span class='in_line_code'>svg.close()</span>. 
+This finishes writing the visualization file and prevents further objects from being added to it 
+(analogous to the <a href='https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev.html' target='_blank'>dev.off</a> function).
+</p>
+
+<div class="code" ><pre class="code">
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+</pre></div>
+
+<p>
+This should create the visualization shown below that can be opened in most major web browsers (preferably Chrome or Safari). 
+Note that this is a standalone html file containing all of the code and mesh data needed for the visualization so 
+it can be moved, e-mailed, etc. R is only needed to create the file, not to open it.
+</p>
+
+<a href='../../viz/tutorials/motion/Rigid body animation.html' target='_blank' >
+<video style='display: block;margin: 0 auto; width: 550px;' poster='../../img/tutorials/motion/unification rigid body animation screenshot.jpg' controls>
+  <source src='../../viz/tutorials/motion/unification rigid body animation.mp4' type='video/mp4'>
+Your browser does not support the video tag.
+</video>
+</a>
+<div class='img_caption' >
+	Interactive rigid body animation created using <a href='https://cran.r-project.org/package=svgViewR' target='_blank'>svgViewR</a>.
+</div>
+
+
+<h2>Using regular expressions</h2>
+
+<h2>Saving the results</h2>
+
+<br />
+</div><h2>Uninterrupted code</h2><a name="uninterrupted_code" ></a><br /><div class="code" ><pre class="code">
+<span class="code_comment" ># Set the path to where the package was unzipped (customize this to your system)</span>
+pkg_path <- <span class="code_quote" >'/Users/aaron/Downloads/matools-master'</span>
+
+<span class="code_comment" ># Run the install.packages function on the matools-master folder</span>
+<span class="code_function" >install.packages</span>(<span class="code_quote" >'/Users/aaron/Downloads/matools-master'</span>, repos=NULL, type=<span class="code_quote" >'source'</span>)
+
+<span class="code_comment" ># Load the devtools package (once installed)</span>
+<span class="code_function" >library</span>(devtools)
+
+<span class="code_comment" ># Install the version of matools currently on github</span>
+<span class="code_function" >install_github</span>(<span class="code_quote" >'aaronolsen/matools'</span>)
+
+<span class="code_comment" ># Load the matools package</span>
+<span class="code_function" >library</span>(matools)
+
+<span class="code_comment" ># Read landmark coordinates</span>
+landmarks <- readLandmarks(<span class="code_quote" >'Cat01 landmarks.csv'</span>)
+
+<span class="code_comment" ># Read smoothed marker motion</span>
+read_motion <- <span class="code_function" >readMotion</span>(<span class="code_quote" >'Cat01 Trial09 marker motion smoothed.csv'</span>)
+
+<span class="code_comment" ># Specify which bodies to animate and which markers to use for each body</span>
+unify.spec <- <span class="code_function" >list</span>(
+	<span class="code_quote" >'Neurocranium'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Neurocranium_bead_cau'</span>, <span class="code_quote" >'Neurocranium_bead_cau_e1'</span>, <span class="code_quote" >'Neurocranium_bead_cau_e2'</span>, 
+		<span class="code_quote" >'Neurocranium_bead_cra_L'</span>, <span class="code_quote" >'Neurocranium_bead_cra_R'</span>, <span class="code_quote" >'Neurocranium_bead_mid'</span>),
+	<span class="code_quote" >'SuspensoriumL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'SuspensoriumL_bead_dor'</span>, <span class="code_quote" >'SuspensoriumL_bead_mid'</span>, <span class="code_quote" >'SuspensoriumL_bead_ven'</span>),
+	<span class="code_quote" >'LowerJawL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'LowerJawL_bead_cau'</span>, <span class="code_quote" >'LowerJawL_bead_cra'</span>, <span class="code_quote" >'LowerJawL_bead_mid'</span>),
+	<span class="code_quote" >'OperculumL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'OperculumL_bead_cau_dor'</span>, <span class="code_quote" >'OperculumL_bead_cra_dor'</span>, <span class="code_quote" >'OperculumL_bead_ven'</span>)
+)
+
+<span class="code_comment" ># Unify landmarks and motion to create an animation</span>
+unify_motion <- <span class="code_function" >unifyMotion</span>(read_motion, xyz.mat=landmarks, unify.spec=unify.spec, 
+	print.progress=TRUE, print.progress.iter=<span class="code_numeric" >1</span>, plot.diag=<span class="code_quote" >'Unification errors.pdf'</span>)
+
+<span class="code_comment" ># Check the unification errors</span>
+<span class="code_function" >print</span>(unify_motion$error)
+
+<span class="code_comment" >## Create an animation</span>
+<span class="code_comment" ># Declare a new visualization file</span>
+<span class="code_function" >svg.new</span>(file=<span class="code_quote" >'Rigid body animation.html'</span>, mode=<span class="code_quote" >'webgl'</span>)
+
+<span class="code_comment" ># For each body in unify.spec names</span>
+<span class="code_function" >for</span>(body_name in <span class="code_function" >names</span>(unify.spec)){
+
+	<span class="code_comment" ># Add surface mesh (OBJ) of body</span>
+	<span class="code_function" >svg.mesh</span>(file=<span class="code_function" >paste0</span>(<span class="code_quote" >'meshes/Cat 01 '</span>, body_name, <span class="code_quote" >'.obj'</span>), name=body_name)
+	
+	<span class="code_comment" ># Find markers corresponding to body using regular expression matching</span>
+	markers_match <- <span class="code_function" >grepl</span>(<span class="code_function" >paste0</span>(<span class="code_quote" >'^'</span>, body_name, <span class="code_quote" >'_'</span>), <span class="code_function" >dimnames</span>(read_motion$xyz)[[<span class="code_numeric" >1</span>]])
+
+	<span class="code_comment" ># Get marker names from first dimension of xyz motion coordinates</span>
+	body_markers <- <span class="code_function" >dimnames</span>(read_motion$xyz)[[<span class="code_numeric" >1</span>]][markers_match]
+
+	<span class="code_comment" ># Plot markers from motion capture (already animated)</span>
+	<span class="code_function" >svg.spheres</span>(x=read_motion$xyz[body_markers,,], col=<span class="code_quote" >'yellow'</span>)
+
+	<span class="code_comment" ># Plot markers as landmarks (static matrix to be transformed)</span>
+	<span class="code_function" >svg.spheres</span>(x=landmarks[body_markers,], col=<span class="code_quote" >'gray'</span>, name=body_name)
+}
+
+<span class="code_comment" ># Apply transformations to any plotted objects with names matching elements</span>
+<span class="code_function" >svg.transform</span>(tmarr=unify_motion$motion$tmat, times=read_motion$time)
+
+<span class="code_comment" ># Add a coordinate system around all drawn objects</span>
+<span class="code_function" >svg.frame</span>()
+
+<span class="code_comment" ># Close the file connection</span>
+<span class="code_function" >svg.close</span>()
+</pre></div>
+		</div>
+
+		<div id='footer' class='footer' >
+			<div style='float:left;' >© 2019 Aaron Olsen. All rights reserved.<br><br></div>
+			<div style='float:right;' >Design and photographs by Aaron Olsen.</div>
+			<div style='float:left;background-color:;' >The material on this site is based upon work supported by the National Science Foundation (DGE-1144082, DGE-0903637, DBI-1612230). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/sharedfunctions2.js" type="text/javascript" ></script>
