@@ -85,13 +85,10 @@ of this tutorial</a>.
 </p><h2>Preliminary steps</h2><p>Make sure that you have 
 		<a href="http://rweb.quant.ku.edu/cran/" target="_blank" >R</a> 
 		installed on your system (you can find R installation instructions 
-		<a href="https://cran.r-project.org" target="_blank" >here</a>).You will also need to <a href='https://www.r-bloggers.com/installing-r-packages/' target='_blank' >install 
+		<a href="https://cran.r-project.org" target="_blank" >here</a>). You will also need to <a href='https://www.r-bloggers.com/installing-r-packages/' target='_blank' >install 
 		the latest version</a> of the R package 
-		<a href='https://CRAN.R-project.org/package=svgViewR' target='_blank' >svgViewR on CRAN</a>. This tutorial uses a new plotting mode in svgViewR, <span class='in_line_code'>webgl</span>, 
-			that was added with the 1.3 version, so ensure that you have svgViewR version 1.3 or greater. 
-			The <span class='in_line_code'>webgl</span> currently supports only a few shape types. See 
-			the left panel for which shapes can be plotted in <span class='in_line_code'>svg</span> (old, default) 
-			or <span class='in_line_code'>webgl</span> (new) mode.
+		<a href='https://CRAN.R-project.org/package=svgViewR' target='_blank' >svgViewR on CRAN</a>. This tutorial uses OBJ plotting in svgViewR that was added 
+			with the 1.4 version, so ensure that you have svgViewR version 1.4 or greater.
 
 		<div class="code" ><pre class="code">
 <span class="code_comment" ># Install the svgViewR package (if not already installed)</span>
@@ -125,28 +122,14 @@ file to your current R working directory.
 </div>
 
 <p>
-An untextured mesh simply consists of vertices, vertex normals, and faces. An 
-<a href='https://en.wikipedia.org/wiki/Wavefront_.obj_file' target='_blank' >OBJ</a> file 
-contains all of this information but not in a format that will be readable by a web browser. 
-In order to plot an OBJ mesh using svgViewR you'll first need to convert the OBJ file to the 
-<a href='https://en.wikipedia.org/wiki/JSON' target='_blank' >JSON</a> file format. You can 
-do this using the svgViewR function <span class='in_line_code'>objToJSON</span>.
-</p>
-
-<div class="code" ><pre class="code">
-<span class="code_comment" ># Convert OBJ file to JSON</span>
-<span class="code_function" >objToJSON</span>(obj=<span class="code_quote" >'seashell.obj'</span>, file=<span class="code_quote" >'seashell.json'</span>)
-</pre></div>
-
-<p>
-Now that we have a compatible file format, open a connection to a new svgViewR .html file. 
+Start by opening a connection to a new svgViewR .html file. 
 All of the shapes that you draw will be 
 written to this .html file. Once you're finished plotting, you'll be able to open this file in a web browser 
 and view the shapes as an interactive visualization. All of the needed code is contained within 
 this html file which will allow you to share this file so others can view the visualization 
 (they do not need to have R installed to view it). Note that <span class='in_line_code'>mode</span> 
-must be set to <span class='in_line_code'>webgl</span> to plot meshes; this will eventually 
-become the default mode.
+must be set to <span class='in_line_code'>webgl</span> to plot meshes; this will become the 
+default mode in a future version of svgViewR.
 </p>
 
 <div class="code" ><pre class="code">
@@ -155,23 +138,18 @@ become the default mode.
 </pre></div>
 
 <p>
-To add the mesh, use the <span class='in_line_code'>svg.mesh</span> function.
+An untextured mesh simply consists of vertices, vertex normals, and faces and an 
+<a href='https://en.wikipedia.org/wiki/Wavefront_.obj_file' target='_blank' >OBJ</a> file 
+contains all of this information. To add the mesh to the visualization file, 
+use the <span class='in_line_code'>svg.mesh</span> function. The <span class='in_line_code'>svg.mesh</span> 
+function outputs the limits and corners of the bounding box around the plotted mesh, which may be useful 
+for subsequent plotting.
 </p>
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Add mesh</span>
-mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.json'</span>)
+mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.obj'</span>)
 </pre></div>
-
-<p>
-The <span class='in_line_code'>svg.mesh</span> 
-function outputs the limits and corners of the bounding box around the plotted mesh, which may be useful 
-for subsequent plotting. You can input an OBJ file directly to <span class='in_line_code'>svg.mesh</span> 
-but the function will still 
-have to run <span class='in_line_code'>objToJSON</span> to convert the file to a compatible 
-type. So if you're continually plotting the same OBJ file it's faster to perform the JSON 
-conversion once.
-</p>
 
 <p>
 Optionally, add a frame around any currently plotted shapes. Note that the mesh is plotted 
@@ -226,7 +204,7 @@ The default color for a mesh is an off-white tone. You can set the color using t
 <span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_blue_shell.html'</span>, mode=<span class="code_quote" >'webgl'</span>)
 
 <span class="code_comment" ># Add mesh</span>
-mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.json'</span>, col=<span class="code_quote" >'DodgerBlue'</span>)
+mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.obj'</span>, col=<span class="code_quote" >'DodgerBlue'</span>)
 
 <span class="code_comment" ># Close the file connection</span>
 <span class="code_function" >svg.close</span>()
@@ -244,14 +222,11 @@ mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_
 <span class="code_comment" ># Load the svgViewR package</span>
 <span class="code_function" >library</span>(svgViewR)
 
-<span class="code_comment" ># Convert OBJ file to JSON</span>
-<span class="code_function" >objToJSON</span>(obj=<span class="code_quote" >'seashell.obj'</span>, file=<span class="code_quote" >'seashell.json'</span>)
-
 <span class="code_comment" ># Open a connection to .html file</span>
 <span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_shell.html'</span>, mode=<span class="code_quote" >'webgl'</span>)
 
 <span class="code_comment" ># Add mesh</span>
-mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.json'</span>)
+mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.obj'</span>)
 
 <span class="code_comment" ># Add coordinate axis planes around the mesh</span>
 svg_frame <- <span class="code_function" >svg.frame</span>()
@@ -264,7 +239,7 @@ svg_frame <- <span class="code_function" >svg.frame</span>()
 <span class="code_function" >svg.new</span>(file=<span class="code_quote" >'plot_blue_shell.html'</span>, mode=<span class="code_quote" >'webgl'</span>)
 
 <span class="code_comment" ># Add mesh</span>
-mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.json'</span>, col=<span class="code_quote" >'DodgerBlue'</span>)
+mesh_lim <- <span class="code_function" >svg.mesh</span>(file=<span class="code_quote" >'seashell.obj'</span>, col=<span class="code_quote" >'DodgerBlue'</span>)
 
 <span class="code_comment" ># Close the file connection</span>
 <span class="code_function" >svg.close</span>()
