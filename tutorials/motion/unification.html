@@ -208,18 +208,23 @@ read_motion$xyz <- read_motion$xyz * <span class="code_numeric" >10</span>
 Lastly, it is necessary to specify which markers will be used in animating each rigid body. 
 This is done using a <span class='in_line_code'>list</span> object, in which the names of 
 each list item correspond to the name of each body and the values of each item are the markers 
-to be used for that particular body. For example, the list below can be used with the tutorial 
+to be used for that particular body. 
+When listing multiple markers, they should be in a list element named 'align'.
+For example, the list below can be used with the tutorial 
 landmark and motion files.
 </p>
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Specify which bodies to animate and which markers to use for each body</span>
 unify.spec <- <span class="code_function" >list</span>(
-	<span class="code_quote" >'Neurocranium'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Neurocranium_bead_cau'</span>, <span class="code_quote" >'Neurocranium_bead_cau_e1'</span>, <span class="code_quote" >'Neurocranium_bead_cau_e2'</span>, 
-		<span class="code_quote" >'Neurocranium_bead_cra_L'</span>, <span class="code_quote" >'Neurocranium_bead_cra_R'</span>, <span class="code_quote" >'Neurocranium_bead_mid'</span>),
-	<span class="code_quote" >'SuspensoriumL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'SuspensoriumL_bead_dor'</span>, <span class="code_quote" >'SuspensoriumL_bead_mid'</span>, <span class="code_quote" >'SuspensoriumL_bead_ven'</span>),
-	<span class="code_quote" >'LowerJawL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'LowerJawL_bead_cau'</span>, <span class="code_quote" >'LowerJawL_bead_cra'</span>, <span class="code_quote" >'LowerJawL_bead_mid'</span>),
-	<span class="code_quote" >'OperculumL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'OperculumL_bead_cau_dor'</span>, <span class="code_quote" >'OperculumL_bead_cra_dor'</span>, <span class="code_quote" >'OperculumL_bead_ven'</span>)
+	<span class="code_quote" >'Neurocranium'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'align'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Neurocranium_bead_cau'</span>, <span class="code_quote" >'Neurocranium_bead_cau_e1'</span>, 
+		<span class="code_quote" >'Neurocranium_bead_cau_e2'</span>, <span class="code_quote" >'Neurocranium_bead_cra_L'</span>, <span class="code_quote" >'Neurocranium_bead_cra_R'</span>, 
+		<span class="code_quote" >'Neurocranium_bead_mid'</span>)),
+	<span class="code_quote" >'SuspensoriumL'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'align'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'SuspensoriumL_bead_dor'</span>, <span class="code_quote" >'SuspensoriumL_bead_mid'</span>, 
+		<span class="code_quote" >'SuspensoriumL_bead_ven'</span>)),
+	<span class="code_quote" >'LowerJawL'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'align'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'LowerJawL_bead_cau'</span>, <span class="code_quote" >'LowerJawL_bead_cra'</span>, <span class="code_quote" >'LowerJawL_bead_mid'</span>)),
+	<span class="code_quote" >'OperculumL'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'align'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'OperculumL_bead_cau_dor'</span>, <span class="code_quote" >'OperculumL_bead_cra_dor'</span>, 
+		<span class="code_quote" >'OperculumL_bead_ven'</span>))
 )
 </pre></div>
 
@@ -406,7 +411,7 @@ If desired, a coordinate system can be added around all objects currently in the
 
 <div class="code" ><pre class="code">
 <span class="code_comment" ># Add a coordinate system around all drawn objects</span>
-<span class="code_function" >svg.frame</span>()
+frame <- <span class="code_function" >svg.frame</span>()
 </pre></div>
 
 <p>
@@ -453,7 +458,8 @@ We'll see further along in this tutorial how to reduce this wobble using "virtua
 When we have lots of markers it gets a bit cumbersome to list the name of each marker in <span class='in_line_code'>unify.spec</span>. 
 If the markers are labeled according to a consistent naming scheme then it's much simpler to use regular expressions. 
 For example, the marker names in the tutorial dataset all begin with the body with which they're associated followed by an underscore and the word 'bead'. 
-Thus, it's possible to re-write <span class='in_line_code'>unify.spec</span> as follows. 
+Thus, it's possible to re-write <span class='in_line_code'>unify.spec</span> as follows 
+(since just a single regular expression is listed per body, the 'align' list can be omitted).
 </p>
 
 <div class="code" ><pre class="code">
@@ -560,7 +566,7 @@ To create a new animation, simply re-run the code above but replacing the previo
 	<span class="code_function" >svg.spheres</span>(relative_motion$xyz[body_markers,,], col=<span class="code_quote" >'yellow'</span>)
 }
 <span class="code_function" >svg.transform</span>(relative_motion$tmat, times=relative_motion$time)
-<span class="code_function" >svg.frame</span>()
+frame <- <span class="code_function" >svg.frame</span>()
 <span class="code_function" >svg.close</span>()
 </pre></div>
 
@@ -748,7 +754,7 @@ relative_motion <- <span class="code_function" >relativeMotion</span>(unify_moti
 }
 <span class="code_function" >svg.spheres</span>(landmarks[<span class="code_quote" >'Neurocranium-SuspensoriumL_nc_susp_jt_cra'</span>,], col=<span class="code_quote" >'red'</span>, name=<span class="code_quote" >'Neurocranium'</span>)
 <span class="code_function" >svg.transform</span>(relative_motion$tmat, times=relative_motion$time)
-<span class="code_function" >svg.frame</span>()
+frame <- <span class="code_function" >svg.frame</span>()
 <span class="code_function" >svg.close</span>()
 </pre></div>
 
@@ -794,11 +800,14 @@ read_motion <- <span class="code_function" >readMotion</span>(<span class="code_
 
 <span class="code_comment" ># Specify which bodies to animate and which markers to use for each body</span>
 unify.spec <- <span class="code_function" >list</span>(
-	<span class="code_quote" >'Neurocranium'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Neurocranium_bead_cau'</span>, <span class="code_quote" >'Neurocranium_bead_cau_e1'</span>, <span class="code_quote" >'Neurocranium_bead_cau_e2'</span>, 
-		<span class="code_quote" >'Neurocranium_bead_cra_L'</span>, <span class="code_quote" >'Neurocranium_bead_cra_R'</span>, <span class="code_quote" >'Neurocranium_bead_mid'</span>),
-	<span class="code_quote" >'SuspensoriumL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'SuspensoriumL_bead_dor'</span>, <span class="code_quote" >'SuspensoriumL_bead_mid'</span>, <span class="code_quote" >'SuspensoriumL_bead_ven'</span>),
-	<span class="code_quote" >'LowerJawL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'LowerJawL_bead_cau'</span>, <span class="code_quote" >'LowerJawL_bead_cra'</span>, <span class="code_quote" >'LowerJawL_bead_mid'</span>),
-	<span class="code_quote" >'OperculumL'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'OperculumL_bead_cau_dor'</span>, <span class="code_quote" >'OperculumL_bead_cra_dor'</span>, <span class="code_quote" >'OperculumL_bead_ven'</span>)
+	<span class="code_quote" >'Neurocranium'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'align'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'Neurocranium_bead_cau'</span>, <span class="code_quote" >'Neurocranium_bead_cau_e1'</span>, 
+		<span class="code_quote" >'Neurocranium_bead_cau_e2'</span>, <span class="code_quote" >'Neurocranium_bead_cra_L'</span>, <span class="code_quote" >'Neurocranium_bead_cra_R'</span>, 
+		<span class="code_quote" >'Neurocranium_bead_mid'</span>)),
+	<span class="code_quote" >'SuspensoriumL'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'align'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'SuspensoriumL_bead_dor'</span>, <span class="code_quote" >'SuspensoriumL_bead_mid'</span>, 
+		<span class="code_quote" >'SuspensoriumL_bead_ven'</span>)),
+	<span class="code_quote" >'LowerJawL'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'align'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'LowerJawL_bead_cau'</span>, <span class="code_quote" >'LowerJawL_bead_cra'</span>, <span class="code_quote" >'LowerJawL_bead_mid'</span>)),
+	<span class="code_quote" >'OperculumL'</span>=<span class="code_function" >list</span>(<span class="code_quote" >'align'</span>=<span class="code_function" >c</span>(<span class="code_quote" >'OperculumL_bead_cau_dor'</span>, <span class="code_quote" >'OperculumL_bead_cra_dor'</span>, 
+		<span class="code_quote" >'OperculumL_bead_ven'</span>))
 )
 
 <span class="code_comment" ># Unify landmarks and motion to create an animation</span>
@@ -835,7 +844,7 @@ unify_motion <- <span class="code_function" >unifyMotion</span>(read_motion, xyz
 <span class="code_function" >svg.transform</span>(tmarr=unify_motion$motion$tmat, times=read_motion$time)
 
 <span class="code_comment" ># Add a coordinate system around all drawn objects</span>
-<span class="code_function" >svg.frame</span>()
+frame <- <span class="code_function" >svg.frame</span>()
 
 <span class="code_comment" ># Close the file connection</span>
 <span class="code_function" >svg.close</span>()
@@ -879,7 +888,7 @@ relative_motion <- <span class="code_function" >relativeMotion</span>(motion=uni
 	<span class="code_function" >svg.spheres</span>(relative_motion$xyz[body_markers,,], col=<span class="code_quote" >'yellow'</span>)
 }
 <span class="code_function" >svg.transform</span>(relative_motion$tmat, times=relative_motion$time)
-<span class="code_function" >svg.frame</span>()
+frame <- <span class="code_function" >svg.frame</span>()
 <span class="code_function" >svg.close</span>()
 
 <span class="code_comment" >## Constraining body motion using virtual points</span>
@@ -940,7 +949,7 @@ relative_motion <- <span class="code_function" >relativeMotion</span>(unify_moti
 }
 <span class="code_function" >svg.spheres</span>(landmarks[<span class="code_quote" >'Neurocranium-SuspensoriumL_nc_susp_jt_cra'</span>,], col=<span class="code_quote" >'red'</span>, name=<span class="code_quote" >'Neurocranium'</span>)
 <span class="code_function" >svg.transform</span>(relative_motion$tmat, times=relative_motion$time)
-<span class="code_function" >svg.frame</span>()
+frame <- <span class="code_function" >svg.frame</span>()
 <span class="code_function" >svg.close</span>()
 </pre></div>
 		</div>
