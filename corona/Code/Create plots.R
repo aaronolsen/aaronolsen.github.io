@@ -6,11 +6,17 @@ run <- function(){
 	min_val_lm <- 5		# Minimum number of positives with which to fit regression
 	min_num_val_lm <- 6	# Minimum number of days to include in regression
 
+	# 
+	num_spelled <- c('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten')
+
 	# Get names of data files
 	csv_files <- list.files('../Data/')
 
 	# Find most recent file
 	csv_file <- tail(sort(csv_files), 1)
+	
+	# Get file date
+	file_date <- gsub('[.]csv', '', csv_file)
 
 	# Read data
 	read_csv <- read.csv(file=paste0('../Data/', csv_file))
@@ -124,83 +130,130 @@ run <- function(){
 		'intercept'=rownames(log_sfp_lm_mat)[order(log_sfp_lm_mat[, 'intercept'])]
 	)
 
-	# Create color schemes
-	#state_cols <- setNames(svg.pal(length(states_unique), yellow=FALSE), states_unique)
-	#print(state_cols)
-	xlab <- c('Days_SFP'='Days since first reported positive test result or March 4, whichever is later')
+	xlab <- c('Days_SFP'='Days since first reported positive\ntest result or March 4, whichever is later')
 
 	# Plot
 	for(ranked_by in c('slope', 'intercept')[1]){
-		for(y_val in c('Positive', 'Positive_log')[2]){
-			for(x_val in c('Days_SFP')){
+
+		for(x_val in c('Days_SFP')){
+		
+			# Set which states to plot
+			states_plot_low <- head(rank_order[[ranked_by]], num_rank)
+			states_plot_high <- tail(rank_order[[ranked_by]], num_rank)
 			
-				# Set which states to plot
-				states_plot_low <- head(rank_order[[ranked_by]], num_rank)
-				states_plot_high <- tail(rank_order[[ranked_by]], num_rank)
-				
-				# States to plot
-				states_plot <- c(states_plot_low, states_plot_high)
-				
-				# Set state colors
-				state_cols <- setNames(rev(rainbow(length(states_plot), start=0, end=0.7)), states_plot)
+			# States to plot
+			states_plot <- c(states_plot_low, states_plot_high)
+			
+			# Set state colors
+			state_cols_a <- setNames(rev(rainbow(length(states_plot), start=0, end=0.8, alpha=0.7)), states_plot)
+			state_cols <- setNames(rev(rainbow(length(states_plot), start=0, end=0.8, alpha=1)), states_plot)
 
-				pch_set <- rep(1:5, 55)
-				state_pch <- setNames(pch_set[1:length(states_plot)], states_plot)
-				#print(state_cols)
+			pch_set <- rep(1:num_rank, 55)
+			state_pch <- setNames(pch_set[1:length(states_plot)], states_plot)
 
+			# Open PDF
+			pdf(paste0('../Plots/Positive vs ', x_val, ' ranked_by=', ranked_by, '/', file_date, '.pdf'), height=5.5, width=10.5)
+			
+			layout(matrix(c(1,1,2:3), 2, 2, byrow=TRUE), width=c(1.1, 1), height=c(0.07, 1))
+
+			par('mar'=c(1,1,1,1))
+			
+			plot(x=c(0,1), y=c(0,1), type='n', bty='n', ylab='', xlab='', xaxt='n', yaxt='n')
+
+			# Write main plot title
+			main <- paste0(num_spelled[num_rank], ' states with lowest and highest growth curve slopes, respectively, as of ', 
+				format(read_csv$AsDate[1], format="%B %d, %Y"))
+			text(x=0.5, y=-0.5, labels=main, font=2, cex=1.3, xpd=TRUE)
+
+			for(y_val in c('Positive', 'Positive_log')[1:2]){
+
+				mar <- c(6,4.5,0.5,5.5)
+				if(y_val == 'Positive'){
+					par('mar'=mar)
+				}else{
+					par('mar'=c(mar[1:3], 1))
+				}
+			
 				# Set variable ranges
 				y_range <- range(y_ranges[[y_val]][states_plot, ], na.rm=TRUE)
 				x_range <- range(x_ranges[[x_val]][states_plot, ], na.rm=TRUE)
-				
+			
+				if(y_val == 'Positive'){
+					line_lab_shift <- c(0.05*diff(x_range), 0.01*diff(y_range))
+					x_range <- c(1, 1.07)*x_range
+				}else{
+					line_lab_shift <- 0.03*c(diff(x_range), diff(y_range))
+					x_range <- c(1, 1.04)*x_range
+				}
+
 				#
 				y_range <- c(1, 1.1)*y_range
-		
-				# Set default plot parameters
-				yaxt <- 's'
-
+	
 				# Adjust default plot parameters
-				if(y_val == 'Positive_log') yaxt <- 'n'
 				if(y_val == 'Positive_log' && x_val == 'Days_SFP') x_range <- c(0, x_range[2])
-	
-				# Open PDF
-				pdf(paste0('../Plots/', y_val, ' vs ', x_val, ' ranked_by=', ranked_by, '.pdf'), height=6, width=8)
-				
-				#
-				par('mar'=c(5,5,4,8))
-	
+
 				# Create plot
-				plot(x_range, y_range, type='n', xlab=xlab[x_val], ylab='Number of reported positive COVID-19 test results', yaxt=yaxt, 
-					main=paste0('Seven states with lowest and highest LOG growth curve\nslopes, respectively, as of ', format(read_csv$AsDate[1], format="%B %d, %Y")))
-		
-				# For each state
-				n <- 1
-				for(state in states_plot){
-		
-					# Plot points as line
-					points(x=df_by_state[[state]][, x_val], y=df_by_state[[state]][, y_val], 
-						pch=state_pch[state], col=state_cols[state])
-					points(x=df_by_state[[state]][, x_val], y=df_by_state[[state]][, y_val], type='l', 
-						lwd=2, col=state_cols[state])
+				plot(x_range, y_range, type='n', xlab='', xaxt='n', ylab='', yaxt='n')
 			
-					n <- n + 1
+				mtext(text=xlab[x_val], side=1, line=3)
+				mtext(text='Number of reported positive COVID-19 tests', side=2, line=2.5)
+
+				axis(1, mgp=c(3, 0.7, 0))
+	
+				# For each state
+				for(state in states_plot){
+					
+					# Set xy points
+					xy <- df_by_state[[state]][, c(x_val, y_val)]
+	
+					# Plot points as line
+					points(x=xy, pch=state_pch[state], col=state_cols_a[state])
+					points(x=xy, type='l', lwd=2, col=state_cols_a[state])
 				}
-		
-				# Create log axis
+
+				for(state in states_plot){
+
+					# Set xy points
+					xy <- df_by_state[[state]][, c(x_val, y_val)]
+
+					# Add state abbreviation to end
+					text(x=xy[1, 1] + line_lab_shift[1], y=xy[1, 2] + line_lab_shift[2], labels=state, col=state_cols[state])
+				}
+	
+				# Compose upper left plot note
+				upp_left_note <- 'Values not log-transformed'
+				if(y_val == 'Positive_log') upp_left_note <- 'Values log-transformed'
+
+				# Add note to upper left of plot
+				text(x=x_range[1] - 0.03*diff(x_range), y=y_range[2], labels=upp_left_note, pos=4, cex=1.2, font=2)
+				
+				if(y_val == 'Positive'){
+
+					# Add legend
+					legend(x=x_range[2] + 0.1*diff(x_range), y=y_range[2], xpd=TRUE, 
+						legend=c(states_plot_low, '...', states_plot_high), 
+						col=c(state_cols[states_plot_low], NA, state_cols[states_plot_high]), 
+						pch=c(state_pch[states_plot_low], NA, state_pch[states_plot_high]), lty=1, lwd=1.5, bty='n')
+
+					# Add axis
+					axis(2, mgp=c(3, 0.7, 0))
+				}
+
 				if(y_val == 'Positive_log'){
+
+					# Add source
+					text(x=x_range[2] + 0.05*diff(x_range), y=y_range[1] - 0.27*diff(y_range), 
+						labels='Source data: covidtracking.com', pos=2, xpd=TRUE, cex=1.2, col=gray(0.25))
+					#mtext(text='Source: covidtracking.com', side=1, line=4, adj=1., xpd=TRUE)
+
+					# Create log axis
 					log_range2 <- nchar(round(10^y_range[2]))
 					axis_at <- seq(0, log_range2, length=log_range2+1)
-					axis(side=2, at=axis_at, labels=round(10^axis_at))
+					axis(side=2, at=axis_at, labels=round(10^axis_at), mgp=c(3, 0.7, 0))
 				}
-				
-				#
-				legend(x=x_range[2] + 0.1*diff(x_range), y=y_range[2], xpd=TRUE, 
-					legend=c(states_plot_low, '...', states_plot_high), 
-					col=c(state_cols[states_plot_low], NA, state_cols[states_plot_high]), 
-					pch=c(state_pch[states_plot_low], NA, state_pch[states_plot_high]), lty=1, lwd=1.5, bty='n')
-	
-				#
-				dev.off()
 			}
+
+			dev.off()
 		}
 	}
 	
@@ -219,13 +272,16 @@ run <- function(){
 	x_range <- c(0, x_range[2])
 
 	# Open PDF
-	pdf(paste0('../Plots/By state/', y_val, ' vs ', x_val, ' ', state_highlight, '.pdf'), height=6, width=8)
+	pdf(paste0('../Plots/By state/RI/', file_date, '.pdf'), height=6, width=8)
 	
 	#
 	par('mar'=c(5,5,2,2))
 
 	# Create plot
 	plot(x_range, y_range, type='n', xlab=xlab[x_val], ylab='Number of reported positive COVID-19 test results', yaxt=yaxt)
+	
+	# Set color for states
+	cols <- setNames(rainbow(length(states_unique), alpha=0.3), states_unique)
 
 	# For each state
 	for(state in states_unique){
@@ -233,7 +289,7 @@ run <- function(){
 		if(state == state_highlight) next
 
 		# Plot points as line
-		points(x=df_by_state[[state]][, x_val], y=df_by_state[[state]][, y_val], type='l', lwd=2, col=gray(0.75))
+		points(x=df_by_state[[state]][, x_val], y=df_by_state[[state]][, y_val], type='l', lwd=1, col=cols[state])
 	}
 
 	# Plot points as line
@@ -265,7 +321,7 @@ run <- function(){
 	x_range <- c(0, x_range[2])
 
 	# Open PDF
-	pdf(paste0('../Plots/', y_val, ' vs ', x_val, ' All states.pdf'), height=30, width=40)
+	pdf(paste0('../Plots/', y_val, ' vs ', x_val, ' All states/', file_date, '.pdf'), height=30, width=40)
 	
 	#
 	layout(matrix(1:length(states_unique), 7, 8, byrow=TRUE))
