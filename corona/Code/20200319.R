@@ -7,13 +7,13 @@ run <- function(){
 	min_num_val_lm <- 6	# Minimum number of days to include in regression
 
 	# Get names of data files
-	csv_files <- list.files('Data csv')
+	csv_files <- list.files('../Data/')
 
 	# Find most recent file
 	csv_file <- tail(sort(csv_files), 1)
 
 	# Read data
-	read_csv <- read.csv(file=paste0('Data csv/', csv_file))
+	read_csv <- read.csv(file=paste0('../Data/', csv_file))
 
 	# Remove NA rows
 	read_csv <- read_csv[!is.na(read_csv[, 'Date']), ]
@@ -163,7 +163,7 @@ run <- function(){
 				if(y_val == 'Positive_log' && x_val == 'Days_SFP') x_range <- c(0, x_range[2])
 	
 				# Open PDF
-				pdf(paste0('Plots/', y_val, ' vs ', x_val, ' ranked_by=', ranked_by, '.pdf'), height=6, width=8)
+				pdf(paste0('../Plots/', y_val, ' vs ', x_val, ' ranked_by=', ranked_by, '.pdf'), height=6, width=8)
 				
 				#
 				par('mar'=c(5,5,4,8))
@@ -219,7 +219,7 @@ run <- function(){
 	x_range <- c(0, x_range[2])
 
 	# Open PDF
-	pdf(paste0('Plots/By state/', y_val, ' vs ', x_val, ' ', state_highlight, '.pdf'), height=6, width=8)
+	pdf(paste0('../Plots/By state/', y_val, ' vs ', x_val, ' ', state_highlight, '.pdf'), height=6, width=8)
 	
 	#
 	par('mar'=c(5,5,2,2))
@@ -265,7 +265,7 @@ run <- function(){
 	x_range <- c(0, x_range[2])
 
 	# Open PDF
-	pdf(paste0('Plots/', y_val, ' vs ', x_val, ' All states.pdf'), height=30, width=40)
+	pdf(paste0('../Plots/', y_val, ' vs ', x_val, ' All states.pdf'), height=30, width=40)
 	
 	#
 	layout(matrix(1:length(states_unique), 7, 8, byrow=TRUE))
