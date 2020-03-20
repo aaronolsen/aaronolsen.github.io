@@ -343,17 +343,6 @@ run <- function(){
 		}
 	}
 
-	#
-	#print(log_sfp_lm_mat)
-
-	# Open PDF
-	pdf(paste0('../Plots/', file_date, ' bar plot.pdf'), height=4, width=8)
-	
-
-	dev.off()
-	
-	return(1)	
-
 	## Plot single state against background
 	state_highlight <- 'RI'
 	y_val <- 'Positive_log'
