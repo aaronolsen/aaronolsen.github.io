@@ -2,12 +2,12 @@ if(!is.null(dev.list())) dev.off()
 
 run <- function(){
 
-	num_rank <- 7
+	num_rank <- 7		# The number of states to highlight as top slowest/fastest 
 	min_val_lm <- 5		# Minimum number of positives with which to fit regression
 	min_num_val_lm <- 6	# Minimum number of days to include in regression
-	log_base <- 10
+	log_base <- 10		# Base to use for log function
 
-	# 
+	# Written-out numbers for plot titles
 	num_spelled <- c('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten')
 
 	# Get names of data files
@@ -31,7 +31,7 @@ run <- function(){
 	# Get unique list of states
 	states_unique <- as.character(sort(unique(read_csv[, 'State'])))
 
-	# Create structures
+	# Create various structures
 	df_by_state <- list()
 	first_reported <- setNames(rep(NA, length(states_unique)), states_unique)
 	first_positive <- setNames(rep(NA, length(states_unique)), states_unique)
@@ -43,7 +43,7 @@ run <- function(){
 		'Days_SFP'=matrix(NA, length(states_unique), 2, dimnames=list(states_unique, c('min', 'max')))
 	)
 	
-	#
+	# Create testing stats matrix
 	col_names <- c('pop_size', 'num_positive', 'total_tests', 'per_positive', 'per_tested')
 	testing_stats <- matrix(NA, nrow=length(states_unique), ncol=length(col_names), dimnames=list(states_unique, col_names))
 
@@ -56,7 +56,7 @@ run <- function(){
 	# Add population size of each state
 	for(state in names(pop_sizes)) testing_stats[state, 'pop_size'] <- pop_sizes[state]
 
-	# Regression stats matrix
+	# Create regression stats matrix
 	col_names <- c('slope', 'intercept', 'nfold_pday', 'dbl_days')
 	log_sfp_lm_mat <- matrix(NA, length(states_unique), length(col_names), dimnames=list(states_unique, col_names))
 
@@ -92,6 +92,7 @@ run <- function(){
 		which_positive[is.na(positive_vals)] <- FALSE
 		which_positive[!is.na(positive_vals)] <- positive_vals[!is.na(positive_vals)] > 0
 
+		# Skip if not any positives reported yet
 		if(!any(which_positive)) next
 
 		# Get log values
@@ -116,7 +117,7 @@ run <- function(){
 			# Calculate number of days for positives to double
 			log_sfp_lm_mat[state, 'dbl_days'] <- log(2, base=log_base) / log_sfp_lm_mat[state, 'slope']
 			
-			# Calculate n-fold increase per day
+			# Calculate n-fold increase per day (see Interpret slope.R for validation)
 			log_sfp_lm_mat[state, 'nfold_pday'] <- log_base ^ log_sfp_lm_mat[state, 'slope']
 		}
 
@@ -127,7 +128,7 @@ run <- function(){
 		# Get x ranges
 		x_ranges[['Days_SFP']][state, ] <- range(df_by_state[[state]][, 'Days_SFP'], na.rm=TRUE)
 		
-		# Fill testing stats matrix
+		# Save testing statistics
 		testing_stats[state, 'num_positive'] <- df_by_state[[state]][1, 'Positive']
 		testing_stats[state, 'total_tests'] <- as.numeric(as.character(gsub(',','',df_by_state[[state]][1, 'Total'])))
 		testing_stats[state, 'per_positive'] <- 100*(df_by_state[[state]][1, 'Positive'] / testing_stats[state, 'total_tests'])
@@ -137,23 +138,20 @@ run <- function(){
 	# Remove NA rows
 	log_sfp_lm_mat_nna <- log_sfp_lm_mat[!is.na(log_sfp_lm_mat[, 1]), ]
 
-	# Rank states
+	# Rank states by each variable
 	rank_order <- list(
 		'slope'=rownames(log_sfp_lm_mat_nna)[order(log_sfp_lm_mat_nna[, 'slope'])],
 		'intercept'=rownames(log_sfp_lm_mat_nna)[order(log_sfp_lm_mat_nna[, 'intercept'])],
 		'nfold_pday'=rownames(log_sfp_lm_mat_nna)[order(log_sfp_lm_mat_nna[, 'nfold_pday'])]
 	)
 	
-	#print(testing_stats)
-	
-	#print(rank_order[['slope']])
+	# Print out string of states in order
 	#cat(paste0(rank_order[['slope']], collapse='<'))
 
 	xlab <- c('Days_SFP'='Days since first reported positive\ntest result or March 4, whichever is later')
 
 	# Plot
 	for(ranked_by in c('slope', 'intercept')[1]){
-
 		for(x_val in c('Days_SFP')){
 		
 			# Set which states to plot
@@ -189,6 +187,7 @@ run <- function(){
 
 			for(y_val in c('Positive', 'Positive_log')[1:2]){
 
+				# Set margins
 				mar <- c(4,5.5,0.5,2)
 				if(y_val == 'Positive'){
 					par('mar'=mar)
@@ -208,7 +207,7 @@ run <- function(){
 					x_range <- c(1, 1.04)*x_range
 				}
 
-				#
+				# Adjust y-range to fit extra text
 				y_range <- c(1, 1.1)*y_range
 	
 				# Adjust default plot parameters
@@ -217,9 +216,11 @@ run <- function(){
 				# Create plot
 				plot(x_range, y_range, type='n', xlab='', xaxt='n', ylab='', yaxt='n')
 			
+				# Add xy axis labels
 				mtext(text=xlab[x_val], side=1, line=3, cex=mtext_cex)
 				mtext(text='Number of reported positive COVID-19 tests', side=2, line=2.5, cex=mtext_cex)
 
+				# Add x-axis ticks
 				axis(1, mgp=c(3, 0.7, 0))
 	
 				# For each state
