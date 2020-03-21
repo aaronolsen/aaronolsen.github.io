@@ -364,10 +364,15 @@ run <- function(){
 		}
 	}
 
+
+	# Find states not in matrix
+
 	## Plot testing rates
 	# Set which state labels to move outside points
 	labels_out <- list(
+		'AK'=c(1,0.2,-0.2,0.5),
 		'NV'=c(1,0,-0.2,0.5),
+		'MT'=c(-1,0,1,0.5),
 		'UT'=c(1,-1,-0.2,0.5),
 		'WI'=c(0,1.5,0.5,-0.3),
 		'WY'=c(-1,0,1,0.5),
@@ -418,7 +423,7 @@ run <- function(){
 		}else{
 
 			# Add circle
-			points(x=xy[1], y=xy[2], cex=3)
+			points(x=xy[1], y=xy[2], cex=2.7)
 		
 			# Add text labels inside circle
 			text(x=xy[1], y=xy[2], labels=state, cex=0.7)
@@ -433,106 +438,6 @@ run <- function(){
 	text(x=x_range[2] + 0.7*diff(x_range), y=y_range[1] - 0.0069*diff(y_range), 
 		labels='Plot created by @aarolsen; Source data: covidtracking.com', pos=2, xpd=TRUE, cex=0.8, col=gray(0.4))
 	
-	dev.off()
-
-	return(1)
-
-	## Plot single state against background
-	state_highlight <- 'RI'
-	y_val <- 'Positive_log'
-	x_val <- 'Days_SFP'
-
-	# Set variable ranges
-	y_range <- range(y_ranges[[y_val]], na.rm=TRUE)
-	x_range <- range(x_ranges[[x_val]], na.rm=TRUE)
-	
-	# Adjust default plot parameters
-	yaxt <- 'n'
-	x_range <- c(0, x_range[2])
-
-	# Open PDF
-	pdf(paste0('../Plots/By state/RI/', file_date, '.pdf'), height=6, width=8)
-	
-	#
-	par('mar'=c(5,5,2,2))
-
-	# Create plot
-	plot(x_range, y_range, type='n', xlab=xlab[x_val], ylab='Number of reported positive COVID-19 test results', yaxt=yaxt)
-	
-	# Set color for states
-	cols <- setNames(rainbow(length(states_unique), alpha=0.3), states_unique)
-
-	# For each state
-	for(state in states_unique){
-	
-		if(state == state_highlight) next
-
-		# Plot points as line
-		points(x=df_by_state[[state]][, x_val], y=df_by_state[[state]][, y_val], type='l', lwd=1, col=cols[state])
-	}
-
-	# Plot points as line
-	points(x=df_by_state[[state_highlight]][, x_val], y=df_by_state[[state_highlight]][, y_val], type='l', lwd=2, col='black')
-
-	# Create log axis
-	if(y_val == 'Positive_log'){
-		log_range2 <- nchar(round(10^y_range[2]))
-		axis_at <- seq(0, log_range2, length=log_range2+1)
-		axis(side=2, at=axis_at, labels=round(10^axis_at))
-	}
-	
-	#
-	dev.off()
-
-
-	
-	## Plot single state against background
-	state_highlight <- 'RI'
-	y_val <- 'Positive_log'
-	x_val <- 'Days_SFP'
-
-	# Set variable ranges
-	y_range <- range(y_ranges[[y_val]], na.rm=TRUE)
-	x_range <- range(x_ranges[[x_val]], na.rm=TRUE)
-	
-	# Adjust default plot parameters
-	yaxt <- 'n'
-	x_range <- c(0, x_range[2])
-
-	# Open PDF
-	pdf(paste0('../Plots/', y_val, ' vs ', x_val, ' All states/', file_date, '.pdf'), height=30, width=40)
-	
-	#
-	layout(matrix(1:length(states_unique), 7, 8, byrow=TRUE))
-	par('mar'=c(5,5,2,2))
-
-	# For each state
-	for(state_highlight in states_unique){
-
-		# Create plot
-		plot(x_range, y_range, type='n', xlab=xlab[x_val], ylab='Number of reported positive COVID-19 test results', main=state_highlight, yaxt=yaxt)
-
-		# For each state
-		for(state in states_unique){
-	
-			if(state == state_highlight) next
-
-			# Plot points as line
-			points(x=df_by_state[[state]][, x_val], y=df_by_state[[state]][, y_val], type='l', lwd=1, col=gray(0.8))
-		}
-
-		# Plot points as line
-		points(x=df_by_state[[state_highlight]][, x_val], y=df_by_state[[state_highlight]][, y_val], type='l', lwd=2, col='black')
-
-		# Create log axis
-		if(y_val == 'Positive_log'){
-			log_range2 <- nchar(round(10^y_range[2]))
-			axis_at <- seq(0, log_range2, length=log_range2+1)
-			axis(side=2, at=axis_at, labels=round(10^axis_at))
-		}
-	}
-	
-	#
 	dev.off()
 }
 
