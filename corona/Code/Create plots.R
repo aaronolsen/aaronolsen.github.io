@@ -11,7 +11,7 @@ run <- function(){
 	num_spelled <- c('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten')
 
 	# Get names of data files
-	csv_files <- list.files('../Data/')
+	csv_files <- list.files('../Data/', pattern='[0-9]+[.]csv')
 
 	# Find most recent file
 	csv_file <- tail(sort(csv_files), 1)
@@ -42,6 +42,19 @@ run <- function(){
 	x_ranges <- list(
 		'Days_SFP'=matrix(NA, length(states_unique), 2, dimnames=list(states_unique, c('min', 'max')))
 	)
+	
+	#
+	col_names <- c('pop_size', 'num_positive', 'total_tests', 'per_positive', 'per_tested')
+	testing_stats <- matrix(NA, nrow=length(states_unique), ncol=length(col_names), dimnames=list(states_unique, col_names))
+
+	# Read state pop sizes
+	read_pops <- read.csv('../Data/us_state_pop_sizes.csv')
+	
+	# Convert population size df to vector
+	pop_sizes <- setNames(as.numeric(gsub(',', '', read_pops[, 'est_pop'])), read_pops[, 'abbr'])
+	
+	# Add population size of each state
+	for(state in names(pop_sizes)) testing_stats[state, 'pop_size'] <- pop_sizes[state]
 
 	# Regression stats matrix
 	col_names <- c('slope', 'intercept', 'nfold_pday', 'dbl_days')
@@ -113,8 +126,14 @@ run <- function(){
 
 		# Get x ranges
 		x_ranges[['Days_SFP']][state, ] <- range(df_by_state[[state]][, 'Days_SFP'], na.rm=TRUE)
+		
+		# Fill testing stats matrix
+		testing_stats[state, 'num_positive'] <- df_by_state[[state]][1, 'Positive']
+		testing_stats[state, 'total_tests'] <- as.numeric(as.character(gsub(',','',df_by_state[[state]][1, 'Total'])))
+		testing_stats[state, 'per_positive'] <- 100*(df_by_state[[state]][1, 'Positive'] / testing_stats[state, 'total_tests'])
+		testing_stats[state, 'per_tested'] <- 100*(testing_stats[state, 'total_tests'] / testing_stats[state, 'pop_size'])
 	}
-	
+
 	# Remove NA rows
 	log_sfp_lm_mat_nna <- log_sfp_lm_mat[!is.na(log_sfp_lm_mat[, 1]), ]
 
@@ -124,6 +143,8 @@ run <- function(){
 		'intercept'=rownames(log_sfp_lm_mat_nna)[order(log_sfp_lm_mat_nna[, 'intercept'])],
 		'nfold_pday'=rownames(log_sfp_lm_mat_nna)[order(log_sfp_lm_mat_nna[, 'nfold_pday'])]
 	)
+	
+	#print(testing_stats)
 	
 	#print(rank_order[['slope']])
 	#cat(paste0(rank_order[['slope']], collapse='<'))
@@ -342,6 +363,79 @@ run <- function(){
 			dev.off()
 		}
 	}
+
+	## Plot testing rates
+	# Set which state labels to move outside points
+	labels_out <- list(
+		'NV'=c(1,0,-0.2,0.5),
+		'UT'=c(1,-1,-0.2,0.5),
+		'WI'=c(0,1.5,0.5,-0.3),
+		'WY'=c(-1,0,1,0.5),
+		'OK'=c(-0.3,0,1,0.5)
+	)
+	label_offset <- c(0.01, 0.5)
+	
+	# Open PDF
+	pdf(paste0('../Plots/Per_positive vs per_tested/', file_date, '.pdf'), width=7, height=7)
+	
+	par('mar'=c(5,4,3,2))
+	
+	y_range <- range(testing_stats[, 'per_positive'], na.rm=TRUE)
+	x_range <- range(testing_stats[, 'per_tested'], na.rm=TRUE)
+
+	main_text <- paste0('COVID-19 testing rates by US state as of ', format(read_csv$AsDate[1], format="%B %d, %Y"))
+
+	plot(x_range, y_range, type='n', xlab='', ylab='', log='xy', main=main_text)
+
+	bg_text_cex <- 0.9
+	bg_txt_col <- gray(0.7)
+	text(x=0.006, y=3, labels=toupper('Low testing rate\nLow % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=0.1, y=39, labels=toupper('High testing rate\nHigh % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=0.007, y=39, labels=toupper('Low testing rate\nHigh % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=0.06, y=1.15, labels=toupper('High testing rate\nLow % positive'), col=bg_txt_col, cex=bg_text_cex)
+
+	abline(h=10, lty=2, col=bg_txt_col, lwd=2)
+	abline(v=0.025, lty=2, col=bg_txt_col, lwd=2)
+	
+	for(state in rownames(testing_stats)){
+	
+		xy <- testing_stats[state, c('per_tested', 'per_positive')]
+
+		if(state %in% names(labels_out)){
+			
+			# Add point
+			points(x=xy[1], y=xy[2], cex=0.7)
+			
+			# Set text offset position
+			text_xy <- c(xy[1] + label_offset[1]*labels_out[[state]][1], y=xy[2] + label_offset[2]*labels_out[[state]][2])
+
+			# Draw line
+			segments(x0=xy[1], y0=xy[2], x1=text_xy[1], y1=text_xy[2])
+			
+			# Add text labels inside circle
+			text(x=text_xy[1], y=text_xy[2], labels=state, cex=0.7, adj=labels_out[[state]][3:4])
+
+		}else{
+
+			# Add circle
+			points(x=xy[1], y=xy[2], cex=3)
+		
+			# Add text labels inside circle
+			text(x=xy[1], y=xy[2], labels=state, cex=0.7)
+		}
+	}
+
+	# Add axis labels
+	mtext(side=1, text='Number of tests per capita (%)', line=2.5)
+	mtext(side=2, text='Percent of total tests reported as \'Positive\' (%)', line=2.5)
+	
+	# Add source
+	text(x=x_range[2] + 0.7*diff(x_range), y=y_range[1] - 0.0069*diff(y_range), 
+		labels='Plot created by @aarolsen; Source data: covidtracking.com', pos=2, xpd=TRUE, cex=0.8, col=gray(0.4))
+	
+	dev.off()
+
+	return(1)
 
 	## Plot single state against background
 	state_highlight <- 'RI'
