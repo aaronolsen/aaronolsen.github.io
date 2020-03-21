@@ -174,7 +174,7 @@ run <- function(){
 			height <- 6.6
 			w_ratio <- 1.4
 			mtext_cex <- 0.8
-			pdf(paste0('../Plots/Positive vs ', x_val, ' ranked_by=', ranked_by, '/', file_date, '.pdf'), height=height, width=w_ratio*height)
+			pdf(paste0('../Plots/Positive vs ', x_val, ' ranked_by=', ranked_by, '/', file_date, ' Positive vs ', x_val, ' ranked_by=', ranked_by, '.pdf'), height=height, width=w_ratio*height)
 			
 			layout(matrix(c(1,1,2:3,4,4,5,5), 4, 2, byrow=TRUE), width=c(1, 1), height=c(0.1, 1, 0.1, 0.4))
 
@@ -365,8 +365,6 @@ run <- function(){
 	}
 
 
-	# Find states not in matrix
-
 	## Plot testing rates
 	# Set which state labels to move outside points
 	labels_out <- list(
@@ -381,26 +379,34 @@ run <- function(){
 	label_offset <- c(0.01, 0.5)
 	
 	# Open PDF
-	pdf(paste0('../Plots/Per_positive vs per_tested/', file_date, '.pdf'), width=7, height=7)
+	pdf(paste0('../Plots/Per_positive vs per_tested/', file_date, ' Per_positive vs per_tested.pdf'), width=7, height=7)
 	
 	par('mar'=c(5,4,3,2))
 	
 	y_range <- range(testing_stats[, 'per_positive'], na.rm=TRUE)
 	x_range <- range(testing_stats[, 'per_tested'], na.rm=TRUE)
+	y_range <- c(0.8, 1)*y_range
 
-	main_text <- paste0('COVID-19 testing rates by US state as of ', format(read_csv$AsDate[1], format="%B %d, %Y"))
+	main_text <- paste0('COVID-19 testing rates by US state as of ', format(read_csv$AsDate[1], format="%B %d, %Y"), '')
 
 	plot(x_range, y_range, type='n', xlab='', ylab='', log='xy', main=main_text)
 
 	bg_text_cex <- 0.9
 	bg_txt_col <- gray(0.7)
-	text(x=0.006, y=3, labels=toupper('Low testing rate\nLow % positive'), col=bg_txt_col, cex=bg_text_cex)
-	text(x=0.1, y=39, labels=toupper('High testing rate\nHigh % positive'), col=bg_txt_col, cex=bg_text_cex)
-	text(x=0.007, y=39, labels=toupper('Low testing rate\nHigh % positive'), col=bg_txt_col, cex=bg_text_cex)
-	text(x=0.06, y=1.15, labels=toupper('High testing rate\nLow % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=0.01, y=2, labels=toupper('Low testing rate\nLow % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=0.13, y=32, labels=toupper('High testing rate\nHigh % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=0.01, y=39, labels=toupper('Low testing rate\nHigh % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=0.13, y=0.9, labels=toupper('High testing rate\nLow % positive'), col=bg_txt_col, cex=bg_text_cex)
 
-	abline(h=10, lty=2, col=bg_txt_col, lwd=2)
-	abline(v=0.025, lty=2, col=bg_txt_col, lwd=2)
+	# Add horizontal background line and label
+	h_at <- 5
+	abline(h=5, lty=2, col=bg_txt_col, lwd=2)
+	text(x=h_at*0.01, y=y_range[2], labels=paste0(h_at*0.01, '% tested'), cex=bg_text_cex, xpd=TRUE, adj=c(0.85,-0.5), srt=90, col=bg_txt_col)
+
+	# Add vertical background line and label
+	v_at <- 0.05
+	abline(v=v_at, lty=2, col=bg_txt_col, lwd=2)
+	text(x=x_range[1], y=v_at*100, labels=paste0(v_at*100, '% positive'), cex=bg_text_cex, xpd=TRUE, adj=c(0.2,-0.5), col=bg_txt_col)
 	
 	for(state in rownames(testing_stats)){
 	
@@ -431,11 +437,11 @@ run <- function(){
 	}
 
 	# Add axis labels
-	mtext(side=1, text='Number of tests per capita (%)', line=2.5)
-	mtext(side=2, text='Percent of total tests reported as \'Positive\' (%)', line=2.5)
+	mtext(side=1, text='Number of tests per capita (%), log-transformed', line=2.5)
+	mtext(side=2, text='Percent of total tests reported as \'Positive\' (%), log-transformed', line=2.5)
 	
 	# Add source
-	text(x=x_range[2] + 0.7*diff(x_range), y=y_range[1] - 0.0069*diff(y_range), 
+	text(x=x_range[2] + 0.7*diff(x_range), y=y_range[1] - 0.0058*diff(y_range), 
 		labels='Plot created by @aarolsen; Source data: covidtracking.com', pos=2, xpd=TRUE, cex=0.8, col=gray(0.4))
 	
 	dev.off()
