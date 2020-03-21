@@ -352,7 +352,7 @@ run <- function(){
 
 			# Add source
 			text(x=x_range[2] + 0.04*diff(x_range), y=y_range[1] - 0.32*diff(y_range), 
-				labels='Plot created by: Aaron Olsen; Source data: covidtracking.com', pos=2, xpd=TRUE, cex=1.4*mtext_cex, col=gray(0.25))
+				labels='Plot created by @aarolsen; Source data: covidtracking.com', pos=2, xpd=TRUE, cex=1.4*mtext_cex, col=gray(0.25))
 
 			mtext(text='n-fold increase in reported\npositive tests per day', side=2, line=2.5, cex=mtext_cex)
 			
@@ -437,7 +437,7 @@ run <- function(){
 	}
 
 	# Add axis labels
-	mtext(side=1, text='Number of tests per capita (%), log-transformed', line=2.5)
+	mtext(side=1, text='Number of tests relative to state population (%), log-transformed', line=2.5)
 	mtext(side=2, text='Percent of total tests reported as \'Positive\' (%), log-transformed', line=2.5)
 	
 	# Add source
