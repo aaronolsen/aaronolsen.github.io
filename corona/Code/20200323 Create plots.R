@@ -402,11 +402,20 @@ run <- function(){
 
 	# Set which state labels to move outside points
 	labels_out <- c(
-		'CA'='right',
+		'CA'='upper',
+		'CT'='upper',
+		'FL'='right',
 		'GA'='lower right',
+		'ID'='left',
 		'IN'='right',
+		'MA'='lower right',
 		'MS'='upper',
-		'SC'='lower left',
+		'MT'='upper',
+		'MN'='lower',
+		'NC'='lower',
+		'OR'='upper',
+		'RI'='left',
+		'SC'='upper left',
 		'UT'='lower'
 	)
 	label_offset <- c(0.01, 0.5)
@@ -429,7 +438,7 @@ run <- function(){
 	# Add background quadrant labels
 	text(x=0.015, y=2, labels=toupper('Lower testing rate\nLower % positive'), col=bg_txt_col, cex=bg_text_cex)
 	text(x=0.13, y=32, labels=toupper('Higher testing rate\nHigher % positive'), col=bg_txt_col, cex=bg_text_cex)
-	text(x=0.015, y=39, labels=toupper('Lower testing rate\nHigher % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=0.015, y=24, labels=toupper('Lower testing rate\nHigher % positive'), col=bg_txt_col, cex=bg_text_cex)
 	text(x=0.13, y=1.55, labels=toupper('Higher testing rate\nLower % positive'), col=bg_txt_col, cex=bg_text_cex)
 
 	# Add horizontal background line and label
@@ -465,7 +474,10 @@ run <- function(){
 
 			if(labels_out[state] == 'lower left') text_adj <- c(1, 0.7)
 			if(labels_out[state] == 'lower right') text_adj <- c(-0.2,0.5)
+			if(labels_out[state] == 'left') text_adj <- c(1, 0.5)
 			if(labels_out[state] == 'right') text_adj <- c(-0.2, 0.5)
+			if(labels_out[state] == 'upper left') text_adj <- c(1,-0.5)
+			if(labels_out[state] == 'upper right') text_adj <- c(-0.2,-0.5)
 			if(labels_out[state] == 'upper') text_adj <- c(0.5,-0.5)
 			if(labels_out[state] == 'lower') text_adj <- c(0.5,1)
 			
@@ -499,9 +511,19 @@ run <- function(){
 	## Plot n-fold increase in reported positives vs testing score
 	# Set which state labels to move outside points
 	labels_out <- c(
-		'TX'='lower left',
-		'CO'='lower left',
+		'AK'='upper right',
+		'CO'='right',
+		'CT'='right',
+		'GU'='lower left',
+		'HI'='right',
+		'ID'='lower',
+		'NH'='lower',
+		'ND'='lower',
+		'OR'='lower',
+		'SC'='lower',
+		'TX'='lower',
 		'UT'='right',
+		'VA'='lower',
 		'WI'='lower'
 	)
 	label_offset <- c(1,0.05)
@@ -535,9 +557,14 @@ run <- function(){
 			if(!grepl('lower|upper', labels_out[state])){ line_len_state[2] <- 0 ; line_len_state[1] <- sqrt(2)*line_len_state[1]}
 
 			if(labels_out[state] == 'lower left') text_adj <- c(1, 0.7)
+			if(labels_out[state] == 'lower right') text_adj <- c(-0.2,0.5)
+			if(labels_out[state] == 'left') text_adj <- c(1, 0.5)
 			if(labels_out[state] == 'right') text_adj <- c(-0.2, 0.5)
+			if(labels_out[state] == 'upper left') text_adj <- c(1,-0.5)
+			if(labels_out[state] == 'upper right') text_adj <- c(-0.2,-0.5)
+			if(labels_out[state] == 'upper') text_adj <- c(0.5,-0.5)
 			if(labels_out[state] == 'lower') text_adj <- c(0.5,1)
-			
+
 			# Set end of line
 			line_end <- c(xy[1]+line_len_state[1], xy[2]+line_len_state[2])
 
