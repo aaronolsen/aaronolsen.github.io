@@ -4,16 +4,20 @@ run <- function(){
 
 	## * Add code to add 0 negative for case where only positives and no negative value given
 
-	num_rank <- 7		# The number of states to highlight as top slowest/fastest 
-	min_val_lm <- 5		# Minimum number of positives with which to fit regression
-	min_num_val_lm <- 6	# Minimum number of days to include in regression
-	log_base <- 10		# Base to use for log function
+	mar_rank <- c(4,4)		# Number of states to include at slowest and fastest of ranking
+	rank_mid <- 6			# Number of middle ranking states to show
+	min_val_lm <- 5			# Minimum number of positives with which to fit regression
+	min_num_val_lm <- 6		# Minimum number of days to include in regression
+	log_base <- 10			# Base to use for log function
+	start_cases <- 10		# Number of cases when to align curves
+	num_days_in_proj <- 6	# Number of days to include in fit for projection
+	num_days_proj <- 2		# Number of days to project in advance of furthest day
 
 	# Written-out numbers for plot titles
 	num_spelled <- c('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten')
 
 	# Get names of data files
-	csv_files <- list.files('../Data/', pattern='[0-9]+[.]csv')
+	csv_files <- list.files('../../Data/', pattern='[0-9]+[.]csv')
 
 	# Find most recent file
 	csv_file <- tail(sort(csv_files), 1)
@@ -22,7 +26,7 @@ run <- function(){
 	file_date <- gsub('[.]csv', '', csv_file)
 
 	# Read data
-	read_csv <- read.csv(file=paste0('../Data/', csv_file))
+	read_csv <- read.csv(file=paste0('../../Data/', csv_file))
 
 	# Remove NA rows
 	read_csv <- read_csv[!is.na(read_csv[, 'date']), ]
@@ -45,7 +49,9 @@ run <- function(){
 		'positive_log'=matrix(NA, length(states_unique), 2, dimnames=list(states_unique, c('min', 'max')))
 	)
 	x_ranges <- list(
-		'Days_SFP'=matrix(NA, length(states_unique), 2, dimnames=list(states_unique, c('min', 'max')))
+		'Days_SFP'=matrix(NA, length(states_unique), 2, dimnames=list(states_unique, c('min', 'max'))),
+		'Days_SSD'=matrix(NA, length(states_unique), 2, dimnames=list(states_unique, c('min', 'max'))),
+		'Days_SSD_log'=matrix(NA, length(states_unique), 2, dimnames=list(states_unique, c('min', 'max')))
 	)
 	
 	# Create testing stats matrix
@@ -53,7 +59,7 @@ run <- function(){
 	testing_stats <- matrix(NA, nrow=length(states_unique), ncol=length(col_names), dimnames=list(states_unique, col_names))
 
 	# Read state pop sizes
-	read_pops <- read.csv('../Data/us_state_pop_sizes.csv')
+	read_pops <- read.csv('../../Data/us_state_pop_sizes.csv')
 	
 	# Convert population size df to vector
 	pop_sizes <- setNames(as.numeric(gsub(',', '', read_pops[, 'est_pop'])), read_pops[, 'abbr'])
@@ -64,8 +70,12 @@ run <- function(){
 	}
 
 	# Create regression stats matrix
-	col_names <- c('slope', 'intercept', 'nfold_pday', 'dbl_days')
+	col_names <- c('slope', 'intercept', 'nfold_pday', 'dbl_days', 'start_date')
 	log_sfp_lm_mat <- matrix(NA, length(states_unique), length(col_names), dimnames=list(states_unique, col_names))
+	col_names <- c('slope', 'intercept', 'max_ssd', 'proj_max')
+	log_ssd_lm_mat <- matrix(NA, length(states_unique), length(col_names), dimnames=list(states_unique, col_names))
+	col_names <- c('slope', 'intercept', 'max_ssd', 'proj_max')
+	log_rate_lm_mat <- matrix(NA, length(states_unique), length(col_names), dimnames=list(states_unique, col_names))
 
 	# For each state
 	for(state in states_unique){
@@ -132,6 +142,70 @@ run <- function(){
 			
 			# Calculate n-fold increase per day (see Interpret slope.R for validation)
 			log_sfp_lm_mat[state, 'nfold_pday'] <- log_base ^ log_sfp_lm_mat[state, 'slope']
+
+			# Find days since start_cases
+			dlist <- list(y=df_by_state[[state]][which_over_min, 'positive_log'], x=df_by_state[[state]][which_over_min, 'asdate'])
+			lm_fit_log_asdate <- lm(y ~ x, data=dlist)
+			start_day_int <- -(lm_fit_log_asdate$coefficients['(Intercept)'] - log(start_cases, base=log_base)) / (lm_fit_log_asdate$coefficients['x'])
+			start_date <- as.Date(start_day_int, origin='1970-01-01')
+
+			# Set day corresponding to start_cases
+			log_sfp_lm_mat[state, 'start_date'] <- start_date
+			
+			# Get days since start date
+			df_by_state[[state]][, 'Days_SSD'] <- as.numeric(df_by_state[[state]][, 'asdate'] - start_date)
+			df_by_state[[state]][, 'Days_SSD_log'] <- suppressWarnings(log(df_by_state[[state]][, 'Days_SSD'], base=log_base))
+			x_ranges[['Days_SSD']][state, ] <- range(df_by_state[[state]][, 'Days_SSD'], na.rm=TRUE)
+			x_ranges[['Days_SSD_log']][state, ] <- range(df_by_state[[state]][, 'Days_SSD_log'], na.rm=TRUE)
+			
+			if(state == 'MI' && FALSE){
+				
+				print(df_by_state[[state]])
+				
+				pdf('~/Documents/Outreach/Coronavirus analysis/Plots/align curves.pdf')
+				
+				y_range <- range(log(df_by_state[[state]][which_over_min, 'positive'], base=log_base), na.rm=TRUE)
+				x_range <- range(as.numeric(dlist$x), na.rm=TRUE)
+
+				plot(x_range, y_range, type='n')
+
+				points(as.numeric(dlist$x), log(df_by_state[[state]][which_over_min, 'positive'], base=log_base))
+
+				abline(a=lm_fit_log_asdate$coefficients['(Intercept)'], b=lm_fit_log_asdate$coefficients['x'], lty=2)
+				
+				dev.off()
+				
+				return(1)
+			}
+			
+			# Get rate
+			
+			# Get indices to include
+			ind_over_min <- c(1:length(which_over_min))[which_over_min]
+			
+			# Shorten to the most recent number of days to include in calculating projection if longer
+			if(length(ind_over_min) > num_days_in_proj) ind_over_min <- head(ind_over_min, num_days_in_proj)
+			
+			# Fit regression to growth using SSD as X
+			#dlist <- list(y=df_by_state[[state]][ind_over_min, 'positive_log'], x=df_by_state[[state]][ind_over_min, 'Days_SSD_log'])
+			#lm_fit_log_ssd <- lm(y ~ x, data=dlist)
+			dlist <- list(y=df_by_state[[state]][which_over_min, 'positive_log'], x=df_by_state[[state]][which_over_min, 'Days_SFP'])
+			lm_fit_log_rate <- lm(y ~ x, data=dlist)
+
+			log_rate_lm_mat[state, 'intercept'] <- lm_fit_log_rate$coefficients['(Intercept)']# - as.numeric(start_date)
+			log_rate_lm_mat[state, 'slope'] <- lm_fit_log_rate$coefficients['x']
+			
+			if(state == 'MI'){
+				#print(log_ssd_lm_mat)
+				#log_ssd_lm_mat[state, 'slope'] <- predict
+				#'log_ssd_lm_mat'
+			}
+
+		}else{
+		
+			df_by_state[[state]][, 'Days_SSD'] <- rep(NA, nrow(df_by_state[[state]]))
+			df_by_state[[state]][, 'Days_SSD_log'] <- rep(NA, nrow(df_by_state[[state]]))
+			#print('Not enough values for regression')
 		}
 
 		# Get y ranges
@@ -149,8 +223,6 @@ run <- function(){
 		testing_stats[state, 'per_tested'] <- 100*(testing_stats[state, 'total_tests'] / testing_stats[state, 'pop_size'])
 	}
 	
-	#testing_stats[testing_stats[, 'per_negative'] == 0, 'per_negative'] <- 10
-
 	# Calculate testing score (higher is better) and add to matrix
 	#testing_stats[, 'testing_score'] <- testing_stats[, 'per_tested']*(1/testing_stats[, 'per_positive'])
 	testing_stats[, 'testing_score'] <- testing_stats[, 'per_tested']*testing_stats[, 'per_negative']
@@ -164,154 +236,197 @@ run <- function(){
 
 	# Remove NA rows
 	log_sfp_lm_mat_nna <- log_sfp_lm_mat[!is.na(log_sfp_lm_mat[, 1]), ]
+	log_rate_lm_mat_nna <- log_rate_lm_mat[!is.na(log_rate_lm_mat[, 1]), ]
 
 	# Rank states by each variable
 	rank_order <- list(
-		'slope'=rownames(log_sfp_lm_mat_nna)[order(log_sfp_lm_mat_nna[, 'slope'])],
+		'slope'=rownames(log_rate_lm_mat_nna)[order(log_rate_lm_mat_nna[, 'slope'])],
+#		'slope'=rownames(log_sfp_lm_mat_nna)[order(log_sfp_lm_mat_nna[, 'slope'])],
 		'intercept'=rownames(log_sfp_lm_mat_nna)[order(log_sfp_lm_mat_nna[, 'intercept'])],
 		'nfold_pday'=rownames(log_sfp_lm_mat_nna)[order(log_sfp_lm_mat_nna[, 'nfold_pday'])]
 	)
-	
-	# Print out string of states in order
-	#cat(paste0(rank_order[['slope']], collapse='<'))
-
-	xlab <- c('Days_SFP'='Days since first reported positive\ntest result or March 4, whichever is later')
 
 	# Set ranked by variable
 	ranked_by <- 'slope'
 	
-	# Set x_val
-	x_val <- 'Days_SFP'
+	# Set rank numbers for states to include
+	mid_ranks <- round(seq(mar_rank[1], length(rank_order[[ranked_by]])-mar_rank[2], length=rank_mid+2)[2:(rank_mid+1)])
+	states_plot_rank <- c(1:mar_rank[1], mid_ranks, (length(rank_order[[ranked_by]])-mar_rank[2]+1):length(rank_order[[ranked_by]]))
 	
-	# Set which states to plot
-	states_plot_low <- head(rank_order[[ranked_by]], num_rank)
-	states_plot_high <- tail(rank_order[[ranked_by]], num_rank)
+	# Set states to plot
+	states_plot <- rank_order[[ranked_by]][states_plot_rank]
 	
-	# States to plot
-	states_plot <- c(states_plot_low, states_plot_high)
-	
-	# Set state colors
-	state_cols_a <- setNames(rev(rainbow(length(states_plot), start=0, end=0.8, alpha=0.7)), states_plot)
-	state_cols <- setNames(rev(rainbow(length(states_plot), start=0, end=0.8, alpha=1)), states_plot)
+	# Set which date to project to
+	#x_proj_to <- max(log_ssd_lm_mat[states_plot, 'max_ssd']) + num_days_proj
 
-	pch_set <- rep(1:num_rank, 55)
+	# Get projected cases for max projection date
+	for(state in states_unique){
+		
+		# Skip if no fit
+		if(is.na(log_ssd_lm_mat[state, 'slope'])) next
+		
+		# Get x value to project to
+		x_proj <- min(log_ssd_lm_mat[state, 'max_ssd'] + num_days_proj, max(log_ssd_lm_mat[, 'max_ssd'], na.rm=TRUE))
+		
+		# Get projected value
+		log_ssd_lm_mat[state, 'proj_max'] <- log_ssd_lm_mat[state, 'slope']*x_proj + 
+			log_ssd_lm_mat[state, 'intercept']
+	}
+
+	# Print out string of states in order
+	#cat(paste0(rank_order[['slope']], collapse='<'))
+
+	xlab <- c('Days_SFP'='Days since first reported positive\ntest result or March 4, whichever is later', 
+		'Days_SSD'=paste0('Days since ', start_cases, ' reported positive cases'),
+		'Days_SSD_log'=paste0('Days since ', start_cases, ' reported positive cases, log-transformed')
+	)
+
+	# Set x_val
+	x_val <- 'Days_SSD_log' #'Days_SFP'
+	y_val <- 'positive_log'
+
+	# Set state colors
+	state_cols_a <- setNames(rev(rainbow(length(states_plot), start=0, end=0.8, alpha=0.7, v=0.8)), states_plot)
+	state_cols_a2 <- setNames(rev(rainbow(length(states_plot), start=0, end=0.8, alpha=0.4, v=0.8)), states_plot)
+	state_cols <- setNames(rev(rainbow(length(states_plot), start=0, end=0.8, alpha=1, v=0.8)), states_plot)
+
+	pch_set <- rep(1:5, 55)
 	state_pch <- setNames(pch_set[1:length(states_plot)], states_plot)
 
 	# Open PDF
 	height <- 11.5
 	w_ratio <- 1.4
 	mtext_cex <- 0.8
-	pdf(paste0('~/Documents/Outreach/Coronavirus analysis/Plots/positive vs ', x_val, ' ranked_by=', ranked_by, '/', file_date, ' positive vs ', x_val, 
-		' ranked_by=', ranked_by, '.pdf'), height=height, width=9.24)
+	pdf(paste0('~/Documents/Outreach/Coronavirus analysis/Plots/positive vs ', x_val, '/', file_date, ' positive vs ', x_val, '.pdf'), height=height, width=9.24)
 	
-	layout(matrix(c(1,1,2:3,4,4,5,5,6,6,7,8), 6, 2, byrow=TRUE), width=c(1, 1), height=c(0.08, 1, 0.1, 0.4, 0.08, 1))
+	layout(matrix(c(1,1,2,2,3,3,4,4,5,6), 5, 2, byrow=TRUE), width=c(1, 1), height=c(0.08, 1, 0.4, 0.08, 1))
 
 	par('mar'=c(0,0,0,0))
 	plot(x=c(0,1), y=c(0,1), type='n', bty='n', ylab='', xlab='', xaxt='n', yaxt='n')
 
 	# Write main plot title
-	main <- paste0('Changes in reported positive COVID-19 tests for the ', tolower(num_spelled[num_rank]), 
-		' slowest and fastest changing states as of ', 
-		format(read_csv$asdate[1], format="%B %d, %Y"))
+	main <- paste0('Changes in reported positive COVID19 tests (ranked) for select states as of ', format(read_csv$asdate[1], format="%B %d, %Y"))
 	text(x=0.5, y=0.5, labels=main, font=2, cex=1.5*mtext_cex, xpd=TRUE)
 
-	for(y_val in c('positive', 'positive_log')[1:2]){
+	# Set margins
+	mar <- c(3,5,0,2)
+	par('mar'=mar)
 
-		# Set margins
-		mar <- c(4,5,0,2)
-		par('mar'=mar)
+	# Set variable ranges
+	#y_range <- c(1, max(log_ssd_lm_mat[, 'proj_max'], na.rm=TRUE))
+	y_range <- range(y_ranges[[y_val]][states_plot, ], na.rm=TRUE)
+	x_range <- range(x_ranges[[x_val]][states_plot, ], na.rm=TRUE)
+
+	# Set line label shift
+	line_lab_shift <- 0.015*c(diff(x_range), diff(y_range))
 	
-		# Set variable ranges
-		y_range <- range(y_ranges[[y_val]][states_plot, ], na.rm=TRUE)
-		x_range <- range(x_ranges[[x_val]][states_plot, ], na.rm=TRUE)
+	# Adjust x-range
+	x_range <- c(-0.2, 1.04)*x_range
+
+	# Adjust y-range to fit extra text
+	y_range[1] <- log(start_cases, base=log_base)
+	y_range <- c(1, 1.1)*y_range
+
+	# Adjust default plot parameters
+	if(x_val == 'Days_SSD') y_range[1] <- 0.9*log(start_cases, base=log_base)
+
+	# Create plot
+	plot(x_range, y_range, type='n', xlab='', xaxt='n', ylab='', yaxt='n')
+
+	# Add xy axis labels
+	mtext(text=xlab[x_val], side=1, line=2, cex=mtext_cex)
+	mtext(text='Number of reported positive COVID19 tests, log-transformed', side=2, line=2.5, cex=mtext_cex)
+
+	# Add y background lines
+	h_ats <- 1:7
+	for(h_at in h_ats) abline(h=h_at, lty=2, col=gray(0.8))
+
+	# Add x-axis ticks
+	axis_at <- seq(x_range[1], x_range[2], length=12)
+	axis_at_labels <- round(10^axis_at)
 	
-		if(y_val == 'positive'){
-			line_lab_shift <- c(0.05*diff(x_range), 0.01*diff(y_range))
-			x_range <- c(1, 1.07)*x_range
-		}else{
-			line_lab_shift <- 0.03*c(diff(x_range), diff(y_range))
-			x_range <- c(1, 1.04)*x_range
+	# Remove duplicates
+	for(i in 2:length(axis_at_labels)){
+		if(axis_at_labels[i] %in% axis_at_labels[1:(i-1)]){
+			axis_at_labels[i] <- NA
+			axis_at[i] <- NA
 		}
+	}
+	axis_at <- axis_at[!is.na(axis_at)]
+	axis_at_labels <- axis_at_labels[!is.na(axis_at_labels)]
 
-		# Adjust y-range to fit extra text
-		y_range <- c(1, 1.1)*y_range
+	axis(1, at=axis_at, labels=round(10^axis_at), mgp=c(3, 0.5, 0))
 
-		# Adjust default plot parameters
-		if(y_val == 'positive_log' && x_val == 'Days_SFP') x_range <- c(0, x_range[2])
-
-		# Create plot
-		plot(x_range, y_range, type='n', xlab='', xaxt='n', ylab='', yaxt='n')
-	
-		# Add xy axis labels
-		mtext(text=xlab[x_val], side=1, line=3, cex=mtext_cex)
-		mtext(text='Number of reported positive COVID-19 tests', side=2, line=2.5, cex=mtext_cex)
-
-		# Add x-axis ticks
-		axis(1, mgp=c(3, 0.7, 0))
-
-		# For each state
-		for(state in states_plot){
-			
-			# Set xy points
-			xy <- df_by_state[[state]][, c(x_val, y_val)]
-
-			# Plot points as line
-			points(x=xy, pch=state_pch[state], col=state_cols_a[state])
-			points(x=xy, type='l', lwd=2, col=state_cols_a[state])
-		}
-
-		for(state in states_plot){
-
-			# Set xy points
-			xy <- df_by_state[[state]][, c(x_val, y_val)]
-
-			# Add state abbreviation to end
-			text(x=xy[1, 1] + line_lab_shift[1], y=xy[1, 2] + line_lab_shift[2], labels=state, col=state_cols[state])
-		}
-
-		# Compose upper left plot note
-		upp_left_note <- '(Values not log-transformed)'
-		if(y_val == 'positive_log') upp_left_note <- '(Values log-transformed)'
-
-		# Add note to upper left of plot
-		text(x=x_range[2] + 0.04*diff(x_range), y=y_range[2], labels=upp_left_note, pos=2, cex=1.4*mtext_cex, font=2)
+	# For each state
+	for(state in states_plot){
 		
-		if(y_val == 'positive'){
+		# Set xy points
+		xy <- df_by_state[[state]][, c(x_val, y_val)]
 		
-			# Write legend labels
-			legend_labels <- c(paste0(states_plot_low, ' (#', length(rank_order[[ranked_by]]):(length(rank_order[[ranked_by]])-num_rank+1), ')'), 
-				paste0('... (#', num_rank+1, '-#', length(rank_order[[ranked_by]])-num_rank, ')'), paste0(states_plot_high, ' (#', num_rank:1, ')'))
-			
-			legend_labels[1] <- paste0(legend_labels[1], ', slowest')
-			legend_labels[length(legend_labels)] <- paste0(legend_labels[length(legend_labels)], ', fastest')
+		# Plot points as line
+		points(x=xy, pch=state_pch[state], col=state_cols_a[state])
+		points(x=xy, type='l', lwd=2, col=state_cols_a[state])
 
-			# Add legend
-			legend(x=x_range[1] + 0.02*diff(x_range), y=y_range[2] - 0.02*diff(y_range), xpd=TRUE, 
-				legend=rev(legend_labels), 
-				col=rev(c(state_cols[states_plot_low], NA, state_cols[states_plot_high])), 
-				pch=rev(c(state_pch[states_plot_low], NA, state_pch[states_plot_high])), lty=1, lwd=1.5, bty='n')
+		# Adjust intercept to align with last case
+		adj_int <- xy[1,2] - log_ssd_lm_mat[state, 'slope']*xy[1,1]
 
-			# Add axis
-			axis(2, mgp=c(3, 0.7, 0))
-		}
+		# Add projected change
+		xy0 <- unlist(xy[1,])
+		xy1 <- c(log_ssd_lm_mat[state, 'max_ssd'] + num_days_proj, NA)
+		xy1[2] <- log_ssd_lm_mat[state, 'slope']*xy1[1] + adj_int
 
-		if(y_val == 'positive_log'){
+		# Add predicted increase
+		#segments(x0=xy0[1], y0=xy0[2], x1=xy1[1], y1=xy1[2], lty=3, col=state_cols_a2[state])
 
-			# Create log axis
-			log_range2 <- nchar(round(10^y_range[2]))
-			axis_at <- seq(0, log_range2, length=log_range2+1)
-			axis(side=2, at=axis_at, labels=round(10^axis_at), mgp=c(3, 0.7, 0))
+		# Add state abbreviation to end
+		text(x=xy[1, 1] + line_lab_shift[1], y=xy[1, 2] + line_lab_shift[2], labels=state, col=state_cols[state])
+		#text(x=xy1[1] + line_lab_shift[1], y=xy1[2] + line_lab_shift[2], labels=state, col=state_cols[state])
+	}
+	
+	# Add log tick labels to y-axis
+	log_range2 <- nchar(round(10^y_range[2]))
+	axis_at <- seq(0, log_range2, length=log_range2+1)
+	options(scipen=999)
+	axis(side=2, at=axis_at, labels=gsub(' ', '', format(round(10^axis_at), nsmall=0, big.mark=",")), mgp=c(3, 0.7, 0))
+
+	# Write legend labels
+	legend_labels <- paste0(states_plot, ' (#', states_plot_rank, ')')
+	
+	# Add ... and NA between non-consecutive labels/colors/symbols
+	legend_labels_new <- c()
+	states_plot_rank_new <- c()
+	state_cols_new <- c()
+	state_pch_new <- c()
+	for(i in 1:(length(legend_labels))){
+	
+		legend_labels_new <- c(legend_labels_new, legend_labels[i])
+		states_plot_rank_new <- c(states_plot_rank_new, states_plot_rank[i])
+		state_cols_new <- c(state_cols_new, state_cols[i])
+		state_pch_new <- c(state_pch_new, state_pch[i])
+
+		if(i < length(legend_labels) && states_plot_rank[i+1] - states_plot_rank[i] > 1){
+			legend_labels_new <- c(legend_labels_new, '...')
+			states_plot_rank_new <- c(states_plot_rank_new, NA)
+			state_cols_new <- c(state_cols_new, NA)
+			state_pch_new <- c(state_pch_new, NA)
 		}
 	}
 
+	# Replace with new
+	legend_labels <- legend_labels_new
+	states_plot_rank <- states_plot_rank_new
+	state_cols <- state_cols_new
+	state_pch <- state_pch_new
+	
+	# Add notes to first and last legend labels
+	legend_labels[1] <- paste0(legend_labels[1], ', slowest')
+	legend_labels[length(legend_labels)] <- paste0(legend_labels[length(legend_labels)], ', fastest')
 
-	## Create middle panel figure title
-	par('mar'=c(0,0,0,0))
-	plot(x=c(0,1), y=c(0,1), type='n', bty='n', ylab='', xlab='', xaxt='n', yaxt='n')
-
-	# Write main plot title
-	text(x=0.5, y=0.5, labels=paste0('n-fold increase in reported positive COVID-19 tests per day by state as of ', 
-		format(read_csv$asdate[1], format="%B %d, %Y")), font=2, cex=1.5*mtext_cex, xpd=TRUE)
+	# Add legend to plot
+	legend(x=x_range[1] - 0.01*diff(x_range), y=y_range[2] + 0.01*diff(y_range), xpd=TRUE, 
+		legend=rev(legend_labels), 
+		col=rev(state_cols), 
+		pch=rev(state_pch), lty=1, lwd=1.5, bty='n')
 
 
 	## Create bar plot of rates
@@ -329,7 +444,7 @@ run <- function(){
 	x_seq <- 1:length(order_plot)
 
 	y_range <- range(log_sfp_lm_mat[, y_lm_var], na.rm=TRUE)
-	y_range <- c(0.95, 1.02)*y_range
+	y_range <- c(0.95, 1.0)*y_range
 	x_range <- range(x_seq)
 	x_range <- c(2, 0.98)*x_range
 
@@ -338,16 +453,16 @@ run <- function(){
 
 	# Set amount to shift text above and below bar
 	num_up_shift <- 0.02*diff(y_range)
-	text_up_shift <- 0.06*diff(y_range)
+	text_up_shift <- 0.08*diff(y_range)
 	text_down_shift <- 0.02*diff(y_range)
 	
 	# Set colors for each state proportional to rate
 	gray_scale <- 1 - (0.9*((log_sfp_lm_mat[order_plot, y_lm_var] - y_range[1]) / diff(y_range)) + 0.1)
 	cols_gray <- setNames(gray(gray_scale), order_plot)
 
-	par('mar'=c(2, mar[2:4]))
+	par('mar'=c(2, mar[2], 2, mar[4]))
 
-	plot(x_range, y_range, type='n', bty='n', xaxt='n', xlab='', ylab='', yaxt='n')
+	plot(x_range, y_range, type='n', bty='n', xaxt='n', xlab='', ylab='', yaxt='n', main='')
 
 	n <- 1
 	for(state in order_plot){
@@ -365,7 +480,7 @@ run <- function(){
 
 		# Add rate as number
 		text(x=x_seq[n], y=log_sfp_lm_mat[state, y_lm_var] + text_up_shift, 
-			labels=round(log_sfp_lm_mat[state, y_lm_var], 2), xpd=TRUE, cex=mtext_cex)
+			labels=round(log_sfp_lm_mat[state, y_lm_var], 2), xpd=TRUE, srt=90, cex=mtext_cex)
 
 		# Add state label
 		text(x=x_seq[n], y=y_range[1]-text_down_shift, labels=state, pos=1, cex=0.85, xpd=TRUE)
@@ -380,7 +495,12 @@ run <- function(){
 		n <- n + 1
 	}
 
+	# Add y-axis label
 	mtext(text='n-fold increase in reported\npositive tests per day', side=2, line=2.5, cex=mtext_cex)
+
+	# Add plot title
+	mtext(side=3, paste0('n-fold increase in reported positive COVID19 tests per day by state as of ', 
+		format(read_csv$asdate[1], format="%B %d, %Y")), font=2, cex=mtext_cex, xpd=TRUE)
 	
 	#
 	axis_at <- seq(y_range[1], y_range[2], length=4)
@@ -392,7 +512,7 @@ run <- function(){
 	plot(x=c(0,1), y=c(0,1), type='n', bty='n', ylab='', xlab='', xaxt='n', yaxt='n')
 
 	# Write main plot title
-	text(x=0.5, y=0.5, labels=paste0('Testing performance for COVID-19 by state as of ', 
+	text(x=0.5, y=0.5, labels=paste0('Testing performance for COVID19 by state as of ', 
 		format(read_csv$asdate[1], format="%B %d, %Y")), font=2, cex=1.5*mtext_cex, xpd=TRUE)
 
 
