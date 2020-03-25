@@ -493,21 +493,23 @@ run <- function(){
 
 	# Set which state labels to move outside points
 	labels_out <- c(
-		'CA'='upper',
-		'CT'='upper',
-		'FL'='right',
-		'GA'='lower right',
+		#'CA'='upper',
+		'CT'='lower',
+		'FL'='left',
+		#'GA'='lower right',
 		'ID'='left',
-		'IN'='right',
-		'MA'='lower right',
-		'MS'='upper',
-		'MT'='upper',
+		'IN'='left',
+		'KS'='left',
+		#'MA'='lower right',
+		#'MS'='upper',
+		#'MT'='upper',
 		'MN'='lower',
 		'NC'='lower',
 		'OR'='upper',
+		'PA'='right',
 		'RI'='left',
-		'SC'='upper left',
-		'UT'='lower'
+		'SC'='upper'
+		#'UT'='lower'
 	)
 	label_offset <- c(0.01, 0.5)
 	
@@ -528,7 +530,7 @@ run <- function(){
 
 	# Add background quadrant labels
 	text(x=0.015, y=2, labels=toupper('Lower testing rate\nLower % positive'), col=bg_txt_col, cex=bg_text_cex)
-	text(x=0.13, y=32, labels=toupper('Higher testing rate\nHigher % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=0.13, y=40, labels=toupper('Higher testing rate\nHigher % positive'), col=bg_txt_col, cex=bg_text_cex)
 	text(x=0.015, y=24, labels=toupper('Lower testing rate\nHigher % positive'), col=bg_txt_col, cex=bg_text_cex)
 	text(x=0.13, y=1.55, labels=toupper('Higher testing rate\nLower % positive'), col=bg_txt_col, cex=bg_text_cex)
 
@@ -602,22 +604,29 @@ run <- function(){
 	## Plot n-fold increase in reported positives vs testing score
 	# Set which state labels to move outside points
 	labels_out <- c(
-		'AK'='upper right',
-		'CO'='right',
-		'CT'='right',
-		'GU'='lower left',
+		'AK'='lower left',
+		'CO'='left',
+		#'CT'='right',
+		'DC'='upper right',
+		'GU'='upper',
 		'HI'='right',
-		'ID'='lower',
-		'NH'='lower',
-		'ND'='lower',
+		#'ID'='lower',
+		'KS'='lower right',
+		'MA'='lower',
+		'MN'='left',
+		'MT'='upper',
+		'NC'='upper',
+		'NH'='upper left',
+		#'NV'='lower',
+		'ND'='right',
 		'OR'='lower',
-		'SC'='lower',
-		'TX'='lower',
+		'RI'='lower right',
+		'SC'='right',
+		#'TX'='lower',
 		'UT'='right',
 		'VA'='lower',
 		'WI'='lower'
 	)
-	label_offset <- c(1,0.05)
 
 	# Get ranges
 	y_range <- range(testing_stats[!is.na(testing_stats[, 'nfold_pday']), 'nfold_pday'], na.rm=TRUE)
@@ -627,7 +636,7 @@ run <- function(){
 	plot(x_range, y_range, type='n', xlab='', ylab='', log='x', xaxt='n', yaxt='n')
 	
 	# Set line label length
-	line_lab_len <- 0.6*c(10, 0.025)
+	line_lab_len <- 0.5*c(10, 0.025)
 
 	for(state in rownames(testing_stats)){
 
@@ -652,8 +661,8 @@ run <- function(){
 			if(labels_out[state] == 'left') text_adj <- c(1, 0.5)
 			if(labels_out[state] == 'right') text_adj <- c(-0.2, 0.5)
 			if(labels_out[state] == 'upper left') text_adj <- c(1,-0.5)
-			if(labels_out[state] == 'upper right') text_adj <- c(-0.2,-0.5)
-			if(labels_out[state] == 'upper') text_adj <- c(0.5,-0.5)
+			if(labels_out[state] == 'upper right') text_adj <- c(0,0.2)
+			if(labels_out[state] == 'upper') text_adj <- c(0.5,-0.3)
 			if(labels_out[state] == 'lower') text_adj <- c(0.5,1)
 
 			# Set end of line
@@ -684,8 +693,8 @@ run <- function(){
 	axis(2, mgp=c(3, 0.7, 0))
 
 	# Add background corner labels
-	text(x=9, y=1.13, labels=toupper('Higher testing rate\nLower % positive\nSlower inc in % positive'), col=bg_txt_col, cex=bg_text_cex)
-	text(x=0.3, y=1.58, labels=toupper('Lower testing rate\nHigher % positive\nFaster inc in % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=9, y=1.18, labels=toupper('Higher testing rate\nLower % positive\nSlower inc in % positive'), col=bg_txt_col, cex=bg_text_cex)
+	text(x=0.3, y=1.55, labels=toupper('Lower testing rate\nHigher % positive\nFaster inc in % positive'), col=bg_txt_col, cex=bg_text_cex)
 
 	# Add source
 	text(x=x_range[2] + 1*diff(x_range), y=y_range[1] - 0.2*diff(y_range), 
