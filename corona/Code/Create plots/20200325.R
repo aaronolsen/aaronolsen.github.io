@@ -498,13 +498,14 @@ run <- function(){
 
 	# Set which state labels to move outside points
 	labels_out <- c(
-		'CA'='right',
+		'AK'='upper',
+		'CA'='left',
 		'CT'='upper',
 		'FL'='left',
 		#'GA'='lower right',
 		'IA'='upper',
-		'ID'='left',
-		'IN'='left',
+		'ID'='lower',
+		'IN'='lower left',
 		'KS'='lower',
 		#'MA'='lower right',
 		#'MS'='upper',
@@ -513,11 +514,14 @@ run <- function(){
 		'MO'='lower',
 		'MS'='lower right',
 		'NC'='lower',
+		'NH'='lower',
 		'OR'='upper',
 		'PA'='right',
 		'RI'='right',
-		'SC'='left'
-		#'UT'='lower'
+		'SC'='lower',
+		'SD'='upper',
+		#'UT'='lower',
+		'WY'='lower left'
 	)
 	label_offset <- c(0.01, 0.5)
 	
@@ -615,12 +619,13 @@ run <- function(){
 		'AK'='lower left',
 		'AL'='left',
 		'AR'='right',
-		'CO'='left',
+		'CO'='upper left',
 		#'CT'='right',
 		'DC'='upper right',
 		'GA'='lower left',
 		#'GU'='upper',
 		'HI'='right',
+		'IA'='lower left',
 		#'ID'='lower',
 		'KS'='lower',
 		'LA'='upper',
@@ -635,7 +640,7 @@ run <- function(){
 		'OH'='lower right',
 		'OR'='left',
 		'PA'='lower left',
-		'RI'='lower',
+		'RI'='lower left',
 		'SC'='upper',
 		'TX'='lower',
 		'UT'='upper right',
@@ -680,7 +685,7 @@ run <- function(){
 			if(labels_out[state] == 'lower right') text_adj <- c(-0.2,0.5)
 			if(labels_out[state] == 'left') text_adj <- c(1, 0.5)
 			if(labels_out[state] == 'right') text_adj <- c(-0.2, 0.5)
-			if(labels_out[state] == 'upper left') text_adj <- c(1,-0.5)
+			if(labels_out[state] == 'upper left') text_adj <- c(1,-0.3)
 			if(labels_out[state] == 'upper right') text_adj <- c(0,0.2)
 			if(labels_out[state] == 'upper') text_adj <- c(0.5,-0.3)
 			if(labels_out[state] == 'lower') text_adj <- c(0.5,1)
