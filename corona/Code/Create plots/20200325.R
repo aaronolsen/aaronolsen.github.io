@@ -212,11 +212,16 @@ run <- function(){
 		
 		# Save testing statistics
 		testing_stats[state, 'num_positive'] <- df_by_state[[state]][1, 'positive']
-		testing_stats[state, 'total_tests'] <- as.numeric(as.character(gsub(',','',df_by_state[[state]][1, 'total'])))
+		#testing_stats[state, 'total_tests'] <- testing_stats[state, 'num_positive'] + as.numeric(as.character(gsub(',','',df_by_state[[state]][1, 'negative'])))
+		#testing_stats[state, 'total_tests'] <- as.numeric(as.character(gsub(',','',df_by_state[[state]][1, 'total'])))
+		testing_stats[state, 'total_tests'] <- as.numeric(as.character(gsub(',','',df_by_state[[state]][1, 'totalTestResults'])))
 		testing_stats[state, 'per_positive'] <- 100*(df_by_state[[state]][1, 'positive'] / testing_stats[state, 'total_tests'])
 		testing_stats[state, 'per_negative'] <- 100*(df_by_state[[state]][1, 'negative'] / testing_stats[state, 'total_tests'])
 		testing_stats[state, 'per_tested'] <- 100*(testing_stats[state, 'total_tests'] / testing_stats[state, 'pop_size'])
 	}
+	
+	#print(testing_stats)
+	#return(1)
 	
 	# Calculate testing score (higher is better) and add to matrix
 	#testing_stats[, 'testing_score'] <- testing_stats[, 'per_tested']*(1/testing_stats[, 'per_positive'])
