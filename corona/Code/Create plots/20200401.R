@@ -213,7 +213,7 @@ run <- function(){
 		if(good_sign[pr_var] < 0) pr_mat_scaled[, pr_var] <- -pr_mat_scaled[, pr_var] + 1
 	}
 	
-	print(pr_mat_scaled)
+	#print(pr_mat_scaled)
 	print(sort(apply(pr_mat_scaled, 1, 'sum')))
 
 	# Set overall ranking
@@ -288,15 +288,16 @@ run <- function(){
 	# Set size of circle with text
 	circle_txt_cex <- 3.1
 	txt_cex <- 0.71
+	mtext_cex <- 0.7
 	bg_text_cex <- 1.5
 	bg_txt_col <- gray(0.8)
 
 	# Set variable labels
 	pr_col_labels <- list(
-		'pos_per_cap'=paste0(c('More', 'Fewer'), ' positive test results per capita'), 
+		'pos_per_cap'=paste0(c('More', 'Fewer'), ' confirmed cases per capita'), 
 		'per_pos_tested'=paste0(c('Greater', 'Lower'), ' % of test results are positive'), 
 		'tests_per_cap'=paste0(c('More', 'Fewer'), ' tests performed per capita'), 
-		'nfold_pos_pday'=paste0(c('Faster', 'Slower'), ' increase in reported positives'), 
+		'nfold_pos_pday'=paste0(c('Faster', 'Slower'), ' increase in confirmed cases'), 
 		'nfold_tests_pday'=paste0(c('Faster', 'Slower'), ' increase in tests performed')
 	)
 
@@ -314,10 +315,18 @@ run <- function(){
 	}
 
 	# Open PDF
-	pdf(paste0('~/Documents/Outreach/Coronavirus analysis/Plots/PCA/', file_date, '.pdf'), width=14, height=7)
+	pdf(paste0('~/Documents/Outreach/Coronavirus analysis/Plots/PCA/', file_date, ' PCA.pdf'), width=9, height=4.8)
 	
-	layout(matrix(1:2, 1, 2))
-	par(mar=c(4,4,2,2))
+	layout(matrix(c(1,1,2,3,4,4), 3, 2, byrow=TRUE), height=c(0.08, 1, 0.05))
+
+	par('mar'=c(0,0,0,0))
+	plot(x=c(0,1), y=c(0,1), type='n', bty='n', ylab='', xlab='', xaxt='n', yaxt='n')
+	main <- paste0('PCA of five COVID-19 testing variables by state as of ', format(read_csv$asdate[1], format="%B %d, %Y"))
+	text(x=0.5, y=0.6, labels=main, font=2, cex=1, xpd=TRUE)
+	main <- '(1) confirmed cases per capita, (2) % of tests that are positive, (3) tests performed per capita, (4) Rate of increase in confirmed cases, (5) Rate of increase in testing'
+	text(x=0.5, y=0.25, labels=main, font=1, cex=0.9, xpd=TRUE)
+
+	par(mar=c(4,4,0,1))
 
 	for(pcs_plot in plot_pcs){
 
@@ -333,7 +342,8 @@ run <- function(){
 		for(i in 1:2){
 
 			# Add axis label
-			mtext(side=i, line=2.5, text=paste0('Principal component ', pcs_plot[i], ' (', round(per_var[pcs_plot[i]]*100), '%)'))
+			mtext(side=i, line=2.5, text=paste0('Principal component ', pcs_plot[i], ' (', round(per_var[pcs_plot[i]]*100), '%)'), 
+				cex=1.2*mtext_cex)
 			
 			# Find variables that correlate with first axis
 			which_vars <- abs(axis_max) == pcs_plot[i]
@@ -354,7 +364,7 @@ run <- function(){
 
 				# Add text
 				for(j in 1:2){
-					mtext(side=i, line=line, text=pr_col_labels[[cor_var]][j], adj=adj[j], col=gray(0.4), cex=1.3*txt_cex)
+					mtext(side=i, line=line, text=pr_col_labels[[cor_var]][j], adj=adj[j], col=gray(0.4), cex=1*mtext_cex)
 				}
 
 				n <- n + 1
@@ -396,6 +406,13 @@ run <- function(){
 				col=grade_cols, xjust=0.05, yjust=0.2, bty='n', pch=15)
 		}
 	}
+
+	par('mar'=c(0,0,0,0))
+	plot(x=c(0,1), y=c(0,1), type='n', bty='n', ylab='', xlab='', xaxt='n', yaxt='n')
+
+	# Add source
+	text(x=1.02, y=0.5, labels='Plot created by @aarolsen; Source data: covidtracking.com; Source code at github.com/aaronolsen/aaronolsen.github.io/tree/master/corona', 
+		adj=c(1,0.5), xpd=TRUE, cex=1.4*mtext_cex, col=gray(0.25))
 
 	dev.off()
 }
