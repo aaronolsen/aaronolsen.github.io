@@ -1,6 +1,0 @@
-/* Delay the page rendering until javascript DOM changes are completed */
-body {
-	/* Hide body content on first load of page to prevent flashing of incompletely 
-	styled content */
-	display: none !important;
-}
