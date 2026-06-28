@@ -1,0 +1,43 @@
+---
+# Names to bold in publications list (array/list)
+namestobold:
+  - Federica Losacco
+  - Fernando Lopes
+  - Michele Rossini
+  - Sergei I Tarasov
+  - Diego Porto
+  - Giulio Montanaro
+  - Thomas Merrien
+
+## Template content
+# Nested Object (Dictionary)
+database:
+  host: "localhost"
+  port: 5432
+  credentials:
+    username: "admin"
+    password: "secure_password"
+
+# Multi-line string (maintains exact formatting)
+description: |
+  This is a multi-line string.
+  It preserves all line breaks
+  and spaces exactly.
+
+# Mix of list and nested object
+name: John Doe
+age: 30
+is_employed: true
+address:
+  street: 123 Main St
+  city: Anywhere
+  state: CA
+  zipcode: 90210
+phone_numbers:
+  - type: home
+    number: 555-1234
+  - type: work
+    number: 555-5678
+
+# JSON-style inline list
+fruits: [Apple, Orange, Pear]
